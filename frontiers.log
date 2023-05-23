@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  23 MAY 2023 13:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  23 MAY 2023 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -788,19 +788,19 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
 [2]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 128.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 127.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 128.
+(Font)              size <5> substituted on input line 127.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 128.
+(Font)              size <5> substituted on input line 127.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 128.
+(Font)              size <5> substituted on input line 127.
 
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
@@ -808,7 +808,7 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [3]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-53.
+52.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -817,37 +817,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (121.33556pt too wide) in paragraph at lines 163--163
+Overfull \hbox (121.33556pt too wide) in paragraph at lines 162--162
  [] \OT1/pcr/m/n/12 hivnetworkcsv -i pairwise_distances.15.tn93.csv -f plain -A
  0 > autotune_report.tsv[] 
  []
 
 
-Overfull \hbox (75.9583pt too wide) in paragraph at lines 166--167
+Overfull \hbox (75.9583pt too wide) in paragraph at lines 165--166
 []\OT1/ptm/m/n/12 Visualize the report: Users can upload the generated autotune
 []report.tsv file to http://autotune.datamonkey.org/analyze
  []
 
 
-Overfull \hbox (344.53546pt too wide) in paragraph at lines 171--171
+Overfull \hbox (344.53546pt too wide) in paragraph at lines 170--170
  []  \OT1/pcr/m/n/12 hivtrace -i ./INPUT.FASTA -a resolve -r HXB2_prrt -t < aut
 otune_threshold > -m 500 -g .05 > hivtrace.results.json[] 
  []
 
 
-Overfull \hbox (142.93555pt too wide) in paragraph at lines 179--179
+Overfull \hbox (142.93555pt too wide) in paragraph at lines 178--178
  []  \OT1/pcr/m/n/12 hivnetworkannotate -n hivtrace.results.json -a node_attrib
 utes.json -g schema.json -r[] 
  []
 
 
-Underfull \hbox (badness 4726) in paragraph at lines 185--186
+Underfull \hbox (badness 4726) in paragraph at lines 184--185
 []\OT1/ptm/m/n/12 AUTO-TUNE is readily accessible on GitHub as part of the hivc
 lustering repository
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 187--188
+Underfull \hbox (badness 1616) in paragraph at lines 186--187
 []\OT1/ptm/m/n/12 The Degree Weighted Homophily (DWH) calculation tool, an inte
 gral component of the
  []
@@ -865,24 +865,25 @@ No file frontiers.bbl.
 
 Package svg Warning: You didn't enable `shell escape' (or `write18')
 (svg)                so it wasn't possible to launch the Inkscape export
-(svg)                for `./figures/original-china.svg' on input line 250.
+(svg)                for `./figures/case_1/canada/svgexport-2.svg' on input lin
+e 252.
 
 
-! Package svg Error: File `original-china_svg-tex.eps' is missing.
+! Package svg Error: File `svgexport-2_svg-tex.eps' is missing.
 
 See the svg package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.250 ...width=10cm]{./figures/original-china.svg}
+l.252 ...{./figures/case_1/canada/svgexport-2.svg}
                                                   % This is a *.eps file 
 Here is how much of TeX's memory you used:
- 17919 strings out of 476026
- 307148 string characters out of 5790044
+ 17917 strings out of 476026
+ 307126 string characters out of 5790044
  1867385 words of memory out of 5000000
- 38022 multiletter control sequences out of 15000+600000
- 528893 words of font info for 79 fonts, out of 8000000 for 9000
+ 38020 multiletter control sequences out of 15000+600000
+ 528386 words of font info for 78 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 94i,9n,131p,10122b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,8n,131p,10122b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (5 pages, 49960 bytes).
+Output written on frontiers.dvi (5 pages, 49608 bytes).
