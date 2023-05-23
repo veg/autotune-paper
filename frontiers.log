@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  23 MAY 2023 15:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  23 MAY 2023 15:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -664,8 +664,9 @@ File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/local/texlive/2023/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 )
+   defining Unicode char U+2212 (decimal 8722)
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 4
-4.
+5.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
@@ -682,27 +683,27 @@ File: l3backend-dvips.def 2023-01-16 L3 backend support: dvips
 (./frontiers.aux)
 \openout1 = `frontiers.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-Package crop Info: requested driver: `' on input line 44.
-Package crop Info: detected driver: `dvips' on input line 44.
-Package crop Info: using `dvips' graphics driver on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 45.
+LaTeX Font Info:    ... okay on input line 45.
+Package crop Info: requested driver: `' on input line 45.
+Package crop Info: detected driver: `dvips' on input line 45.
+Package crop Info: using `dvips' graphics driver on input line 45.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2016/01/12
@@ -710,24 +711,21 @@ File: fc-english.def 2016/01/12
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 44.
+Package hyperref Info: Link coloring OFF on input line 45.
 
 (./frontiers.out) (./frontiers.out)
 \@outlinefile=\write4
 \openout4 = `frontiers.out'.
 
+LaTeX Info: Redefining \microtypecontext on input line 45.
+Package microtype Info: Applying patch `item' on input line 45.
+Package microtype Info: Applying patch `toc' on input line 45.
+Package microtype Info: Applying patch `eqnum' on input line 45.
 
 
-Package hyperref Warning: Rerun to get /PageLabels entry.
+Package microtype Warning: Unable to apply patch `footnote' on input line 45.
 
-LaTeX Info: Redefining \microtypecontext on input line 44.
-Package microtype Info: Applying patch `item' on input line 44.
-Package microtype Info: Applying patch `toc' on input line 44.
-Package microtype Info: Applying patch `eqnum' on input line 44.
-
-Package microtype Warning: Unable to apply patch `footnote' on input line 44.
-
-Package microtype Info: Applying patch `verbatim' on input line 44.
+Package microtype Info: Applying patch `verbatim' on input line 45.
 Package microtype Info: Generating DVI output.
 Package microtype Info: Character protrusion enabled (level 2),
 (microtype)             factor: 1500.
@@ -739,8 +737,9 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 5
-9.
+(|'inkscape' -V )
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 6
+0.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
@@ -751,12 +750,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 File: ./logo1.eps Graphic file (type eps)
  <./logo1.eps>
-Underfull \hbox (badness 10000) detected at line 59
+Underfull \hbox (badness 10000) detected at line 60
 []
  []
 
 
-Overfull \hbox (8.53581pt too wide) in paragraph at lines 59--59
+Overfull \hbox (8.53581pt too wide) in paragraph at lines 60--60
 [][] 
  []
 
@@ -764,7 +763,7 @@ Overfull \hbox (8.53581pt too wide) in paragraph at lines 59--59
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -773,7 +772,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -782,7 +781,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Underfull \hbox (badness 10000) detected at line 59
+Underfull \hbox (badness 10000) detected at line 60
 []
  []
 
@@ -792,31 +791,31 @@ Underfull \hbox (badness 10000) detected at line 59
 
 ]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 100.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 101.
 
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 100.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 101.
 
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 102.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 103.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
 [2]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 127.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 128.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 127.
+(Font)              size <5> substituted on input line 128.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 127.
+(Font)              size <5> substituted on input line 128.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 127.
+(Font)              size <5> substituted on input line 128.
 
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
@@ -824,7 +823,7 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [3]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-52.
+53.
  (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -833,37 +832,37 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (121.33556pt too wide) in paragraph at lines 162--162
+Overfull \hbox (121.33556pt too wide) in paragraph at lines 163--163
  [] \OT1/pcr/m/n/12 hivnetworkcsv -i pairwise_distances.15.tn93.csv -f plain -A
  0 > autotune_report.tsv[] 
  []
 
 
-Overfull \hbox (75.9583pt too wide) in paragraph at lines 165--166
+Overfull \hbox (75.9583pt too wide) in paragraph at lines 166--167
 []\OT1/ptm/m/n/12 Visualize the report: Users can upload the generated autotune
 []report.tsv file to http://autotune.datamonkey.org/analyze
  []
 
 
-Overfull \hbox (344.53546pt too wide) in paragraph at lines 170--170
+Overfull \hbox (344.53546pt too wide) in paragraph at lines 171--171
  []  \OT1/pcr/m/n/12 hivtrace -i ./INPUT.FASTA -a resolve -r HXB2_prrt -t < aut
 otune_threshold > -m 500 -g .05 > hivtrace.results.json[] 
  []
 
 
-Overfull \hbox (142.93555pt too wide) in paragraph at lines 178--178
+Overfull \hbox (142.93555pt too wide) in paragraph at lines 179--179
  []  \OT1/pcr/m/n/12 hivnetworkannotate -n hivtrace.results.json -a node_attrib
 utes.json -g schema.json -r[] 
  []
 
 
-Underfull \hbox (badness 4726) in paragraph at lines 184--185
+Underfull \hbox (badness 4726) in paragraph at lines 185--186
 []\OT1/ptm/m/n/12 AUTO-TUNE is readily accessible on GitHub as part of the hivc
 lustering repository
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 186--187
+Underfull \hbox (badness 1616) in paragraph at lines 187--188
 []\OT1/ptm/m/n/12 The Degree Weighted Homophily (DWH) calculation tool, an inte
 gral component of the
  []
@@ -878,39 +877,56 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [5]
 No file frontiers.bbl.
-Package svg Info: Calling Inkscape on input line 252.
-runsystem(inkscape "./figures/case_1/canada/svgexport-2.svg" -D --export-latex 
---export-filename="svgexport-2_svg-tex.eps")...executed.
-
-runsystem(mkdir -p "./svg-inkscape/")...executed.
-
-runsystem(mv "svgexport-2_svg-tex.eps" "./svg-inkscape/svgexport-2_svg-tex.eps"
-)...executed.
-
-runsystem(mv "svgexport-2_svg-tex.eps_tex" "./svg-inkscape/svgexport-2_svg-tex.
-eps_tex")...executed.
-
 (./svg-inkscape/svgexport-2_svg-tex.eps_tex
 File: ./svg-inkscape/svgexport-2_svg-tex.eps Graphic file (type eps)
 
 <./svg-inkscape/svgexport-2_svg-tex.eps>
+LaTeX Info: Symbol \textuparrow not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 69.
+LaTeX Info: Symbol \textrightarrow not provided by
+            font family ptm in TS1 encoding.
+            Default family used instead on input line 84.
+)
+File: logo1.eps Graphic file (type eps)
+ <logo1.eps>
+Package hyperref Info: bookmark level for unknown subfigure defaults to 0 on in
+put line 266.
+File: logo2.eps Graphic file (type eps)
+ <logo2.eps>
 
-! LaTeX Error: Unicode character − (U+2212)
-               not set up for use with LaTeX.
+Package caption Warning: Unused \captionsetup[sub] on input line 20.
+See the caption package documentation for explanation.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.57 ...begin{tabular}[t]{r}−0.1\end{tabular}}}}
-                                                  % 
+
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+
+[6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+
+[7] (./frontiers.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package rerunfilecheck Info: File `frontiers.out' has not changed.
+(rerunfilecheck)             Checksum: 16E21CA8810A8E81F9A6F18E87F7A339;1736.
+ ) 
 Here is how much of TeX's memory you used:
- 18027 strings out of 476026
- 309544 string characters out of 5790044
+ 18050 strings out of 476026
+ 309714 string characters out of 5790044
  1867385 words of memory out of 5000000
- 38116 multiletter control sequences out of 15000+600000
- 528386 words of font info for 78 fonts, out of 8000000 for 9000
+ 38132 multiletter control sequences out of 15000+600000
+ 529242 words of font info for 80 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 94i,14n,131p,10122b,707s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,15n,131p,10175b,707s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (5 pages, 49980 bytes).
+Output written on frontiers.dvi (7 pages, 58468 bytes).
