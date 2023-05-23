@@ -3,7 +3,7 @@ all : main.pdf view github
 #all : main.pdf view
 main.pdf : 
 	#bibtex frontiers 
-	latex -halt-on-error frontiers.tex
+	latex -halt-on-error --shell-escape frontiers.tex
 	dvipdfm frontiers.dvi
 view :
 	open -a Preview frontiers.pdf -g
