@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  23 MAY 2023 15:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  23 MAY 2023 15:43
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -876,30 +876,6 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 [5]
 No file frontiers.bbl.
-(./svg-inkscape/svgexport-2_svg-tex.eps_tex
-File: ./svg-inkscape/svgexport-2_svg-tex.eps Graphic file (type eps)
-
-<./svg-inkscape/svgexport-2_svg-tex.eps>
-LaTeX Info: Symbol \textuparrow not provided by
-            font family ptm in TS1 encoding.
-            Default family used instead on input line 69.
-LaTeX Info: Symbol \textrightarrow not provided by
-            font family ptm in TS1 encoding.
-            Default family used instead on input line 84.
-)
-Overfull \hbox (97.39352pt too wide) in paragraph at lines 253--254
- [] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: logo1.eps Graphic file (type eps)
-<logo1.eps>
-Package hyperref Info: bookmark level for unknown subfigure defaults to 0 on in
-put line 266.
-File: logo2.eps Graphic file (type eps)
- <logo2.eps>
 
 Package caption Warning: Unused \captionsetup[sub] on input line 20.
 See the caption package documentation for explanation.
@@ -908,21 +884,7 @@ See the caption package documentation for explanation.
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
-[6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (3.49998pt too high) has occurred while \output is active []
-
-
-[7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (3.49998pt too high) has occurred while \output is active []
-
-
-[8] (./frontiers.aux)
+[6] (./frontiers.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -931,12 +893,12 @@ Package rerunfilecheck Info: File `frontiers.out' has not changed.
 (rerunfilecheck)             Checksum: 16E21CA8810A8E81F9A6F18E87F7A339;1736.
  ) 
 Here is how much of TeX's memory you used:
- 18047 strings out of 476026
- 309667 string characters out of 5790044
+ 17993 strings out of 476026
+ 308447 string characters out of 5790044
  1867385 words of memory out of 5000000
- 38132 multiletter control sequences out of 15000+600000
- 529242 words of font info for 80 fonts, out of 8000000 for 9000
+ 38089 multiletter control sequences out of 15000+600000
+ 528386 words of font info for 78 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 94i,15n,131p,10175b,701s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,8n,131p,10122b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (8 pages, 59160 bytes).
+Output written on frontiers.dvi (6 pages, 53644 bytes).
