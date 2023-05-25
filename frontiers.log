@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  25 MAY 2023 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  25 MAY 2023 17:31
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -889,16 +889,19 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `frontiers.out' has not changed.
 (rerunfilecheck)             Checksum: 16E21CA8810A8E81F9A6F18E87F7A339;1736.
  ) 
 Here is how much of TeX's memory you used:
- 17999 strings out of 476026
- 308555 string characters out of 5790044
+ 18000 strings out of 476026
+ 308576 string characters out of 5790044
  1867385 words of memory out of 5000000
- 38094 multiletter control sequences out of 15000+600000
+ 38095 multiletter control sequences out of 15000+600000
  528905 words of font info for 79 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  94i,8n,131p,10122b,649s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (6 pages, 56152 bytes).
+Output written on frontiers.dvi (6 pages, 56380 bytes).
