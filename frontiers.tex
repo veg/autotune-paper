@@ -20,17 +20,6 @@
 \usepackage{svg}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{listings}
-
-\usepackage{hyperref}
-\usepackage{xcolor}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=blue,
-    urlcolor=blue,
-    citecolor=blue
-}
-
 \DeclareUnicodeCharacter{2212}{\ensuremath{-}}
 
 \lstset{
@@ -195,7 +184,7 @@ Please note that the threshold should include the maximal range one is intending
 \end{lstlisting}
 }
 
-\item {Visualize the report: Users can upload the generated autotune\_report.tsv file to \href{http://autotune.datamonkey.org/analyze} for visualization and further analysis of the data. This web-based platform provides an interactive environment to explore scores and other metrics across the range of tested outputs. }
+\item {Visualize the report: Users can upload the generated autotune\_report.tsv file to \url{http://autotune.datamonkey.org/analyze for visualization and further analysis of the data. This web-based platform provides an interactive environment to explore scores and other metrics across the range of tested outputs. }
 
 \item {Run HIV-TRACE: Once AUTO-TUNEd threshold(s) are settled upon after review, the user runs the HIV-TRACE command with the appropriate input FASTA file, distance threshold, and other required arguments. The output is saved as a JSON file. An example command is
 	\begin{lstlisting}[style=BashInputStyle]
