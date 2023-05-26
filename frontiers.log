@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 11:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 11:05
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -857,9 +857,25 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
+Overfull \hbox (121.34196pt too wide) in paragraph at lines 172--173
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+
 Overfull \hbox (75.9583pt too wide) in paragraph at lines 176--177
 []\OT1/ptm/m/n/12 Visualize the report: Users can upload the generated autotune
 []report.tsv file to http://autotune.datamonkey.org/analyze
+ []
+
+
+Overfull \hbox (445.34526pt too wide) in paragraph at lines 180--181
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (243.74321pt too wide) in paragraph at lines 188--189
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
@@ -911,12 +927,12 @@ Package rerunfilecheck Info: File `frontiers.out' has not changed.
 (rerunfilecheck)             Checksum: 9F8C2254DD0DBEE10CF4AACB7306A30E;2490.
  ) 
 Here is how much of TeX's memory you used:
- 19618 strings out of 476026
- 330267 string characters out of 5790044
- 1928385 words of memory out of 5000000
- 39701 multiletter control sequences out of 15000+600000
- 528905 words of font info for 79 fonts, out of 8000000 for 9000
+ 19620 strings out of 476026
+ 330304 string characters out of 5790044
+ 1875385 words of memory out of 5000000
+ 39703 multiletter control sequences out of 15000+600000
+ 529412 words of font info for 80 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 94i,8n,131p,10122b,1236s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,9n,131p,10122b,1222s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (7 pages, 61080 bytes).
+Output written on frontiers.dvi (7 pages, 60816 bytes).
