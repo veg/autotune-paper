@@ -866,28 +866,15 @@ Overfull \hbox (75.9583pt too wide) in paragraph at lines 185--186
 []report.tsv file to http://autotune.datamonkey.org/analyze
  []
 
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-89.
-(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-LaTeX Font Info:    Trying to load font information for OML+ptm on input line 1
-89.
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/omlptm.fd
-File: omlptm.fd 
-)
-LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 189.
-
-Overfull \hbox (445.34526pt too wide) in paragraph at lines 189--190
+Overfull \hbox (180.37697pt too wide) in paragraph at lines 189--190
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][] 
+][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (243.74321pt too wide) in paragraph at lines 197--198
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+Overfull \hbox (40.97878pt too wide) in paragraph at lines 197--198
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
@@ -939,12 +926,12 @@ Package rerunfilecheck Info: File `frontiers.out' has not changed.
 (rerunfilecheck)             Checksum: 9F8C2254DD0DBEE10CF4AACB7306A30E;2490.
  ) 
 Here is how much of TeX's memory you used:
- 19795 strings out of 476026
- 332635 string characters out of 5790044
- 1877385 words of memory out of 5000000
- 39867 multiletter control sequences out of 15000+600000
- 529510 words of font info for 80 fonts, out of 8000000 for 9000
+ 19749 strings out of 476026
+ 331864 string characters out of 5790044
+ 1878385 words of memory out of 5000000
+ 39828 multiletter control sequences out of 15000+600000
+ 528689 words of font info for 78 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 94i,9n,131p,10122b,1673s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,8n,131p,10122b,1673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (7 pages, 62668 bytes).
+Output written on frontiers.dvi (7 pages, 64060 bytes).
