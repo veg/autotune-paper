@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 11:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 11:09
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -923,4 +923,4 @@ Here is how much of TeX's memory you used:
  1145 hyphenation exceptions out of 8191
  94i,8n,131p,10122b,1687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (7 pages, 64824 bytes).
+Output written on frontiers.dvi (7 pages, 64428 bytes).
