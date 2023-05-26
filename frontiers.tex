@@ -29,6 +29,21 @@
   postbreak=\mbox{$\hookrightarrow$}  % Symbol for breakline
 }
 
+\lstdefinestyle{BashInputStyle}{
+  language=bash,
+  basicstyle=\small\sffamily,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  frame=single,
+  columns=fullflexible,
+  backgroundcolor=\color{lightgray},
+  linewidth=\linewidth,
+  xleftmargin=0.075\linewidth,
+  literate={-}{-}1 {'}{{\textquotesingle}}1,
+}
+
+
 
 
 \linenumbers
