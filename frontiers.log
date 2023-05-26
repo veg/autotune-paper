@@ -846,20 +846,34 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
-[3]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+[3] (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+LaTeX Font Info:    Trying to load font information for OML+phv on input line 1
 73.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/omlphv.fd
+File: omlphv.fd 
+)
+LaTeX Font Info:    Font shape `OML/phv/m/n' in size <11> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 173.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+81.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 LaTeX Font Info:    Trying to load font information for OML+ptm on input line 1
-73.
+81.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/omlptm.fd
 File: omlptm.fd 
 )
 LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 173.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 181.
 
 Overfull \hbox (121.34196pt too wide) in paragraph at lines 181--182
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
@@ -931,12 +945,12 @@ Package rerunfilecheck Info: File `frontiers.out' has not changed.
 (rerunfilecheck)             Checksum: 9F8C2254DD0DBEE10CF4AACB7306A30E;2490.
  ) 
 Here is how much of TeX's memory you used:
- 19627 strings out of 476026
- 330493 string characters out of 5790044
+ 19795 strings out of 476026
+ 332635 string characters out of 5790044
  1876385 words of memory out of 5000000
- 39708 multiletter control sequences out of 15000+600000
+ 39867 multiletter control sequences out of 15000+600000
  529510 words of font info for 80 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 94i,9n,131p,10122b,1342s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,9n,131p,10122b,1673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (7 pages, 61080 bytes).
+Output written on frontiers.dvi (7 pages, 61952 bytes).
