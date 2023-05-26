@@ -196,7 +196,7 @@ hivtrace -i ./INPUT.FASTA -a resolve -r HXB2_prrt -t < autotune_threshold > -m 5
 
 \item{ Annotate results: The hivnetworkannotate script is used to annotate the results obtained from the HIV-TRACE step with attributes. The script takes the JSON results file, node attributes file, schema file, and a resolve flag as input.
 	\begin{lstlisting}[style=BashInputStyle]
- 		hivnetworkannotate -n hivtrace.results.json -a node_attributes.json -g schema.json -r
+hivnetworkannotate -n hivtrace.results.json -a node_attributes.json -g schema.json -r
 	\end{lstlisting}
  For more information, users can refer to the hivnetworkannotate documentation.
 }
