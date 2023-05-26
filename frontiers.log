@@ -867,9 +867,9 @@ Overfull \hbox (75.9583pt too wide) in paragraph at lines 185--186
  []
 
 
-Overfull \hbox (180.37697pt too wide) in paragraph at lines 189--190
+Overfull \hbox (101.1775pt too wide) in paragraph at lines 189--190
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
-][][][][][][][][][][][][][] 
+][][][][][][][][][][][][] 
  []
 
 
@@ -934,4 +934,4 @@ Here is how much of TeX's memory you used:
  1145 hyphenation exceptions out of 8191
  94i,8n,131p,10122b,1673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (7 pages, 64060 bytes).
+Output written on frontiers.dvi (7 pages, 64052 bytes).
