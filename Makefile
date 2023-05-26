@@ -10,3 +10,7 @@ view :
 github:
 	git commit -a -m "`whoami` edit"
 	git push origin master
+
+watch:
+	while sleep 1 ; do find . -name '*.tex' -o -name '*.svg' \
+	| entr -d make all -f ./Makefile ; done
