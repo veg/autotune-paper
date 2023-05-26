@@ -877,6 +877,9 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 [5]
 No file frontiers.bbl.
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Package caption Warning: Unused \captionsetup[sub] on input line 20.
 See the caption package documentation for explanation.
 
@@ -895,9 +898,6 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `frontiers.out' has not changed.
 (rerunfilecheck)             Checksum: A54E257EA0F782886A6BBE0810AC1C9E;2368.
