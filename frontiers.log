@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 11:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 11:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -860,31 +860,25 @@ File: omlphv.fd
 )
 LaTeX Font Info:    Font shape `OML/phv/m/n' in size <11> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 173.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-81.
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-LaTeX Font Info:    Trying to load font information for OML+ptm on input line 1
-81.
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/omlptm.fd
-File: omlptm.fd 
-)
-LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 181.
-
-Overfull \hbox (121.34196pt too wide) in paragraph at lines 181--182
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
 
 Overfull \hbox (75.9583pt too wide) in paragraph at lines 185--186
 []\OT1/ptm/m/n/12 Visualize the report: Users can upload the generated autotune
 []report.tsv file to http://autotune.datamonkey.org/analyze
  []
 
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+89.
+(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+LaTeX Font Info:    Trying to load font information for OML+ptm on input line 1
+89.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <12> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 189.
 
 Overfull \hbox (445.34526pt too wide) in paragraph at lines 189--190
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
@@ -947,10 +941,10 @@ Package rerunfilecheck Info: File `frontiers.out' has not changed.
 Here is how much of TeX's memory you used:
  19795 strings out of 476026
  332635 string characters out of 5790044
- 1876385 words of memory out of 5000000
+ 1877385 words of memory out of 5000000
  39867 multiletter control sequences out of 15000+600000
  529510 words of font info for 80 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  94i,9n,131p,10122b,1673s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (7 pages, 61952 bytes).
+Output written on frontiers.dvi (7 pages, 62668 bytes).
