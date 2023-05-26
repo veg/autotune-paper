@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 13:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  26 MAY 2023 13:09
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -687,9 +687,10 @@ File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
 File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
 Package: listings 2023/02/27 1.9 (Carsten Heinz)
+Package hyperref Info: Option `colorlinks' set `true' on input line 32.
    defining Unicode char U+2212 (decimal 8722)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 6
-6.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 7
+7.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -707,27 +708,27 @@ File: l3backend-dvips.def 2023-01-16 L3 backend support: dvips
 (./frontiers.aux)
 \openout1 = `frontiers.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-Package crop Info: requested driver: `' on input line 66.
-Package crop Info: detected driver: `dvips' on input line 66.
-Package crop Info: using `dvips' graphics driver on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+Package crop Info: requested driver: `' on input line 77.
+Package crop Info: detected driver: `dvips' on input line 77.
+Package crop Info: using `dvips' graphics driver on input line 77.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2016/01/12
@@ -736,21 +737,21 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 66.
+Package hyperref Info: Link coloring ON on input line 77.
 
 (./frontiers.out) (./frontiers.out)
 \@outlinefile=\write4
 \openout4 = `frontiers.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 66.
-Package microtype Info: Applying patch `item' on input line 66.
-Package microtype Info: Applying patch `toc' on input line 66.
-Package microtype Info: Applying patch `eqnum' on input line 66.
+LaTeX Info: Redefining \microtypecontext on input line 77.
+Package microtype Info: Applying patch `item' on input line 77.
+Package microtype Info: Applying patch `toc' on input line 77.
+Package microtype Info: Applying patch `eqnum' on input line 77.
 
 
-Package microtype Warning: Unable to apply patch `footnote' on input line 66.
+Package microtype Warning: Unable to apply patch `footnote' on input line 77.
 
-Package microtype Info: Applying patch `verbatim' on input line 66.
+Package microtype Info: Applying patch `verbatim' on input line 77.
 Package microtype Info: Generating DVI output.
 Package microtype Info: Character protrusion enabled (level 2),
 (microtype)             factor: 1500.
@@ -763,8 +764,8 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 \c@lstlisting=\count353
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 8
-1.
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 9
+2.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
@@ -775,12 +776,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 File: ./logo1.eps Graphic file (type eps)
  <./logo1.eps>
-Underfull \hbox (badness 10000) detected at line 81
+Underfull \hbox (badness 10000) detected at line 92
 []
  []
 
 
-Overfull \hbox (8.53581pt too wide) in paragraph at lines 81--81
+Overfull \hbox (8.53581pt too wide) in paragraph at lines 92--92
 [][] 
  []
 
@@ -788,7 +789,7 @@ Overfull \hbox (8.53581pt too wide) in paragraph at lines 81--81
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 81.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -797,7 +798,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 81.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -806,7 +807,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Underfull \hbox (badness 10000) detected at line 81
+Underfull \hbox (badness 10000) detected at line 92
 []
  []
 
@@ -816,31 +817,31 @@ Underfull \hbox (badness 10000) detected at line 81
 
 ]
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 122.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 133.
 
 
-LaTeX Warning: Command \textellipsis invalid in math mode on input line 122.
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 133.
 
 LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <11> not available
-(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 124.
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 135.
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
 [2]
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 149.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 160.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 149.
+(Font)              size <5> substituted on input line 160.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 149.
+(Font)              size <5> substituted on input line 160.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 149.
+(Font)              size <5> substituted on input line 160.
 
 
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
@@ -853,15 +854,15 @@ File: lstlang1.sty 2023/02/27 1.9 listings language file
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Trying to load font information for OML+phv on input line 1
-75.
+86.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/omlphv.fd
 File: omlphv.fd 
 )
 LaTeX Font Info:    Font shape `OML/phv/m/n' in size <11> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 175.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 186.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-87.
+98.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -871,19 +872,19 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Overfull \hbox (160.21193pt too wide) in paragraph at lines 187--188
+Overfull \hbox (160.21193pt too wide) in paragraph at lines 198--199
 []\OT1/ptm/m/n/12 Visualize the report: Users can upload the generated autotune
-[]report.tsv file to [][][][]
+[]report.tsv file to [][][][][][]
  []
 
 
-Underfull \hbox (badness 4726) in paragraph at lines 206--207
+Underfull \hbox (badness 4726) in paragraph at lines 217--218
 []\OT1/ptm/m/n/12 AUTO-TUNE is readily accessible on GitHub as part of the hivc
 lustering repository
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 208--209
+Underfull \hbox (badness 1616) in paragraph at lines 219--220
 []\OT1/ptm/m/n/12 The Degree Weighted Homophily (DWH) calculation tool, an inte
 gral component of the
  []
@@ -933,4 +934,4 @@ Here is how much of TeX's memory you used:
  1145 hyphenation exceptions out of 8191
  94i,8n,131p,10122b,1687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on frontiers.dvi (7 pages, 64736 bytes).
+Output written on frontiers.dvi (7 pages, 65088 bytes).
