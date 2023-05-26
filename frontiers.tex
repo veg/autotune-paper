@@ -160,33 +160,33 @@ This generated pairwise distances are supplied to the hivnetworkcsv script while
 \begin{enumerate}
 
 \item{ Calculate pairwise distances: The user first calculates the pairwise distances using the tn93 fast pairwise distance calculator, providing the necessary threshold value and the input FASTA file. The command for this step is 
-\begin{verbatim}
+\begin{lstlisting}
  tn93 -t 0.030 pol.fasta > pairwise_distances.15.tn93.csv
-\end{verbatim}
+\end{lstlisting}
 
 Please note that the threshold should include the maximal range one is intending to test.
 }
 
 \item {Compute distance threshold scores: The hivnetworkcsv script is then executed with the required input file, format, and autotune option to generate a tab-separated output file, as shown below
-\begin{verbatim}
+\begin{lstlisting}
  hivnetworkcsv -i pairwise_distances.15.tn93.csv -f plain -A 0 > autotune_report.tsv
-\end{verbatim}
+\end{lstlisting}
 }
 
 \item {Visualize the report: Users can upload the generated autotune\_report.tsv file to http://autotune.datamonkey.org/analyze for visualization and further analysis of the data. This web-based platform provides an interactive environment to explore scores and other metrics across the range of tested outputs. }
 
 \item {Run HIV-TRACE: Once AUTO-TUNEd threshold(s) are settled upon after review, the user runs the HIV-TRACE command with the appropriate input FASTA file, distance threshold, and other required arguments. The output is saved as a JSON file. An example command is
-	\begin{verbatim}
+	\begin{lstlisting}
  		hivtrace -i ./INPUT.FASTA -a resolve -r HXB2_prrt -t < autotune_threshold > -m 500 -g .05 > hivtrace.results.json
-	\end{verbatim}
+	\end{lstlisting}
 }
 
 \subsubsection{Optional : Compute Assortatviity Metrics}
 
 \item{ Annotate results: The hivnetworkannotate script is used to annotate the results obtained from the HIV-TRACE step with attributes. The script takes the JSON results file, node attributes file, schema file, and a resolve flag as input.
-	\begin{verbatim}
+	\begin{lstlisting}
  		hivnetworkannotate -n hivtrace.results.json -a node_attributes.json -g schema.json -r
-	\end{verbatim}
+	\end{lstlisting}
  For more information, users can refer to the hivnetworkannotate documentation.
 }
 
