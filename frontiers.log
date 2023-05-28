@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.5.8)  27 MAY 2023 21:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  28 MAY 2023 10:08
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -29,10 +29,13 @@ Package: color 2022/01/06 v1.3d Standard LaTeX Color (DPC)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package color Info: Driver file: pdftex.def on input line 149.
+Package color Info: Driver file: dvips.def on input line 149.
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-def/dvips.def
+File: dvips.def 2022/09/22 v3.1e Graphics/color driver for dvips
+)
+(/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/graphics.sty
@@ -44,7 +47,7 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
+Package graphics Info: Driver file: dvips.def on input line 107.
 )
 \CROP@offset=\count186
 Package crop Info: Local config file crop.cfg used on input line 622.
@@ -285,22 +288,16 @@ Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-)))
-(/usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
+
+Package epstopdf Warning: Drivers other than `pdftex' and `luatex' are not supp
+orted.
+
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/parskip/parskip.sty
 Rollback for package 'parskip' requested -> version 'v1'.
          This corresponds to the release introduced on 2001-04-09.
 
@@ -314,12 +311,11 @@ Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Package option `usenames' ignored on input line 218.
-Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Driver file: dvips.def on input line 227.
 LaTeX Info: Redefining \color on input line 711.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
 Package xcolor Info: Model `RGB' extended on input line 1369.
 Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
 Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
@@ -466,22 +462,28 @@ package with kernel methods
 \c@Item=\count316
 \c@Hfootnote=\count317
 )
-Package hyperref Info: Driver (autodetected): hpdftex.
+Package hyperref Info: Driver (default): hdvips.
 
-(/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2023-02-07 v7.00v Hyperref driver for pdfTeX
+(/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2023-02-07 v7.00v Hyperref driver for dvips
 
+(/usr/local/texlive/2023/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2023-02-07 v7.00v Hyperref definitions for pdfmark specials
+\pdf@docset=\toks37
+\pdf@box=\box64
+\pdf@toks=\toks38
+\pdf@defaulttoks=\toks39
+\HyField@AnnotCount=\count318
+\Fld@listcount=\count319
+\c@bookmark@seq@number=\count320
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
 (/usr/local/texlive/2023/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count318
-\c@bookmark@seq@number=\count319
-
-(/usr/local/texlive/2023/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
-
 (/usr/local/texlive/2023/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
@@ -489,38 +491,38 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 85.
 )
 \Hy@SectionHShift=\skip65
-) (/usr/local/texlive/2023/texmf-dist/tex/latex/lineno/lineno.sty
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2023/01/19 line numbers on paragraphs v5.1
-\linenopenalty=\count320
-\output=\toks37
-\linenoprevgraf=\count321
+\linenopenalty=\count321
+\output=\toks40
+\linenoprevgraf=\count322
 \linenumbersep=\dimen172
 \linenumberwidth=\dimen173
-\c@linenumber=\count322
-\c@pagewiselinenumber=\count323
-\c@LN@truepage=\count324
-\c@internallinenumber=\count325
-\c@internallinenumbers=\count326
+\c@linenumber=\count323
+\c@pagewiselinenumber=\count324
+\c@LN@truepage=\count325
+\c@internallinenumber=\count326
+\c@internallinenumbers=\count327
 \quotelinenumbersep=\dimen174
 \bframerule=\dimen175
 \bframesep=\dimen176
-\bframebox=\box64
-\linenoamsmath@ams@eqpen=\count327
+\bframebox=\box65
+\linenoamsmath@ams@eqpen=\count328
 LaTeX Info: Redefining \\ on input line 3131.
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2023/03/13 v3.1a Micro-typographical refinements (RS)
-\MT@toks=\toks38
-\MT@tempbox=\box65
-\MT@count=\count328
+\MT@toks=\toks41
+\MT@tempbox=\box66
+\MT@count=\count329
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1059.
 LaTeX Info: Redefining \leftprotrusion on input line 1060.
-\MT@prot@toks=\toks39
+\MT@prot@toks=\toks42
 LaTeX Info: Redefining \rightprotrusion on input line 1078.
 LaTeX Info: Redefining \textls on input line 1368.
 \MT@outer@kern=\dimen177
 LaTeX Info: Redefining \textmicrotypecontext on input line 1988.
-\MT@listname@count=\count329
+\MT@listname@count=\count330
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2023/03/13 v3.1a Definitions specific to pdftex (RS)
@@ -575,9 +577,9 @@ runsystem(uname -s > "frontiers.w18")...executed.
 runsystem(rm -- "frontiers.w18")...executed.
 
 )
-\c@svg@param@lastpage=\count330
-\svg@box=\box66
-\c@svg@param@currpage=\count331
+\c@svg@param@lastpage=\count331
+\svg@box=\box67
+\c@svg@param@currpage=\count332
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/transparent/transparent.sty
 Package: transparent 2022-10-27 v1.5 Transparency with color stacks
@@ -586,17 +588,21 @@ Package: transparent 2022-10-27 v1.5 Transparency with color stacks
 a.sty
 Package: transparent-nometadata 2022-10-27 v1.5 Transparency via pdfTeX's color
  stack (HO)
-))
-(/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+
+
+Package transparent Warning: Loading aborted, because pdfTeX is not running in 
+PDF mode.
+
+)) (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2023/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
-\pgfutil@everybye=\toks40
+\pgfutil@everybye=\toks43
 \pgfutil@tempdima=\dimen178
 \pgfutil@tempdimb=\dimen179
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box67
+\pgfutil@abb=\box68
 ) (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
@@ -604,12 +610,12 @@ Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks41
-\pgfkeys@temptoks=\toks42
+\pgfkeys@pathtoks=\toks44
+\pgfkeys@temptoks=\toks45
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfil
 tered.code.tex
-\pgfkeys@tmptoks=\toks43
+\pgfkeys@tmptoks=\toks46
 ))
 \pgf@x=\dimen180
 \pgf@y=\dimen181
@@ -623,33 +629,34 @@ tered.code.tex
 \pgf@yd=\dimen189
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count332
-\c@pgf@countb=\count333
-\c@pgf@countc=\count334
-\c@pgf@countd=\count335
-\t@pgf@toka=\toks44
-\t@pgf@tokb=\toks45
-\t@pgf@tokc=\toks46
-\pgf@sys@id@count=\count336
+\c@pgf@counta=\count333
+\c@pgf@countb=\count334
+\c@pgf@countc=\count335
+\c@pgf@countd=\count336
+\t@pgf@toka=\toks47
+\t@pgf@tokb=\toks48
+\t@pgf@tokc=\toks49
+\pgf@sys@id@count=\count337
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
-Driver file for pgf: pgfsys-pdftex.def
+Driver file for pgf: pgfsys-dvips.def
 
-(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
-ef
-File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+(/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvips.de
+f
+File: pgfsys-dvips.def 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
-df.def
-File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+ostscript.def
+File: pgfsys-common-postscript.def 2023-01-15 v3.1.10 (3.1.10)
+\pgf@objectcount=\count338
 )))
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count337
-\pgfsyssoftpath@bigbuffer@items=\count338
+\pgfsyssoftpath@smallbuffer@items=\count339
+\pgfsyssoftpath@bigbuffer@items=\count340
 )
 (/usr/local/texlive/2023/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
@@ -657,24 +664,24 @@ File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (/usr/local/texlive/2023/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
 ) (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count339
-\lst@gtempboxa=\box68
-\lst@token=\toks47
-\lst@length=\count340
+\lst@mode=\count341
+\lst@gtempboxa=\box69
+\lst@token=\toks50
+\lst@length=\count342
 \lst@currlwidth=\dimen190
-\lst@column=\count341
-\lst@pos=\count342
+\lst@column=\count343
+\lst@pos=\count344
 \lst@lostspace=\dimen191
 \lst@width=\dimen192
-\lst@newlines=\count343
-\lst@lineno=\count344
+\lst@newlines=\count345
+\lst@lineno=\count346
 \lst@maxwidth=\dimen193
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count345
-\lst@skipnumbers=\count346
-\lst@framebox=\box69
+\c@lstnumber=\count347
+\lst@skipnumbers=\count348
+\lst@framebox=\box70
 )
 (/usr/local/texlive/2023/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2023/02/27 1.9 listings configuration
@@ -687,10 +694,15 @@ LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 6
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-(/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
-File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count347
-\l__pdf_internal_box=\box70
+(/usr/local/texlive/2023/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+File: l3backend-dvips.def 2023-01-16 L3 backend support: dvips
+\l__pdf_internal_box=\box71
+\g__pdf_backend_object_int=\count349
+\l__pdf_backend_content_box=\box72
+\l__pdf_backend_model_box=\box73
+\g__pdf_backend_annotation_int=\count350
+\g__pdf_backend_link_int=\count351
+\g__pdf_backend_link_sf_int=\count352
 )
 (./frontiers.aux)
 \openout1 = `frontiers.aux'.
@@ -713,25 +725,11 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
 LaTeX Font Info:    ... okay on input line 66.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 66.
 LaTeX Font Info:    ... okay on input line 66.
-
-(/usr/local/texlive/2023/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count348
-\scratchdimen=\dimen194
-\scratchbox=\box71
-\nofMPsegments=\count349
-\nofMParguments=\count350
-\everyMPshowfont=\toks48
-\MPscratchCnt=\count351
-\MPscratchDim=\dimen195
-\MPnumerator=\count352
-\makeMPintoPDFobject=\count353
-\everyMPtoPDFconversion=\toks49
-)
 Package crop Info: requested driver: `' on input line 66.
-Package crop Info: detected driver: `pdftex' on input line 66.
-Package crop Info: using `pdftex' graphics driver on input line 66.
- (/usr/local/texlive/2023/texmf-dist/tex/latex/fmtcount/fc-english.def
+Package crop Info: detected driver: `dvips' on input line 66.
+Package crop Info: using `dvips' graphics driver on input line 66.
+
+(/usr/local/texlive/2023/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2016/01/12
 )
 Package caption Info: Begin \AtBeginDocument code.
@@ -744,31 +742,30 @@ Package hyperref Info: Link coloring OFF on input line 66.
 \@outlinefile=\write4
 \openout4 = `frontiers.out'.
 
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
 LaTeX Info: Redefining \microtypecontext on input line 66.
 Package microtype Info: Applying patch `item' on input line 66.
 Package microtype Info: Applying patch `toc' on input line 66.
 Package microtype Info: Applying patch `eqnum' on input line 66.
 
-
 Package microtype Warning: Unable to apply patch `footnote' on input line 66.
 
 Package microtype Info: Applying patch `verbatim' on input line 66.
-Package microtype Info: Generating PDF output.
+Package microtype Info: Generating DVI output.
 Package microtype Info: Character protrusion enabled (level 2),
 (microtype)             factor: 1500.
 Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 66.
+Package microtype Info: No font expansion.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-(|'inkscape' -V )
-\c@lstlisting=\count354
+\c@lstlisting=\count353
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 8
 1.
 
@@ -779,22 +776,8 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package epstopdf Info: Source file: <./logo1.eps>
-(epstopdf)                    date: 2023-05-08 15:30:31
-(epstopdf)                    size: 2415779 bytes
-(epstopdf)             Output file: <./logo1-eps-converted-to.pdf>
-(epstopdf)                    date: 2023-05-23 15:23:07
-(epstopdf)                    size: 27593 bytes
-(epstopdf)             Command: <epstopdf --outfile=./logo1-eps-converted-to.pd
-f ./logo1.eps>
-(epstopdf)             \includegraphics on input line 81.
-Package epstopdf Info: Output file is already uptodate.
-<./logo1-eps-converted-to.pdf, id=23, 284.06125pt x 80.3pt>
-File: ./logo1-eps-converted-to.pdf Graphic file (type pdf)
-<use ./logo1-eps-converted-to.pdf>
-Package pdftex.def Info: ./logo1-eps-converted-to.pdf  used on input line 81.
-(pdftex.def)             Requested size: 144.0pt x 40.70862pt.
-
+File: ./logo1.eps Graphic file (type eps)
+ <./logo1.eps>
 Underfull \hbox (badness 10000) detected at line 81
 []
  []
@@ -834,9 +817,7 @@ Underfull \hbox (badness 10000) detected at line 81
 
 
 
-{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc} <./logo1-eps-converted-
-to.pdf>]
+]
 
 LaTeX Warning: Command \textellipsis invalid in math mode on input line 122.
 
@@ -893,9 +874,15 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 3396) in paragraph at lines 207--208
-[]\OT1/ptm/m/n/12 (+20) AUTO-TUNE is readily accessible on GitHub as part of th
-e hivclustering repository
+Underfull \hbox (badness 4726) in paragraph at lines 207--208
+[]\OT1/ptm/m/n/12 AUTO-TUNE is readily accessible on GitHub as part of the hivc
+lustering repository
+ []
+
+
+Underfull \hbox (badness 1616) in paragraph at lines 209--210
+[]\OT1/ptm/m/n/12 The Degree Weighted Homophily (DWH) calculation tool, an inte
+gral component of the
  []
 
 
@@ -906,72 +893,19 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
-[5]
-No file frontiers.bbl.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Package caption Warning: Unused \captionsetup[sub] on input line 20.
-See the caption package documentation for explanation.
-
-
-Overfull \vbox (3.49998pt too high) has occurred while \output is active []
-
-
-[6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Overfull \vbox (3.49998pt too high) has occurred while \output is active []
-
-
-[7] (./frontiers.aux)
-
-LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.5pt have occurred.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `frontiers.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `frontiers.out':
-(rerunfilecheck)             Before: 35836E3910DE14E35C895B2FE23DCB42;501
-(rerunfilecheck)             After:  9F8C2254DD0DBEE10CF4AACB7306A30E;2490.
- ) 
+[5] (./frontiers.bbl
+! Not loaded.
+\selectlanguage ...ing it}\errmessage {Not loaded}
+                                                  
+l.17 \newblock {\selectlanguage
+                               {eng}Short {Communication}: {Choosing} the {R...
+ 
 Here is how much of TeX's memory you used:
- 20406 strings out of 476025
- 339489 string characters out of 5790018
- 1950388 words of memory out of 5000000
- 40154 multiletter control sequences out of 15000+600000
- 552553 words of font info for 241 fonts, out of 8000000 for 9000
+ 19788 strings out of 476026
+ 332451 string characters out of 5790044
+ 1948385 words of memory out of 5000000
+ 39862 multiletter control sequences out of 15000+600000
+ 528386 words of font info for 78 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 94i,8n,131p,1201b,1706s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-</usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></us
-r/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
-al/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
-exlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
-live/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texli
-ve/2023/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2023/
-texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2023/texmf-d
-ist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2023/texmf-dist/fo
-nts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/typ
-e1/urw/helvetic/uhvro8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw
-/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utm
-r8a.pfb>
-Output written on frontiers.pdf (7 pages, 219270 bytes).
-PDF statistics:
- 208 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 55 named destinations out of 1000 (max. 500000)
- 63026 words of extra memory for PDF output out of 74296 (max. 10000000)
-
+ 94i,8n,131p,10122b,1687s stack positions out of 10000i,1000n,20000p,200000b,200000s
+Output written on frontiers.dvi (5 pages, 56160 bytes).
