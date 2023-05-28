@@ -861,7 +861,7 @@ File: omlphv.fd
 LaTeX Font Info:    Font shape `OML/phv/m/n' in size <11> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 175.
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-87.
+88.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -871,13 +871,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 4726) in paragraph at lines 206--207
+Underfull \hbox (badness 4726) in paragraph at lines 207--208
 []\OT1/ptm/m/n/12 AUTO-TUNE is readily accessible on GitHub as part of the hivc
 lustering repository
  []
 
 
-Underfull \hbox (badness 1616) in paragraph at lines 208--209
+Underfull \hbox (badness 1616) in paragraph at lines 209--210
 []\OT1/ptm/m/n/12 The Degree Weighted Homophily (DWH) calculation tool, an inte
 gral component of the
  []
