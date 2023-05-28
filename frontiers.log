@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  28 MAY 2023 10:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=latex 2023.5.8)  28 MAY 2023 13:03
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -742,14 +742,11 @@ Package hyperref Info: Link coloring OFF on input line 66.
 \@outlinefile=\write4
 \openout4 = `frontiers.out'.
 
-
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 LaTeX Info: Redefining \microtypecontext on input line 66.
 Package microtype Info: Applying patch `item' on input line 66.
 Package microtype Info: Applying patch `toc' on input line 66.
 Package microtype Info: Applying patch `eqnum' on input line 66.
+
 
 Package microtype Warning: Unable to apply patch `footnote' on input line 66.
 
@@ -765,6 +762,7 @@ Package microtype Info: No adjustment of character kerning.
 (/usr/local/texlive/2023/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
+(|'inkscape' -V )
 \c@lstlisting=\count353
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 8
 1.
@@ -893,19 +891,49 @@ Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 Overfull \vbox (3.49998pt too high) has occurred while \output is active []
 
 
-[5] (./frontiers.bbl
-! Not loaded.
-\selectlanguage ...ing it}\errmessage {Not loaded}
-                                                  
-l.17 \newblock {\selectlanguage
-                               {eng}Short {Communication}: {Choosing} the {R...
- 
+[5] (./frontiers.bbl)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package caption Warning: Unused \captionsetup[sub] on input line 20.
+See the caption package documentation for explanation.
+
+
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+
+[6]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \vbox (3.49998pt too high) has occurred while \output is active []
+
+
+[7] (./frontiers.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.5pt have occurred.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `frontiers.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `frontiers.out':
+(rerunfilecheck)             Before: A54E257EA0F782886A6BBE0810AC1C9E;2368
+(rerunfilecheck)             After:  9F8C2254DD0DBEE10CF4AACB7306A30E;2490.
+ ) 
 Here is how much of TeX's memory you used:
- 19788 strings out of 476026
- 332451 string characters out of 5790044
+ 19795 strings out of 476026
+ 332556 string characters out of 5790044
  1948385 words of memory out of 5000000
- 39862 multiletter control sequences out of 15000+600000
- 528386 words of font info for 78 fonts, out of 8000000 for 9000
+ 39864 multiletter control sequences out of 15000+600000
+ 528905 words of font info for 79 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
  94i,8n,131p,10122b,1687s stack positions out of 10000i,1000n,20000p,200000b,200000s
-Output written on frontiers.dvi (5 pages, 56160 bytes).
+
+Output written on frontiers.dvi (7 pages, 64636 bytes).
