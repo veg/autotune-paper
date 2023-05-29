@@ -20,6 +20,9 @@
 \usepackage{svg}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{listings}
+\usepackage[english]{babel}
+
+
 
 \lstset{
   basicstyle=\ttfamily,
@@ -160,7 +163,10 @@ indicates that there is perfect homophily (e.g. Birds always link to birds, and 
 DWH is used in social network analysis and in the study of how different
 attributes are related to the formation of connections between individuals. It
 is used as a way to measure the similarity of attributes between individuals in
-a network.
+a network. Additionally, randomization is performed by shuffling attribute labels among nodes, then performing DWH computation. 
+This is useful in creating a null distribution of DWH scores under random
+mixing. A panmictic range is reported by shuffling attributes multiple times and
+reporting the minimum and maximum score.
 
 \subsection{Implementation}
 
@@ -226,11 +232,13 @@ The site aims to offer a user-friendly interface for data visualization, playing
 
 \section{Results}
 
-\subsection{Case Study 1: Middle Tennessee, Seattle, and Alberta}
+\subsection{Middle Tennessee, Seattle, and Alberta}
 
-\subsection{Case Study 2: Comparison with Prior Publications}
+\subsection{Comparison with Prior Publications Citing HIV-TRACE}
 
-\subsection{Case Study 3: Comparison with Prior Publications}
+\subsection{}
+
+\subsection{Effect on Subsampling Density}
 
 
 \section{Discussion}
@@ -305,8 +313,6 @@ PMID & Country & Collection Date & Threshold Used & AUTO-TUNE \\
 \end{table}
 
 \section{Figure captions}
-
-
 
 
 \end{document}

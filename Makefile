@@ -1,9 +1,9 @@
 1: all
-all : main.pdf view github
-#all : main.pdf view
+#all : main.pdf view github
+all : main.pdf view
 main.pdf : 
 	#bibtex frontiers 
-	latex -halt-on-error --shell-escape frontiers.tex
+	latexmk
 	dvipdfm frontiers.dvi
 view :
 	open -a Preview frontiers.pdf -g
