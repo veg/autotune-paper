@@ -230,7 +230,12 @@ Lastly, the site also provides a plot of the fraction of pairwise connections, n
 The site aims to offer a user-friendly interface for data visualization, playing an important role in interpreting and understanding AUTO-TUNE's output data. The visualization code is available on Github (https://github.com/stevenweaver/autotune-app/).
 
 \subsection{Data curation and analysis}
-To select the
+First, (here I consider we should mention the what you did for clustuneR Comparison
+
+Second, we set out to compare the thresholds obtained in original investigations with those obtained by AUTO-TUNE. To select the data sets for this analysis, we conducted a scientific literature search to identify studies focused on HIV networks for public health purposes. We then filtered the studies that utilized HIV-TRACE to infer genetic networks and had publicly available sequences. Thus, we attempted to include studies from different countries and regions, enabling us to assess the performance of our method across various epidemic contexts, risk groups, and network sizes in real-data sets that used variable clustering thresholds. 
+
+Furthermore, we aimed to evaluate the potential impact of sampling density on the genetic distance threshold determined by AUTO-TUNE. To accomplish this, we randomly subsampled the original data set of one of the studies up to 10 times, considering proportions of $25\%$, $50\%$, and $75\%$ of the original sample size. For each subset, we calculated the optimal threshold using AUTO-TUNE. For this analysis we only used (the Standford) data set which collected (number) samples between (years) due to (explain if you picked that one for something in particular).
+
 \section{Results}
 
 \subsection{Comparison with clustuneR}
