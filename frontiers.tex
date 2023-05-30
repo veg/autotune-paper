@@ -20,6 +20,7 @@
 \usepackage{svg}
 \usepackage[onehalfspacing]{setspace}
 \usepackage{listings}
+\usepackage{rotating}
 \usepackage[english]{babel}
 
 
@@ -232,16 +233,18 @@ The site aims to offer a user-friendly interface for data visualization, playing
 Hi my name is
 \section{Results}
 
-\subsection{Middle Tennessee, Seattle, and Alberta}
+\subsection{Comparison with clustuneR}
 
 \subsection{Comparison with Prior Publications Citing HIV-TRACE}
 
-\subsection{}
+\subsection{CRF07\_BC Network}
 
-\subsection{Effect on Subsampling Density}
+\subsection{Effect on Sampling Density}
 
 
 \section{Discussion}
+
+\subsection{When a Score is Below Two}
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
@@ -275,24 +278,28 @@ The datasets [GENERATED/ANALYZED] for this study can be found in the [NAME OF RE
 
 
 \section*{Tables}
+
 \begin{table}[h]
-\caption{Homophily Comparison}
-\vspace{10pt}
+\caption{clustuneR Comparison}
+\vspace{8pt}
 \centering
 \label{tab:homophily}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-Dataset & Art's Threshold Avg. Homophily & AUTO-TUNE Avg. Homophily \\
+    Dataset & \multicolumn{2}{c|}{clustuneR} & \multicolumn{3}{c|}{AUTO-TUNE} \\
+    \cline{2-6}
+     & Threshold & Avg. Homophily & Threshold & Avg. Homophily & Max Score \\
 \hline
-TN & 0.0079 & 0.0147 \\
-Seattle & 0.0259 & 0.0348 \\
-Canada & -0.0536 & -0.0448 \\
+    Middle Tennessee &  0.0160 & 0.0079 &  0.01431 & 0.0147 & 1.25807 \\
+    Seattle & 0.0160 & 0.0259 & 0.01354 & 0.0348 & 1.53325 \\
+    Northern Alberta & 0.0104 & -0.0536 & 0.01099 & -0.0448 & 1.01678 \\
 \hline
 \end{tabular}
 \end{table}
 
+
 \begin{table}[h]
-\caption{Paper Comparison}
+\caption{Threshold Comparison with Prior Publications Citing HIV-TRACE}
 \vspace{10pt}
 \centering
 \label{tab:paperComparison}
@@ -311,6 +318,24 @@ PMID & Country & Collection Date & Threshold Used & AUTO-TUNE \\
 \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[h]
+\caption{CRF07\_BC DWH and Panmictic Range at Different Thresholds}
+\label{tab:combined}
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+& \multicolumn{2}{c|}{Threshold 1.5\%} & \multicolumn{2}{c|}{Threshold 0.76\%} & \multicolumn{2}{c|}{Threshold 0.19\%} \\
+\cline{2-7}
+Record & DWH & Panmictic Range & DWH & Panmictic Range & DWH & Panmictic Range \\
+\hline
+MSM & 0.211 & [-0.105, -0.205] & 0.237 & [-0.120,-0.240] & 0.292 & -0.146 -0.280 \\
+Hetero & 0.133 & [-0.092, -0.190] & 0.185 & [-0.100,-0.211] & 0.25 & -0.093 -0.256 \\
+PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & -0.012 -0.129 \\
+\hline
+\end{tabular}
+\end{table}
+
 
 \section{Figure captions}
 
