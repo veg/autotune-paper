@@ -229,16 +229,63 @@ Lastly, the site also provides a plot of the fraction of pairwise connections, n
 
 The site aims to offer a user-friendly interface for data visualization, playing an important role in interpreting and understanding AUTO-TUNE's output data. The visualization code is available on Github (https://github.com/stevenweaver/autotune-app/).
 
-\subsection{Data curation and analysis}
-First, (here I consider we should mention the what you did for clustuneR Comparison
 
-Second, we set out to compare the thresholds obtained in original investigations with those obtained by AUTO-TUNE. To select the data sets for this analysis, we conducted a scientific literature search to identify studies focused on HIV networks for public health purposes. We then filtered the studies that utilized HIV-TRACE to infer genetic networks and had publicly available sequences. Thus, we attempted to include studies from different countries and regions, enabling us to assess the performance of our method across various epidemic contexts, risk groups, and network sizes in real-data sets that used variable clustering thresholds. 
+\subsection{Comparisons with previously published analyses}
 
-Furthermore, we aimed to evaluate the potential impact of sampling density on the genetic distance threshold determined by AUTO-TUNE. To accomplish this, we randomly subsampled the original data set of one of the studies up to 10 times, considering proportions of $25\%$, $50\%$, and $75\%$ of the original sample size. For each subset, we calculated the optimal threshold using AUTO-TUNE. For this analysis we only used (the Standford) data set which collected (number) samples between (years) due to (explain if you picked that one for something in particular).
+In conducting our comparisons with the established clustuneR method, we
+procured our datasets from \cite{wolf_short_2017} and
+\cite{vrancken_multi-faceted_2017} utilizing the identical approach delineated
+in \cite{chato_public_2020}. These datasets, namely Middle Tennessee,
+Seattle, and Alberta, were processed using the workflow prescribed
+in Section 2.3. This enabled us to determine an optimal threshold for each
+dataset using our proposed method, AUTO-TUNE. We further executed the command
+as detailed in step 4 of Section 2.3, deploying thresholds previously
+established as optimal by \cite{chato_public_2020}.
+
+To perform comparisons, we computed the average degree-weighted homophily score
+over a set of three-year sliding windows. Specifically, the homophily among
+nodes was calculated for a collection of date ranges as follows:
+
+\begin{equation} \bar{H} = \frac{1}{N}\sum_{i=1}^{N} H(w_i) \end{equation}
+
+where $\bar{H}$ represents the average degree-weighted homophily score, $N$
+is the total number of sliding windows, $H(w_i)$ is the homophily score for
+the $i$-th window, and the windows $w_i$ correspond to the date ranges, e.g.,
+'2012-2015', '2013-2016', '2014-2017', etc. This methodology allowed us to
+compare the "best thresholds" derived from our proposed AUTO-TUNE method
+against those defined as optimal in \cite{chato_public_2020}.
+
+
+Second, we set out to compare the thresholds obtained in original
+investigations with those obtained by AUTO-TUNE. To select the data sets for
+this analysis, we conducted a scientific literature search to identify studies
+focused on HIV networks for public health purposes. We then filtered the
+studies that utilized HIV-TRACE to infer genetic networks and had publicly
+available sequences. Thus, we attempted to include studies from different
+countries and regions, enabling us to assess the performance of our method
+across various epidemic contexts, risk groups, and network sizes in real-data
+sets that used variable clustering thresholds. 
+
+In order to evaluate the influence of sampling density on the genetic distance
+threshold as determined by AUTO-TUNE, we implemented a strategy of random
+subsampling from the original dataset sourced from \cite{rhee_national_2019}.
+This study was selected due to its satisfactory AUTO-TUNE score when utilized
+in its entirety, as well as its inherent design as a Geographically-Stratified
+set of 716 Pol Subtype/CRF (GSPS) reference sequence dataset. The dataset,
+which comprises 6034 samples gathered between 1959 and 2016, was subjected to
+random subsampling ten times at proportions of $25\%$, $50\%$, and $75\%$ of
+the original sample size. For each subsample, the optimal threshold and
+associated scores were determined via AUTO-TUNE.
+
 
 \section{Results}
 
 \subsection{Comparison with clustuneR}
+
+We compared results to clustuneR, which employs the recency of sample
+collection or diagnosis as individual-level weights in a predictive model to
+estimate the growth of HIV clusters.
+
 
 \subsection{Comparison with Prior Publications Citing HIV-TRACE}
 
@@ -248,6 +295,24 @@ Furthermore, we aimed to evaluate the potential impact of sampling density on th
 
 
 \section{Discussion}
+
+AUTO-TUNE operates solely utilizing genetic sequence data to ascertain a
+decisive threshold. It employs a scoring heuristic, which is based on the number
+of clusters produced by a pairwise distance threshold and the ratio of the
+largest cluster to the second largest across a range of possible thresholds
+using sliding windows.
+
+A key advantage of this approach is its autonomy from supplementary data. When a
+patient tests positive for HIV, data collection protocols can greatly vary, and
+additional data are not always available or consistent. However, by leveraging
+only genetic sequence data, AUTO-TUNE eliminates the need for such information.
+
+Consequently, AUTO-TUNE's performance is consistently controlled, irrespective
+of the fluctuations seen in data collection protocols after a positive HIV
+diagnosis. This level of adaptability demonstrates its suitability for
+integration into various contexts related to HIV, and possibly other viral,
+cluster detection and response. This versatility underscores the strong
+methodological foundation of AUTO-TUNE and its potential utility.
 
 \subsection{When a Score is Below Two}
 
@@ -270,8 +335,9 @@ This is a short text to acknowledge the contributions of specific colleagues, in
  \href{https://www.frontiersin.org/guidelines/author-guidelines#supplementary-material}{Supplementary Material} should be uploaded separately on submission, if there are Supplementary Figures, please include the caption in the same file as the figure. LaTeX Supplementary Material templates can be found in the Frontiers LaTeX folder.
 
 \section*{Data Availability Statement}
-The datasets [GENERATED/ANALYZED] for this study can be found in the [NAME OF REPOSITORY] [LINK].
-% Please see the availability of data guidelines for more information, at https://www.frontiersin.org/guidelines/policies-and-publication-ethics#materials-and-data-policies
+
+Data are available at GenBank accession numbers
+JX160108-JX161480,JX498971-JX498972,JX498976-JX498990,JX498992-JX499018,KU190031-KU190839,KY34691-KY37792,KY883695-KY883762,KY888784-KY888875,KY921717-KY921757,MG434786-MG435347,MG435358-MG436769,MH352627-MH355541,MK25232-MK25548,MN424584-MN427369,MT336755-MT336776,MT368043-MT369927.
 
 \bibliographystyle{Frontiers-Harvard} %  Many Frontiers journals use the Harvard referencing system (Author-date), to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal. For Humanities and Social Sciences articles please include page numbers in the in-text citations 
 %\bibliographystyle{Frontiers-Vancouver} % Many Frontiers journals use the numbered referencing system, to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
