@@ -182,6 +182,7 @@ This generated pairwise distances are supplied to the hivnetworkcsv script while
 \end{lstlisting}
 
 Please note that the threshold should include the maximal range one is intending to test.
+
 }
 
 \item {Compute distance threshold scores: The hivnetworkcsv script is then executed with the required input file, format, and autotune option to generate a tab-separated output file, as shown below
@@ -284,7 +285,14 @@ associated scores were determined via AUTO-TUNE.
 
 We compared results to clustuneR, which employs the recency of sample
 collection or diagnosis as individual-level weights in a predictive model to
-estimate the growth of HIV clusters.
+estimate the growth of HIV clusters. The thresholds determined optimal by
+clustuneR were found by finding the minimum GAIC (generalized AIC) across
+candidate distances between 0 and 0.04 in steps of $8 x 10^(-4)$. The GAIC is
+the difference between a null model that is only influenced by cluster size,
+and a weighted model model that includes individual-level attributes among
+known cases in the cluster. 
+
+
 
 
 \subsection{Comparison with Prior Publications Citing HIV-TRACE}
