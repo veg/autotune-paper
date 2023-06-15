@@ -302,8 +302,18 @@ highest scores to be $0.01431$ for Middle Tennessee, $0.01354$ for Seattle, and
 $0.01099$ for Northern Alberta. \autoref{tab:homophily} 
 
 Performance of the inferred optimal thresholds were performed using an average
-degree-weighted homophily (DWH) score across 3-year collection date windows, as
-that is the metadata that was consistently available across all three datasets.
+degree-weighted homophily (DWH) score across 3-year collection date windows
+starting from the oldest collection year for each respective dataset, as that
+is the metadata that was consistently available across all three datasets and
+was the attribute of focus used by clustuneR. DWH in this case measures the
+affinity for nodes within the network to link with other nodes in the same
+collection date window. For example, samples collected between 2012-2015
+linking more often with other samples within the same time window would result
+in a higher DWH score. It was found that, across all three datasets, using the
+threshold 
+
+
+
 
 \subsection{Comparison with Prior Publications Citing HIV-TRACE}
 
