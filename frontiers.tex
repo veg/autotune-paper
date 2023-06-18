@@ -312,11 +312,26 @@ linking more often with other samples within the same time window would result
 in a higher DWH score. It was found that, across all three datasets, using the
 threshold with the highest score reported by AUTO-TUNE resulted in a higher
 average DWH score across all three datasets. 
-
 % Add something about Wilcoxon test
 
+When reviewing scores across all candidate thresholds with AUTO-TUNE
+\label{fig:clustuner}. none of the three datasets reached one confident score
+over any other. The most confident score was achieved by the Seattle dataset at
+$1.53325$, then Tennessee with a high score of $1.25807$, and lastly Canada at
+$1.01678$. When finding peaks, a second peak in Seattle denotes that $0.01166$
+may also be an optimal threshold to consider, as its score, $1.52976$, is only
+$0.003$ less than the highest score. The optimal score for Tennessee and Canada
+are a bit more dubious, as there are multiple peaks within close scores of each
+other. Indeed, after applying a $0.75$ minimum score threshold after visual
+inspection for peak ranges, standard deviation among scores were $0.0475$,
+$0.0089$, and $0.0084$ for Seattle, northern Alberta, and Tennessee,
+respectively. This implies there may be multiple thresholds that would be
+considered reasonable, and downstream homophily metrics with attributes may aid
+in coming to a decision.
 
 \subsection{Comparison with Prior Publications Citing HIV-TRACE}
+
+
 
 \subsection{CRF07\_BC Network}
 
@@ -440,7 +455,7 @@ PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & -0.012 -0.12
 \section{Figure captions}
 
 \begin{figure}[h!]
-\caption{ Hola }\label{fig:1}
+\caption{ Hola }\label{fig:clustuner}
 \end{figure}
 
 
