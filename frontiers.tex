@@ -343,7 +343,16 @@ precedent set by the CDC for detecting recent and rapid clusters
 across candidate distance thresholds \cite{liu_dynamics_2020}. As a result, it
 was found that since these thresholds are determined largely qualitatively, the
 distance thresholds used tend to be round numbers and only somewhat tuned to
-their respective geographic region of research. \autoref{tab:paperComparison} 
+their respective geographic region of research. \autoref{tab:paperComparison}
+When utilizing AUTO-TUNE for the same datasets, more granularity in selecting
+thresholds can be performed in a straightforward manner. While it may seem
+appealing to assume that being within a $0.5\%$ threshold of what AUTO-TUNE
+considers optimal is good enough, further inspection into results reveals that
+scores can vary widely within a very short distance. For example, when
+reviewing the distribution of scores for the dataset used by
+\cite{dalai_combining_2018}, the score is exactly $2$ at $0.01848$, but at
+thresholds tested at just $0.00002$ difference, scores drop preciptously to
+$1.638$ and $0.826$ for candidates $0.01846$ and $0.0185$, respectively.
 
 \subsection{CRF07\_BC Network}
 
@@ -371,6 +380,8 @@ cluster detection and response. This versatility underscores the strong
 methodological foundation of AUTO-TUNE and its potential utility.
 
 \subsection{When a Score is Below Two}
+
+\section{Conclusion}
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
