@@ -362,11 +362,29 @@ $0.0124$.
 
 To evaluate the performance of an AUTO-TUNEd optimized threshold using
 degree-weighted homophily, we first evaluated a CRF07\_BC network with data
-from China. 8178 HIV-1 CRF07\_BC pol sequences were used from China to
-construct longitudinal transmission networks. Using AUTO-TUNE, no distance
-threshold received a score above $1.9$, but using the default $1.5\%$ threshold
-is clearly suboptimal. The $1.5\%$ distance threshold received an AUTO-TUNE
-score of $0.029$.
+from China. $8178$ HIV-1 CRF07\_BC pol sequences were used from China to
+construct longitudinal transmission networks, each pol sequence were annotated
+with risk factor detailing whether the patient was heterosexual (Hetero),
+Person With Injected Drug Use (PWID), or Men who have Sex with Men (MSM), among
+other attributes. Using AUTO-TUNE, no distance threshold receives a score above
+$1.9$, but using the default $1.5\%$ threshold is clearly suboptimal
+\label{fig:chinaScorePlot}. Using a $1.5\%$ threshold, the network captures
+$5923$ nodes, of which $559$ are PWID, $3371$ MSM, $1993$ Hetero, and received
+an AUTO-TUNE score of $0.029$. When evaluating DWH among risk factors, MSM,
+Hetero, and PWID had scores of $0.211$, $0.133$, and $0.168$, respectively. 
+
+When using AUTO-TUNE, two separate ranges appear. The highest score is obtained
+with distance threshold $0.76\%$ at $1.1369$. The second highest score is
+$1.0303$ at distance threshold $0.0019$. Networks at both thresholds were also
+evaluated with DWH based on risk factor. The network at $0.76\%$ captured
+$3537$ nodes, of which $236$ are PWID, $2271$ MSM, $1030$ Hetero. When
+evaluating DWH among risk factors, MSM and Hetero both had slightly increased
+scores of $0.237$ and $0.185$, respectively. PWID DWH dramatically increased to
+$0.401$. The network at $0.19\%$ captures $1654$ nodes, of which $151$ are
+PWID, $1075$ MSM, $428$ Hetero. When evaluating DWH among risk factors, MSM,
+Hetero, and PWID had slightly increased scores over $0.76\%$ of $0.292$,
+$0.25$, and $0.445$, respectively.
+
 
 \subsection{Effect on Sampling Density}
 
@@ -481,9 +499,9 @@ PMID & Country & Collection Date & Threshold Used & AUTO-TUNE \\
 \cline{2-7}
 Record & DWH & Panmictic Range & DWH & Panmictic Range & DWH & Panmictic Range \\
 \hline
-MSM & 0.211 & [-0.105, -0.205] & 0.237 & [-0.120,-0.240] & 0.292 & -0.146 -0.280 \\
-Hetero & 0.133 & [-0.092, -0.190] & 0.185 & [-0.100,-0.211] & 0.25 & -0.093 -0.256 \\
-PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & -0.012 -0.129 \\
+MSM & 0.211 & [-0.105, -0.205] & 0.237 & [-0.120,-0.240] & 0.292 & [-0.146, -0.280] \\
+Hetero & 0.133 & [-0.092, -0.190] & 0.185 & [-0.100,-0.211] & 0.25 & [-0.093, -0.256] \\
+PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & [-0.012, -0.129] \\
 \hline
 \end{tabular}
 \end{table}
