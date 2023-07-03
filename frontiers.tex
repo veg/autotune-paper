@@ -385,13 +385,31 @@ PWID, $1075$ MSM, $428$ Hetero. When evaluating DWH among risk factors, MSM,
 Hetero, and PWID had slightly increased scores over $0.76\%$ of $0.292$,
 $0.25$, and $0.445$, respectively.
 
+We next evaluated \cite{rhee_national_2019} with DWH. The dataset received a
+clear optimal threshold of $0.01699$ with an AUTO-TUNE score of $1.9998$. At
+the default threshold of $1.5\%$, the AUTO-TUNE score was $0.9782$. At
+threshold $1.5\%$, the network captured $1351$ nodes, compared with $1592$
+nodes out of $6034$ captured at threshold $1.699\%$. When evaluating DWH with
+country, substantial change were only found for China and Thailand, improving
+from no better than random linkage at threshold $1.5\%$ with DWH $-0.166$ and
+$-0.051$, to $0.116$ and $0.132$ at threshold $1.699\%$, respectively. Notably,
+no country scored worse with the optimal AUTO-TUNE threshold, despite it being
+larger than the default $1.5\%$. \label{fig:scoreAbove2}
 
-\subsection{Effect on Sampling Density}
+\subsection{Subsampling's Effect}
 
-
+Next, we evaluated the performance of AUTO-TUNE when subsampling a dataset.
+Since the \cite{rhee_national_2019} dataset exhibited a clear optimal peak, we
+used the dataset for analysis, and randomly sampled $10$ times from the entire
+dataset at $25\%$, $50\%$, and $75\%$ each.
 
 
 \section{Discussion}
+
+
+\subsection{When a Score is Below Two}
+
+\section{Conclusion}
 
 AUTO-TUNE operates solely utilizing genetic sequence data to ascertain a
 decisive threshold. It employs a scoring heuristic, which is based on the number
@@ -407,13 +425,10 @@ only genetic sequence data, AUTO-TUNE eliminates the need for such information.
 Consequently, AUTO-TUNE's performance is consistently controlled, irrespective
 of the fluctuations seen in data collection protocols after a positive HIV
 diagnosis. This level of adaptability demonstrates its suitability for
-integration into various contexts related to HIV, and possibly other viral,
-cluster detection and response. This versatility underscores the strong
-methodological foundation of AUTO-TUNE and its potential utility.
+integration into various contexts related to HIV, and possibly other viral
+cluster detection and response protocols. This versatility underscores the
+strong methodological foundation of AUTO-TUNE and its potential utility.
 
-\subsection{When a Score is Below Two}
-
-\section{Conclusion}
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
@@ -520,9 +535,10 @@ PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & [-0.012, -0.
 \caption{ Hola 3 }\label{fig:chinaScorePlot}
 \end{figure}
 
-
 \begin{figure}[h!]
 \caption{ Hola 4 }\label{fig:scoreAbove2}
 \end{figure}
+
+
 
 \end{document}
