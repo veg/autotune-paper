@@ -431,6 +431,25 @@ dataset.
 
 \section{Discussion}
 
+The results of our study suggest that AUTO-TUNE, which relies solely on
+clustering metrics from pairwise distances, could be an effective alternative
+to the clustuneR methodology. AUTO-TUNE generated thresholds for all three
+examined datasets (Middle Tennessee, Seattle, and Northern Alberta) that
+outperformed clustuneR using DWH on 3-year collection date windows across all
+three datasets. This indicates that even without incorporating attribute data,
+AUTO-TUNE's scoring heuristic could provide reliable thresholds for HIV
+clusters.
+
+Our evaluation of publications citing HIV-TRACE revealed the largely
+qualitative determination of distance thresholds. This approach may result in
+less accurate or suboptimal thresholds due to a lack of systematic analysis. In
+contrast, AUTO-TUNE offers a more systematic and granular approach to threshold
+selection, with our findings demonstrating that even minor adjustments to the
+distance can drastically change the score. Therefore, using AUTO-TUNE could
+potentially improve the quality of HIV clustering and transmission network
+studies.
+
+
 
 \subsection{When a Score is Below Two}
 
