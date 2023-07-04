@@ -396,13 +396,38 @@ $-0.051$, to $0.116$ and $0.132$ at threshold $1.699\%$, respectively. Notably,
 no country scored worse with the optimal AUTO-TUNE threshold, despite it being
 larger than the default $1.5\%$. \label{fig:scoreAbove2}
 
-\subsection{Subsampling's Effect}
+\subsection{Subsampling's Effect on Optimal Thresholds and AUTO-TUNE Scores}
 
 Next, we evaluated the performance of AUTO-TUNE when subsampling a dataset.
 Since the \cite{rhee_national_2019} dataset exhibited a clear optimal peak, we
 used the dataset for analysis, and randomly sampled $10$ times from the entire
-dataset at $25\%$, $50\%$, and $75\%$ each.
+dataset at $25\%$, $50\%$, and $75\%$ each. The original full dataset
+confidently determined $0.01699$ (AUTO-TUNE score $1.9998$). 
 
+Sampling at $25\%$ yielded a mean top threshold of $0.021509$, median at
+$0.019765$, and standard deviation of $0.004388$ \label{fig:subsampling}.
+$50\%$ yielded $0.018581$ and $0.01871$ mean and median, respectively with a
+standard deviation of $0.001629$. Finally, $75\%$ calculated mean is
+approximately $0.017403$, with a median of approximately $0.01699$. The
+standard deviation was $0.000924$.
+
+As the proportion increased from $25\%$ to $50\%$ and $75\%$, observable shifts
+were also noted in the mean, median, and standard deviation of the AUTO-TUNE
+scores. At $25\%$, the mean and median scores were $1.5585$ and $1.5014$
+respectively, with a standard deviation of $0.3568$. At $50\%$, both mean and
+median scores significantly increased to $1.8171$ and $1.9191$ respectively,
+and the standard deviation dropped to $0.2482$. Upon reaching an AUTO-TUNE of
+$75\%$, the mean and median scores rose further to $1.9870$ and $1.9997$
+respectively, while the standard deviation shrank substantially to $0.0364$,
+indicating higher consistency in scores.
+
+As the sample proportion increased, an upward trend was noted in average
+AUTO-TUNE scores. Additionally, standard deviation reduced significantly with
+sample proportion. This implies that as sampling becomes denser, AUTO-TUNE will
+become more confident in determining the optimal threshold for a particular
+dataset. 
+
+%TODO: Add supplementary figure of all score plots
 
 \section{Discussion}
 
@@ -538,6 +563,11 @@ PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & [-0.012, -0.
 \begin{figure}[h!]
 \caption{ Hola 4 }\label{fig:scoreAbove2}
 \end{figure}
+
+\begin{figure}[h!]
+\caption{ Hola 5 }\label{fig:subsampling}
+\end{figure}
+
 
 
 
