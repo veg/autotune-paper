@@ -499,8 +499,6 @@ DWH measure, and visual analysis of score plots provides a more nuanced method
 for threshold selection when no clear optimal threshold emerges from the
 AUTO-TUNE scores alone. 
 
-
-
 \section{Conclusion}
 
 AUTO-TUNE operates solely utilizing genetic sequence data to ascertain a
@@ -616,12 +614,25 @@ PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & [-0.012, -0.
 \section{Figure captions}
 
 \begin{figure}[h!]
-\caption{ Hola }\label{fig:clustuner}
+\caption{ AUTO-TUNE scoring across candidate thresholds ranging from 0\% to
+  2.5\% genetic distance. The plots represent the datasets from Seattle, Middle
+  Tennessee, and Northern Alberta as described by clustuneR. The y-axis
+  represents the AUTO-TUNE score, with higher scores suggesting more optimal
+  thresholds. The x-axis represents the candidate thresholds. None of the three
+  datasets exhibited an extreme peak of over 1.9, implying multiple thresholds
+  could serve well and that a more complex decision-making process that
+  includes downstream metrics such as DWH or careful inspection may be
+  necessary.}\label{fig:clustuner}
 \end{figure}
 
 \begin{figure}[h!]
-\caption{ Hola 2 }\label{fig:paperComparison}
-\end{figure}
+\caption{ AUTO-TUNE scoring across candidate thresholds from 0\% to 2.5\%
+  genetic distance for eight datasets from various studies that have previously
+  employed HIV-TRACE with qualitatively defined thresholds. Each plot
+  represents one dataset, and the y-axis shows the AUTO-TUNE score. Higher
+  scores indicate more optimal thresholds for clustering. The x-axis represents
+  the range of candidate thresholds. Each plot is labeled by the respective
+  studies' PubMed ID. }\label{fig:paperComparison} \end{figure}
 
 \begin{figure}[h!]
 \caption{ Hola 3 }\label{fig:chinaScorePlot}
@@ -634,8 +645,6 @@ PWID & 0.168 & [-0.001, -0.089] & 0.401 & [-0.005,-0.081] & 0.445 & [-0.012, -0.
 \begin{figure}[h!]
 \caption{ Hola 5 }\label{fig:subsampling}
 \end{figure}
-
-
 
 
 \end{document}
