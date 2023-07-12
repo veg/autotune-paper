@@ -99,15 +99,59 @@ Published research using the HIV-TRACE software package frequently use the defau
 
 \section{Introduction}
 
-Choosing an appropriate distance threshold is an important part of using a transmission network to track the spread of a contagious disease. This distance threshold determines how close two individuals must be in order for a link to be created between them in the network.
+Choosing an appropriate distance threshold is an important part of using a
+genetic transmission network to track the spread of a contagious disease
+\cite{liu_dynamics_2020,rose_persistence_2020}. This distance threshold
+determines how close two individuals must be in order for a link to be created
+between them in the network. 
+Using a distance threshold that is too small can result in a network with many
+unnecessary links, making it difficult to interpret and analyze. On the other
+hand, using a distance threshold that is too large can result in a network with
+too few links, underestimating connections between individuals and making it
+difficult to accurately track the spread of the disease\cite{gore_hiv_2022}.
 
-Using a distance threshold that is too small can result in a network with many unnecessary links, making it difficult to interpret and analyze. On the other hand, using a distance threshold that is too large can result in a network with too few links, making it difficult to accurately track the spread of the disease.
+To ensure that the transmission network is useful and informative, it is
+important to carefully consider the appropriate distance threshold. This may
+vary depending on the specific disease and the context in which it is spreading.
+For example, a highly contagious respiratory illness may require a smaller
+distance threshold than a less contagious illness that is primarily spread
+through direct contact. Viruses are more amenable to molecular studies compared
+to bacteria due to their high genetic divergence and compact genomes. Given the
+relatively high evolutionary rate of RNA viruses (compared to chromosomal DNA in
+humans) detectable genetic fingerprints can be targeted for epidemiological
+studies over short time periods\cite{paraskevis_application_2016}. 
 
-To ensure that the transmission network is useful and informative, it is important to carefully consider the appropriate distance threshold. This may vary depending on the specific disease and the context in which it is spreading. For example, a highly contagious respiratory illness may require a smaller distance threshold than a less contagious illness that is primarily spread through direct contact.
 
-In general, the goal is to strike a balance between having enough links to accurately track the spread of the disease, while not having so many links that the network becomes difficult to interpret. This can be achieved through careful analysis and consideration of the specific disease and context.
+For long-standing infections such as HIV, the most appropriate genetic distance
+threshold should be determined according to characteristics of the epidemic such
+as the speed of transmission, and the mutation rate of the gene region analyzed
+\cite{liu_dynamics_2020}. Also, sampling density and possible delays between
+infection and diagnosis should be considered, since samples close to the time of
+seroconversion are more likely to cluster than samples from well after
+infection.  Lower thresholds will capture the most closely related sequences,
+while higher thresholds will capture long-term epidemics and chronically
+infected individuals \cite{junqueira_factors_2019}.
 
-Overall, choosing an appropriate distance threshold is an important step in using a transmission network to track the spread of a contagious disease. It can help ensure that the network is useful and informative, and can ultimately aid in efforts to control and prevent the spread of the disease.
+Clusters analysis in public health may have several purposes such as early
+identification of increased transmission \cite{oster_hiv_2021,
+oster_identifying_2018}, monitoring response to an HIV outbreak
+\cite{tumpney_human_2020, sizemore_using_2020, tookes_rapid_2020}, evaluating
+the effectiveness of interventions
+\cite{peters_hiv_2016,wang_targeting_2015,liu_dynamics_2020} or predicting
+clusters that are most likely to grow in the near future
+\cite{erly_predictive_2021,ragonnet-cronin_forecasting_2022}. 
+
+In general, the goal is to strike a balance between having enough links to
+accurately track the spread of the disease, while not having so many links that
+spurious connections are made and hinder the public health response. This can be
+achieved through careful analysis and consideration of the specific disease and
+context. 
+
+Overall, choosing an appropriate distance threshold is an important step in
+using a transmission network to track the spread of a contagious disease. It can
+help ensure that the network is useful and informative, and can ultimately aid
+in efforts to control and prevent the spread of the disease.
+
 
 \section{Methods}
 
@@ -443,12 +487,30 @@ systematic, automated, and data-adaptive approach.
 
 For example, the results of our study suggest that AUTO-TUNE, which relies
 solely on clustering metrics from pairwise distances, could be an effective
-alternative to the clustuneR methodology. AUTO-TUNE generated thresholds for
-all three examined datasets (Middle Tennessee, Seattle, and Northern Alberta)
-that outperformed clustuneR using DWH on 3-year collection date windows across
-all three datasets. This indicates that even without incorporating attribute
-data, AUTO-TUNE's scoring heuristic could provide reliable thresholds for HIV
-clusters.
+alternative to other distance-based methods, such as clustuneR while less time
+consuming and possessing a gentle learning curve, which makes it easy to use by
+personnel not specialized in bioinformatics and computer science. Furthermore,
+the simplicity of the method represents an advantage over phylogenetic methods
+where, in addition to calculation of  genetic distances, it must also determine
+a support/distance threshold where a rationale for the selection of these
+thresholds is rarely provided \cite{junqueira_factors_2019}.
+
+AUTO-TUNE generated thresholds for all three examined datasets (Middle
+Tennessee, Seattle, and Northern Alberta) that outperformed clustuneR using DWH
+on 3-year collection date windows across all three datasets. This indicates
+that even without incorporating attribute data, AUTO-TUNE's scoring heuristic
+could provide reliable thresholds for HIV clusters. However, for the
+determination of the optimal genetic distance threshold, time-related and
+context specific factors might need to be considered if there is no significant
+score for any one candidate threshold, especially if there are multiple peaks.
+For example, during HIV outbreaks in injection drug users  (that usually occur
+over several months), it may be more appropriate to use the shorter genetic
+distance threshold \cite{peters_hiv_2016,campbell_detailed_2017} between
+multiple high-scoring thresholds. On the contrary, larger and more extended
+epidemics over time exhibit a tendency toward larger genetic distance
+thresholds in order to capture transmission than younger epidemics and less
+densely sampled epidemic investigations
+\cite{patil_exploring_2022,leung_molecular_2019,di_giallonardo_subtype-specific_2021}.
 
 Our evaluation of publications citing HIV-TRACE revealed the largely
 qualitative determination of distance thresholds. This approach may result in
@@ -461,12 +523,13 @@ studies.
 
 The Degree-Weighted Homophily (DWH) evaluation showed that AUTO-TUNE could
 improve network quality based on specific attributes, such as risk factor,
-which is an important part of HIV studies and informing prevention measures.
-\cite{TODO} For example, the use of AUTO-TUNE resulted in an increased DWH
-among the MSM, Hetero, and PWID groups when analyzing a CRF07\_BC network.
-Additionally, the results from the Rhee et al. dataset also demonstrated
-AUTO-TUNE's ability to improve DWH geographically, enhancing the network's
-ability to accurately reflect transmission dynamics.
+which is an important part of HIV studies and informing prevention measures
+\cite{potterat_risk_2002,fujimoto_methodological_2021}. For example, the use of
+AUTO-TUNE resulted in an increased DWH among the MSM, Hetero, and PWID groups
+when analyzing a CRF07\_BC network. Additionally, the results from the Rhee et
+al. dataset also demonstrated AUTO-TUNE's ability to improve DWH
+geographically, enhancing the network's ability to accurately reflect
+transmission dynamics.
 
 Our analysis of AUTO-TUNE's performance on subsamples of a dataset revealed its
 sensitivity to sample size. The results indicated a correlation between
@@ -498,6 +561,23 @@ selecting a threshold. The symbiotic approach of combining AUTO-TUNE scores,
 DWH measure, and visual analysis of score plots provides a more nuanced method
 for threshold selection when no clear optimal threshold emerges from the
 AUTO-TUNE scores alone. 
+
+The AUTO-TUNE methodology may have several limitations. First, even though it
+provides the advantage of operating without the need for metadata, the size and
+the subgenomic region analysed may affect the accuracy of transmission
+inference \cite{junqueira_factors_2019}. Second, our analysis of AUTO-TUNE's
+performance on subsamples of a dataset revealed its sensitivity to sample size,
+as the performance of the method can be affected by sampling density, improving
+the reliability of the test as the sampling density increases (figure X).
+However, our results were consistent with previous studies, which have
+suggested an optimal sampling density of $50-70\%$ for HIV-1 cluster
+analysis\cite{novitsky_impact_2014}. Third, even when it provides an insight of
+the optimal threshold to analyze a network, the supplied information might
+still need validation by experts, especially when no clear threshold is
+identified. In this case, it has been recommended to combine genetic data with
+clinical and sociodemographic information for a better characterization of the
+network structure. Finally, the performance of the method needs to be assessed
+in pathogens different from HIV, leading to opportunities for future research.
 
 \section{Conclusion}
 
