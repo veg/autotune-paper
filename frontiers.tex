@@ -91,7 +91,7 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 
 Here, we present a heuristic scoring approach for tuning a distance threshold by associating each tested threshold against the maximal number of clusters created across all thresholds and the difference between the ratio ($R_{12}$) of the largest cluster in the network to the second largest cluster at each iteration. The number of clusters is normalized between $[0,1]$ then gated via a Gompertz function transform. Meanwhile, the distribution of all $R_{12}$ ratios are converted to $Z$ scores, and normalized relative to the largest positive $Z$ score across all candidate distances. The priority score is the sum of aforementioned two components. 
 
-Published research using the HIV-TRACE software package frequently use the default threshold of $1.5\%$ for HIV pol gene sequences. We apply our scoring heuristic to outbreaks with different characteristics, such as regional or temporal variability, and demonstrate the utility of using the scoring mechanism's suggested distance threshold to identify clusters exhibiting risk factors that would have otherwise been more difficult to identify. For example, while we found that a $1.5\%$ distance threshold is typical for US-like epidemics, recent outbreaks like the CRF07\_BC subtype among men who have sex with men (MSM) in China has been found to have a lower optimal threshold of $0.5\%$ to better capture the transition from injected drug use (IDU) to MSM as the primary risk factor. Alternatively, in communities surrounding Lake Victoria, where there has been sustained transmission for several years, we found that a larger distance threshold is suitable to capture a more risk factor diverse populace with sparse sampling over a longer period of time. Such identification may allow for more informed intervention action by respective public health officials. 
+Published research using the HIV-TRACE software package frequently use the default threshold of $1.5\%$ for HIV pol gene sequences. We apply our scoring heuristic to outbreaks with different characteristics, such as regional or temporal variability, and demonstrate the utility of using the scoring mechanism's suggested distance threshold to identify clusters exhibiting risk factors that would have otherwise been more difficult to identify. For example, while we found that a $1.5\%$ distance threshold is typical for US-like epidemics, recent outbreaks like the CRF07\_BC subtype among men who have sex with men (MSM) in China has been found to have a lower optimal threshold of $0.5\%$ to better capture the transition from injected drug use (IDU) to MSM as the primary risk factor. Alternatively, in communities surrounding Lake Victoria, where there has been sustained transmission for several years, we found that a larger distance threshold is suitable to capture a more risk factor diverse populace with sparse sampling over a longer period of time. Such identification may allow for more informed intervention action by respective public health officials.  [NEED TO REDUCE THE LENGTH OF THE ABSTRACT]
 
 \tiny
   \keyFont{ \section{Keywords:} molecular epidemiology, HIV, network, transmission cluster, surveillance} %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
@@ -100,25 +100,24 @@ Published research using the HIV-TRACE software package frequently use the defau
 \section{Introduction}
 
 Choosing an appropriate distance threshold is an important part of using a
-genetic transmission network to track the spread of a contagious disease
+genetic transmission network to track the spread of a infectious disease
 \cite{liu_dynamics_2020,rose_persistence_2020}. This distance threshold
 determines how close two individuals must be in order for a link to be created
 between them in the network. 
-Using a distance threshold that is too small can result in a network with many
-unnecessary links, making it difficult to interpret and analyze. On the other
-hand, using a distance threshold that is too large can result in a network with
+Using a distance threshold that is too large can result in a network with many
+uninformative links, making it difficult to interpret and analyze. On the other
+hand, using a distance threshold that is too small can result in a network with
 too few links, underestimating connections between individuals and making it
-difficult to accurately track the spread of the disease\cite{gore_hiv_2022}.
+difficult to accurately track the spread of the infectious pathogen\cite{gore_hiv_2022}.
 
 To ensure that the transmission network is useful and informative, it is
 important to carefully consider the appropriate distance threshold. This may
 vary depending on the specific disease and the context in which it is spreading.
-For example, a highly contagious respiratory illness may require a smaller
-distance threshold than a less contagious illness that is primarily spread
+For example, a highly contagious respiratory pathogen may require a smaller
+distance threshold than a less contagious pathogen that is primarily spread
 through direct contact. Viruses are more amenable to molecular studies compared
-to bacteria due to their high genetic divergence and compact genomes. Given the
-relatively high evolutionary rate of RNA viruses (compared to chromosomal DNA in
-humans) detectable genetic fingerprints can be targeted for epidemiological
+with bacteria due to their high genetic divergence and compact genomes. Given the
+relatively high evolutionary rate of RNA viruses detectable genetic fingerprints can be targeted for epidemiological
 studies over short time periods\cite{paraskevis_application_2016}. 
 
 
@@ -143,7 +142,7 @@ clusters that are most likely to grow in the near future
 
 In general, the goal is to strike a balance between having enough links to
 accurately track the spread of the disease, while not having so many links that
-spurious connections are made and hinder the public health response. This can be
+spurious connections are made and hinder the public health response. This balance can be
 achieved through careful analysis and consideration of the specific disease and
 context. 
 
@@ -214,7 +213,7 @@ reporting the minimum and maximum score.
 
 \subsection{Implementation}
 
-The software implementation involves a step-by-step process that utilizes the HIV-TRACE suite of packages. It starts with calculating pairwise distances wth the tn93 tool and a supplied multiple sequence alignment. 
+The software implementation involves a step-by-step process that utilizes the HIV-TRACE suite of packages [CITE PAPER]. It starts with calculating pairwise distances wth the tn93 tool and a supplied multiple sequence alignment. 
 This generated pairwise distances are supplied to the hivnetworkcsv script while providing the -A keyword argument. A brief outline of the software's implementation are as follows
 
 \begin{enumerate}
@@ -485,7 +484,7 @@ selected thresholds that were comparable, if not better, to those manually
 chosen in prior studies using the same data, illustrating the value of a more
 systematic, automated, and data-adaptive approach.
 
-For example, the results of our study suggest that AUTO-TUNE, which relies
+The results of our study suggest that AUTO-TUNE, which relies
 solely on clustering metrics from pairwise distances, could be an effective
 alternative to other distance-based methods, such as clustuneR while less time
 consuming and possessing a gentle learning curve, which makes it easy to use by
