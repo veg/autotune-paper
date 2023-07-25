@@ -88,7 +88,7 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 %%% Leave the Abstract empty if your article does not require one, please see the Summary Table for full details.
 \section{}
 
-\noindent Molecular surveillance of viral pathogens and inference of transmission networks and clusters from genomic data play an increasingly important role in public health applications and transmission mitigation efforts, especially for HIV-1. For many methods, the genetic distance threshold used to connect sequences in the transmission network is a key parameter informing the properties of inferred networks. Using a distance threshold that is too high can result in a network with many spurious links, making it difficult to interpret and analyze. On the other hand, using a distance threshold that is too low can result in a network with too few links, which may not capture key insights into rapidly growing clusters among patients with shared attributes that could benefit from public health intervention measures. Published research using the HIV-TRACE software package frequently uses the default threshold of $1.5\%$ for HIV pol gene sequences, but in many cases, investigators select other threshold parameters (heuristically) to better capture the underlying dynamics of the epidemic they are studying.
+\noindent Molecular surveillance of viral pathogens and inference of transmission networks and clusters from genomic data play an increasingly important role in public health applications and transmission mitigation efforts, especially for HIV-1. For many methods, the genetic distance threshold used to connect sequences in the transmission network is a key parameter informing the properties of inferred networks. Using a distance threshold that is too high can result in a network with many spurious links, making it difficult to interpret and analyze\TODO{HV: I'd clarify that a high distance threshold results in a larger network as well, not just a more densely connected one.}. On the other hand, using a distance threshold that is too low can result in a network with too few links, which may not capture key insights into rapidly growing clusters among patients with shared attributes that could benefit from public health intervention measures. Published research using the HIV-TRACE software package frequently uses the default threshold of $1.5\%$ for HIV pol gene sequences, but in many cases, investigators select other threshold parameters (heuristically) to better capture the underlying dynamics of the epidemic they are studying.
 
 Here, we present a heuristic scoring approach for tuning a distance threshold adaptively, which seeks to prevent the formation of giant clusters (measured as the ratio $R_{12}$ of the sizes of the largest and the second largest cluster), and to maximize the number of clusters present in the network. 
 
@@ -100,11 +100,11 @@ We apply our scoring heuristic to outbreaks with different characteristics, such
 
 \section{Introduction}
 
-The use of genomic data to infer and characterize transmission networks of various pathogen has taken off in the past two decades, with applications to \TODO{make a list of citations to cover a broad list of organisms}.
+The use of genomic data to infer and characterize transmission networks of various pathogens has taken off in the past two decades, with applications to \TODO{make a list of citations to cover a broad list of organisms}.
 Choosing an appropriate genetic distance threshold is an important part of using a
 molecular transmission network to track the spread of rapidly evolving pathogens
 \cite{liu_dynamics_2020,rose_persistence_2020}. This distance threshold
-determines how close pathogen sequences isolated from two individuals must be in to link them with as putative transmission partners in the network. 
+determines how close pathogen sequences isolated from two individuals must be in to link them with as putative transmission partners in the network\TODO{HV: the grammar in the previous sentence is confusing}. 
 Using a distance threshold that is too small can result in a network with many
 spurious, i.e. epidemiologically uninformative, links, making it difficult to interpret and analyze. On the other
 hand, using a distance threshold that is too large can result in a network with
@@ -120,7 +120,7 @@ through direct contact. Viruses are more amenable to molecular studies compared
 to bacteria due to their high genetic divergence and compact genomes. Given the
 relatively high evolutionary rate of RNA viruses (compared to chromosomal DNA in
 humans) detectable genetic fingerprints can be targeted for epidemiological
-studies over short time periods\cite{paraskevis_application_2016}. 
+studies over short time periods\cite{paraskevis_application_2016}. \TODO{HV: It's not immediately obvious to me why it matters that viruses are more amenable to molecular studies than bacteria, that RNA viruses have detectable genetic fingerprints, and how either of those facts relates to estimating distance thresholds.}
 
 For chronic infections such as HIV, the most appropriate genetic distance 
 threshold should be determined according to the characteristics of the epidemic such
@@ -147,6 +147,7 @@ spurious connections are made and hinder the public health response. This can be
 achieved through careful analysis and consideration of the specific disease and
 context. 
 
+\TODO{HV: Add a final short paragraph here that conveys "We're addressing the problem of inferring the correct distance threshold with AutoTune. AutoTune is an improvement over other ways people guess the proper distance threshold for these reasons. AutoTune is a useful tool."}
 %Overall, choosing an appropriate distance threshold is an important step in
 %using a transmission network to track the spread of a contagious disease. It can
 %help ensure that the network is useful and informative, and can ultimately aid
@@ -170,7 +171,7 @@ Network threshold selection procedure proceeds as follows:
   \item{ A priority score is assigned to each $d_L$. This score measures two properties of the threshold: Does $R_{12}$ jump at $d_L$? How far is the number of clusters $C$ at $d_L$ from the maximal number of clusters over all threshold values? Let there be $N$ overall $d_L$ candidate values, and assume we are examining the ith candidate, $d_L^i$ with $W < i \leq N - W$ ($W$ is a positive integer defined below).
 
   \begin{enumerate}
-    \item{The $R_{12}$ jump is computed by looking at the normalized ratio of the mean $R_{12}$ values computed over the leading window $d_L^{i+1}…d_L^{i+W}$ and the trailing window $d_L^{i-W}… d_L^{i-1}$. The width of the window, $W$, is defined as $(([\frac{N}{100}],3),30)$. The distribution of ratios is converted to $Z$ scores, and normalized relative to the largest positive $Z$ score across all candidate distances, yielding the jump component of the score.}
+    \item{The $R_{12}$ jump is computed by looking at the normalized ratio of the mean $R_{12}$ values computed over the leading window $d_L^{i+1}…d_L^{i+W}$ and the trailing window $d_L^{i-W}… d_L^{i-1}$. The width of the window, $W$, is defined as $(([\frac{N}{100}],3),30)$.\TODO{HV: I'm not entirely clear on how the width of the window is calculated. If N=50, then W becomes ((0.5, 3), 30). How do you get a single integer W from that?} The distribution of ratios is converted to $Z$ scores, and normalized relative to the largest positive $Z$ score across all candidate distances, yielding the jump component of the score.}
     \item{The number of clusters, $C_i$ at threshold $d_L^i$ is first normalized to $[0,1]$ through $\frac{{C_{max} - C_i}}{{C_{max} -C_{min}}}$ and next gated via a Gompertz function transform ${1-e}^{-e^{-25x+3}}$ This function provides an \emph{ad hoc} means for penalizing having too few clusters relative to the maximum over all ranges. For example, a threshold that yields $95\%$ of the maximal number of clusters receives a score of $0.996$, while a threshold that yields $85\%$ - a score of $0.376$.}
     \item{The priority score for $d_L^i$ is the sum of the two components defined in (a) and (b).}
   \end{enumerate}}
@@ -182,12 +183,12 @@ Network threshold selection procedure proceeds as follows:
       \item{If other thresholds have priority scores of $1.9$ or higher, then the range of thresholds represented by these options is small (no more than $\log N$ times the mean step between successive $d_L^i$).}
     \end{enumerate}}
 
- \item{If no single threshold can be selected in step 3, then the one with the highest priority score is suggested, and an inspection of the plot like the one on the analyze page is recommended to ensure that the threshold is sensible.}
+ \item{If no single threshold can be selected in step 3, then the one with the highest priority score is suggested, and an inspection of the plot like the one on the analyze page is recommended to ensure that the threshold is sensible.\TODO{HV: What's the analyze page? Define it here, or mention that it's defined below.}}
 \end{enumerate}
 
 \subsection{Assortativity}
 
-Degree-weighted homophily (DWH) is a measure of similarity between nodes in a network based on their attributes (such as demographic characteristics or behaviors) and their degree (i.e., the number of connections they have to other nodes in the network). It is used to quantify the extent to which nodes with similar attributes tend to be connected to each other more frequently than would be expected by chance \TODO{add citation}.
+Degree-weighted homophily (DWH) is a measure of similarity between nodes in a network based on their attributes (such as demographic characteristics or behaviors) and their degree (i.e., the number of connections they have to other nodes in the network). It is used to quantify the extent to which nodes with similar attributes tend to be connected to each other more frequently than would be expected by chance \TODO{add citation}. \TODO{HV: I like this explanation. Simple, clear, easy to see the biological/public health relevance.}
 DWH is calculated as the ratio of the observed number of connections between nodes with similar attributes to the expected number of connections between such nodes, based on their network degree.
 
 In mathematical terms, it is defined as:
@@ -248,7 +249,8 @@ hivtrace -i ./INPUT.FASTA -a resolve -r HXB2_prrt -t < autotune_threshold > -m 5
 	\end{lstlisting}
 }
 
-\subsubsection{Optional : Compute Assortatviity Metrics}
+<<<<<<< HEAD
+\subsubsection{Optional : Compute Assortativity Metrics}
 
 \item{ Annotate results: The {\tt hivnetworkannotate} script is used to annotate the results obtained from the HIV-TRACE step with attributes. The script takes the JSON results file, node attributes file, schema file, and a resolve flag as input.
 	\begin{lstlisting}[style=BashInputStyle]
