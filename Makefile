@@ -2,7 +2,7 @@
 #all : main.pdf view github
 all : main.pdf view
 main.pdf : 
-	#bibtex frontiers 
+	bibtex frontiers 
 	latexmk
 	dvipdfm frontiers.dvi
 view :
