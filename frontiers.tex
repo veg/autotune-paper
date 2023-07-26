@@ -86,23 +86,21 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 	%%% Leave the Abstract empty if your article does not require one, please see the Summary Table for full details.
 	\section{}
 
-  \noindent Molecular surveillance of viral pathogens and inference of
-  transmission networks and clusters from genomic data play an increasingly
-  important role in public health applications and transmission mitigation
-  efforts, especially for HIV-1. For many methods, the genetic distance
-  threshold used to connect sequences in the transmission network is a key
-  parameter informing the properties of inferred networks. Using a distance
-  threshold that is too high can result in a network with many spurious links,
-  making it difficult to interpret and analyze\TODO{HV: I'd clarify that a high
-  distance threshold results in a larger network as well, not just a more
-  densely connected one.}. On the other hand, using a distance threshold that
-  is too low can result in a network with too few links, which may not capture
-  key insights into rapidly growing clusters among patients with shared
-  attributes that could benefit from public health intervention measures.
-  Published research using the HIV-TRACE software package frequently uses the
-  default threshold of $1.5\%$ for HIV pol gene sequences, but in many cases,
-  investigators select other threshold parameters (heuristically) to better
-  capture the underlying dynamics of the epidemic they are studying.
+	\noindent Molecular surveillance of viral pathogens and inference of
+	transmission networks and clusters from genomic data play an increasingly
+	important role in public health applications and transmission mitigation
+	efforts, especially for HIV-1. For many methods, the genetic distance
+	threshold used to connect sequences in the transmission network is a key
+	parameter informing the properties of inferred networks. Using a distance
+	threshold that is too high can result in a network with many spurious links,
+	making it difficult to interpret and analyze. On the other hand, using a distance threshold that
+	is too low can result in a network with too few links, which may not capture
+	key insights into rapidly growing clusters among patients with shared
+	attributes that could benefit from public health intervention measures.
+	Published research using the HIV-TRACE software package frequently uses the
+	default threshold of $1.5\%$ for HIV pol gene sequences, but in many cases,
+	investigators select other threshold parameters (heuristically) to better
+	capture the underlying dynamics of the epidemic they are studying.
 
 	Here, we present a heuristic scoring approach for tuning a distance threshold
 	adaptively, which seeks to prevent the formation of giant clusters (measured as
