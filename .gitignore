@@ -1,0 +1,15 @@
+*bak*
+*.aux
+*.dvi
+*Supplementary*
+indent.log
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xdv
+1
+svg-inkscape
+*.pdf
