@@ -133,7 +133,7 @@ various pathogens has taken off in the past two decades, with applications to
 \TODO{make a list of citations to cover a broad list of organisms}. Choosing an
 appropriate genetic distance threshold is an important part of using a
 molecular transmission network to track the spread of rapidly evolving
-pathogens \cite{liu_dynamics_2020,rose_persistence_2020}. This distance
+pathogens \citep{liu_dynamics_2020,rose_persistence_2020}. This distance
 threshold defines the degree of genetic closeness required between pathogen
 sequences, isolated from two individuals, to suggest them as potential
 transmission partners in the network. Using a distance threshold that is too
@@ -142,14 +142,14 @@ uninformative, links, making it difficult to interpret and analyze. On the
 other hand, using a distance threshold that is too large can result in a
 network with too few links, underestimating connections between individuals and
 making it difficult to accurately track the spread of the disease
-\cite{gore_hiv_2022}.
+\citep{gore_hiv_2022}.
 
 Viruses, particularly RNA viruses, exhibit high genetic divergence and possess
 compact genomes, making them more suitable for these types of molecular studies
 compared to bacteria. The high evolutionary rate of RNA viruses, compared to
 bacterial DNA, allows the detection of genetic fingerprints in relatively short
 time frames. These fingerprints can be targeted for epidemiological studies
-over short time periods \cite{paraskevis_application_2016}. The selection of a
+over short time periods \citep{paraskevis_application_2016}. The selection of a
 genetic distance threshold becomes particularly important in this context.
 Depending on the disease and its context of spread, the threshold may vary. For
 instance, a highly contagious respiratory illness may require a smaller genetic
@@ -159,21 +159,21 @@ direct contact.
 For chronic infections such as HIV, the most appropriate genetic distance
 threshold should be determined according to the characteristics of the epidemic
 such as the speed of transmission, and the evolutionary rate of the gene region
-analyzed \cite{liu_dynamics_2020}. Sampling density and possible delays between
+analyzed \citep{liu_dynamics_2020}. Sampling density and possible delays between
 infection and diagnosis should be considered, since samples close to the time
 of seroconversion are more likely to cluster than samples from well after
 infection. Lower thresholds will capture the most closely related sequences,
 while higher thresholds will capture long-term epidemics and chronically
-infected individuals \cite{junqueira_factors_2019}.
+infected individuals \citep{junqueira_factors_2019}.
 
 Cluster analysis, i.e., identification and analysis of connected network
 components, in public health has been used for early identification of
-increased transmission \cite{oster_hiv_2021, oster_identifying_2018},
-monitoring response to an HIV outbreak \cite{tumpney_human_2020,
+increased transmission \citep{oster_hiv_2021, oster_identifying_2018},
+monitoring response to an HIV outbreak \citep{tumpney_human_2020,
 	sizemore_using_2020, tookes_rapid_2020}, evaluating the effectiveness of
-interventions \cite{peters_hiv_2016,wang_targeting_2015,liu_dynamics_2020} or
+interventions \citep{peters_hiv_2016,wang_targeting_2015,liu_dynamics_2020} or
 predicting clusters that are most likely to grow in the near future
-\cite{erly_predictive_2021,ragonnet-cronin_forecasting_2022}.
+\citep{erly_predictive_2021,ragonnet-cronin_forecasting_2022}.
 
 In general, the goal of informative network inference is to strike a balance
 between having enough links to accurately track the spread of the disease,
@@ -400,7 +400,7 @@ in \citep{chato_public_2020}. These datasets, namely Middle Tennessee, Seattle,
 and Alberta, were processed using the workflow prescribed in Section 2.3. This
 enabled us to determine an optimal threshold for each dataset using AUTO-TUNE.
 We further executed the command as detailed in step 4 of Section 2.3, deploying
-thresholds previously established as optimal by \cite{chato_public_2020}.
+thresholds previously established as optimal by \citep{chato_public_2020}.
 
 To perform comparisons, we computed the average degree-weighted homophily score
 over a set of three-year sliding windows. Specifically, the homophily among
@@ -413,7 +413,7 @@ the total number of sliding windows, $H(w_i)$ is the homophily score for the
 $i$-th window, and the windows $w_i$ correspond to the date ranges, e.g.,
 '2012-2015', '2013-2016', '2014-2017', etc. This methodology allowed us to
 compare the "best thresholds" derived from our proposed AUTO-TUNE method
-against those defined as optimal in \cite{chato_public_2020}.
+against those defined as optimal in \citep{chato_public_2020}.
 
 Second, we set out to compare the thresholds obtained in numerous published
 investigations with those obtained by AUTO-TUNE. To select the data sets for
@@ -427,7 +427,7 @@ sets that used variable clustering thresholds.
 
 In order to evaluate the influence of sampling density on the genetic distance
 threshold as determined by AUTO-TUNE, we implemented a strategy of random
-subsampling from the original dataset sourced from \cite{rhee_national_2019}.
+subsampling from the original dataset sourced from \citep{rhee_national_2019}.
 This study was selected due to its satisfactory AUTO-TUNE score when utilized
 in its entirety, as well as its inherent design as a Geographically-Stratified
 set of 716 Pol Subtype/CRF (GSPS) reference sequence dataset. The dataset,
@@ -454,7 +454,7 @@ Alberta.
 In contrast, AUTO-TUNE does not incorporate any attribute data in its scoring
 heuristic. Instead, it relies on clustering metrics constructed purely from
 pairwise distances between sequences. Using the same datasets analyzed by {\tt
-		clustuneR} \cite{chato_public_2020}, AUTO-TUNE found the thresholds with the
+		clustuneR} \citep{chato_public_2020}, AUTO-TUNE found the thresholds with the
 highest scores to be $0.01431$ for Middle Tennessee, $0.01354$ for Seattle, and
 $0.01099$ for Northern Alberta. \autoref{tab:homophily}. These values are in
 broad agreement with the original results.
@@ -498,25 +498,25 @@ in coming to a decision.
 % It is problematic to tune this threshold and most analyses use an ad-hoc threshold or evaluate sensitivity over a range of thresholds.
 
 Next, we curated publications citing HIV-TRACE that also had publicly
-accessible data associated with the study \cite{rhee_national_2019,
+accessible data associated with the study \citep{rhee_national_2019,
 	brenner_role_2021, h_acquisition_2021, liu_dynamics_2020, bbosa_short_2020,
 	yan_central_2020, dalai_combining_2018, sivay_hiv-1_2018}. We found that a
 variety of different ways has been used to determine distance thresholds: using
 the precedent set by the CDC for detecting recent and rapid clusters
-\cite{yan_central_2020}; using thresholds from other studies
-\cite{sivay_hiv-1_2018}; visual inspection of the number of clusters and nodes
-across candidate distance thresholds \cite{liu_dynamics_2020}. Because these
+\citep{yan_central_2020}; using thresholds from other studies
+\citep{sivay_hiv-1_2018}; visual inspection of the number of clusters and nodes
+across candidate distance thresholds \citep{liu_dynamics_2020}. Because these
 thresholds were determined largely qualitatively, they tended to be round
 numbers and only somewhat tuned to their respective geographic region of
 research. \autoref{tab:paperComparison} When AUTO-TUNE was applied to these
 datasets, a range of dataset-specific thresholds was inferred. This analysis
 demonstrated that network inference can be highly sensitive to relatively small
 changes in the distance threshold. For example, when reviewing the distribution
-of scores for the dataset used by \cite{dalai_combining_2018}, the score is
+of scores for the dataset used by \citep{dalai_combining_2018}, the score is
 exactly $2$ at $0.01848$, but at thresholds tested at just $0.00002$
 difference, scores drop precipitously to $1.638$ and $0.826$ for candidates
 $0.01846$ and $0.0185$, respectively. Another example of a seemingly close
-threshold yet perhaps not optimal is found with \cite{bbosa_short_2020}. While
+threshold yet perhaps not optimal is found with \citep{bbosa_short_2020}. While
 no score across candidate thresholds was found to be above $1.9$, a high score
 was found at distance $1.707$, with $1.2415$. Contrast this with the threshold
 used, $1.5\%$, with a score of $0.0124$. \TODO{I would add some specifics here:
@@ -556,7 +556,7 @@ $0.25$, and $0.445$, respectively.
 \TODO{The data in the above 2 paragraphs need to be in a table; the text should interpret it.
 	You should also mention whether or not DWH estimates were significantly different from 0}
 
-We next evaluated \cite{rhee_national_2019} with DWH. The dataset received a
+We next evaluated \citep{rhee_national_2019} with DWH. The dataset received a
 clear optimal threshold of $0.01699$ with an AUTO-TUNE score of $1.9998$. At
 the default threshold of $1.5\%$, the AUTO-TUNE score was $0.9782$. At
 threshold $1.5\%$, the network captured $1351$ nodes, compared with $1592$
@@ -574,7 +574,7 @@ larger than the default $1.5\%$. \label{fig:scoreAbove2}
 \TODO{Also should include some motivation}
 
 Next, we evaluated the performance of AUTO-TUNE when subsampling a dataset.
-Since the \cite{rhee_national_2019} dataset exhibited a clear optimal peak, we
+Since the \citep{rhee_national_2019} dataset exhibited a clear optimal peak, we
 used the dataset for analysis, and randomly sampled $10$ times from the entire
 dataset at $25\%$, $50\%$, and $75\%$ each. The original full dataset
 confidently determined $0.01699$ (AUTO-TUNE score $1.9998$).
@@ -634,7 +634,7 @@ Furthermore, the simplicity of the method represents an advantage over
 phylogenetic methods where, in addition to the calculation of genetic
 distances, it must also determine a support/distance threshold where a
 rationale for the selection of these thresholds is rarely provided
-\cite{junqueira_factors_2019}.
+\citep{junqueira_factors_2019}.
 
 AUTO-TUNE generated thresholds for all three examined datasets (Middle
 Tennessee, Seattle, and Northern Alberta) that outperformed {\tt clustuneR}
@@ -647,12 +647,12 @@ context-specific factors might need to be considered if there is no significant
 score for any one candidate threshold, especially if there are multiple peaks.
 For example, during HIV outbreaks in injection drug users (that usually occur
 over several months), it may be more appropriate to use the shorter genetic
-distance threshold \cite{peters_hiv_2016,campbell_detailed_2017} between
+distance threshold \citep{peters_hiv_2016,campbell_detailed_2017} between
 multiple high-scoring thresholds. On the contrary, larger and more extended
 epidemics over time exhibit a tendency toward larger genetic distance
 thresholds in order to capture transmission than younger epidemics and less
 densely sampled epidemic investigations
-\cite{patil_exploring_2022,leung_molecular_2019,di_giallonardo_subtype-specific_2021}.
+\citep{patil_exploring_2022,leung_molecular_2019,di_giallonardo_subtype-specific_2021}.
 
 Our evaluation of publications citing HIV-TRACE revealed the largely
 qualitative determination of distance thresholds. This approach may result in
@@ -666,7 +666,7 @@ studies.
 The Degree-Weighted Homophily (DWH) evaluation showed that AUTO-TUNE could
 improve network quality based on specific attributes, such as risk factor,
 which is an important part of HIV studies and informing prevention measures
-\cite{potterat_risk_2002,fujimoto_methodological_2021}. For example, the use of
+\citep{potterat_risk_2002,fujimoto_methodological_2021}. For example, the use of
 AUTO-TUNE resulted in an increased DWH among the MSM, Hetero, and PWID groups
 when analyzing a CRF07\_BC network. Additionally, the results from the Rhee et
 al. dataset also demonstrated AUTO-TUNE's ability to improve DWH
@@ -709,13 +709,13 @@ AUTO-TUNE scores alone.
 The AUTO-TUNE methodology has several limitations. First, even though it
 provides the advantage of operating without the need for metadata, the size and
 the subgenomic region analyzed may affect the accuracy of transmission
-inference \cite{junqueira_factors_2019}. Second, our analysis of AUTO-TUNE's
+inference \citep{junqueira_factors_2019}. Second, our analysis of AUTO-TUNE's
 performance on subsamples of a dataset revealed its sensitivity to sample size,
 as the performance of the method can be affected by sampling density, improving
 the reliability of the test as the sampling density increases (figure X).
 However, our results were consistent with previous studies, which have
 suggested an optimal sampling density of $50-70\%$ for HIV-1 cluster
-analysis\cite{novitsky_impact_2014}. Third, even when it provides an insight of
+analysis\citep{novitsky_impact_2014}. Third, even when it provides an insight of
 the optimal threshold to analyze a network, the supplied information might
 still need validation by experts, especially when no clear threshold is
 identified. In this case, it has been recommended to combine genetic data with
@@ -779,7 +779,7 @@ JX160108-JX161480,JX498971-JX498972,JX498976-JX498990,JX498992-JX499018,KU190031
 \bibliographystyle{Frontiers-Harvard} %  Many Frontiers journals use the Harvard referencing system (Author-date), to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal. For Humanities and Social Sciences articles please include page numbers in the in-text citations 
 %\bibliographystyle{Frontiers-Vancouver} % Many Frontiers journals use the numbered referencing system, to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal
 \bibliography{references}
-\nocite{*}
+\nocitep{*}
 
 %%% Make sure to upload the bib file along with the tex file and PDF
 %%% Please see the test.bib file for some examples of references
@@ -896,7 +896,7 @@ JX160108-JX161480,JX498971-JX498972,JX498976-JX498990,JX498992-JX499018,KU190031
 
 \begin{figure}[h!]
 	\caption{ (A) Box plot representing the AUTO-TUNE scores across ten random
-		samples at 25\%, 50\%, and 75\% of the \cite{rhee_national_2019} dataset,
+		samples at 25\%, 50\%, and 75\% of the \citep{rhee_national_2019} dataset,
 		showing a trend of increasing confidence in score estimates with denser
 		sampling. (B) Box plot of the selected distance thresholds across the same
 		random samples at 25\%, 50\%, and 75\% proportions, demonstrating improved
