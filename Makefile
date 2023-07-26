@@ -1,6 +1,6 @@
 1: all
 #all : main.pdf view github
-all : main.pdf view format github
+all : main.pdf view github
 main.pdf : 
 	bibtex frontiers 
 	latexmk
