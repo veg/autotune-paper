@@ -191,7 +191,7 @@ makes it robust to variations in data collection protocols and enhances its
 adaptability to various contexts, including potentially other viral diseases.
 Our analysis demonstrates its potential in augmenting public health responses,
 while also acknowledging the need for careful interpretation of its results,
-especially in cases with no clear optimal threshold.
+especially in cases with no clear optimal threshold. 
 
 \section{Methods}
 
@@ -226,7 +226,7 @@ Network threshold selection procedure proceeds as follows:
 	\item{ A priority score is assigned to each $d_L$. This score measures two properties of the threshold: Does $R_{12}$ jump at $d_L$? How far is the number of clusters $C$ at $d_L$ from the maximal number of clusters over all threshold values? Let there be $N$ overall $d_L$ candidate values, and assume we are examining the ith candidate, $d_L^i$ with $W < i \leq N - W$ ($W$ is a positive integer defined below).
 
 	            \begin{enumerate}
-		            \item{The $R_{12}$ jump is computed by looking at the normalized ratio of the mean $R_{12}$ values computed over the leading window $d_L^{i+1}…d_L^{i+W}$ and the trailing window $d_L^{i-W}… d_L^{i-1}$. The width of the window, $W$, is defined as $(([\frac{N}{100}],3),30)$.\TODO{HV: I'm not entirely clear on how the width of the window is calculated. If N=50, then W becomes ((0.5, 3), 30). How do you get a single integer W from that?} The distribution of ratios is converted to $Z$ scores, and normalized relative to the largest positive $Z$ score across all candidate distances, yielding the jump component of the score.}
+		            \item{The $R_{12}$ jump is computed by looking at the normalized ratio of the mean $R_{12}$ values computed over the leading window $d_L^{i+1}…d_L^{i+W}$ and the trailing window $d_L^{i-W}… d_L^{i-1}$. The width of the window, $W$, is defined as $\min \left( \max \left(\left[\frac{N}{100}\right], 3\right), 30 \right)$. The distribution of ratios is converted to $Z$ scores, and normalized relative to the largest positive $Z$ score across all candidate distances, yielding the jump component of the score.}
 		            \item{The number of clusters, $C_i$ at threshold $d_L^i$ is first normalized to $[0,1]$ through $\frac{{C_{max} - C_i}}{{C_{max} -C_{min}}}$ and next gated via a Gompertz function transform ${1-e}^{-e^{-25x+3}}$ This function provides an \emph{ad hoc} means for penalizing having too few clusters relative to the maximum over all ranges. For example, a threshold that yields $95\%$ of the maximal number of clusters receives a score of $0.996$, while a threshold that yields $85\%$ - a score of $0.376$.}
 		            \item{The priority score for $d_L^i$ is the sum of the two components defined in (a) and (b).}
 	            \end{enumerate}}
