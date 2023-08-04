@@ -130,8 +130,8 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 \section{Introduction}
 
 The use of genomic data to infer and characterize transmission networks of
-various pathogens has taken off in the past two decades, with applications to
-\TODO{make a list of citations to cover a broad list of organisms}. Choosing an
+various pathogens has taken off in the past two decades, with applications to a growing list of microorganisms, including viruses such as HIV \citep{paraskevis_application_2016}, HCV \citep{murphy_molecular_2019} or influenza virus \citep{jombart_reconstructing_2011}, and bacteria such as $M. tuberculosis$ \citep{mai_mycobacterium_2018} or $A. baumanii$ \citep{thoma_challenge_2022}, just to mention some. Notably, genomic surveillance had a prominent role during the COVID-19 pandemic, including the use of sequencing for the study of transmission clusters \citep{von_rotz_systematic_2023,campigotto_utility_2023}.
+On the whole, choosing an
 appropriate genetic distance threshold is an important part of using a
 molecular transmission network to track the spread of rapidly evolving
 pathogens \citep{liu_dynamics_2020,rose_persistence_2020}. This distance
@@ -145,17 +145,16 @@ network with too few links, underestimating connections between individuals and
 making it difficult to accurately track the spread of the disease
 \citep{gore_hiv_2022}.
 
-Viruses, particularly RNA viruses, exhibit high genetic divergence and possess
-compact genomes, making them more suitable for these types of molecular studies
-compared to bacteria. The high evolutionary rate of RNA viruses, compared to
-bacterial DNA, allows the detection of genetic fingerprints in relatively short
-time frames. These fingerprints can be targeted for epidemiological studies
-over short time periods \citep{paraskevis_application_2016}. The selection of a
-genetic distance threshold becomes particularly important in this context.
-Depending on the disease and its context of spread, the threshold may vary. For
-instance, a highly contagious respiratory illness may require a smaller genetic
-distance threshold than a less contagious illness primarily spread through
-direct contact.
+To optimize the utility of inferred transmission networks, it is
+important to carefully consider the appropriate distance threshold, $d$. This threshold may
+vary depending on the specific disease and the context in which it is spreading.
+For example, a highly contagious respiratory illness may require a smaller
+$d$ than a less contagious illness that is primarily spread
+through direct contact. Viruses are more amenable to molecular studies compared
+to bacteria due to their high genetic divergence and compact genomes. Given the
+relatively high evolutionary rate of RNA viruses (compared to chromosomal DNA in
+humans) detectable genetic fingerprints can be targeted for epidemiological
+studies over short time periods\citep{paraskevis_application_2016}.
 
 For chronic infections such as HIV, the most appropriate genetic distance
 threshold should be determined according to the characteristics of the epidemic
@@ -174,9 +173,7 @@ monitoring response to an HIV outbreak \citep{tumpney_human_2020,
 	sizemore_using_2020, tookes_rapid_2020}, evaluating the effectiveness of
 interventions \citep{peters_hiv_2016,wang_targeting_2015,liu_dynamics_2020} or
 predicting clusters that are most likely to grow in the near future
-\citep{erly_predictive_2021,ragonnet-cronin_forecasting_2022}.
-
-In general, the goal of informative network inference is to strike a balance
+\citep{erly_predictive_2021,ragonnet-cronin_forecasting_2022}. In general, the goal of informative network inference is to strike a balance
 between having enough links to accurately track the spread of the disease,
 while not having so many links that spurious connections are made and hinder
 the public health response. This can be achieved through careful analysis and
@@ -184,15 +181,12 @@ consideration of the specific disease and context.
 
 This study introduces AUTO-TUNE, a novel method that offers a systematic
 approach to select genetic distance thresholds for molecular HIV transmission
-network analysis. By autonomously optimizing clustering metrics derived from
+network analysis, based purely on the structure of the collected data. By autonomously optimizing clustering metrics derived from
 pairwise genetic distances, AUTO-TUNE has the potential to improve the accuracy
-and reliability of network inference, irrespective of epidemic context and data
+and reliability of network inference, irrespective of data
 attributes. The AUTO-TUNE methodology's independence from supplementary data
 makes it robust to variations in data collection protocols and enhances its
 adaptability to various contexts, including potentially other viral diseases.
-Our analysis demonstrates its potential in augmenting public health responses,
-while also acknowledging the need for careful interpretation of its results,
-especially in cases with no clear optimal threshold.
 
 \section{Methods}
 
