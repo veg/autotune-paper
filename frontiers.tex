@@ -129,7 +129,7 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 \section{Introduction}
 
 The use of genomic data to infer and characterize transmission networks of
-various pathogens has taken off in the past two decades, with applications to
+various pathogens has taken off in the past two decades, with applications to a growing list of microorganisms, including viruses such as HIV, HCV or influenza virus, and bacteria such as $M. tuberculosis$ or $A. baumanii$, just to mention some. Notably, genomic surveillance had a prominent role during the COVID-19 pandemic, including the use of sequencing for the study of transmission clusters.
 \TODO{make a list of citations to cover a broad list of organisms}. Choosing an
 appropriate genetic distance threshold is an important part of using a
 molecular transmission network to track the spread of rapidly evolving
@@ -144,17 +144,16 @@ network with too few links, underestimating connections between individuals and
 making it difficult to accurately track the spread of the disease
 \citep{gore_hiv_2022}.
 
-Viruses, particularly RNA viruses, exhibit high genetic divergence and possess
-compact genomes, making them more suitable for these types of molecular studies
-compared to bacteria. The high evolutionary rate of RNA viruses, compared to
-bacterial DNA, allows the detection of genetic fingerprints in relatively short
-time frames. These fingerprints can be targeted for epidemiological studies
-over short time periods \citep{paraskevis_application_2016}. The selection of a
-genetic distance threshold becomes particularly important in this context.
-Depending on the disease and its context of spread, the threshold may vary. For
-instance, a highly contagious respiratory illness may require a smaller genetic
-distance threshold than a less contagious illness primarily spread through
-direct contact.
+To optimize the utility of inferred transmission networks, it is
+important to carefully consider the appropriate distance threshold, $d$. This threshold may
+vary depending on the specific disease and the context in which it is spreading.
+For example, a highly contagious respiratory illness may require a smaller
+$d$ than a less contagious illness that is primarily spread
+through direct contact. Viruses are more amenable to molecular studies compared
+to bacteria due to their high genetic divergence and compact genomes. Given the
+relatively high evolutionary rate of RNA viruses (compared to chromosomal DNA in
+humans) detectable genetic fingerprints can be targeted for epidemiological
+studies over short time periods\citep{paraskevis_application_2016}.
 
 For chronic infections such as HIV, the most appropriate genetic distance
 threshold should be determined according to the characteristics of the epidemic
