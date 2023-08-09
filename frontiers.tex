@@ -434,6 +434,56 @@ associated scores were determined via AUTO-TUNE.
 
 \section{Results}
 
+\subsection{Evaluating Performance using DWH}
+
+Non-random mixing and attribute-based homophily are intrinsic characteristics
+of human social networks and can be expected across transmission network,
+particularly in the context of HIV transmission. People frequently engage in
+relationships with those who share similar attributes or behaviors, such as
+risk factors (e.g., PWID, MSM). The effect of these nonrandom mixing patterns
+on the genetic diversity of HIV-1 has not only been extensively explored via
+modeling and simulations \citep{goodreau_assessing_2006}, but the structure of
+sexual contact networks has been found to directly influence pathogen
+phylogenies \citep{robinson_how_2013}. Additionally, phylogenetic analysis of
+HIV type 1 sequences has revealed distinct grouping patterns based on risk
+behaviors \citep{holmes_molecular_1995}. Therefore, a higher homophily can be
+considered a more accurate and realistic representation of these phenomena
+within the transmission network.
+
+To assess the performance of an AUTO-TUNEd optimized threshold using
+degree-weighted homophily, we first evaluated a CRF07\_BC network with data
+from China. We used $8178$ HIV-1 CRF07\_BC pol sequences collected by a
+national survey in China to construct longitudinal transmission networks. Each
+pol sequence was annotated with a risk factor detailing whether the patient was
+heterosexual (Hetero), Person With Injected Drug Use (PWID), or Men who have
+Sex with Men (MSM), among other attributes. 
+
+When we analyze the dataset with AUTO-TUNE, similar high scores were achieved
+with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030, respectively.
+Notably, the DWH scores for PWID exhibited a significant surge at these
+thresholds, indicating a robust pattern of increased PWID homophily. The close
+proximity of AUTO-TUNE scores and the consistent rise in PWID homophily at
+0.76\% and 0.19\% thresholds suggest comparable performance at these thresholds
+compared to the default 1.5\% threshold, suggesting that these thresholds might
+be more effective in representing homophilic relationships in this network. At
+each threshold—1.5\%, 0.76\%, and 0.19\%—all DWH scores for the risk groups
+(MSM, Hetero, and PWID) lie outside their respective panmictic ranges. This
+consistently indicates non-random mixing and attribute-based homophily across
+the network. Detailed results are in Table~\ref{table:combined}. 
+
+We next evaluated \citep{rhee_national_2019} with DWH \ref{table:rhee}. When
+assessing assortative mixing patterns across countries, China exhibited the
+most significant change in DWH values from the default 1.5\% threshold to the
+AUTO-TUNEd 1.699\% threshold, shifting from -0.166 to 0.116. The shift in
+China's DWH placed its value outside its panmictic range. The implication being
+that, with an AUTO-TUNE threshold, assortative mixing patterns are captures
+that would otherwise be missed. Thailand also exhibited the same pattern in
+this dataset. Notably, no countries registered a decrease in their DWH value,
+despite the increased threshold.
+\label{fig:scoreAbove2}
+
+
+
 \subsection{Comparison with clustuneR}
 
 We compared results to {\tt clustuneR}, which employs the recency of sample
@@ -518,54 +568,6 @@ was found at distance $1.707$, with $1.2415$. Contrast this with the threshold
 used, $1.5\%$, with a score of $0.0124$. \TODO{I would add some specifics here:
 	what is $R_12$ and $C$ for those thresholds, for example? The composite score
 	is difficult to appreciate intutitvely}
-
-\subsection{Evaluating Performance using DWH}
-
-Non-random mixing and attribute-based homophily are intrinsic characteristics
-of human social networks and can be expected across transmission network,
-particularly in the context of HIV transmission. People frequently engage in
-relationships with those who share similar attributes or behaviors, such as
-risk factors (e.g., PWID, MSM). The effect of these nonrandom mixing patterns
-on the genetic diversity of HIV-1 has not only been extensively explored via
-modeling and simulations \citep{goodreau_assessing_2006}, but the structure of
-sexual contact networks has been found to directly influence pathogen
-phylogenies \citep{robinson_how_2013}. Additionally, phylogenetic analysis of
-HIV type 1 sequences has revealed distinct grouping patterns based on risk
-behaviors \citep{holmes_molecular_1995}. Therefore, a higher homophily can be
-considered a more accurate and realistic representation of these phenomena
-within the transmission network.
-
-To assess the performance of an AUTO-TUNEd optimized threshold using
-degree-weighted homophily, we first evaluated a CRF07\_BC network with data
-from China. We used $8178$ HIV-1 CRF07\_BC pol sequences collected by a
-national survey in China to construct longitudinal transmission networks. Each
-pol sequence was annotated with a risk factor detailing whether the patient was
-heterosexual (Hetero), Person With Injected Drug Use (PWID), or Men who have
-Sex with Men (MSM), among other attributes. 
-
-When we analyze the dataset with AUTO-TUNE, similar high scores were achieved
-with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030, respectively.
-Notably, the DWH scores for PWID exhibited a significant surge at these
-thresholds, indicating a robust pattern of increased PWID homophily. The close
-proximity of AUTO-TUNE scores and the consistent rise in PWID homophily at
-0.76\% and 0.19\% thresholds suggest comparable performance at these thresholds
-compared to the default 1.5\% threshold, suggesting that these thresholds might
-be more effective in representing homophilic relationships in this network. At
-each threshold—1.5\%, 0.76\%, and 0.19\%—all DWH scores for the risk groups
-(MSM, Hetero, and PWID) lie outside their respective panmictic ranges. This
-consistently indicates non-random mixing and attribute-based homophily across
-the network. Detailed results are in Table~\ref{table:combined}. 
-
-We next evaluated \citep{rhee_national_2019} with DWH \ref{table:rhee}. When
-assessing assortative mixing patterns across countries, China exhibited the
-most significant change in DWH values from the default 1.5\% threshold to the
-AUTO-TUNEd 1.699\% threshold, shifting from -0.166 to 0.116. The shift in
-China's DWH placed its value outside its panmictic range. The implication being
-that, with an AUTO-TUNE threshold, assortative mixing patterns are captures
-that would otherwise be missed. Thailand also exhibited the same pattern in
-this dataset. Notably, no countries registered a decrease in their DWH value,
-despite the increased threshold.
-\label{fig:scoreAbove2}
 
 
 \subsection{The Effect of Subsampling on Optimal Thresholds and AUTO-TUNE Scores}
