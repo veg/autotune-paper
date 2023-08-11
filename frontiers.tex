@@ -23,6 +23,9 @@
 \usepackage{rotating}
 \usepackage{tabularx}
 \usepackage[english]{babel}
+\usepackage{booktabs}
+\usepackage{longtable}
+
 
 \newcommand{\TODO}[1]{{\color{red}{#1}}}
 
@@ -518,9 +521,11 @@ linking more often with other samples within the same time window would result
 in a higher DWH score. It was found that, across all three datasets, using the
 threshold with the highest score reported by AUTO-TUNE resulted in a higher
 average DWH score across all three datasets when compared to the clustuneR
-derived threshold.
+derived threshold. 
 
 % Add something about Wilcoxon test
+% The p-values for the Wilcoxon sign test are 0.0018 for Seattle, 0.999 for Tennessee, and 0.1797 for Canada.
+
 
 
 When reviewing scores across all candidate thresholds with AUTO-TUNE
@@ -917,6 +922,31 @@ Germany & N/A & N/A & N/A & -0.049 & 0.043 & -0.117 & N/A \\
   \caption{Comparison of DWH values for different countries with 1.5\% and AUTO-TUNE inferred threshold of 1.699\% for \cite{rhee_national_2019}.}
 \label{tab:DWH_comparison}
 \end{table}
+
+
+\begin{longtable}{llcc}
+\toprule
+Location & Record & DWH\_autotune & DWH\_clustuner \\
+\midrule
+\endfirsthead
+\toprule
+Location & Record & DWH\_autotune & DWH\_clustuner \\
+\midrule
+\endhead
+Seattle & 1998-2000 & 0.089 & 0.08 \\
+% Continue with other Seattle records
+Seattle & AUTO-TUNE AVG & 0.0348125 & clustuneR AVG & 0.025875 \\
+Tennessee & 1999-2001 & -0.013 & -0.012 \\
+% Continue with other Tennessee records
+Tennessee & AUTO-TUNE AVG & 0.014764706 & clustuneR AVG & 0.007941176 \\
+Canada & 2005-2007 & -0.039 & -0.028 \\
+% Continue with other Canada records
+Canada & AUTO-TUNE AVG & -0.044777778 & clustuneR AVG & -0.053555556 \\
+\bottomrule
+\end{longtable}
+
+
+\end{document}
 
 \end{document}
 
