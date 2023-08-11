@@ -923,23 +923,19 @@ Germany & N/A & N/A & N/A & -0.049 & 0.043 & -0.117 & N/A \\
 \label{tab:DWH_comparison}
 \end{table}
 
-
-
 \begin{table}
     \centering
     \begin{tabular}{llcc}
         \toprule
-        \textbf{Location} & \textbf{Record} & \textbf{AUTO-TUNE DWH} & \textbf{clustuneR DWH} \\
-        \midrule
-        Seattle & 1998-2000 & 0.089 & 0.08 \\
-        % Continue with other Seattle records
-        \midrule
-        Tennessee & 1999-2001 & -0.013 & -0.012 \\
-        % Continue with other Tennessee records
-        \midrule
-        Canada & 2005-2007 & -0.039 & -0.028 \\
-        % Continue with other Canada records
-        \bottomrule
+        \textbf{Dataset} & \textbf{Record} & \textbf{DWH\_autotune} & \textbf{Panmictic\_range\_autotune} & \textbf{DWH\_clustuner} & \textbf{Panmictic\_range\_clustuner} \\
+        \hline
+        \multirow{16}{*}{Seattle} & 1998-2000 & 0.089 & ['0.001', '-0.061'] & 0.08 & ['0.002', '-0.065'] \\
+         & \vdots & \vdots & \vdots & \vdots & \vdots \\
+        \multirow{18}{*}{Tennessee} & 1999-2001 & -0.013 & ['0.000', '-0.015'] & -0.012 & ['0.003', '-0.017'] \\
+         & \vdots & \vdots & \vdots & \vdots & \vdots \\
+        \multirow{9}{*}{Canada} & 2005-2007 & -0.039 & ['0.001', '-0.060'] & -0.028 & ['0.004', '-0.063'] \\
+         & \vdots & \vdots & \vdots & \vdots & \vdots \\
+      \hline
     \end{tabular}
 \end{table}
 
