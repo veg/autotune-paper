@@ -547,29 +547,7 @@ in coming to a decision.
 
 % It is problematic to tune this threshold and most analyses use an ad-hoc threshold or evaluate sensitivity over a range of thresholds.
 
-Next, we curated publications citing HIV-TRACE that also had publicly
-accessible data associated with the study \citep{rhee_national_2019,
-	brenner_role_2021, h_acquisition_2021, liu_dynamics_2020, bbosa_short_2020,
-	yan_central_2020, dalai_combining_2018, sivay_hiv-1_2018}. We found that a
-variety of different ways has been used to determine distance thresholds: using
-the precedent set by the CDC for detecting recent and rapid clusters
-\citep{yan_central_2020}; using thresholds from other studies
-\citep{sivay_hiv-1_2018}; visual inspection of the number of clusters and nodes
-across candidate distance thresholds \citep{liu_dynamics_2020}. Because these
-thresholds were determined largely qualitatively, they tended to be round
-numbers and only somewhat tuned to their respective geographic region of
-research (\autoref{tab:paperComparison}). When AUTO-TUNE was applied to these
-datasets, a range of dataset-specific thresholds were inferred. This analysis
-demonstrated that network inference can be highly sensitive to relatively small
-changes in the distance threshold. For example, when reviewing the distribution
-of scores for the dataset used by \cite{dalai_combining_2018}, the score is
-exactly $2$ at $0.01848$, but at thresholds tested at just a $0.00002$
-difference, scores drop precipitously to $1.638$ and $0.826$ for candidates
-$0.01846$ and $0.0185$, respectively. Another example of a seemingly close
-threshold yet perhaps not optimal is found with \citep{bbosa_short_2020}. While
-no score across candidate thresholds was found to be above $1.9$, a high score
-was found at distance $1.707$, with $1.2415$. Contrast this with the threshold
-used, $1.5\%$, with a score of $0.0124$. \TODO{I would add some specifics here:
+We curated publications citing HIV-TRACE, ensuring public accessibility of the data associated with the respective studies \citep{rhee_national_2019, brenner_role_2021, h_acquisition_2021, liu_dynamics_2020, bbosa_short_2020, yan_central_2020, dalai_combining_2018, sivay_hiv-1_2018}. The analysis revealed different methodologies for determining distance thresholds. These include the precedent set by the CDC for detecting recent and rapid clusters \citep{yan_central_2020}, referencing thresholds from prior studies \citep{sivay_hiv-1_2018}, and visual inspection of clusters and nodes across candidate distance thresholds \citep{liu_dynamics_2020}. Notably, these thresholds, often qualitatively determined, tended to be round numbers and were only marginally adapted to the specific geographic regions of research (\autoref{tab:paperComparison}). Upon application of AUTO-TUNE to these datasets, we inferred dataset-specific thresholds. The analysis underscored that network inference can be highly sensitive to minute changes in the distance threshold. For instance, the dataset used by \cite{dalai_combining_2018} had a score of exactly 2 at 0.01848, but with a mere 0.00002 difference in thresholds, scores plummeted to 1.638 and 0.826 for candidates 0.01846 and 0.0185, respectively. A similar case was observed with \citep{bbosa_short_2020}, where no score above 1.9 was detected, but a high score of 1.707 was found, contrasting with the used threshold of 1.5\%, which had a score of 0.0124.  \TODO{I would add some specifics here:
 	what is $R_12$ and $C$ for those thresholds, for example? The composite score
 	is difficult to appreciate intutitvely}
 
