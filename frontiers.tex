@@ -596,7 +596,6 @@ approximation of a fully sampled network. Using the selected dataset as a
 benchmark, we assess AUTO-TUNE's adaptability and robustness when applied to
 sparser datasets, a prevalent issue in real-world settings.
 
-Next, we evaluated the performance of AUTO-TUNE when subsampling a dataset.
 Since the \citep{rhee_national_2019} dataset exhibited a clear optimal peak, we
 used the dataset for analysis, and randomly sampled $10$ times from the entire
 dataset at $25\%$, $50\%$, and $75\%$ each. The original full dataset
@@ -609,7 +608,17 @@ standard deviation of $0.001629$. Finally, $75\%$ calculated mean is
 approximately $0.017403$, with a median of approximately $0.01699$. The
 standard deviation was $0.000924$.
 
-\TODO{explain why the trend of HIGHER thresholds for the SPARSER sampling makes sense}
+As the dataset becomes sparser due to subsampling, the algorithm tends to
+select higher distance thresholds. This phenomenon can be understood by
+considering the effect of reduced data density on network topology. Sparse
+datasets naturally result in less interconnected clusters. To capture a
+comparable level of network connectivity as in denser datasets, higher distance
+thresholds are necessary. This is evidenced by the observed mean thresholds:
+\(0.021509\) at \(25\%\), \(0.018581\) at \(50\%\), and \(0.017403\) at
+\(75\%\). The standard deviations also narrow as the sampling density
+increases, corroborating the increased precision of the threshold selection in
+denser datasets.
+
 
 As the proportion increased from $25\%$ to $50\%$ and $75\%$, observable shifts
 were also noted in the mean, median, and standard deviation of the AUTO-TUNE
