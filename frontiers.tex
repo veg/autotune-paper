@@ -564,9 +564,16 @@ that network inference can be highly sensitive to minute changes in the
 distance threshold. 
 
 For instance, the dataset used by \cite{dalai_combining_2018} had a score of
-exactly 2 at $0.01848$, but with a mere 0.00002 difference in thresholds,
-scores plummeted to $1.638$ and $0.826$ for candidates $0.01846$ and $0.0185$,
-respectively. 
+exactly 2 at \(0.01848\) with \( R_{12} = \frac{26}{12} \) and \( C = 10 \).
+However, a minuscule 0.00002 difference in thresholds led to dramatic changes
+in the composite score: \(1.63821\) at \(0.01846\) and \(0.826303\) at
+\(0.0185\). At \(0.01846\), both \( R_{12} \) and \( C \) remained consistent,
+but the score dropped, likely due to significant \( R_{12} \) jumps captured by
+the rolling window in the scoring heuristic. At \(0.0185\), \( R_{12} \)
+drastically shifted to \(\frac{39}{2}\) and \( C \) decreased to 9,
+contributing to the lower score. The \( R_{12} \) jump and the Gompertz
+function's penalty on lower \( C \) values collectively influenced these
+outcomes.
 
 A similar case was observed with \cite{bbosa_short_2020}, where no score above
 $1.9$ was detected, but a high score of $1.24153$ at threshold $1.707$ was
