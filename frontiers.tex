@@ -589,6 +589,15 @@ its higher composite score.
 
 \TODO{Also should include some motivation}
 
+To address the challenges of applying network inference algorithms to
+incompletely sampled datasets, this study includes a focused evaluation of
+AUTO-TUNE's performance across varying data densities. Given logistical
+limitations, obtaining a fully sampled HIV transmission network is often
+infeasible. Therefore, we label a dataset as 'full' to serve as a closest
+approximation of a fully sampled network. Using this dataset as a benchmark,
+we assess AUTO-TUNE's adaptability and robustness when applied to sparser
+datasets, a prevalent issue in real-world settings.
+
 Next, we evaluated the performance of AUTO-TUNE when subsampling a dataset.
 Since the \citep{rhee_national_2019} dataset exhibited a clear optimal peak, we
 used the dataset for analysis, and randomly sampled $10$ times from the entire
