@@ -636,7 +636,12 @@ Rate", "Recovered Exactly," and "Recovered but Disconnected.
 First, we evaluated the "clustered rate". The clustered rate is a ratio of the
 number of the clustered nodes found both in the full network and subsampled
 network to the number of the total nodes in the subsampled dataset that were
-clustered in the original full dataset.
+clustered in the original full dataset. When comparing the clustering rate
+between the AUTO-TUNE threshold against $1.5\%$ for all subsampled datasets,
+there was a consistent improvement when utilizing AUTO-TUNE's optimal threshold.
+At a 25\% subsampling level, the clustered rate when using optimal thresholds
+ranged from 0.71 to 0.76, whereas it was significantly lower, around 0.45 to
+0.52, when using a 1.5% threshold.
 
 As the sample proportion increased, an upward trend was noted in average
 AUTO-TUNE scores. Additionally, the standard deviation reduced significantly
