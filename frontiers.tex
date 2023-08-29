@@ -368,8 +368,7 @@ range of thresholds. Additionally, it generates a graph showing the number of
 clusters across candidate thresholds, one of the components that contribute to
 the score. The site also includes an R1/R2 plot that displays the ratio of the
 largest cluster to the second largest cluster across candidate thresholds,
-which is the other metric that contributes to the scoring heuristic. \TODO{this
-	could benefit from referencing a figure showing such plots}
+which is the other metric that contributes to the scoring heuristic. \label{}
 
 An assortativity tool is available at
 \url{http://autotune.datamonkey.org/assortativity}, and is an advanced
@@ -1098,5 +1097,18 @@ Germany & N/A & N/A & N/A & -0.049 & 0.043 & -0.117 & N/A \\
 		AUTO-TUNE scores (X-axis) for the three subsample proportions.
 	}\label{fig:subsampling}
 \end{figure}
+
+\begin{figure}[h!]
+	\caption{ (A) Box plot representing the AUTO-TUNE scores across ten random
+		samples at 25\%, 50\%, and 75\% of the \citep{rhee_national_2019} dataset,
+		showing a trend of increasing confidence in score estimates with denser
+		sampling. (B) Box plot of the selected distance thresholds across the same
+		random samples at 25\%, 50\%, and 75\% proportions, demonstrating improved
+		consistency in threshold selection with increased sample size. (C)
+		Scatterplot of the chosen thresholds (Y-axis) against their corresponding
+		AUTO-TUNE scores (X-axis) for the three subsample proportions.
+	}\label{fig:webapp}
+\end{figure}
+
 
 \end{document}
