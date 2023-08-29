@@ -525,13 +525,13 @@ hours to complete.
 
 Performance of the inferred optimal thresholds were determined using an average
 degree-weighted homophily (DWH) score across 3-year collection date windows
-starting from the oldest collection year for each respective dataset, as that
-is the metadata that was consistently available across all three datasets and
-was the attribute of focus used by {\tt clustuneR}. DWH in this case measures
-the affinity for nodes within the network to link with other nodes in the same
-collection date window. For example, samples collected between 2012-2015
-linking more often with other samples within the same time window would result
-in a higher DWH score. It was found that, across all three datasets, using the
+starting from the oldest collection year for each respective dataset, as that is
+the metadata that was consistently available across all three datasets and was
+the attribute of focus used by {\tt clustuneR}. DWH in this case measures the
+affinity for nodes within the network to link with other nodes in the same
+collection date window. For example, samples collected between 2012-2015 linking
+more often with other samples within the same time window would result in a
+higher DWH score. It was found that, across all three datasets, using the
 threshold with the highest score reported by AUTO-TUNE resulted in a higher
 average DWH score across all three datasets when compared to the clustuneR
 derived threshold. To complement the comparison between AUTO-TUNE and clustuneR,
@@ -540,6 +540,12 @@ observed in the Seattle, Tennessee, and Canada datasets. The test assessed the
 statistical significance of DWH score differences when thresholds selected by
 AUTO-TUNE were used versus those selected by clustuneR. Detailed p-values and
 statistical observations are provided in Table~\ref{table:wilcoxon-DWH}.
+Specifically, the Wilcoxon test results showed a significant difference in the
+Seattle dataset, suggesting that the DWH score is better optimized by AUTO-TUNE.
+For the Tennessee and Canada datasets, while the p-value was high, indicating
+less statistical significance, AUTO-TUNE still managed to provide comparable DWH
+scores. Overall, the results affirm that AUTO-TUNE, despite its computational
+efficiency, does not compromise on the accuracy of DWH scores.
 
 % Add something about Wilcoxon test
 % The p-values for the Wilcoxon sign test are 0.0018 for Seattle, 0.999 for Tennessee, and 0.1797 for Canada.
