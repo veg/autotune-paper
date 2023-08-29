@@ -534,7 +534,12 @@ linking more often with other samples within the same time window would result
 in a higher DWH score. It was found that, across all three datasets, using the
 threshold with the highest score reported by AUTO-TUNE resulted in a higher
 average DWH score across all three datasets when compared to the clustuneR
-derived threshold. 
+derived threshold. To complement the comparison between AUTO-TUNE and clustuneR,
+we performed a Wilcoxon test on the Degree-Weighted Homophily (DWH) scores
+observed in the Seattle, Tennessee, and Canada datasets. The test assessed the
+statistical significance of DWH score differences when thresholds selected by
+AUTO-TUNE were used versus those selected by clustuneR. Detailed p-values and
+statistical observations are provided in Table~\ref{table:wilcoxon-DWH}.
 
 % Add something about Wilcoxon test
 % The p-values for the Wilcoxon sign test are 0.0018 for Seattle, 0.999 for Tennessee, and 0.1797 for Canada.
