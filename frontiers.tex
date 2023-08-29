@@ -733,28 +733,27 @@ determination.
 
 \subsection{When a Score is Below 1.9}
 
-\TODO{add some text to explain that multiple scores at different thresholds could be indicative of inherently different scales in the network, e.g. global AND local combined into one}
+In some cases, multiple scores at different thresholds could suggest the presence of inherently different scales in the network. For instance, if a network combines both global and local transmission patterns, AUTO-TUNE may produce more than one high score, reflecting these different scales. This was observed in a study on HIV-1 CRF07_BC transmission networks in China, where two distinct clusters, 07BC_N and 07BC_O, showed different transmission routes and geographic concentrations. Such network complexities could mean that different thresholds might offer more accurate insights into subpopulations or transmission dynamics.
 
-The use of AUTO-TUNE, while offering a method for automated threshold
-selection, may not always provide a single, decisive score that unambiguously
-determines the optimal threshold. In certain situations, several candidate
-thresholds may yield similar AUTO-TUNE scores, making it difficult to single
-out one as the clear-cut 'optimal' threshold. In these scenarios, the process
-of threshold selection becomes more nuanced and requires a deeper analysis. The
-plot of AUTO-TUNE scores across candidate thresholds can serve as a valuable
-tool in these cases. For instance, researchers could identify a range of
-thresholds that all produce similar scores, suggesting that the specific choice
-of threshold within this range may not significantly impact the resulting
-network. Moreover, combining AUTO-TUNE with the DWH measure can enhance the
-interpretation of such plots. By considering how assortativity changes across
-the range of candidates, researchers can make more informed decisions about the
-appropriate choice. If there is a certain threshold at which the DWH measure
-noticeably changes for an attribute of interest, this could suggest a
-meaningful shift in the network structure that would be worth considering when
-selecting a threshold. The symbiotic approach of combining AUTO-TUNE scores,
-DWH measure, and visual analysis of score plots provides a more nuanced method
-for threshold selection when no clear optimal threshold emerges from the
-AUTO-TUNE scores alone.
+The use of AUTO-TUNE, while offering a method for automated threshold selection,
+may not always provide a single, decisive score that unambiguously determines
+the optimal threshold. In certain situations, several candidate thresholds may
+yield similar AUTO-TUNE scores, making it difficult to single out one as the
+clear-cut 'optimal' threshold. In these scenarios, the process of threshold
+selection becomes more nuanced and requires a deeper analysis. The plot of
+AUTO-TUNE scores across candidate thresholds can serve as a valuable tool in
+these cases. For instance, researchers could identify a range of thresholds that
+all produce similar scores, suggesting that the specific choice of threshold
+within this range may not significantly impact the resulting network. Moreover,
+combining AUTO-TUNE with the DWH measure can enhance the interpretation of such
+plots. By considering how assortativity changes across the range of candidates,
+researchers can make more informed decisions about the appropriate choice. If
+there is a certain threshold at which the DWH measure noticeably changes for an
+attribute of interest, this could suggest a meaningful shift in the network
+structure that would be worth considering when selecting a threshold. The
+symbiotic approach of combining AUTO-TUNE scores, DWH measure, and visual
+analysis of score plots provides a more nuanced method for threshold selection
+when no clear optimal threshold emerges from the AUTO-TUNE scores alone.
 
 The AUTO-TUNE methodology has several limitations. First, even though it
 provides the advantage of operating without the need for metadata, the size and
