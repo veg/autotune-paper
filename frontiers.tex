@@ -666,8 +666,11 @@ optimal threshold. Finally, at $75\%$ an average of $0.891$ at the optimal
 threshold compared to $0.874$ at 1.5\%.
 
 After revealing that nodes clustered in the full dataset are better captured by
-AUTO-TUNE thresholds, we evaluated how much of the recoverable clusters were,
-in fact, recovered.
+AUTO-TUNE thresholds, we evaluated how much of the potentially recoverable
+clusters were, in fact, recovered. While both the default `1.5\%` recovered
+over 90\% of recoverable clusters, accounting for those that were disconnected
+due to missing samples, we found that the AUTO-TUNE thresholds recovered a
+higher proportion of eligible clusters.
 
 % You can see that for all of the sampling rates, using optimal cutoffs for the full AND the subsampled network, vs 1.5\% for both, yields better concordance between the subsampled network and the full network (treated here as the “gold standard”)
 
