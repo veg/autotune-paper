@@ -26,7 +26,7 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{multirow}
-
+\usepackage[11pt]{moresize}
 \newcommand{\TODO}[1]{{\color{red}{#1}}}
 
 \lstset{
@@ -72,7 +72,7 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 \onecolumn
 \firstpage{1}
 
-\title { AUTO-TUNE: FINDING AN OPTIMAL DISTANCE THRESHOLD FOR INFERRING HIV TRANSMISSION CLUSTERS }
+\title { AUTO-TUNE: SELECTING THE DISTANCE THRESHOLD FOR INFERRING HIV TRANSMISSION CLUSTERS }
 
 \author[\firstAuthorLast ]{\Authors} %This field will be automatically populated
 \address{} %This field will be automatically populated
@@ -101,14 +101,13 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 	patients with shared attributes that could benefit from public health
 	intervention measures. Published research using the HIV-TRACE software package
 	frequently uses the default threshold of $1.5\%$ for HIV pol gene sequences,
-	but in many cases, investigators select other threshold parameters
-	(heuristically) to better capture the underlying dynamics of the epidemic they
-	are studying.
+	but in many cases, investigators heuristically select other threshold parameters
+	to better capture the underlying dynamics of the epidemic they are studying.
 
-	Here, we present a heuristic scoring approach for tuning a distance threshold
+	Here, we present a general heuristic scoring approach for tuning a distance threshold
 	adaptively, which seeks to prevent the formation of giant clusters (measured as
 	the ratio $R_{12}$ of the sizes of the largest and the second largest cluster),
-	and to maximize the number of clusters present in the network.
+	while maximizing the number of clusters present in the network.
 
 	We apply our scoring heuristic to outbreaks with different characteristics,
 	such as regional or temporal variability, and demonstrate the utility of using
@@ -120,7 +119,7 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 	optimal threshold of $0.5\%$ to better capture the transition from injected
 	drug use (IDU) to MSM as the primary risk factor. Alternatively, in communities
 	surrounding Lake Victoria, where there has been sustained transmission for
-	several years, we found that a larger distance threshold is suitable to capture
+	many years, we found that a larger distance threshold is necessary to capture
 	a more risk factor-diverse populace with sparse sampling over a longer period
 	of time. Such identification may allow for more informed intervention action by
 	respective public health officials.
@@ -133,34 +132,34 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 \section{Introduction}
 
 The use of genomic data to infer and characterize transmission networks of
-various pathogens has taken off in the past two decades, with applications to a
+various pathogens has grown in prominence in the past two decades, with applications to a
 growing list of microorganisms, including viruses such as HIV
 \citep{paraskevis_application_2016}, HCV \citep{murphy_molecular_2019} or
 influenza virus \citep{jombart_reconstructing_2011}, and bacteria such as $M.
 	tuberculosis$ \citep{mai_mycobacterium_2018} or $A. baumanii$
-\citep{thoma_challenge_2022}, just to mention some. Notably, genomic
+\citep{thoma_challenge_2022}. Notably, genomic
 surveillance had a prominent role during the COVID-19 pandemic, including the
 use of sequencing for the study of transmission clusters
-\citep{von_rotz_systematic_2023,campigotto_utility_2023}. On the whole,
-choosing an appropriate genetic distance threshold is an important part of
+\citep{von_rotz_systematic_2023,campigotto_utility_2023}. 
+Choosing an appropriate genetic distance threshold is an important part of
 using a molecular transmission network to track the spread of rapidly evolving
 pathogens \citep{liu_dynamics_2020,rose_persistence_2020}. This distance
-threshold defines the degree of genetic closeness required between pathogen
-sequences, isolated from two individuals, to suggest them as potential
+threshold defines the degree of genetic closeness between pathogen
+sequences, isolated from two individuals, required to suggest them as potential
 transmission partners in the network. Using a distance threshold that is too
-small can result in a network with many spurious, i.e. epidemiologically
-uninformative, links, making it difficult to interpret and analyze. On the
-other hand, using a distance threshold that is too large can result in a
-network with too few links, underestimating connections between individuals and
+large can result in a network with many spurious, i.e. epidemiologically
+uninformative (clusters are too big and too few), links, making it difficult to interpret and analyze. On the
+other hand, using a distance threshold that is too small can result in a
+network with too few links (clusters are too few and too small), underestimating connections between individuals and
 making it difficult to accurately track the spread of the disease
 \citep{gore_hiv_2022}.
 
-To optimize the utility of inferred transmission networks, it is important to
+To enhance the utility of inferred transmission networks, it is important to
 carefully consider the appropriate distance threshold, $d$. This threshold may
 vary depending on the specific disease and the context in which it is
-spreading. For example, a highly contagious respiratory illness may require a
-smaller $d$ than a less contagious illness that is primarily spread through
-direct contact. Viruses are more amenable to molecular studies compared to
+spreading. For example, a highly contagious acute respiratory illness (e.g., SARS-CoV-2) may require a
+smaller $d$ than a less contagious chronic illness that is primarily spread through
+direct contact (e.g., HIV-1). Viruses are more amenable to molecular studies compared to
 bacteria due to their high genetic divergence and compact genomes. Given the
 relatively high evolutionary rate of RNA viruses (compared to chromosomal DNA
 in humans) detectable genetic fingerprints can be targeted for epidemiological
@@ -190,31 +189,31 @@ many links that spurious connections are made and hinder the public health
 response. This can be achieved through careful analysis and consideration of
 the specific disease and context.
 
-This study introduces AUTO-TUNE, a novel method that offers a systematic
+This study introduces AUTO-TUNE, a method that offers a systematic
 approach to select genetic distance thresholds for molecular HIV transmission
 network analysis, based purely on the structure of the collected data. By
 autonomously optimizing clustering metrics derived from pairwise genetic
 distances, AUTO-TUNE has the potential to improve the accuracy and reliability
 of network inference, irrespective of data attributes. The AUTO-TUNE
-methodology's independence from supplementary data makes it robust to
+methodology's independence from supplementary data makes it less sensitive to
 variations in data collection protocols and enhances its adaptability to
 various contexts, including potentially other viral diseases.
 
 \section{Methods}
 
 Assume that there are $S$ aligned genomic sequences (full or partial, e.g. the
-HIV-1 pol gene) for a pathogen of interest, each representing the circulating
+HIV-1 pol gene) for a pathogen of interest, each representing the "consensus" circulating
 viral diversity at the time of sampling in a single infected individual. We
 shall infer a putative transmission network comprising $S$ nodes, and $E$ links
 (edges), where an edge is drawn between a pair of sequences if the genetic
-distance between them is below a threshold $d$. In such a network, there will
-be $1\leq C \leq S$ connected components (clusters), which are the primary
+distance between them is at or below a threshold $d$. In such a network, there will
+be $0 \leq C < S$ connected components with more than one node (clusters), which are the primary
 object of inference. This network inference strategy is used by HIV-TRACE
 \citep{kosakovsky_pond_hiv-trace_2018}, where the genetic distance is computed
-using the Tamura-Nei (TN93) \citep{tamura_estimation_1993} approach, with a
+using the Tamura-Nei (TN93) \citep{tamura_estimation_1993} model, with a
 variety of options controlling how to deal with ambiguous nucleotide bases; for
 HIV-1 such bases are informative since they often represent variants
-co-circulating in the infected individual at the time of sampling.
+co-circulating in the infected individual at the time of sampling at substantial frequencies.
 
 We begin by describing an approach to assign a score to each of the choices of
 $d$ in a plausible/informative range of distances. Note that while such a range
@@ -225,17 +224,17 @@ $d$ is increased.
 
 \subsection{Scoring Heuristic Procedure}
 
-Network threshold selection procedure proceeds as follows:
+The network threshold selection procedure proceeds as follows (we provide an example in the Results section as well).
 
 \begin{enumerate}
-	\item{For each candidate threshold $d_L$, in increasing order, ranging from the smallest genetic distance in the dataset, up to either the largest distance or a predetermined maximal threshold, we compute two network statistics: $R_{12}$, the ratio of the size of the largest cluster to the size of the second largest cluster, and $C$ – the number of clusters in the network at this threshold.}
+	\item{For each candidate threshold $d_L$, in increasing order, ranging from the smallest genetic distance in the dataset, up to either the largest distance or a predetermined maximal threshold, we compute two network statistics: $R_{12}$, the ratio of the size of the largest cluster to the size of the second largest cluster, and $C$ – the number of clusters in the network at this threshold. A cluster is defined as a connected component in the network with at least two nodes.}
 
-	\item{ A priority score is assigned to each $d_L$. This score measures two properties of the threshold: Does $R_{12}$ jump at $d_L$? How far is the number of clusters $C$ at $d_L$ from the maximal number of clusters over all threshold values? Let there be $N$ overall $d_L$ candidate values, and assume we are examining the ith candidate, $d_L^i$ with $W < i \leq N - W$ ($W$ is a positive integer defined below).
+	\item{ A priority score is assigned to each $d_L$. This score measures two properties of the threshold: Does $R_{12}$ jump at $d_L$? How far is the number of clusters $C$ at $d_L$ from the maximal number of clusters computed over all threshold values? Let there be $N$ overall $d_L$ candidate values, and assume we are examining the ith candidate, $d_L^i$ with $W < i \leq N - W$ ($W$ is a positive integer defined below).
 
 	            \begin{enumerate}
 		            \item{The $R_{12}$ jump is computed by looking at the normalized ratio of the mean $R_{12}$ values computed over the leading window $d_L^{i+1}…d_L^{i+W}$ and the trailing window $d_L^{i-W}… d_L^{i-1}$. The width of the window, $W$, is defined as $\min \left( \max \left(\left[\frac{N}{100}\right], 3\right), 30 \right)$. The distribution of ratios is converted to $Z$ scores, and normalized relative to the largest positive $Z$ score across all candidate distances, yielding the jump component of the score.}
-		            \item{The number of clusters, $C_i$ at threshold $d_L^i$ is first normalized to $[0,1]$ through $\frac{{C_{max} - C_i}}{{C_{max} -C_{min}}}$ and next gated via a Gompertz function transform ${1-e}^{-e^{-25x+3}}$ This function provides an \emph{ad hoc} means for penalizing having too few clusters relative to the maximum over all ranges. For example, a threshold that yields $95\%$ of the maximal number of clusters receives a score of $0.996$, while a threshold that yields $85\%$ - a score of $0.376$.}
-		            \item{The priority score for $d_L^i$ is the sum of the two components defined in (a) and (b).}
+		            \item{The number of clusters, $C_i$ at threshold $d_L^i$ is first normalized to $[0,1]$ through $\frac{{C_{max} - C_i}}{{C_{max} -C_{min}}}$ and next gated via a Gompertz function transform ${1-e}^{-e^{-25x+3}}$. This function provides an \emph{ad hoc} means for penalizing having too few clusters relative to the maximum over all ranges. For example, a threshold that yields $95\%$ of the maximal number of clusters receives a score of $0.996$,  a threshold that yields $85\%$ - a score of $0.376$, and a threshold that yields $60\%$ - a score of $0.0009$.}
+		            \item{The priority score for $d_L^i$ is the sum of the two components defined in (a) and (b), and ranges from 0 to 2.}
 	            \end{enumerate}}
 
 	\item{The threshold with the highest priority score will be selected as the suggested automatic distance threshold, if the score is high enough ($1.9$ or more), and either of the two conditions hold.
@@ -254,46 +253,44 @@ network based on their attributes (such as demographic characteristics or
 behaviors) and their degree (i.e., the number of connections they have to other
 nodes in the network). It is used to quantify the extent to which nodes with
 similar attributes tend to be connected to each other more frequently than
-would be expected by chance \citep{golub_how_2012}. DWH is calculated as the
+would be expected by chance\cite{RePEc:adr:anecst:y:2012:i:107-108:p:33-48}. DWH is calculated as the
 ratio of the observed number of connections between nodes with similar
 attributes to the expected number of connections between such nodes, based on
 their network degree.
 
-In mathematical terms, it is defined as:
+For any two subsets $A$ and $B$ of nodes in a network without singletons (each node has a positive degree), define the weight between $A$ and $B$ as 
+    
+ \[
+ W_{A,B} = \frac{1}{|A||B|} \sum_{i \in A, j\in B, (i,j) \text{are connected}} \frac{1}{d_i d_j},
+ \]
+ 
+ where $d_i$ is the degree of node $i$, and $|X|$ is the cardinality (size) of subset $X$.
+ 
+ Then for any proper (not empty and not the complete network) subset of the network, $G$, e.g. a group of nodes sharing an attribute, e.g., transmission risk factor, define 
+ 
 \begin{equation}
-	DWH = \frac{W_M + W_C - 2W_X}{\frac{d_{in}}{nodes_{in}^2} + \frac{d_{out}}{nodes_{out}^2}}
+	DWH = \frac{W_{G,G}+ W_{\bar G, \bar G} - 2W_{G,\bar G}}{|G|^{-2}\sum_{i\in G} 1 / d_i + |\bar G|^{-2}\sum_{i\in \bar G} 1 / d_i },
 \end{equation}
 
-Where
+with
 \begin{itemize}
-	\item{$W_M$ : Weight of in-group connections}
-	\item{$W_C$ : Weight of out-group connections}
-	\item{$W_X$ : Weight of cross-group connections}
-	\item{$d_{in}$ : In-group degree}
-	\item{$d_{out}$ : Out-group degree}
-	\item{$nodes_{in}$ : number of in-group nodes}
-	\item{$nodes_{out}$ : number of out-group nodes}
+	\item{$\bar G$ : the complement of $G$ (all nodes not in $G$)}
+	\item{$d_i$ : the degree of node $i$}
 \end{itemize}
 
 DWH ranges from $-1$ to $1$. A DWH value of $0$ indicates that there is no more
-homophily than expected with chance, while a value of $1$ indicates that there
-is perfect homophily (e.g. birds always link to birds, and only birds). A value
-of $-1$ is achieved for perfectly disassortative networks (e.g. a bird never
-linking with another bird).
+homophily than expected by chance (conditioned on network structure), while a value of $1$ indicates that there
+is perfect homophily ($G$ consists of connected components disconnected from the rest of the network). A value
+of $-1$ is achieved for perfectly disassortative networks (the only links are between $G$ and $\bar G$).
 
-DWH has been used extensively in social network analysis and in the study of
+DWH has been used in social network analysis and in the study of
 how different attributes are related to the formation of connections between
-individuals. It is used as a way to measure the similarity of attributes
-between individuals in a network. Additionally, randomization is performed by
-shuffling attribute labels among nodes, then performing DWH computation. This
-is useful in creating a null distribution of DWH scores under random mixing. A
-panmictic range is reported by shuffling attributes multiple times and
-reporting the minimum and maximum score.
+individuals. To assess whether or not DWH is significantly different from $0$ (and from random expectation), we generate the null distribution of DWH obtained by randomly reshuffling node attributes used to define group $G$ and recomputing DWH for each such replicate.
 
 \subsection{Implementation}
 
 The software implementation involves a step-by-step process that utilizes the
-HIV-TRACE suite of packages. It starts with calculating pairwise distances wth
+HIV-TRACE suite of packages. It starts with calculating pairwise distances with
 the {\tt tn93} tool and a supplied multiple sequence alignment. Thus generated
 pairwise distances are supplied to the {\tt hivnetworkcsv} script while
 providing the {\tt -A} keyword argument. A brief outline of the software's
@@ -301,9 +298,9 @@ implementation is as follows
 
 \begin{enumerate}
 
-	\item{ Calculate pairwise distances: The user first calculates the pairwise distances using the {\tt tn93} fast pairwise distance calculator, providing the maximum threshold value to consider ($0.03$ in this case) and the input FASTA file. The command for this step is
+	\item{ Calculate pairwise distances: The user first calculates the pairwise distances using the {\tt tn93} fast pairwise distance calculator, providing the maximum threshold value to consider ($0.03$ in this case, which may be revised upwards for sufficiently divergent sequences, as this provides an upper bound of thresholds to consider) and the input FASTA file. The command for this step is
 	            \begin{lstlisting}[style=BashInputStyle]
- tn93 -t 0.030 pol.fasta > pairwise_distances.15.tn93.csv
+ tn93 -t 0.030 -a RYMSBK -g 0.05 pol.fasta > pairwise_distances.15.tn93.csv
 \end{lstlisting}
 
 	            Please note that the threshold should include the maximal range one is
@@ -311,7 +308,7 @@ implementation is as follows
 
 	      }
 
-	\item {Compute distance threshold scores: The {\tt hivnetworkcsv} script is then executed with the required input file, format, and autotune option to generate a tab-separated output file, as shown below
+	\item {Compute priority scores for each candidate threshold: The {\tt hivnetworkcsv} script is then executed with the required input file, format, and autotune option to generate a tab-separated output file, as shown below
 	      \begin{lstlisting}[style=BashInputStyle]
  hivnetworkcsv -i pairwise_distances.15.tn93.csv -f plain -A 0 > autotune_report.tsv
 \end{lstlisting}
@@ -337,24 +334,20 @@ hivnetworkannotate -n hivtrace.results.json -a node_attributes.json -g schema.js
 
 	      \item{ Analyze the results with DWH: After the results file has been annotated, the user can proceed to the assortativity page, \url{http://autotune.datamonkey.org/assortativity}, for further analysis of the output. }
 
-	      AUTO-TUNE is readily accessible on GitHub as part of the {\tt hivclustering}
+	      AUTO-TUNE is  accessible on GitHub as part of the {\tt hivclustering}
 	      repository (\url{https://github.com/veg/hivclustering})). It is integrated into
 	      the command-line interface of the software as the {\tt -A} or {\tt
 			      --auto-profile} argument. {\tt hivclustering} is a key component of the
 	      HIV-TRACE suite of tools, a resource for the inference, analysis, and
 	      visualization of HIV transmission networks.
 
-	      The Degree Weighted Homophily (DWH) calculation tool, an integral component of
-	      the assortativity step, is developed using {\tt TypeScript}, a statically typed
+	      The Degree Weighted Homophily (DWH) calculation tool, was developed using {\tt TypeScript}, a statically typed
 	      superset of {\tt JavaScript} that ensures robustness and scalability. In an
 	      effort to promote accessibility and ease of integration, the DWH tool is
 	      packaged and distributed through the Node Package Manager (npm), enabling
 	      researchers and developers to conveniently incorporate this advanced analytical
 	      tool into their own projects and workflows. DWH can be used in-browser or as a
-	      command-line tool, allowing researchers and developers to employ the tool in an
-	      interactive command-line interface or integrate it into larger software
-	      applications, thus catering to a diverse array of technical needs and
-	      preferences. Instructions for usage and installation are found on Github
+	      command-line tool. Instructions for usage and installation are found on Github
 	      (\url{https://github.com/veg/dwh}).
 
 \end{enumerate}
@@ -366,52 +359,51 @@ distances to visualizing and annotating results.
 \subsection{Visualization}
 
 Visualizations of AUTO-TUNE results are accessible at
-\url{http://autotune.datamonkey.org/analyze}. It is a dynamic and interactive
-web-based platform that offers visualization and analysis of results generated
-by AUTO-TUNE. The website provides a comprehensive view of the data by
-generating various plots across candidate distance thresholds. These include a
-score plot, allowing users to identify trends and anomalies across the full
-range of thresholds. Additionally, it generates a graph showing the number of
-clusters across candidate thresholds, one of the components that contribute to
-the score. The site also includes an R1/R2 plot that displays the ratio of the
-largest cluster to the second largest cluster across candidate thresholds,
-which is the other metric that contributes to the scoring heuristic.
-\label{fig:webapp}
-
-An assortativity tool is available at
-\url{http://autotune.datamonkey.org/assortativity}, and is an advanced
+\url{http://autotune.datamonkey.org/analyze}. These include the priority
+score plot, and the two contributing statistics: cluster count relative to the maximum and 
+the ratio of two largest cluster sizes.
+\label{fig:webapp} An assortativity tool is available at
+\url{http://autotune.datamonkey.org/assortativity}, and is an 
 analytical tool engineered to facilitate the calculation of Degree Weighted
 Homophily (DWH) values. It utilizes the DWH NPM package to generate a tabular
 representation of DWH values corresponding to each value for a selected
 attribute annotation, providing an exhaustive examination of the
-interrelationships for the field. A notable feature is the computation of the
-panmictic range, which involves a label permutation test to generate the null
+interrelationships for the field. The tool also computes the
+panmictic (null) range, which involves a label permutation test to generate the null
 distribution of DWH values. This feature establishes a comparative baseline
 that aids in determining the significance of homophily versus what would be
-expected by chance. Lastly, the site also provides a plot of the fraction of
-pairwise connections, normalized by degree, for each value pertinent to the
-selected field. This visual depiction facilitates an intuitive comprehension of
-the distribution and interconnections within the dataset.
+expected by chance. 
 
-The site aims to offer a user-friendly interface for data visualization,
-playing an important role in interpreting and understanding AUTO-TUNE's output
-data. The visualization code is available on Github
+The visualization code is available on Github
 (\url{https://github.com/stevenweaver/autotune-app/}).
 
 \subsection{Comparisons with previously published analyses}
 
-In conducting our comparisons with the established {\tt clustuneR} method
-\citep{chato_public_2020}, we procured datasets from \citep{wolf_short_2017}
+First, we set out to compare the thresholds used in numerous published
+studies with those obtained by AUTO-TUNE. To select the data sets for
+this analysis, we conducted a scientific literature search to identify studies
+focused on HIV networks for public health purposes. We then filtered the
+studies that utilized HIV-TRACE to infer genetic networks and had publicly
+available sequences. Due to privacy concerns, HIV-1 sequences are frequently not released in the public domain
+\cite{Inzaule:2023aa}.
+
+We attempted to include studies from different
+countries and regions, enabling us to assess the performance of our method
+across various epidemic contexts, risk groups, and network sizes in real-data
+sets that used variable clustering thresholds.
+
+Second, we compared AUTO-TUNE with the most direct published alternative: the {\tt clustuneR} method
+\citep{chato_public_2020}. We procured datasets from \citep{wolf_short_2017}
 and \citep{vrancken_multi-faceted_2017} utilizing the identical approach
 delineated in \cite{chato_public_2020}. These datasets, namely Middle
-Tennessee, Seattle, and Alberta, were processed using the workflow prescribed
+Tennessee, Seattle, and Alberta were processed using the workflow described
 in Section 2.3. This enabled us to determine an optimal threshold for each
 dataset using AUTO-TUNE. We further executed the command as detailed in step 4
 of Section 2.3, deploying thresholds previously established as optimal by
-\citep{chato_public_2020}.
+\citep{chato_public_2020}. Note that  {\tt clustuneR} requires and uses temporal information (dates sequences were collected), while AUTO-TUNE does not.
 
-To perform comparisons, we computed the average degree-weighted homophily score
-over a set of three-year sliding windows. Specifically, the homophily among
+As there is no gold standard for determining what an "optimal" threshold is (e.g., \citet{chato_public_2020} use a cluster growth measure),
+here we computed the average degree-weighted homophily score over a set of three-year sliding windows. Specifically, the homophily among
 nodes was calculated for a collection of date ranges as follows:
 
 \begin{equation} \bar{H} = \frac{1}{N}\sum_{i=1}^{N} H(w_i) \end{equation}
@@ -421,30 +413,129 @@ the total number of sliding windows, $H(w_i)$ is the homophily score for the
 $i$-th window, and the windows $w_i$ correspond to the date ranges, e.g.,
 '2012-2015', '2013-2016', '2014-2017', etc. This methodology allowed us to
 compare the "best thresholds" derived from our proposed AUTO-TUNE method
-against those defined as optimal in \citep{chato_public_2020}.
+against those defined as optimal in \citep{chato_public_2020} using an alternative approach, 
+which makes use of the expectation of assortativity in HIV-1 transmission networks.
+We can also examine how AUTO-TUNE thresholds perform in the predictive growth sense; 
+of course, by definition, they will be somewhat suboptimal to {\tt clustuneR}, which optimizes the measure directly.
 
-Second, we set out to compare the thresholds obtained in numerous published
-investigations with those obtained by AUTO-TUNE. To select the data sets for
-this analysis, we conducted a scientific literature search to identify studies
-focused on HIV networks for public health purposes. We then filtered the
-studies that utilized HIV-TRACE to infer genetic networks and had publicly
-available sequences. Thus, we attempted to include studies from different
-countries and regions, enabling us to assess the performance of our method
-across various epidemic contexts, risk groups, and network sizes in real-data
-sets that used variable clustering thresholds.
-
-In order to evaluate the influence of sampling density on the genetic distance
+Lastly, we evaluated the effect of sampling density on the genetic distance
 threshold as determined by AUTO-TUNE, we implemented a strategy of random
 subsampling from the original dataset sourced from \citep{rhee_national_2019}.
 This study was selected due to its satisfactory AUTO-TUNE score when utilized
 in its entirety, as well as its inherent design as a Geographically-Stratified
 set of 716 Pol Subtype/CRF (GSPS) reference sequence dataset. The dataset,
-which comprises 6034 samples gathered between 1959 and 2016, was subjected to
+which comprises 6034 samples gathered between 1989 and 2016, was subjected to
 random subsampling ten times at proportions of $25\%$, $50\%$, and $75\%$ of
 the original sample size. For each subsample, the optimal threshold and
 associated scores were determined via AUTO-TUNE.
 
 \section{Results}
+
+\subsection{Comparisons with published HIV-1 molecular epidemiology studies}
+
+We selected several publications citing HIV-TRACE, which also made  some or all of the sequence data publicly available (Table~\ref{tab:paperComparison}, ~\ref{tab:paperComparison2}). 
+These studies adopted several different approaches for selecting genetic distance thresholds, including using US CDC guidelines \citep{yan_central_2020}, picking thresholds based on prior studies \citep{sivay_hiv-1_2018}, and visually inspecting the numbers of clusters and nodes in the networks across
+candidate distance thresholds \citep{liu_dynamics_2020}. Notably, these
+thresholds, often qualitatively determined, tended to be round numbers andwere usually determined using {\it ad hoc} or subjective procedures. 
+Some studies stratified their analyses by viral subtype (major clade), while others did not (or this was not applicable).
+
+
+\begin{table}[h]
+	\caption{Comparison of AUTO-TUNE and hand-selected thresholds from prior studies using partial HIV-1 polymerase gene sequences. $N$ : the number of sequences; $L$: length of the multiple sequence alignment, bp; $E[D]$ mean pairwise TN93 distance; $\star$ : the corresponding priority score is $\geq 1.9$; $\ddag$ : there is significant ambiguity in how to choose a threshold (see text); $\bullet$ : only a subset of the complete dataset was made available}
+	\vspace{10pt}
+	\centering
+	\begin{ssmall}
+	\label{tab:paperComparison}
+	\begin{tabular}{ccccccccc}
+	   \hline
+		Reference     & $N$ & $L$ & $E[D]$ & Scope & Location/Country      & Timespan & \multicolumn{2}{c}{Distance threshold, \%}\\
+		     &  &       &  &  & & & Published & AUTO-TUNE \\
+		\hline
+		\citet{sivay_hiv-1_2018} & 201 & 1302 & 6.9\% & Province & Mpumalanga, South Africa & 2011-2015       & 2.5          &2.467   \\
+		\cite{dalai_combining_2018} & 317 & 1044 & 5.5\% & City & San Mateo, CA, USA          & 1997-2008       & 2            & 1.944   \\
+		\cite{h_acquisition_2021} & 2786 & 1569 & 9.2\% & City & Guangzhou, China        & 2008-2015       & 0.5          & 0.716   \\
+		\cite{bbosa_short_2020} &2018 &  1257 & 9.3\% & Country  & Uganda       & 2009-2016       & 1.5          & 2.035 $\star$  \\
+		\cite{liu_dynamics_2020}  & 1907 & 1053 & 5.3\% & City & Shenyang, China        & 2008-2016       &  0.5/0.7   & 0.676  \\
+		\cite{h_acquisition_2021} & 1693 &1569&  9.6\%& City & Guangzhou, China        & 2008-2012       & 1.5          & 0.19  $\ddag$   \\
+		\cite{brenner_role_2021}  & 10,945/448 $\bullet$ & 738 & 18.1& Province & Quebec, Canada       & 2002-2020       & 1.5/2.5\    & 0.47$\star$   \\
+		\cite{rhee_national_2019} & 4553 & 897& 6.1\% & State & CA, USA          & 1998-2016       & 1.5          & 1.14$\star$   \\
+		\cite{Little:2014aa} & 646 & 1212 & 5.9\%& City & San Diego, CA, USA & 1996-2011 &  1.5 &  2.495\\
+		\cite{Zai:2020aa} & 209 & 1056 & 1.6\% & Country & China & 2007–2015 & 0.2 & 0.255 \\
+		\cite{Gibson:2019aa} & 1977 & 1027 & 9.3\% & City & Washington DC, USA & 1987–2015 & 1 & 1.73 $\ddag$\\
+		\cite{Stecher:2018aa} & 2774 & 1028 & 14.8\% & Multi-City & Germany & 1999-2016 & 1.5 & 3.1\\
+		\cite{Temereanca:2017aa} & 37 & 1302 & 6.7\% & City & Bucharest, Romania & 2010-2013 & 1.5 & 0.194 \\
+		\cite{Fabeni:2020aa} & 726 & 1029 & 11.8\% & Country & Italy & 1998-2018 & 1.0 & 1.1 $\ddag$ $\bullet$ \\
+		\cite{Chen:2023aa} & 209 & 1050 & 8.7\% & Province & Guangxi, China & 2016-2018 & 0.75 & 1.89 $\bullet$ \\
+		\cite{Billings:2019aa} & 150 & 1597 & 8.5\% & City & Lagos, Nigeria & 2013-2016 & 1.5 & 2.33 \\ 
+		\cite{Li:2022aa} & 295 & 1206 & 7.8\%& Prefecture & Pu'er, China & 2021 & 1.3 & 1.658\\
+		\cite{Yu:2022aa} & 316 & 1074 & 7.9\% & Province & Guangxi, China & 2012-2018 & 1.3 & 1.178 \\
+		\cite{Leal:2020aa} & 630 & 990 & 17\% & State & Maranhão, Brazil & 2008-2017 & 2.0 & 4.033 \\
+		\hline
+	\end{tabular}
+	\end{ssmall}
+\end{table}
+
+\begin{table}[h]
+	\caption{Network properties at the published and AUTO-TUNE thresholds. When the original paper used more than one threshold, we selected the largest for comparison.}
+	\vspace{10pt}
+	\centering
+	\begin{ssmall}
+	\label{tab:paperComparisonProp}
+	\begin{tabular}{cccccccc}
+	   \hline
+		Reference  & Score & \multicolumn{2}{c}{Nodes in network} &  \multicolumn{2}{c}{Clusters in network} & \multicolumn{2}{c}{$R_{12}$} \\
+		& & Published & AUTO-TUNE & Published & AUTO-TUNE  & Published & AUTO-TUNE \\
+	 \hline
+		\citet{sivay_hiv-1_2018} & 1.48 & 51 & 50 & 19 & 19 & 1.5 & 1.33 \\
+		\citet{dalai_combining_2018} & 1.84 & 60 & 54 & 9 & 11 & 22 & 2.6 \\
+		\cite{h_acquisition_2021}  & 1.26 & 2054 & 1175 &  208 & 171 & 2.3 & 1.4 \\
+		\cite{bbosa_short_2020}  & 1.96 & 223 & 296 &  119 & 102 & 2.2 & 1.6 \\
+		\cite{liu_dynamics_2020}  & 1.10 & 885 & 781 &  156 & 164 & 6.0 & 4.0 \\
+		\cite{h_acquisition_2021}  & 1.00 & 1084 & 186 &  69 & 124 & 2.0 & 1.1 \\
+		\cite{brenner_role_2021}  & 1.90 & 92 & 52 & 18 & 21 & 2.88 & 1.25 \\
+		\cite{rhee_national_2019}  & 1.95 & 2042 & 1635 & 523 & 488 & 13.2 & 1.5 \\
+		\cite{Little:2014aa}  & 1.31 & 301 & 394 & 98 & 87 & 2.5& 6.0 \\
+		\cite{Zai:2020aa}  & 1.40 & 94 & 100 & 25 & 28 & 1.5 & 1.5 \\
+		\cite{Gibson:2019aa} & 1.06 & 174 & 426 & 75 & 131 & 1.4 & 11.2 \\
+		\cite{Stecher:2018aa} & 1.22 & 98 & 510 & 36 & 140 & 2.2 & 4.6 \\
+		\cite{Temereanca:2017aa} & 1.79 & 32 & 16 & 5 & 4 & 3 & 1.5 \\
+		\cite{Fabeni:2020aa}  & 1.00 & 611 & 618 & 191 & 189 & 1.9 & 1.5\\
+		\cite{Chen:2023aa} & 1.12 & 22 & 93 & 9 & 20 & 1.3 & 1.8 \\
+		\cite{Billings:2019aa} & 1.14 & 49 & 78 & 17 & 23 & 2 & 2.3 \\
+		\cite{Li:2022aa} &  1.57 & 99 & 119 & 33 & 33 & 2.83 & 3.0\\
+		\cite{Yu:2022aa} &  1.76 & 57 &  51 & 19 & 19 & 3.25 &1.75\\
+		\cite{Leal:2020aa}  & 1.20 & 27 & 168 & 13 & 38 & 1.5 & 1.6\\
+
+	\hline
+	\end{tabular}
+	\end{ssmall}
+\end{table}
+
+
+%For instance, the dataset used by \cite{dalai_combining_2018} had a score of
+%exactly 2 at \(0.01848\) with \( R_{12} = \frac{26}{12} \) and \( C = 10 \).
+%However, a minuscule 0.00002 difference in thresholds led to dramatic changes
+%in the composite score: \(1.63821\) at \(0.01846\) and \(0.826303\) at
+%\(0.0185\). At \(0.01846\), both \( R_{12} \) and \( C \) remained consistent,
+%but the score dropped, likely due to significant \( R_{12} \) jumps captured by
+%the rolling window in the scoring heuristic. At \(0.0185\), \( R_{12} \)
+%drastically shifted to \(\frac{39}{2}\) and \( C \) decreased to 9,
+%contributing to the lower score. The \( R_{12} \) jump and the Gompertz
+%function's penalty on lower \( C \) values collectively influenced these
+%outcomes.
+
+%A similar case was observed with \cite{bbosa_short_2020}, where no score above
+%$1.9$ was detected, but a high score of $1.24153$ at threshold $1.707$ was
+%found, contrasting with the used threshold of $1.5\%$, which had a score of
+%$0.0124$. To gain further insight into what is influencing the score, it was
+%found that the threshold of \(0.01707\) had a more balanced \( R_{12} \) ratio
+%of \( \frac{16}{12} = 1.33 \) and a higher number of clusters (\( C = 109 \))
+%compared to the threshold of \(0.015\), which had an \( R_{12} \) ratio of \(
+%\frac{12}{5} = 2.4 \) and \( C = 103 \). The Gompertz function in the scoring
+%heuristic penalizes having too few clusters relative to the maximum, making the
+%higher \( C \) value at \(0.01707\) less penalized and thereby contributing to
+%its higher composite score.
+
 
 \subsection{Evaluating Performance using DWH}
 
@@ -561,48 +652,6 @@ $0.0089$, and $0.0084$ for Seattle, northern Alberta, and Tennessee,
 respectively. This implies there may be multiple thresholds that would be
 considered reasonable, and downstream homophily metrics with attributes may aid
 in coming to a decision.
-
-\subsection{Comparison with Prior Publications Citing HIV-TRACE}
-
-We curated publications citing HIV-TRACE, ensuring public accessibility of the
-data associated with the respective studies \citep{rhee_national_2019,
-	brenner_role_2021, h_acquisition_2021, liu_dynamics_2020, bbosa_short_2020,
-	yan_central_2020, dalai_combining_2018, sivay_hiv-1_2018}. The analysis
-revealed different methodologies for determining distance thresholds. These
-include the precedent set by the CDC for detecting recent and rapid clusters
-\citep{yan_central_2020}, referencing thresholds from prior studies
-\citep{sivay_hiv-1_2018}, and visual inspection of clusters and nodes across
-candidate distance thresholds \citep{liu_dynamics_2020}. Notably, these
-thresholds, often qualitatively determined, tended to be round numbers and were
-only marginally adapted to the specific geographic regions of research
-(\autoref{tab:paperComparison}). Upon application of AUTO-TUNE to these
-datasets, we inferred dataset-specific thresholds. The analysis underscored
-that network inference can be highly sensitive to minute changes in the
-distance threshold.
-
-For instance, the dataset used by \cite{dalai_combining_2018} had a score of
-exactly 2 at \(0.01848\) with \( R_{12} = \frac{26}{12} \) and \( C = 10 \).
-However, a minuscule 0.00002 difference in thresholds led to dramatic changes
-in the composite score: \(1.63821\) at \(0.01846\) and \(0.826303\) at
-\(0.0185\). At \(0.01846\), both \( R_{12} \) and \( C \) remained consistent,
-but the score dropped, likely due to significant \( R_{12} \) jumps captured by
-the rolling window in the scoring heuristic. At \(0.0185\), \( R_{12} \)
-drastically shifted to \(\frac{39}{2}\) and \( C \) decreased to 9,
-contributing to the lower score. The \( R_{12} \) jump and the Gompertz
-function's penalty on lower \( C \) values collectively influenced these
-outcomes.
-
-A similar case was observed with \cite{bbosa_short_2020}, where no score above
-$1.9$ was detected, but a high score of $1.24153$ at threshold $1.707$ was
-found, contrasting with the used threshold of $1.5\%$, which had a score of
-$0.0124$. To gain further insight into what is influencing the score, it was
-found that the threshold of \(0.01707\) had a more balanced \( R_{12} \) ratio
-of \( \frac{16}{12} = 1.33 \) and a higher number of clusters (\( C = 109 \))
-compared to the threshold of \(0.015\), which had an \( R_{12} \) ratio of \(
-\frac{12}{5} = 2.4 \) and \( C = 103 \). The Gompertz function in the scoring
-heuristic penalizes having too few clusters relative to the maximum, making the
-higher \( C \) value at \(0.01707\) less penalized and thereby contributing to
-its higher composite score.
 
 \subsection{The Effect of Subsampling on Optimal Thresholds and AUTO-TUNE Scores}
 
@@ -843,7 +892,7 @@ accountable for the content of the work. Please see
 for full authorship criteria.
 
 \section*{Funding}
-Details of all funding sources should be provided, including grant numbers if applicable. Please ensure to add all necessary funding information, as after publication this is no longer possible.
+SLKP and SW were supported in part by grant funding from the NIH, grants AI134384, AI140970, GM144468, and GM110749.
 
 \section*{Acknowledgments}
 This is a short text to acknowledge the contributions of specific colleagues, institutions, or agencies that aided the efforts of the authors.
@@ -853,7 +902,7 @@ This is a short text to acknowledge the contributions of specific colleagues, in
 
 \section*{Data Availability Statement}
 
-Data are available at GenBank accession numbers
+Data were generated by original studies cited herein, and are available at GenBank accession numbers
 JX160108-JX161480,JX498971-JX498972,JX498976-JX498990,JX498992-JX499018,KU190031-KU190839,KY34691-KY37792,KY883695-KY883762,KY888784-KY888875,KY921717-KY921757,MG434786-MG435347,MG435358-MG436769,MH352627-MH355541,MK25232-MK25548,MN424584-MN427369,MT336755-MT336776,MT368043-MT369927.
 
 \bibliographystyle{Frontiers-Harvard} %  Many Frontiers journals use the Harvard referencing system (Author-date), to find the style and resources for the journal you are submitting to: https://zendesk.frontiersin.org/hc/en-us/articles/360017860337-Frontiers-Reference-Styles-by-Journal. For Humanities and Social Sciences articles please include page numbers in the in-text citations 
