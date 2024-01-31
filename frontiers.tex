@@ -450,7 +450,7 @@ A direct comparison with published networks is impossible because only the
 underlying sequence data (and often only some of the sequences) are made
 available, not the networks themselves. None of the papers include all the
 details of the bioinformatics workflows necessary to recreate the networks. To
-facilitate comparison here, we used distance thersholds and all available
+facilitate comparison here, we used distance thresholds and all available
 sequences from primary publications to infer transmission networks anew (the
 scripts for doing so and the corresponding settings are available in
 \url{github.com/veg/auto-tune}) and compare them with the networks obtained
@@ -531,7 +531,7 @@ within subtypes.
 
 
 \begin{table}[h]
-	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using partial HIV-1 polymerase gene sequences. $N$ : the number of sequences; $L$: length of the multiple sequence alignment, bp; $E[D]$ mean pairwise TN93 distance; (the studies are sorted on this column, in ascending order) $\P$: the original study performed thershold tuning (varied methods); $\dagger$ : distance thresholds were specifc to subtypes; $\star$ : the corresponding AUTO-TUNE score is $\geq 1.9$; $\bullet$ : only a subset of the complete dataset was made available (privacy, data use restrictions, incomplete GenBank submissions), the number of  sequences analyzed here is shown after the / symbol; N.R: not reported}
+	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using partial HIV-1 polymerase gene sequences. $N$ : the number of sequences; $L$: length of the multiple sequence alignment, bp; $E[D]$ mean pairwise TN93 distance; (the studies are sorted on this column, in ascending order) $\P$: the original study performed threshold tuning (varied methods); $\dagger$ : distance thresholds were specifc to subtypes; $\star$ : the corresponding AUTO-TUNE score is $\geq 1.9$; $\bullet$ : only a subset of the complete dataset was made available (privacy, data use restrictions, incomplete GenBank submissions), the number of  sequences analyzed here is shown after the / symbol; N.R: not reported}
 	
 	\vspace{10pt}
 	\centering
@@ -614,7 +614,7 @@ within subtypes.
 % \includegraphics[width=1.\textwidth]{figures/examples.pdf} 
 \vspace{0.01in}
 \caption{\textbf{Examples of AUTOTUNE scores profiles.} 
-(A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger thershold network, and with a proportion of nodes removed when the thershold is lowered. (D). Changes to the node degree distribution (because many nodes have the same degree, the color is used to represent their counts). (E). A significant enlargement of a small network at a higher threhold, with grey edges only present at the larger threshold. }
+(A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the thershold is lowered. (D). Changes to the node degree distribution (because many nodes have the same degree, the color is used to represent their counts). (E). A significant enlargement of a small network at a higher threhold, with grey edges only present at the larger threshold. }
 \label{Figure:Exampes}
 \end{figure*}
 
