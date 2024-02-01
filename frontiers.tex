@@ -503,10 +503,10 @@ changes.
 \citet{Billings:2019aa} to $2.33\%$ more than doubles the number of nodes
 included (Fig~\ref{Figure:Examples} panel E)
 
-Networks with high AUTOTUNE scores are exemplified by the alignment (in the
+Networks with high AUTO-TUNE scores are exemplified by the alignment (in the
 distance space) of the points where the number of clusters is maximized and
 where the network transitions to having an "unusually" large cluster (see
-Fig.~\ref{Figure:Cases}, panel A). In cases of low scores, AUTOTUNE effectively
+Fig.~\ref{Figure:Cases}, panel A). In cases of low scores, AUTO-TUNE effectively
 falls back to maximizing the number of clusters as a function of the distance
 thresholds, which is a common strategy found in empirical studies (see
 Fig.~\ref{Figure:Cases}, panel B). 
@@ -613,7 +613,7 @@ within subtypes.
 \centering
 % \includegraphics[width=1.\textwidth]{figures/examples.pdf} 
 \vspace{0.01in}
-\caption{\textbf{Examples of AUTOTUNE scores profiles.} 
+\caption{\textbf{Examples of AUTO-TUNE scores profiles.} 
 (A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the threshold is lowered. (D). Changes to the node degree distribution (because many nodes have the same degree, the color is used to represent their counts). (E). A significant enlargement of a small network at a higher threhold, with grey edges only present at the larger threshold. }
 \label{Figure:Examples}
 \end{figure*}
@@ -624,7 +624,7 @@ within subtypes.
 % \includegraphics[width=1.\textwidth]{figures/cases.pdf}
 \vspace{0.01in}
 \caption{\textbf{Examples of how changing thresholds affects inferred networks.} 
-(A). A high-scoring network \cite{bbosa_short_2020} has a distance threshold which achieves the number of clusters near the maximum, while also avoiding the formation of a large (weakly connected) cluster. (B). A low-scoring network \cite{liu_dynamics_2020} has a misalignment between the distance for which the maximum number of clusters is found, and where the big jumps in the clusteer size ratio occur. Here, AUTOTUNE effectively optimizes the number of clusters, but often also keeps the largest cluster from growing excessively.}
+(A). A high-scoring network \cite{bbosa_short_2020} has a distance threshold which achieves the number of clusters near the maximum, while also avoiding the formation of a large (weakly connected) cluster. (B). A low-scoring network \cite{liu_dynamics_2020} has a misalignment between the distance for which the maximum number of clusters is found, and where the big jumps in the clusteer size ratio occur. Here, AUTO-TUNE effectively optimizes the number of clusters, but often also keeps the largest cluster from growing excessively.}
 \label{Figure:Cases}
 \end{figure*}
 
@@ -643,11 +643,11 @@ several with publically available sequence data.
 
 Most of the datasets are much smaller and less systematically sampled than those
 for HIV-1, and often combine highly divergent subtypes in the same collection,
-making a joint analysis challenging. As with HIV-1, AUTOTUNE returns a wide
+making a joint analysis challenging. As with HIV-1, AUTO-TUNE returns a wide
 range of scores and $D$ thresholds. For example, effectively maximizing the
 number of clusters on rhinovirus sequences from \citet{Ng:2022aa} yields a $D$
 estimate very similar to that obtained by the authors from intra-host
-variability -- information not available to AUTOTUNE.
+variability -- information not available to AUTO-TUNE.
 
 
 \begin{table}[h]
@@ -681,16 +681,16 @@ variability -- information not available to AUTOTUNE.
 \subsection{Large-scale HIV-1 database analyses}
 
 \subsubsection{Markedly different thresholds for different subtypes}
-Following the spirit of the analysis performed by \citet{Wertheim:2014aa}, we downloaded partial {\it pol} sequences (between HXB-2 coordinates 2253 and 3200, one sequence per patient) from the Los Alamos HIV-1 Database, split them by annotated subtype and applied AUTOTUNE to individual subtypes with $1000$ or more sequences.
+Following the spirit of the analysis performed by \citet{Wertheim:2014aa}, we downloaded partial {\it pol} sequences (between HXB-2 coordinates 2253 and 3200, one sequence per patient) from the Los Alamos HIV-1 Database, split them by annotated subtype and applied AUTO-TUNE to individual subtypes with $1000$ or more sequences.
 
-Some (but not all) HIV-1 subtypes often as strong correlates of regional and temporal distributions of sequences, and are expected to represent epidemics with different sampling rates and transmission dynamics. These differences are reflected in a wide range of mean pairwise distances and inferred AUTOTUNE thresholds shown in Table~\ref{tab:paperLANL}. For example, the relatively young subtype A6, which is the most common subtype in the countries of the former Soviet Union \cite{Abidi:2021aa}, has a low mean pairwise distance ($4.6\%$)and a low AUTOTUNE threshold ($0.56\%$). In contrast A1D recombinant sequences have high distance and threshold values ($8.9\%$ and $3.23\%$, respecitvely), because sequences of this "subtype" represent broadly circulating strains, with complex histories, and extensive histories of recombination \cite{Foster:2014aa,Yebra:2015aa}. 
+Some (but not all) HIV-1 subtypes often as strong correlates of regional and temporal distributions of sequences, and are expected to represent epidemics with different sampling rates and transmission dynamics. These differences are reflected in a wide range of mean pairwise distances and inferred AUTO-TUNE thresholds shown in Table~\ref{tab:paperLANL}. For example, the relatively young subtype A6, which is the most common subtype in the countries of the former Soviet Union \cite{Abidi:2021aa}, has a low mean pairwise distance ($4.6\%$)and a low AUTO-TUNE threshold ($0.56\%$). In contrast A1D recombinant sequences have high distance and threshold values ($8.9\%$ and $3.23\%$, respecitvely), because sequences of this "subtype" represent broadly circulating strains, with complex histories, and extensive histories of recombination \cite{Foster:2014aa,Yebra:2015aa}. 
 
 There was extensive variability among subtypes in all high-level network statistics, including the mean degree, fractions of nodes that were in the network, and the characteristic exponent $\rho$, where $\rho$ is inferred from by fitting the degree distribution to various network formation models, and with $\text{Prob}(\text{degree} = k) \sim 1/k^\rho$ for large $k$. 
 
-For A1, B, C, and CRF08 networks there's very strong support for a single AUTOTUNE threshold (score $>1.9$), while for many other subtypes there is extreme ambiguity in which threshold to choose (score $<1.1$). We suggest that networks where AUTOTUNE fails to find a single threshold may comprise heterogenous data which require multiple thresholds to resolve. 
+For A1, B, C, and CRF08 networks there's very strong support for a single AUTO-TUNE threshold (score $>1.9$), while for many other subtypes there is extreme ambiguity in which threshold to choose (score $<1.1$). We suggest that networks where AUTO-TUNE fails to find a single threshold may comprise heterogenous data which require multiple thresholds to resolve. 
 
 \begin{table}[h]
-	\caption{An application of AUTOTUNE to subtype stratified HIV-1 pol sequences from the LANL database. Fraction clustered is the proportion of all sequences that are connected to at least one other sequence. Subtypes are sorted by the inferred threshold, lowest first. Other notation is the same as in Table~\ref{tab:paperComparison}}
+	\caption{An application of AUTO-TUNE to subtype stratified HIV-1 pol sequences from the LANL database. Fraction clustered is the proportion of all sequences that are connected to at least one other sequence. Subtypes are sorted by the inferred threshold, lowest first. Other notation is the same as in Table~\ref{tab:paperComparison}}
 	
 	\vspace{10pt}
 	\centering
@@ -698,7 +698,7 @@ For A1, B, C, and CRF08 networks there's very strong support for a single AUTOTU
 	\label{tab:paperLANL}
 	\begin{tabular}{llllllll}
 	   \hline
-		Subtype  &  $N$ & $E[D]$ & \multicolumn{2}{c}{AUTOTUNE} & Fraction & Mean &  $\rho$ \\
+		Subtype  &  $N$ & $E[D]$ & \multicolumn{2}{c}{AUTO-TUNE} & Fraction & Mean &  $\rho$ \\
 		     &  & & Threshold, \% & Score & Clustered, \% & Degree & \\
 		    \hline
 		     
@@ -731,7 +731,7 @@ For A1, B, C, and CRF08 networks there's very strong support for a single AUTOTU
 
 \subsubsection{Congruence of networks inferred from different genes}
 
-Very few published studies of HIV-1 transmission networks use genes othat that {\it pol}, and nearly all of the extrisnsically motivated thresholds have been derived for this gene, the utility of other genes and the appropriate $D$ values for them are unclear.  Because of different rates of evolution in HIV-1 genes and, possibly, subtypes \cite{Penn:2008aa}, one would expect $D$ to be different for different subtypes and genes. As a simple exercise, we downloaded full-length HIV-1 genomes from the LANL database, stratitied them by subtype, and conducted AUTOTUNE inference using for genomic segments: protease+reverse transcriptase, integrase, matrix (gag), and the less variable gp41 segment of the envelope gene. 
+Very few published studies of HIV-1 transmission networks use genes othat that {\it pol}, and nearly all of the extrisnsically motivated thresholds have been derived for this gene, the utility of other genes and the appropriate $D$ values for them are unclear.  Because of different rates of evolution in HIV-1 genes and, possibly, subtypes \cite{Penn:2008aa}, one would expect $D$ to be different for different subtypes and genes. As a simple exercise, we downloaded full-length HIV-1 genomes from the LANL database, stratitied them by subtype, and conducted AUTO-TUNE inference using for genomic segments: protease+reverse transcriptase, integrase, matrix (gag), and the less variable gp41 segment of the envelope gene. 
 
 Only three subtypes had $500$ or more full-length sequences in the LANL HIV database (Table~\ref{tab:LANL:full}): B, C, and CRF01. As expected, the inferred thresholds differed by gene and subtype, with lower thresholds inferred for more slowly evolving segments (pr+rt and int), and similar numbers of clusters found in the resulting subtype-level networks. For all three subtypes, the level of agreement between the four networks on whether or not nodes were clustered or not (present / absent from the network), measured by Krippendorff's $\alpha$ \cite{doi:10.1080/19312450709336664}, were substantially higher than expected by chance ($\alpha = 0$). All four networks also had between a quarter and a half of all the clusters in perfect agreement. 
 
@@ -744,7 +744,7 @@ Only three subtypes had $500$ or more full-length sequences in the LANL HIV data
 	\label{tab:LANL:full}
 	\begin{tabular}{lllllllllllll}
 	   \hline
-		Subtype & N &  \multicolumn{4}{c}{AUTOTUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$\\
+		Subtype & N &  \multicolumn{4}{c}{AUTO-TUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$\\
 		& & pr+rt & integrase & gag & gp41 & pr+rt & integrase & gag & gp41 & clusters &  \\
 		\hline
 
@@ -803,7 +803,7 @@ pol sequences was annotated with a risk factor detailing whether the patient was
 heterosexual (Hetero), Person With Injected Drug Use (PWID), or Men who have
 Sex with Men (MSM), among other attributes.
 
-When we analyze the dataset with AUTO-TUNE,  local maxima of AUTOTUNE scores were achieved
+When we analyze the dataset with AUTO-TUNE,  local maxima of AUTO-TUNE scores were achieved
 with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030, respectively.
 Notably, the DWH scores for PWID exhibited a significant surge at these
 thresholds, indicating a robust pattern of increased PWID homophily. The close
@@ -853,7 +853,7 @@ the network. Detailed results are in Table~\ref{table:combined}.
 
 \subsection{Comparison with clustuneR}
 
-We benchmarked AUTOTUNE vs {\tt clustuneR} \cite{chato_public_2020}, which employs the recency of sample
+We benchmarked AUTO-TUNE vs {\tt clustuneR} \cite{chato_public_2020}, which employs the recency of sample
 collection or diagnosis as individual-level weights in a predictive model to
 estimate the growth of HIV clusters. The thresholds deemed optimal by {\tt clustuneR} were found by a grid-search for the minimum GAIC (generalized AIC) across candidate distances between $0$ and $0.04$ in steps of $8 \times 10^{-4}$. GAIC
 is the difference between a null model that is only influenced by cluster size,
@@ -870,7 +870,7 @@ highest scores to be $0.01872$ for Middle Tennessee, $0.01538$ for Seattle, and
 $0.01201$ for Northern Alberta. \autoref{tab:homophily}. We use the adjective "nearly" because we were not able to exactly match the number of sequences analyzed in \citet{chato_public_2020} by obtaining the referenced GenBank accession number and our best-effort intepretation of the filtering steps.
 
 Both method agree that there is a qualiative relationship of $\text{Northern Alberta} < \text{Seattle} ~\sim \text{Tennessee}$ for distance thresholds.
-AUTOTUNE thresholds, while not optimal in the GAIC sense all yield improvements over the null model, hence they are qualitatively similar to {\tt clustuneR}  (Figure 4 in \cite{chato_public_2020}).  AUTO-TUNE is notably faster in computation than
+AUTO-TUNE thresholds, while not optimal in the GAIC sense all yield improvements over the null model, hence they are qualitatively similar to {\tt clustuneR}  (Figure 4 in \cite{chato_public_2020}).  AUTO-TUNE is notably faster in computation than
 clustuneR due to the fact that AUTO-TUNE only clusters based on pairwise
 distances rather than inferring a maximum-likelihood phylogeny. For example, the
 entire pipeline for the Seattle dataset took less than $16$ seconds on an Apple M1
