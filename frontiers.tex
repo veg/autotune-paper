@@ -105,10 +105,11 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 	but in many cases, investigators heuristically select other threshold parameters
 	to better capture the underlying dynamics of the epidemic they are studying.
 
-	Here, we present a general heuristic scoring approach for tuning a distance threshold
-	adaptively, which seeks to prevent the formation of giant clusters (measured as
-	the ratio $R_{12}$ of the sizes of the largest and the second largest cluster),
-	while maximizing the number of clusters present in the network.
+	Here, we present a general heuristic scoring approach for tuning a distance
+	threshold adaptively, which seeks to prevent the formation of giant clusters
+	(measured as the ratio $R_{12}$ of the sizes of the largest and the second
+	largest cluster), while maximizing the number of clusters present in the
+	network.
 
 	We apply our scoring heuristic to outbreaks with different characteristics,
 	such as regional or temporal variability, and demonstrate the utility of using
@@ -119,10 +120,10 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 	among men who have sex with men (MSM) in China have been found to have a lower
 	optimal threshold of $0.5\%$ to better capture the transition from injected
 	drug use (IDU) to MSM as the primary risk factor. Alternatively, in communities
-	surrounding Lake Victoria, where there has been sustained transmission for
-	many years, we found that a larger distance threshold is necessary to capture
-	a more risk factor-diverse populace with sparse sampling over a longer period
-	of time. Such identification may allow for more informed intervention action by
+	surrounding Lake Victoria, where there has been sustained transmission for many
+	years, we found that a larger distance threshold is necessary to capture a more
+	risk factor-diverse populace with sparse sampling over a longer period of time.
+	Such identification may allow for more informed intervention action by
 	respective public health officials.
 
 	\tiny
@@ -133,38 +134,39 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 \section{Introduction}
 
 The use of genomic data to infer and characterize transmission networks of
-various pathogens has grown in prominence in the past two decades, with applications to a
-growing list of microorganisms, including viruses such as HIV
+various pathogens has grown in prominence in the past two decades, with
+applications to a growing list of microorganisms, including viruses such as HIV
 \citep{paraskevis_application_2016}, HCV \citep{murphy_molecular_2019} or
 influenza virus \citep{jombart_reconstructing_2011}, and bacteria such as $M.
 	tuberculosis$ \citep{mai_mycobacterium_2018} or $A. baumanii$
-\citep{thoma_challenge_2022}. Notably, genomic
-surveillance had a prominent role during the COVID-19 pandemic, including the
-use of sequencing for the study of transmission clusters
-\citep{von_rotz_systematic_2023,campigotto_utility_2023}. 
-Choosing an appropriate genetic distance threshold is an important part of
-using a molecular transmission network to track the spread of rapidly evolving
+\citep{thoma_challenge_2022}. Notably, genomic surveillance had a prominent
+role during the COVID-19 pandemic, including the use of sequencing for the
+study of transmission clusters
+\citep{von_rotz_systematic_2023,campigotto_utility_2023}. Choosing an
+appropriate genetic distance threshold is an important part of using a
+molecular transmission network to track the spread of rapidly evolving
 pathogens \citep{liu_dynamics_2020,rose_persistence_2020}. This distance
-threshold defines the degree of genetic closeness between pathogen
-sequences, isolated from two individuals, required to suggest them as potential
+threshold defines the degree of genetic closeness between pathogen sequences,
+isolated from two individuals, required to suggest them as potential
 transmission partners in the network. Using a distance threshold that is too
 large can result in a network with many spurious, i.e. epidemiologically
-uninformative (clusters are too big and too few), links, making it difficult to interpret and analyze. On the
-other hand, using a distance threshold that is too small can result in a
-network with too few links (clusters are too few and too small), underestimating connections between individuals and
-making it difficult to accurately track the spread of the disease
-\citep{gore_hiv_2022}.
+uninformative (clusters are too big and too few), links, making it difficult to
+interpret and analyze. On the other hand, using a distance threshold that is
+too small can result in a network with too few links (clusters are too few and
+too small), underestimating connections between individuals and making it
+difficult to accurately track the spread of the disease \citep{gore_hiv_2022}.
 
 To enhance the utility of inferred transmission networks, it is important to
 carefully consider the appropriate distance threshold, $d$. This threshold may
 vary depending on the specific disease and the context in which it is
-spreading. For example, a highly contagious acute respiratory illness (e.g., SARS-CoV-2) may require a
-smaller $d$ than a less contagious chronic illness that is primarily spread through
-direct contact (e.g., HIV-1). Viruses are more amenable to molecular studies compared to
-bacteria due to their high genetic divergence and compact genomes. Given the
-relatively high evolutionary rate of RNA viruses (compared to chromosomal DNA
-in humans) detectable genetic fingerprints can be targeted for epidemiological
-studies over short time periods\citep{paraskevis_application_2016}.
+spreading. For example, a highly contagious acute respiratory illness (e.g.,
+SARS-CoV-2) may require a smaller $d$ than a less contagious chronic illness
+that is primarily spread through direct contact (e.g., HIV-1). Viruses are more
+amenable to molecular studies compared to bacteria due to their high genetic
+divergence and compact genomes. Given the relatively high evolutionary rate of
+RNA viruses (compared to chromosomal DNA in humans) detectable genetic
+fingerprints can be targeted for epidemiological studies over short time
+periods\citep{paraskevis_application_2016}.
 
 For chronic infections such as HIV, the most appropriate genetic distance
 threshold should be determined according to the characteristics of the epidemic
@@ -190,31 +192,33 @@ many links that spurious connections are made and hinder the public health
 response. This can be achieved through careful analysis and consideration of
 the specific disease and context.
 
-This study introduces AUTO-TUNE, a method that offers a systematic
-approach to select genetic distance thresholds for molecular HIV transmission
-network analysis, based purely on the structure of the collected data. By
-autonomously optimizing clustering metrics derived from pairwise genetic
-distances, AUTO-TUNE has the potential to improve the accuracy and reliability
-of network inference, irrespective of data attributes. The AUTO-TUNE
-methodology's independence from supplementary data makes it less sensitive to
-variations in data collection protocols and enhances its adaptability to
-various contexts, including potentially other viral diseases.
+This study introduces AUTO-TUNE, a method that offers a systematic approach to
+select genetic distance thresholds for molecular HIV transmission network
+analysis, based purely on the structure of the collected data. By autonomously
+optimizing clustering metrics derived from pairwise genetic distances,
+AUTO-TUNE has the potential to improve the accuracy and reliability of network
+inference, irrespective of data attributes. The AUTO-TUNE methodology's
+independence from supplementary data makes it less sensitive to variations in
+data collection protocols and enhances its adaptability to various contexts,
+including potentially other viral diseases.
 
 \section{Methods}
 
 Assume that there are $S$ aligned genomic sequences (full or partial, e.g. the
-HIV-1 pol gene) for a pathogen of interest, each representing the "consensus" circulating
-viral diversity at the time of sampling in a single infected individual. We
-shall infer a putative transmission network comprising $S$ nodes, and $E$ links
-(edges), where an edge is drawn between a pair of sequences if the genetic
-distance between them is at or below a threshold $d$. In such a network, there will
-be $0 \leq C < S$ connected components with more than one node (clusters), which are the primary
-object of inference. This network inference strategy is used by HIV-TRACE
+HIV-1 pol gene) for a pathogen of interest, each representing the "consensus"
+circulating viral diversity at the time of sampling in a single infected
+individual. We shall infer a putative transmission network comprising $S$
+nodes, and $E$ links (edges), where an edge is drawn between a pair of
+sequences if the genetic distance between them is at or below a threshold $d$.
+In such a network, there will be $0 \leq C < S$ connected components with more
+than one node (clusters), which are the primary object of inference. This
+network inference strategy is used by HIV-TRACE
 \citep{kosakovsky_pond_hiv-trace_2018}, where the genetic distance is computed
 using the Tamura-Nei (TN93) \citep{tamura_estimation_1993} model, with a
 variety of options controlling how to deal with ambiguous nucleotide bases; for
 HIV-1 such bases are informative since they often represent variants
-co-circulating in the infected individual at the time of sampling at substantial frequencies.
+co-circulating in the infected individual at the time of sampling at
+substantial frequencies.
 
 We begin by describing an approach to assign a score to each of the choices of
 $d$ in a plausible/informative range of distances. Note that while such a range
@@ -225,7 +229,8 @@ $d$ is increased.
 
 \subsection{Scoring Heuristic Procedure}
 
-The network threshold selection procedure proceeds as follows (we provide an example in the Results section as well).
+The network threshold selection procedure proceeds as follows (we provide an
+example in the Results section as well).
 
 \begin{enumerate}
 	\item{For each candidate threshold $d_L$, in increasing order, ranging from the smallest genetic distance in the dataset, up to either the largest distance or a predetermined maximal threshold, we compute two network statistics: $R_{12}$, the ratio of the size of the largest cluster to the size of the second largest cluster, and $C$ – the number of clusters in the network at this threshold. A cluster is defined as a connected component in the network with at least two nodes.}
@@ -254,21 +259,25 @@ network based on their attributes (such as demographic characteristics or
 behaviors) and their degree (i.e., the number of connections they have to other
 nodes in the network). It is used to quantify the extent to which nodes with
 similar attributes tend to be connected to each other more frequently than
-would be expected by chance\cite{RePEc:adr:anecst:y:2012:i:107-108:p:33-48}. DWH is calculated as the
-ratio of the observed number of connections between nodes with similar
-attributes to the expected number of connections between such nodes, based on
-their network degree.
+would be expected by chance\cite{RePEc:adr:anecst:y:2012:i:107-108:p:33-48}.
+DWH is calculated as the ratio of the observed number of connections between
+nodes with similar attributes to the expected number of connections between
+such nodes, based on their network degree.
 
-For any two subsets $A$ and $B$ of nodes in a network without singletons (each node has a positive degree), define the weight between $A$ and $B$ as 
-    
- \[
- W_{A,B} = \frac{1}{|A||B|} \sum_{i \in A, j\in B, (i,j) \text{are connected}} \frac{1}{d_i d_j},
- \]
- 
- where $d_i$ is the degree of node $i$, and $|X|$ is the cardinality (size) of subset $X$.
- 
- Then for any proper (not empty and not the complete network) subset of the network, $G$, e.g. a group of nodes sharing an attribute, e.g., transmission risk factor, define 
- 
+For any two subsets $A$ and $B$ of nodes in a network without singletons (each
+node has a positive degree), define the weight between $A$ and $B$ as
+
+\[
+	W_{A,B} = \frac{1}{|A||B|} \sum_{i \in A, j\in B, (i,j) \text{are connected}} \frac{1}{d_i d_j},
+\]
+
+where $d_i$ is the degree of node $i$, and $|X|$ is the cardinality (size) of
+subset $X$.
+
+Then for any proper (not empty and not the complete network) subset of the
+network, $G$, e.g. a group of nodes sharing an attribute, e.g., transmission
+risk factor, define
+
 \begin{equation}
 	DWH = \frac{W_{G,G}+ W_{\bar G, \bar G} - 2W_{G,\bar G}}{|G|^{-2}\sum_{i\in G} 1 / d_i + |\bar G|^{-2}\sum_{i\in \bar G} 1 / d_i },
 \end{equation}
@@ -280,13 +289,18 @@ with
 \end{itemize}
 
 DWH ranges from $-1$ to $1$. A DWH value of $0$ indicates that there is no more
-homophily than expected by chance (conditioned on network structure), while a value of $1$ indicates that there
-is perfect homophily ($G$ consists of connected components disconnected from the rest of the network). A value
-of $-1$ is achieved for perfectly disassortative networks (the only links are between $G$ and $\bar G$).
+homophily than expected by chance (conditioned on network structure), while a
+value of $1$ indicates that there is perfect homophily ($G$ consists of
+connected components disconnected from the rest of the network). A value of
+$-1$ is achieved for perfectly disassortative networks (the only links are
+between $G$ and $\bar G$).
 
-DWH has been used in social network analysis and in the study of
-how different attributes are related to the formation of connections between
-individuals. To assess whether or not DWH is significantly different from $0$ (and from random expectation), we generate the null distribution of DWH obtained by randomly reshuffling node attributes used to define group $G$ and recomputing DWH for each such replicate.
+DWH has been used in social network analysis and in the study of how different
+attributes are related to the formation of connections between individuals. To
+assess whether or not DWH is significantly different from $0$ (and from random
+expectation), we generate the null distribution of DWH obtained by randomly
+reshuffling node attributes used to define group $G$ and recomputing DWH for
+each such replicate.
 
 \subsection{Implementation}
 
@@ -335,21 +349,21 @@ hivnetworkannotate -n hivtrace.results.json -a node_attributes.json -g schema.js
 
 	      \item{ Analyze the results with DWH: After the results file has been annotated, the user can proceed to the assortativity page, \url{http://autotune.datamonkey.org/assortativity}, for further analysis of the output. }
 
-	      AUTO-TUNE is  accessible on GitHub as part of the {\tt hivclustering}
-	      repository (\url{https://github.com/veg/hivclustering})). It is integrated into
-	      the command-line interface of the software as the {\tt -A} or {\tt
-			      --auto-profile} argument. {\tt hivclustering} is a key component of the
-	      HIV-TRACE suite of tools, a resource for the inference, analysis, and
-	      visualization of HIV transmission networks.
+	      AUTO-TUNE is accessible on GitHub as part of the {\tt hivclustering} repository
+	      (\url{https://github.com/veg/hivclustering})). It is integrated into the
+	      command-line interface of the software as the {\tt -A} or {\tt --auto-profile}
+	      argument. {\tt hivclustering} is a key component of the HIV-TRACE suite of
+	      tools, a resource for the inference, analysis, and visualization of HIV
+	      transmission networks.
 
-	      The Degree Weighted Homophily (DWH) calculation tool, was developed using {\tt TypeScript}, a statically typed
-	      superset of {\tt JavaScript} that ensures robustness and scalability. In an
-	      effort to promote accessibility and ease of integration, the DWH tool is
-	      packaged and distributed through the Node Package Manager (npm), enabling
-	      researchers and developers to conveniently incorporate this advanced analytical
-	      tool into their own projects and workflows. DWH can be used in-browser or as a
-	      command-line tool. Instructions for usage and installation are found on Github
-	      (\url{https://github.com/veg/dwh}).
+	      The Degree Weighted Homophily (DWH) calculation tool, was developed using {\tt
+			      TypeScript}, a statically typed superset of {\tt JavaScript} that ensures
+	      robustness and scalability. In an effort to promote accessibility and ease of
+	      integration, the DWH tool is packaged and distributed through the Node Package
+	      Manager (npm), enabling researchers and developers to conveniently incorporate
+	      this advanced analytical tool into their own projects and workflows. DWH can be
+	      used in-browser or as a command-line tool. Instructions for usage and
+	      installation are found on Github (\url{https://github.com/veg/dwh}).
 
 \end{enumerate}
 
@@ -360,52 +374,55 @@ distances to visualizing and annotating results.
 \subsection{Visualization}
 
 Visualizations of AUTO-TUNE results are accessible at
-\url{http://autotune.datamonkey.org/analyze}. These include the priority
-score plot, and the two contributing statistics: cluster count relative to the maximum and 
-the ratio of two largest cluster sizes.
-\label{fig:webapp} An assortativity tool is available at
-\url{http://autotune.datamonkey.org/assortativity}, and is an 
-analytical tool engineered to facilitate the calculation of Degree Weighted
-Homophily (DWH) values. It utilizes the DWH NPM package to generate a tabular
-representation of DWH values corresponding to each value for a selected
-attribute annotation, providing an exhaustive examination of the
-interrelationships for the field. The tool also computes the
-panmictic (null) range, which involves a label permutation test to generate the null
-distribution of DWH values. This feature establishes a comparative baseline
-that aids in determining the significance of homophily versus what would be
-expected by chance. 
+\url{http://autotune.datamonkey.org/analyze}. These include the priority score
+plot, and the two contributing statistics: cluster count relative to the
+maximum and the ratio of two largest cluster sizes. \label{fig:webapp} An
+assortativity tool is available at
+\url{http://autotune.datamonkey.org/assortativity}, and is an analytical tool
+engineered to facilitate the calculation of Degree Weighted Homophily (DWH)
+values. It utilizes the DWH NPM package to generate a tabular representation of
+DWH values corresponding to each value for a selected attribute annotation,
+providing an exhaustive examination of the interrelationships for the field.
+The tool also computes the panmictic (null) range, which involves a label
+permutation test to generate the null distribution of DWH values. This feature
+establishes a comparative baseline that aids in determining the significance of
+homophily versus what would be expected by chance.
 
 The visualization code is available on Github
 (\url{https://github.com/stevenweaver/autotune-app/}).
 
 \subsection{Comparisons with previously published analyses}
 
-First, we set out to compare the thresholds used in numerous published
-studies with those obtained by AUTO-TUNE. To select the data sets for
-this analysis, we conducted a scientific literature search to identify studies
-focused on HIV networks for public health purposes. We then filtered the
-studies that utilized HIV-TRACE to infer genetic networks and had publicly
-available sequences. Due to privacy concerns, HIV-1 sequences are frequently not released in the public domain
-\cite{Inzaule:2023aa}.
+First, we set out to compare the thresholds used in numerous published studies
+with those obtained by AUTO-TUNE. To select the data sets for this analysis, we
+conducted a scientific literature search to identify studies focused on HIV
+networks for public health purposes. We then filtered the studies that utilized
+HIV-TRACE to infer genetic networks and had publicly available sequences. Due
+to privacy concerns, HIV-1 sequences are frequently not released in the public
+domain \cite{Inzaule:2023aa}.
 
-We attempted to include studies from different
-countries and regions, enabling us to assess the performance of our method
-across various epidemic contexts, risk groups, and network sizes in real-data
-sets that used variable clustering thresholds.
+We attempted to include studies from different countries and regions, enabling
+us to assess the performance of our method across various epidemic contexts,
+risk groups, and network sizes in real-data sets that used variable clustering
+thresholds.
 
-Second, we compared AUTO-TUNE with the most direct published alternative: the {\tt clustuneR} method
-\citep{chato_public_2020}. We procured datasets from \citep{wolf_short_2017}
-and \citep{vrancken_multi-faceted_2017} utilizing the identical approach
-delineated in \cite{chato_public_2020}. These datasets, namely Middle
-Tennessee, Seattle, and Alberta were processed using the workflow described
-in Section 2.3. This enabled us to determine an optimal threshold for each
-dataset using AUTO-TUNE. We further executed the command as detailed in step 4
-of Section 2.3, deploying thresholds previously established as optimal by
-\citep{chato_public_2020}. Note that  {\tt clustuneR} requires and uses temporal information (dates sequences were collected), while AUTO-TUNE does not.
+Second, we compared AUTO-TUNE with the most direct published alternative: the
+	{\tt clustuneR} method \citep{chato_public_2020}. We procured datasets from
+\citep{wolf_short_2017} and \citep{vrancken_multi-faceted_2017} utilizing the
+identical approach delineated in \cite{chato_public_2020}. These datasets,
+namely Middle Tennessee, Seattle, and Alberta were processed using the workflow
+described in Section 2.3. This enabled us to determine an optimal threshold for
+each dataset using AUTO-TUNE. We further executed the command as detailed in
+step 4 of Section 2.3, deploying thresholds previously established as optimal
+by \citep{chato_public_2020}. Note that {\tt clustuneR} requires and uses
+temporal information (dates sequences were collected), while AUTO-TUNE does
+not.
 
-As there is no gold standard for determining what an "optimal" threshold is (e.g., \citet{chato_public_2020} use a cluster growth measure),
-here we computed the average degree-weighted homophily score over a set of three-year sliding windows. Specifically, the homophily among
-nodes was calculated for a collection of date ranges as follows:
+As there is no gold standard for determining what an "optimal" threshold is
+(e.g., \citet{chato_public_2020} use a cluster growth measure), here we
+computed the average degree-weighted homophily score over a set of three-year
+sliding windows. Specifically, the homophily among nodes was calculated for a
+collection of date ranges as follows:
 
 \begin{equation} \bar{H} = \frac{1}{N}\sum_{i=1}^{N} H(w_i) \end{equation}
 
@@ -414,10 +431,11 @@ the total number of sliding windows, $H(w_i)$ is the homophily score for the
 $i$-th window, and the windows $w_i$ correspond to the date ranges, e.g.,
 '2012-2015', '2013-2016', '2014-2017', etc. This methodology allowed us to
 compare the "best thresholds" derived from our proposed AUTO-TUNE method
-against those defined as optimal in \citep{chato_public_2020} using an alternative approach, 
-which makes use of the expectation of assortativity in HIV-1 transmission networks.
-We can also examine how AUTO-TUNE thresholds perform in the predictive growth sense; 
-of course, by definition, they will be somewhat suboptimal to {\tt clustuneR}, which optimizes the measure directly.
+against those defined as optimal in \citep{chato_public_2020} using an
+alternative approach, which makes use of the expectation of assortativity in
+HIV-1 transmission networks. We can also examine how AUTO-TUNE thresholds
+perform in the predictive growth sense; of course, by definition, they will be
+somewhat suboptimal to {\tt clustuneR}, which optimizes the measure directly.
 
 Lastly, we evaluated the effect of sampling density on the genetic distance
 threshold as determined by AUTO-TUNE, we implemented a strategy of random
@@ -463,53 +481,50 @@ even hyper-parameters, such as the characteristic exponent of the scale free
 degree distribution, $\rho$. This is true even for the studies where the
 published threshold was tuned (typically to maximize the number of clusters).
 AUTO-TUNE thresholds were larger than the published values in $13/21$ datasets,
-and smaller in $8/21$ datasets. 
+and smaller in $8/21$ datasets.
 
 \subsubsection{Examples of how changing thresholds affects inferred networks}
 
-\paragraph{Cluster size reduction} The $2\%$ threshold used by
-\citet{dalai_combining_2018} yielded one large cluster composed of two loosely
-connected components (one PWID/HSX, one MSM, see Figure 2 in that paper). A
-minute change to the threshold by AUTO-TUNE to $1.94\%$ splits one large
-cluster into three (some nodes also became disconnected), separating the two
-major risk groups; this is because the "bridging" connections were between
-these two thresholds (see Fig~\ref{Figure:Examples} panel A). This minor change
-also reduced $R_{12}$ from $21$ to $2.6$.
+\paragraph{Cluster size reduction} The $2\%$ threshold used by \citet{dalai_combining_2018} yielded one large
+cluster composed of two loosely connected components (one PWID/HSX, one MSM,
+see Figure 2 in that paper). A minute change to the threshold by AUTO-TUNE to
+$1.94\%$ splits one large cluster into three (some nodes also became
+disconnected), separating the two major risk groups; this is because the
+"bridging" connections were between these two thresholds (see
+Fig~\ref{Figure:Examples} panel A). This minor change also reduced $R_{12}$
+from $21$ to $2.6$.
 
-\paragraph{Cluster size increase}  Increasing the $1.5\%$ threshold on data
-from \citet{Little:2014aa} combined several small clusters (and singletons)
-into a single larger cluster, while preserving the overall size and properties
-of the network (see Fig~\ref{Figure:Examples} panel B). This change also reduced
-$R_{12}$ from $2.5$ to $1.5$.
+\paragraph{Cluster size increase}  Increasing the $1.5\%$ threshold on data from \citet{Little:2014aa} combined
+several small clusters (and singletons) into a single larger cluster, while
+preserving the overall size and properties of the network (see
+Fig~\ref{Figure:Examples} panel B). This change also reduced $R_{12}$ from
+$2.5$ to $1.5$.
 
-\paragraph{Thinning out the network}  Reducing the $1.5\%$ threshold on data
-from \citet{rhee_national_2019} dramatically reduced the size of the largest
-cluster, and thinned out most clusters with five or more nodes (see
-Fig~\ref{Figure:Examples} panel C).
+\paragraph{Thinning out the network}  Reducing the $1.5\%$ threshold on data from \citet{rhee_national_2019}
+dramatically reduced the size of the largest cluster, and thinned out most
+clusters with five or more nodes (see Fig~\ref{Figure:Examples} panel C).
 
-\paragraph{Materially changing the degree distribution of the network}  For the
-sequences from \citet{Li:2022aa}, AUTO-TUNE suggests $D = 1.483\%$ with robust
-($1.76$) confidence, whereas the original $D=1.3\%$ was selected based on
-maximizing the number of clusters (and likely rounding to the nearest decimal).
-While the total number of the clusters only increases by $1$, the number of
-nodes connected in the network grows from $95$ to $119$, and the scale free
-exponent of the distribution is dramatically affected. The latter is informed
-by the degree distribution of the network, and Fig~\ref{Figure:Examples} panel D
-shows, the degree distribution is dramatically affected. Many commonly used
-network-derived correlates (e.g. centrality) can be strongly affected by such
-changes.
+\paragraph{Materially changing the degree distribution of the network}  For the sequences from \citet{Li:2022aa}, AUTO-TUNE suggests $D = 1.483\%$ with
+robust ($1.76$) confidence, whereas the original $D=1.3\%$ was selected based
+on maximizing the number of clusters (and likely rounding to the nearest
+decimal). While the total number of the clusters only increases by $1$, the
+number of nodes connected in the network grows from $95$ to $119$, and the
+scale free exponent of the distribution is dramatically affected. The latter is
+informed by the degree distribution of the network, and
+Fig~\ref{Figure:Examples} panel D shows, the degree distribution is
+dramatically affected. Many commonly used network-derived correlates (e.g.
+centrality) can be strongly affected by such changes.
 
-\paragraph{Expanding the network}  Increasing the $1.5\%$ threshold in
-\citet{Billings:2019aa} to $2.33\%$ more than doubles the number of nodes
-included (Fig~\ref{Figure:Examples} panel E)
+\paragraph{Expanding the network}  Increasing the $1.5\%$ threshold in \citet{Billings:2019aa} to $2.33\%$ more
+than doubles the number of nodes included (Fig~\ref{Figure:Examples} panel E)
 
 Networks with high AUTO-TUNE scores are exemplified by the alignment (in the
 distance space) of the points where the number of clusters is maximized and
 where the network transitions to having an "unusually" large cluster (see
-Fig.~\ref{Figure:Cases}, panel A). In cases of low scores, AUTO-TUNE effectively
-falls back to maximizing the number of clusters as a function of the distance
-thresholds, which is a common strategy found in empirical studies (see
-Fig.~\ref{Figure:Cases}, panel B). 
+Fig.~\ref{Figure:Cases}, panel A). In cases of low scores, AUTO-TUNE
+effectively falls back to maximizing the number of clusters as a function of
+the distance thresholds, which is a common strategy found in empirical studies
+(see Fig.~\ref{Figure:Cases}, panel B).
 
 As expected, AUTO-TUNE inferred smaller thresholds for younger (e.g., studies
 based in China) epidemics. While AUTO-TUNE will always return a score, in the
@@ -517,57 +532,55 @@ majority of cases there is no clear "winner" threshold, with priority scores
 exceeding $1.5$ in only 6/18 cases (Table~\ref{tab:paperComparisonProp}). One
 interpretation for such lack of clarity is that the underlying network has
 several different (e.g. spatial, temporal, or subtype-specific) thresholds
-which cannot be well-represented by any single value.  For instance, when
+which cannot be well-represented by any single value. For instance, when
 analyzing the data from \citet{Yan:2021aa}, AUTO-TUNE returned a low score of
-$1.14$ for $D=0.839\%$. However, when we split the  data into major constituent
+$1.14$ for $D=0.839\%$. However, when we split the data into major constituent
 subtypes and ran AUTO-TUNE on each one separately, starkly discrepant
 thresholds were found for different subtypes: $D=1.02\%$ (score = $1.59$) for
-CRF01,   $D=0.193\%$ (score = $2$) for CRF05,  $D=2.615\%$ (score = $1.65$)
-for B,  and $D=1.11\%$ (score = $1.04$) for CRF07. While many networks from the
+CRF01, $D=0.193\%$ (score = $2$) for CRF05, $D=2.615\%$ (score = $1.65$) for B,
+and $D=1.11\%$ (score = $1.04$) for CRF07. While many networks from the
 literature tend to be dominated by sequences from the same subtype, in more
 heterogeneous settings it seems advisable to partition the data by subtype
 (corresponding to major phylogenetic clades), and perform network analyses
-within subtypes. 
-
+within subtypes.
 
 \begin{table}[h]
 	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using partial HIV-1 polymerase gene sequences. $N$ : the number of sequences; $L$: length of the multiple sequence alignment, bp; $E[D]$ mean pairwise TN93 distance; (the studies are sorted on this column, in ascending order) $\P$: the original study performed threshold tuning (varied methods); $\dagger$ : distance thresholds were specifc to subtypes; $\star$ : the corresponding AUTO-TUNE score is $\geq 1.9$; $\bullet$ : only a subset of the complete dataset was made available (privacy, data use restrictions, incomplete GenBank submissions), the number of  sequences analyzed here is shown after the / symbol; N.R: not reported}
-	
+
 	\vspace{10pt}
 	\centering
 	\begin{ssmall}
-	\label{tab:paperComparison}
-	\begin{tabular}{llllllllll}
-	   \hline
-		Reference     & $N$ & $L$ & $E[D]$ & Scope & Location/Country      & Timespan & Common & \multicolumn{2}{c}{Distance threshold, \%}\\
-		     &  &       &  &  & & & Subtypes & Published & AUTO-TUNE \\
-		\hline
-		\cite{Zai:2020aa} & 209 & 1056 & 1.5\% & Country & China & 2007–2015 & CRF55/01B & $\P$ 0.2 & 0.255 \\
-		\cite{liu_dynamics_2020}  & 2087/1907 $\bullet$  & 1053 & 5.3\% & City & Shenyang, China        & 2008-2016       & CRF01, CRF07, B&  $\P$ 0.5/0.7 $\dagger$ & 0.621  \\
-		\cite{dalai_combining_2018} & 317 & 1044 & 5.5\% & City & San Mateo, CA, USA          & 1997-2008       & $96\%$ B & 2            & 1.944   \\
-		\cite{chato_public_2020} & 808 & 1017 &  5.6\% & Province & Northern Alberta, Canada & 2007-2013 &  B & $\P$1.04 & 1.201 \\
-		\cite{Little:2014aa} & 648/646 $\bullet$ & 1212 & 5.9\%& City & San Diego, CA, USA & 1996-2011 &  $98.5\%$ B & 1.5 &  2.495\\
-		\cite{Perez-Losada:2017aa} & 1879/3411 $\bullet$  & 1027 & 6.0\% & City & Washington DC, USA & 1987–2015 & B & 1.0 & 1.733 \\
-		\cite{rhee_national_2019} & 4553 & 897& 6.1\% & State & CA, USA          & 1998-2016       & 95.5\% B & 1.5          & 1.139$\star$   \\
-		\cite{chato_public_2020} & 2779/2750 $\bullet$  & 1398 &  6.3\% & State &Tennessee, USA & 2001-2015 &  B & $\P$1.6 & 1.872 \\
-		\cite{Temereanca:2017aa} & 37 & 1302 & 6.7\% & City & Bucharest, Romania & 2010-2013 & F1, G, B & 1.5 & 0.194 \\
-		\cite{brenner_role_2021}  & 10945/448 $\bullet$ & 738 & 6.7\% & Province & Quebec, Canada       & 2002-2020  & B     & 1.5/2.5\    & 2.741   \\
-		\citet{sivay_hiv-1_2018} & 201 & 1302 & 6.9\% & Province & Mpumalanga, South Africa & 2011-2015  & C     & 2.5          &2.506   \\
-		\cite{Li:2022aa} & 295 & 1206 & 7.8\%& Prefecture & Pu'er, China & 2021 & CRF08, CRF01, CRF07 & $\P$ 1.3 & 1.483  $\star$ \\
-		\cite{Yu:2022aa} & 316 & 1074 & 7.9\% & Province & Guangxi, China & 2012-2018 & CRF01, CRF08, CRF07  & $\P$1.3 & 1.178 \\
-		\cite{Yan:2021aa}& 1695/1569 $\bullet$ & 1569 & 8.4\% & City & Guangzhou, China        & 2008-2012      & CRF01, CRF07, CRF55,G & 1.5          & 0.839   \\
-		\cite{Billings:2019aa} & 150 & 1597 & 8.5\% & City & Lagos, Nigeria & 2013-2016 & CRF02, URF & 1.5 & 2.33 \\ 
-		\cite{Chen:2023aa} & 1975/209  $\bullet$ & 1050 & 8.7\% & Province & Guangxi, China & 2016-2018 & CRF01, CRF07, CRF08   & $\P$0.75 & 1.295  \\
-		\cite{Fabeni:2020aa} & 726/3499 $\bullet$  & 1029 & 9.2\% & Country & Italy & 1998-2018 & B & 1.0 & 0.37 \\
-		\cite{Leal:2020aa} & 630/633 $\bullet$ & 990 & 9.2\% & State & Maranhão, Brazil & 2008-2017 & B & 2.0 & 4.033 \\
-		\cite{bbosa_short_2020} &2018 &  1257 & 9.3\% & Country  & Uganda       & 2009-2016     & N.R   & 1.5          & 2.035 $\star$  \\
-		\cite{Stecher:2018aa} & 2774 & 1028 & 12.1\% & Multi-City & Germany & 1999-2016 & B & 1.5 & 3.056\\
-		\cite{chato_public_2020} & 1653/1840 $\bullet$  & 1020 &  5.5\% & City &Seattle, ISA & 2000-2013 &  B & $\P$1.6 & 1.538 \\
+		\label{tab:paperComparison}
+		\begin{tabular}{llllllllll}
+			\hline
+			Reference                   & $N$                 & $L$  & $E[D]$ & Scope      & Location/Country         & Timespan  & Common                & \multicolumn{2}{c}{Distance threshold, \%}                  \\
+			                            &                     &      &        &            &                          &           & Subtypes              & Published                                  & AUTO-TUNE      \\
+			\hline
+			\cite{Zai:2020aa}           & 209                 & 1056 & 1.5\%  & Country    & China                    & 2007–2015 & CRF55/01B             & $\P$ 0.2                                   & 0.255          \\
+			\cite{liu_dynamics_2020}    & 2087/1907 $\bullet$ & 1053 & 5.3\%  & City       & Shenyang, China          & 2008-2016 & CRF01, CRF07, B       & $\P$ 0.5/0.7 $\dagger$                     & 0.621          \\
+			\cite{dalai_combining_2018} & 317                 & 1044 & 5.5\%  & City       & San Mateo, CA, USA       & 1997-2008 & $96\%$ B              & 2                                          & 1.944          \\
+			\cite{chato_public_2020}    & 808                 & 1017 & 5.6\%  & Province   & Northern Alberta, Canada & 2007-2013 & B                     & $\P$1.04                                   & 1.201          \\
+			\cite{Little:2014aa}        & 648/646 $\bullet$   & 1212 & 5.9\%  & City       & San Diego, CA, USA       & 1996-2011 & $98.5\%$ B            & 1.5                                        & 2.495          \\
+			\cite{Perez-Losada:2017aa}  & 1879/3411 $\bullet$ & 1027 & 6.0\%  & City       & Washington DC, USA       & 1987–2015 & B                     & 1.0                                        & 1.733          \\
+			\cite{rhee_national_2019}   & 4553                & 897  & 6.1\%  & State      & CA, USA                  & 1998-2016 & 95.5\% B              & 1.5                                        & 1.139$\star$   \\
+			\cite{chato_public_2020}    & 2779/2750 $\bullet$ & 1398 & 6.3\%  & State      & Tennessee, USA           & 2001-2015 & B                     & $\P$1.6                                    & 1.872          \\
+			\cite{Temereanca:2017aa}    & 37                  & 1302 & 6.7\%  & City       & Bucharest, Romania       & 2010-2013 & F1, G, B              & 1.5                                        & 0.194          \\
+			\cite{brenner_role_2021}    & 10945/448 $\bullet$ & 738  & 6.7\%  & Province   & Quebec, Canada           & 2002-2020 & B                     & 1.5/2.5\                                   & 2.741          \\
+			\citet{sivay_hiv-1_2018}    & 201                 & 1302 & 6.9\%  & Province   & Mpumalanga, South Africa & 2011-2015 & C                     & 2.5                                        & 2.506          \\
+			\cite{Li:2022aa}            & 295                 & 1206 & 7.8\%  & Prefecture & Pu'er, China             & 2021      & CRF08, CRF01, CRF07   & $\P$ 1.3                                   & 1.483  $\star$ \\
+			\cite{Yu:2022aa}            & 316                 & 1074 & 7.9\%  & Province   & Guangxi, China           & 2012-2018 & CRF01, CRF08, CRF07   & $\P$1.3                                    & 1.178          \\
+			\cite{Yan:2021aa}           & 1695/1569 $\bullet$ & 1569 & 8.4\%  & City       & Guangzhou, China         & 2008-2012 & CRF01, CRF07, CRF55,G & 1.5                                        & 0.839          \\
+			\cite{Billings:2019aa}      & 150                 & 1597 & 8.5\%  & City       & Lagos, Nigeria           & 2013-2016 & CRF02, URF            & 1.5                                        & 2.33           \\
+			\cite{Chen:2023aa}          & 1975/209  $\bullet$ & 1050 & 8.7\%  & Province   & Guangxi, China           & 2016-2018 & CRF01, CRF07, CRF08   & $\P$0.75                                   & 1.295          \\
+			\cite{Fabeni:2020aa}        & 726/3499 $\bullet$  & 1029 & 9.2\%  & Country    & Italy                    & 1998-2018 & B                     & 1.0                                        & 0.37           \\
+			\cite{Leal:2020aa}          & 630/633 $\bullet$   & 990  & 9.2\%  & State      & Maranhão, Brazil         & 2008-2017 & B                     & 2.0                                        & 4.033          \\
+			\cite{bbosa_short_2020}     & 2018                & 1257 & 9.3\%  & Country    & Uganda                   & 2009-2016 & N.R                   & 1.5                                        & 2.035 $\star$  \\
+			\cite{Stecher:2018aa}       & 2774                & 1028 & 12.1\% & Multi-City & Germany                  & 1999-2016 & B                     & 1.5                                        & 3.056          \\
+			\cite{chato_public_2020}    & 1653/1840 $\bullet$ & 1020 & 5.5\%  & City       & Seattle, ISA             & 2000-2013 & B                     & $\P$1.6                                    & 1.538          \\
 			\\
-		
-		
-		\hline
-	\end{tabular}
+
+			\hline
+		\end{tabular}
 	\end{ssmall}
 \end{table}
 
@@ -576,184 +589,218 @@ within subtypes.
 	\vspace{10pt}
 	\centering
 	\begin{ssmall}
-	\label{tab:paperComparisonProp}
-	\begin{tabular}{llllllllll}
-	   \hline
-		Reference  & AUTO-TUNE & \multicolumn{2}{c}{Nodes in network} &  \multicolumn{2}{c}{Clusters in network} & \multicolumn{2}{c}{$R_{12}$} & \multicolumn{2}{c}{Scale parameter $\rho$} \\
-		& score & Published & AUTO-TUNE & Published & AUTO-TUNE  & Published & AUTO-TUNE & Published & AUTO-TUNE  \\
-	 \hline
-		\cite{Li:2022aa} &  2.00 & 1364 & 1224 & 277 & 277 & 1.7 & 2.4 & 2.8 & 2.6 \\
-		\cite{chato_public_2020} TN & 2.00 & 394 & 445 & 108 & 109 & 1.0 & 1.7 & 2.7 & 2.9 \\
-		\cite{rhee_national_2019}  & 1.95 & 2044 & 1636 & 524 & 488 & 13.2 & 1.5 & 2.6 & 2.7\\
-		\cite{bbosa_short_2020}  & 1.93 & 222 & 296 &  102 & 119 & 2.2 & 1.6 & 3.2 & 2.6\\
-		\citet{dalai_combining_2018} & 1.89 & 60 & 54 & 9 & 11 & 22 & 2.6 & 2.0 & 2.2  \\ % CONFIRMED
-		\cite{Temereanca:2017aa} & 1.79 & 30 & 16 & 5 & 3 & 3 & 1.5 & N/A & 2.8\\
-		\cite{Yu:2022aa} &  1.76 & 55 &  51 & 19 & 19 & 2.75 &1.75 & 10.4 & 34.0\\
-		\citet{sivay_hiv-1_2018} & 1.42 & 51 & 51 & 19 & 19 & 1.5 & 1.5 & 3.2 & 3.0\\
-		\cite{Zai:2020aa}  & 1.40 & 96 & 98 & 26 & 27 & 1.5 & 1.5 & 24.1 & 17.7 \\ % CONFIRMED
-		\cite{Little:2014aa}  & 1.31 & 301 & 394 & 98 & 87 & 2.5& 6.1 & 3.6 & 3.1\\ % CONFIRMED
-		\cite{brenner_role_2021}  & 1.22 & 363 &  379 & 71 & 70 & 5.6 & 5.5 & 2.7 & 2.8 \\
-		\cite{Stecher:2018aa} & 1.20 & 97 & 558 & 36 & 155 & 2.2 & 4.9 & 3.2 & 3.3 \\
-		\cite{chato_public_2020} Seattle & 1.16 & 505 & 484 & 148 & 149 & 2.5 & 1.7 & 2.7 & 2.6 \\
-		\cite{Billings:2019aa} & 1.16 & 38 & 78 & 13 & 23 & 2 & 2.3 & 2.6 & 11.5 \\
-		\cite{Yan:2021aa}  & 1.14 & 1084 & 753 &  124 & 116 & 2.0 & 1.8 & 1.2 & 2.0 \\
-		\cite{Chen:2023aa} & 1.11 & 20 & 47 & 8 & 16 & 1.3 & 2.0 & $\infty$ & $\infty$  \\
-		\cite{Leal:2020aa}  & 1.11 & 50 & 270 & 25 & 57 & 1 & 1.6 & 53.6 & 3.1\\
-		\cite{Perez-Losada:2017aa} & 1.06 & 172 & 431 & 76 & 134 & 5.1 & 1.4 & 5.2 & 2.9 \\ 
-		\cite{liu_dynamics_2020}  & 1.05 & 885 & 797 &  156 & 161 & 6.0 & 4.5 & 3.1 & 3.0  \\ % CONFIRMED
-		\cite{chato_public_2020} Alberta & 1.03 & 394 & 445 & 108 & 109 & 1.0 & 1.7 & 2.7 & 2.9 \\
-		\cite{Fabeni:2020aa}  & 1.00 & 626 & 221 & 197 & 83 & 2.1 & 3.2 & 2.1 & 3.2\\
+		\label{tab:paperComparisonProp}
+		\begin{tabular}{llllllllll}
+			\hline
+			Reference                        & AUTO-TUNE & \multicolumn{2}{c}{Nodes in network} & \multicolumn{2}{c}{Clusters in network} & \multicolumn{2}{c}{$R_{12}$} & \multicolumn{2}{c}{Scale parameter $\rho$}                                                 \\
+			                                 & score     & Published                            & AUTO-TUNE                               & Published                    & AUTO-TUNE                                  & Published & AUTO-TUNE & Published & AUTO-TUNE \\
+			\hline
+			\cite{Li:2022aa}                 & 2.00      & 1364                                 & 1224                                    & 277                          & 277                                        & 1.7       & 2.4       & 2.8       & 2.6       \\
+			\cite{chato_public_2020} TN      & 2.00      & 394                                  & 445                                     & 108                          & 109                                        & 1.0       & 1.7       & 2.7       & 2.9       \\
+			\cite{rhee_national_2019}        & 1.95      & 2044                                 & 1636                                    & 524                          & 488                                        & 13.2      & 1.5       & 2.6       & 2.7       \\
+			\cite{bbosa_short_2020}          & 1.93      & 222                                  & 296                                     & 102                          & 119                                        & 2.2       & 1.6       & 3.2       & 2.6       \\
+			\citet{dalai_combining_2018}     & 1.89      & 60                                   & 54                                      & 9                            & 11                                         & 22        & 2.6       & 2.0       & 2.2       \\ % CONFIRMED
+			\cite{Temereanca:2017aa}         & 1.79      & 30                                   & 16                                      & 5                            & 3                                          & 3         & 1.5       & N/A       & 2.8       \\
+			\cite{Yu:2022aa}                 & 1.76      & 55                                   & 51                                      & 19                           & 19                                         & 2.75      & 1.75      & 10.4      & 34.0      \\
+			\citet{sivay_hiv-1_2018}         & 1.42      & 51                                   & 51                                      & 19                           & 19                                         & 1.5       & 1.5       & 3.2       & 3.0       \\
+			\cite{Zai:2020aa}                & 1.40      & 96                                   & 98                                      & 26                           & 27                                         & 1.5       & 1.5       & 24.1      & 17.7      \\ % CONFIRMED
+			\cite{Little:2014aa}             & 1.31      & 301                                  & 394                                     & 98                           & 87                                         & 2.5       & 6.1       & 3.6       & 3.1       \\ % CONFIRMED
+			\cite{brenner_role_2021}         & 1.22      & 363                                  & 379                                     & 71                           & 70                                         & 5.6       & 5.5       & 2.7       & 2.8       \\
+			\cite{Stecher:2018aa}            & 1.20      & 97                                   & 558                                     & 36                           & 155                                        & 2.2       & 4.9       & 3.2       & 3.3       \\
+			\cite{chato_public_2020} Seattle & 1.16      & 505                                  & 484                                     & 148                          & 149                                        & 2.5       & 1.7       & 2.7       & 2.6       \\
+			\cite{Billings:2019aa}           & 1.16      & 38                                   & 78                                      & 13                           & 23                                         & 2         & 2.3       & 2.6       & 11.5      \\
+			\cite{Yan:2021aa}                & 1.14      & 1084                                 & 753                                     & 124                          & 116                                        & 2.0       & 1.8       & 1.2       & 2.0       \\
+			\cite{Chen:2023aa}               & 1.11      & 20                                   & 47                                      & 8                            & 16                                         & 1.3       & 2.0       & $\infty$  & $\infty$  \\
+			\cite{Leal:2020aa}               & 1.11      & 50                                   & 270                                     & 25                           & 57                                         & 1         & 1.6       & 53.6      & 3.1       \\
+			\cite{Perez-Losada:2017aa}       & 1.06      & 172                                  & 431                                     & 76                           & 134                                        & 5.1       & 1.4       & 5.2       & 2.9       \\
+			\cite{liu_dynamics_2020}         & 1.05      & 885                                  & 797                                     & 156                          & 161                                        & 6.0       & 4.5       & 3.1       & 3.0       \\ % CONFIRMED
+			\cite{chato_public_2020} Alberta & 1.03      & 394                                  & 445                                     & 108                          & 109                                        & 1.0       & 1.7       & 2.7       & 2.9       \\
+			\cite{Fabeni:2020aa}             & 1.00      & 626                                  & 221                                     & 197                          & 83                                         & 2.1       & 3.2       & 2.1       & 3.2       \\
 
-	\hline
-	\end{tabular}
+			\hline
+		\end{tabular}
 	\end{ssmall}
 \end{table}
 
 \begin{figure*}[h]
-\centering
-% \includegraphics[width=1.\textwidth]{figures/examples.pdf} 
-\vspace{0.01in}
-\caption{\textbf{Examples of AUTO-TUNE scores profiles.} 
-(A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the threshold is lowered. (D). Changes to the node degree distribution (because many nodes have the same degree, the color is used to represent their counts). (E). A significant enlargement of a small network at a higher threhold, with grey edges only present at the larger threshold. }
-\label{Figure:Examples}
+	\centering
+	% \includegraphics[width=1.\textwidth]{figures/examples.pdf} 
+	\vspace{0.01in}
+	\caption{\textbf{Examples of AUTO-TUNE scores profiles.}
+		(A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the threshold is lowered. (D). Changes to the node degree distribution (because many nodes have the same degree, the color is used to represent their counts). (E). A significant enlargement of a small network at a higher threhold, with grey edges only present at the larger threshold. }
+	\label{Figure:Examples}
 \end{figure*}
 
-
 \begin{figure*}[h]
-\centering
-% \includegraphics[width=1.\textwidth]{figures/cases.pdf}
-\vspace{0.01in}
-\caption{\textbf{Examples of how changing thresholds affects inferred networks.} 
-(A). A high-scoring network \cite{bbosa_short_2020} has a distance threshold which achieves the number of clusters near the maximum, while also avoiding the formation of a large (weakly connected) cluster. (B). A low-scoring network \cite{liu_dynamics_2020} has a misalignment between the distance for which the maximum number of clusters is found, and where the big jumps in the clusteer size ratio occur. Here, AUTO-TUNE effectively optimizes the number of clusters, but often also keeps the largest cluster from growing excessively.}
-\label{Figure:Cases}
+	\centering
+	% \includegraphics[width=1.\textwidth]{figures/cases.pdf}
+	\vspace{0.01in}
+	\caption{\textbf{Examples of how changing thresholds affects inferred networks.}
+		(A). A high-scoring network \cite{bbosa_short_2020} has a distance threshold which achieves the number of clusters near the maximum, while also avoiding the formation of a large (weakly connected) cluster. (B). A low-scoring network \cite{liu_dynamics_2020} has a misalignment between the distance for which the maximum number of clusters is found, and where the big jumps in the clusteer size ratio occur. Here, AUTO-TUNE effectively optimizes the number of clusters, but often also keeps the largest cluster from growing excessively.}
+	\label{Figure:Cases}
 \end{figure*}
 
 \subsection{Comparisons with published non-HIV molecular epidemiology studies}
 
 While HIV-1 epidemiology is the predominant niche for distance-based molecular
-transmission analyses, other rapidly evolving viruses, especially HCV, have also
-been analyzed with these approaches. Unlike HIV-1, there is considerably less
-work on how to choose an appropriate distance threshold, further complicated by
-the use of different genes to build networks (see \citet{Chan:2020aa} for a nice
-summary). Two commonly seen methods exist: use some measure of intra-host
-variation (obtained by deep sequencing) as a lower bound for the threshold, or
-tune $D$ to obtain some desired network property, e.g., the maximal number of
-clusters. Like with HIV-1, we searched the literature for relevant studies, and
-selected several with publicly available sequence data.  
+transmission analyses, other rapidly evolving viruses, especially HCV, have
+also been analyzed with these approaches. Unlike HIV-1, there is considerably
+less work on how to choose an appropriate distance threshold, further
+complicated by the use of different genes to build networks (see
+\citet{Chan:2020aa} for a nice summary). Two commonly seen methods exist: use
+some measure of intra-host variation (obtained by deep sequencing) as a lower
+bound for the threshold, or tune $D$ to obtain some desired network property,
+e.g., the maximal number of clusters. Like with HIV-1, we searched the
+literature for relevant studies, and selected several with publicly available
+sequence data.
 
-Most of the datasets are much smaller and less systematically sampled than those
-for HIV-1, and often combine highly divergent subtypes in the same collection,
-making a joint analysis challenging. As with HIV-1, AUTO-TUNE returns a wide
-range of scores and $D$ thresholds. For example, effectively maximizing the
-number of clusters on rhinovirus sequences from \citet{Ng:2022aa} yields a $D$
-estimate very similar to that obtained by the authors from intra-host
-variability -- information not available to AUTO-TUNE.
-
+Most of the datasets are much smaller and less systematically sampled than
+those for HIV-1, and often combine highly divergent subtypes in the same
+collection, making a joint analysis challenging. As with HIV-1, AUTO-TUNE
+returns a wide range of scores and $D$ thresholds. For example, effectively
+maximizing the number of clusters on rhinovirus sequences from
+\citet{Ng:2022aa} yields a $D$ estimate very similar to that obtained by the
+authors from intra-host variability -- information not available to AUTO-TUNE.
 
 \begin{table}[h]
 	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using sequences from viruses other than HIV-1. "N/A": no distance-based clustering analyses were done. Other notation is the same as in Table~\ref{tab:paperComparison}}
-	
+
 	\vspace{10pt}
 	\centering
 	\begin{ssmall}
-	\label{tab:paperComparison}
-	\begin{tabular}{lllllllllll}
-	   \hline
-		Reference     & Virus & Gene & $N$ & $L$ & $E[D]$ & Scope & Location/Country      & Timespan  & \multicolumn{2}{c}{Distance threshold, \%}\\
-		     &  &       &  &  & & & & & Published & AUTO-TUNE (score) \\
-		\hline
-		\cite{Jia:2023aa} & HCV & {\it NS5B} & 503 & 315 & 34.9\% & Province & Yunnan, China & 2008–2018 & N/A & 1.933 (1.92)\\
-		& & & 97 & 8.0\% & \multicolumn{4}{l}{Genotype 1b only}  & $\P$ 2.3 &  1.944 (2.0)\\
-		& & & 53 & 7.4\% & \multicolumn{4}{l}{Genotype 2a only}  & $\P$ 3.3 &  3.3 (1.3)\\
-		& & & 110 & 5.4\% & \multicolumn{4}{l}{Genotype 3a only}  & $\P$ 2.0 &  3.6 (1.0)\\
-		& & & 189 & 5.5\% & \multicolumn{4}{l}{Genotype 3b only}  & $\P$ 1.7 &  1.6 (1.0)\\
-		\cite{Murphy:2019aa} & HCV & {\it NS5B} & 119 & 340-850 & 5.6\% & Province & Quebec, Canada & 2001–2017 & N/A & 0.0251 (1.05)\\
-		\cite{Paraschiv:2017aa} & HCV & {\it NS5B} & 117 & $\sim 300$ & 24.6\% & Country & Romania & 2011-2014& N/A & 1.394 (1.11)\\
-		\cite{Ye:2023aa} & HCV & {\it NS5B} & 1603/399 $\bullet$ & 701 & 27.6\% & Country & China & 1999-2017 & $\P$ 1.0 & 0.359 (1) \\
-		 &  & {\it C/E2} & 865/396 $\bullet$ & 837 & 37.3\% & & & &    $\P$ 3.25 & 1.572 (1.98) \\
-		 \cite{Ng:2022aa} & Rhinovirus & {\it VP2/VP4} & 977 & 388 & 43.2\% & City & Kuala Lumpur, Malaysia & 2012-2014 & $\P$ 0.5 & 0.523 (1) \\
-		
-		\hline
-	\end{tabular}
+		\label{tab:paperComparison}
+		\begin{tabular}{lllllllllll}
+			\hline
+			Reference               & Virus      & Gene          & $N$                & $L$        & $E[D]$                               & Scope    & Location/Country       & Timespan  & \multicolumn{2}{c}{Distance threshold, \%}                     \\
+			                        &            &               &                    &            &                                      &          &                        &           & Published                                  & AUTO-TUNE (score) \\
+			\hline
+			\cite{Jia:2023aa}       & HCV        & {\it NS5B}    & 503                & 315        & 34.9\%                               & Province & Yunnan, China          & 2008–2018 & N/A                                        & 1.933 (1.92)      \\
+			                        &            &               & 97                 & 8.0\%      & \multicolumn{4}{l}{Genotype 1b only} & $\P$ 2.3 & 1.944 (2.0)                                                                                         \\
+			                        &            &               & 53                 & 7.4\%      & \multicolumn{4}{l}{Genotype 2a only} & $\P$ 3.3 & 3.3 (1.3)                                                                                           \\
+			                        &            &               & 110                & 5.4\%      & \multicolumn{4}{l}{Genotype 3a only} & $\P$ 2.0 & 3.6 (1.0)                                                                                           \\
+			                        &            &               & 189                & 5.5\%      & \multicolumn{4}{l}{Genotype 3b only} & $\P$ 1.7 & 1.6 (1.0)                                                                                           \\
+			\cite{Murphy:2019aa}    & HCV        & {\it NS5B}    & 119                & 340-850    & 5.6\%                                & Province & Quebec, Canada         & 2001–2017 & N/A                                        & 0.0251 (1.05)     \\
+			\cite{Paraschiv:2017aa} & HCV        & {\it NS5B}    & 117                & $\sim 300$ & 24.6\%                               & Country  & Romania                & 2011-2014 & N/A                                        & 1.394 (1.11)      \\
+			\cite{Ye:2023aa}        & HCV        & {\it NS5B}    & 1603/399 $\bullet$ & 701        & 27.6\%                               & Country  & China                  & 1999-2017 & $\P$ 1.0                                   & 0.359 (1)         \\
+			                        &            & {\it C/E2}    & 865/396 $\bullet$  & 837        & 37.3\%                               &          &                        &           & $\P$ 3.25                                  & 1.572 (1.98)      \\
+			\cite{Ng:2022aa}        & Rhinovirus & {\it VP2/VP4} & 977                & 388        & 43.2\%                               & City     & Kuala Lumpur, Malaysia & 2012-2014 & $\P$ 0.5                                   & 0.523 (1)         \\
+
+			\hline
+		\end{tabular}
 	\end{ssmall}
 \end{table}
 
 \subsection{Large-scale HIV-1 database analyses}
 
 \subsubsection{Markedly different thresholds for different subtypes}
-Following the spirit of the analysis performed by \citet{Wertheim:2014aa}, we downloaded partial {\it pol} sequences (between HXB-2 coordinates 2253 and 3200, one sequence per patient) from the Los Alamos HIV-1 Database, split them by annotated subtype and applied AUTO-TUNE to individual subtypes with $1000$ or more sequences.
+Following the spirit of the analysis performed by \citet{Wertheim:2014aa}, we
+downloaded partial {\it pol} sequences (between HXB-2 coordinates 2253 and
+3200, one sequence per patient) from the Los Alamos HIV-1 Database, split them
+by annotated subtype and applied AUTO-TUNE to individual subtypes with $1000$
+or more sequences.
 
-Some (but not all) HIV-1 subtypes often as strong correlates of regional and temporal distributions of sequences, and are expected to represent epidemics with different sampling rates and transmission dynamics. These differences are reflected in a wide range of mean pairwise distances and inferred AUTO-TUNE thresholds shown in Table~\ref{tab:paperLANL}. For example, the relatively young subtype A6, which is the most common subtype in the countries of the former Soviet Union \cite{Abidi:2021aa}, has a low mean pairwise distance ($4.6\%$)and a low AUTO-TUNE threshold ($0.56\%$). In contrast A1D recombinant sequences have high distance and threshold values ($8.9\%$ and $3.23\%$, respecitvely), because sequences of this "subtype" represent broadly circulating strains, with complex histories, and extensive histories of recombination \cite{Foster:2014aa,Yebra:2015aa}. 
+Some (but not all) HIV-1 subtypes often as strong correlates of regional and
+temporal distributions of sequences, and are expected to represent epidemics
+with different sampling rates and transmission dynamics. These differences are
+reflected in a wide range of mean pairwise distances and inferred AUTO-TUNE
+thresholds shown in Table~\ref{tab:paperLANL}. For example, the relatively
+young subtype A6, which is the most common subtype in the countries of the
+former Soviet Union \cite{Abidi:2021aa}, has a low mean pairwise distance
+($4.6\%$)and a low AUTO-TUNE threshold ($0.56\%$). In contrast A1D recombinant
+sequences have high distance and threshold values ($8.9\%$ and $3.23\%$,
+respecitvely), because sequences of this "subtype" represent broadly
+circulating strains, with complex histories, and extensive histories of
+recombination \cite{Foster:2014aa,Yebra:2015aa}.
 
-There was extensive variability among subtypes in all high-level network statistics, including the mean degree, fractions of nodes that were in the network, and the characteristic exponent $\rho$, where $\rho$ is inferred from by fitting the degree distribution to various network formation models, and with $\text{Prob}(\text{degree} = k) \sim 1/k^\rho$ for large $k$. 
+There was extensive variability among subtypes in all high-level network
+statistics, including the mean degree, fractions of nodes that were in the
+network, and the characteristic exponent $\rho$, where $\rho$ is inferred from
+by fitting the degree distribution to various network formation models, and
+with $\text{Prob}(\text{degree} = k) \sim 1/k^\rho$ for large $k$.
 
-For A1, B, C, and CRF08 networks there's very strong support for a single AUTO-TUNE threshold (score $>1.9$), while for many other subtypes there is extreme ambiguity in which threshold to choose (score $<1.1$). We suggest that networks where AUTO-TUNE fails to find a single threshold may comprise heterogenous data which require multiple thresholds to resolve. 
+For A1, B, C, and CRF08 networks there's very strong support for a single
+AUTO-TUNE threshold (score $>1.9$), while for many other subtypes there is
+extreme ambiguity in which threshold to choose (score $<1.1$). We suggest that
+networks where AUTO-TUNE fails to find a single threshold may comprise
+heterogenous data which require multiple thresholds to resolve.
 
 \begin{table}[h]
 	\caption{An application of AUTO-TUNE to subtype stratified HIV-1 pol sequences from the LANL database. Fraction clustered is the proportion of all sequences that are connected to at least one other sequence. Subtypes are sorted by the inferred threshold, lowest first. Other notation is the same as in Table~\ref{tab:paperComparison}}
-	
+
 	\vspace{10pt}
 	\centering
 	\begin{small}
-	\label{tab:paperLANL}
-	\begin{tabular}{llllllll}
-	   \hline
-		Subtype  &  $N$ & $E[D]$ & \multicolumn{2}{c}{AUTO-TUNE} & Fraction & Mean &  $\rho$ \\
-		     &  & & Threshold, \% & Score & Clustered, \% & Degree & \\
-		    \hline
-		     
-		 CRF55 & 2237 & 2.6 & 0.187 & 1.20 & 29.6 & 1.41 & 2.41 \\
-		 CRF07 & 11682 &  3.3 & 0.26 & 1.00& 26.9 & 3.42 & 1.87 \\
-		 CRF63 & 1649 & 3.6 & 0.505 & 1.01 & 22.1 & 4.85 &  1.8 \\
-		 01B	 & 2237 & 7.8 & 0.518 & 1.08 & 22.2 & 0.97 & 5.05 \\
-		 A6 & 11991 & 4.6 & 0.558 &  1.09 & 18.6 & 5.55 & 1.6 \\
-		CRF08 & 2538 &  3.9 & 0.82 & 1.95& 25.6 & 1.95 & 2.12 \\
-		 CRF01 & 25689 & 5.1 & 0.875 & 1.73 & 47.0 & 1.94 & 5.54 \\
-	 	B & 106261 & 6.4 & 1.084 & 2.00 & 46.4 & 4.77 & 1.95 \\
-		 D & 3561 & 6.6 & 1.133 & 1.12 & 20.8 & 3.65 & 0.79 \\
-		 C & 30714 & 6.7 & 1.438 & 2.00 & 19.3 & 1.26 & 2.22 \\
-		 A1 & 7154 & 7.0 & 1.89 & 2.00 & 17.0 & 5 & 1.7 \\
-		 CRF02 & 7821 &  6.3 & 1.97 & 1.01 & 34.3 & 10.44 & 1.53 \\
-		 BF1 & 4825 & 8.1 & 2.046 & 1.03 & 25.1 & 2.27 & 1.95 \\
-		 G & 2162 & 7.3 & 2.407 & 1.03 & 49.0 & 9.1 & 1.66\\
-		 F1 & 3986 & 7.6 & 2.941 & 1.34 & 50.4 & 15.03 & 1.40 \\
-		 A1D & 1284 & 8.9 & 3.23 & 1.70 & 27.5 & 1 & 4.3 \\
-		 BC & 2724 & 8.0 & 3.54 & 1.00 & 81.4 & 71.2 & 1.32 \\ 
-		 \hline
-		 \citet{Wertheim:2014aa}  & 84527 & . & 1.0 & N/A & 15.6 & 3.84 & 1.74 \\
- 		\hline
-		
-		\hline
-	\end{tabular}
+		\label{tab:paperLANL}
+		\begin{tabular}{llllllll}
+			\hline
+			Subtype                        & $N$   & $E[D]$ & \multicolumn{2}{c}{AUTO-TUNE} & Fraction & Mean          & $\rho$        \\
+			                               &       &        & Threshold, \%                 & Score    & Clustered, \% & Degree &      \\
+			\hline
+
+			CRF55                          & 2237  & 2.6    & 0.187                         & 1.20     & 29.6          & 1.41   & 2.41 \\ CRF07 & 11682 & 3.3  &
+			0.26                           & 1.00  & 26.9   & 3.42                          & 1.87                                     \\ CRF63 & 1649                     & 3.6 & 0.505 & 1.01 & 22.1 &
+			4.85                           & 1.8                                                                                       \\ 01B & 2237 & 7.8 & 0.518 & 1.08 & 22.2 & 0.97 & 5.05 \\ A6    &
+			11991                          & 4.6   & 0.558  & 1.09                          & 18.6     & 5.55          & 1.6           \\ CRF08 & 2538 & 3.9  & 0.82                      &
+			1.95                           & 25.6  & 1.95   & 2.12                                                                     \\ CRF01 & 25689 & 5.1 & 0.875 & 1.73 & 47.0 & 1.94 &
+			5.54                                                                                                                       \\ B & 106261 & 6.4 & 1.084 & 2.00 & 46.4 & 4.77 & 1.95 \\ D & 3561  & 6.6
+			                               & 1.133 & 1.12   & 20.8                          & 3.65     & 0.79                          \\ C    & 30714                    & 6.7 & 1.438 & 2.00 & 19.3 &
+			1.26                           & 2.22                                                                                      \\ A1 & 7154 & 7.0 & 1.89 & 2.00 & 17.0 & 5 & 1.7 \\ CRF02 & 7821 &
+			6.3                            & 1.97  & 1.01   & 34.3                          & 10.44    & 1.53                          \\ BF1  & 4825 & 8.1                      & 2.046 & 1.03 &
+			25.1                           & 2.27  & 1.95                                                                              \\ G & 2162 & 7.3 & 2.407 & 1.03 & 49.0 & 9.1 & 1.66\\ F1   &
+			3986                           & 7.6   & 2.941  & 1.34                          & 50.4     & 15.03         & 1.40          \\ A1D  & 1284 & 8.9 & 3.23                    &
+			1.70                           & 27.5  & 1      & 4.3                                                                      \\ BC & 2724 & 8.0 & 3.54 & 1.00 & 81.4 & 71.2 & 1.32 \\
+			\hline \citet{Wertheim:2014aa} & 84527 & .      & 1.0                           & N/A      & 15.6          & 3.84   & 1.74 \\
+			\hline
+
+			\hline
+		\end{tabular}
 	\end{small}
 \end{table}
 
-
 \subsubsection{Congruence of networks inferred from different genes}
 
-Very few published studies of HIV-1 transmission networks use genes othat that {\it pol}, and nearly all of the extrisnsically motivated thresholds have been derived for this gene, the utility of other genes and the appropriate $D$ values for them are unclear.  Because of different rates of evolution in HIV-1 genes and, possibly, subtypes \cite{Penn:2008aa}, one would expect $D$ to be different for different subtypes and genes. As a simple exercise, we downloaded full-length HIV-1 genomes from the LANL database, stratitied them by subtype, and conducted AUTO-TUNE inference using for genomic segments: protease+reverse transcriptase, integrase, matrix (gag), and the less variable gp41 segment of the envelope gene. 
+Very few published studies of HIV-1 transmission networks use genes othat that
+	{\it pol}, and nearly all of the extrisnsically motivated thresholds have been
+derived for this gene, the utility of other genes and the appropriate $D$
+values for them are unclear. Because of different rates of evolution in HIV-1
+genes and, possibly, subtypes \cite{Penn:2008aa}, one would expect $D$ to be
+different for different subtypes and genes. As a simple exercise, we downloaded
+full-length HIV-1 genomes from the LANL database, stratitied them by subtype,
+and conducted AUTO-TUNE inference using for genomic segments: protease+reverse
+transcriptase, integrase, matrix (gag), and the less variable gp41 segment of
+the envelope gene.
 
-Only three subtypes had $500$ or more full-length sequences in the LANL HIV database (Table~\ref{tab:LANL:full}): B, C, and CRF01. As expected, the inferred thresholds differed by gene and subtype, with lower thresholds inferred for more slowly evolving segments (pr+rt and int), and similar numbers of clusters found in the resulting subtype-level networks. For all three subtypes, the level of agreement between the four networks on whether or not nodes were clustered or not (present / absent from the network), measured by Krippendorff's $\alpha$ \cite{doi:10.1080/19312450709336664}, were substantially higher than expected by chance ($\alpha = 0$). All four networks also had between a quarter and a half of all the clusters in perfect agreement. 
+Only three subtypes had $500$ or more full-length sequences in the LANL HIV
+database (Table~\ref{tab:LANL:full}): B, C, and CRF01. As expected, the
+inferred thresholds differed by gene and subtype, with lower thresholds
+inferred for more slowly evolving segments (pr+rt and int), and similar numbers
+of clusters found in the resulting subtype-level networks. For all three
+subtypes, the level of agreement between the four networks on whether or not
+nodes were clustered or not (present / absent from the network), measured by
+Krippendorff's $\alpha$ \cite{doi:10.1080/19312450709336664}, were
+substantially higher than expected by chance ($\alpha = 0$). All four networks
+also had between a quarter and a half of all the clusters in perfect agreement. 
 
 \begin{table}[h]
 	\caption{Distance thresholds and key network properties using four different HIV-1 genomic regions, stratified by subtype (minumum $500$ sequences)}
-	
+
 	\vspace{10pt}
 	\centering
 	\begin{ssmall}
-	\label{tab:LANL:full}
-	\begin{tabular}{lllllllllllll}
-	   \hline
-		Subtype & N &  \multicolumn{4}{c}{AUTO-TUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$\\
-		& & pr+rt & integrase & gag & gp41 & pr+rt & integrase & gag & gp41 & clusters &  \\
-		\hline
+		\label{tab:LANL:full}
+		\begin{tabular}{lllllllllllll}
+			\hline
+			Subtype & N     & \multicolumn{4}{c}{AUTO-TUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$                                               \\
+			        &       & pr+rt                                 & integrase                              & gag            & gp41                  & pr+rt & integrase & gag & gp41 & clusters & \\
+			\hline
 
-		B & 1843 & 2.081 & 2.0005 & 3.137 & 5.095 & 115 & 128 & 119 & 144 & 64 &  0.723\\
-		C & 877 & 3.266 & 0.02 & 4.754 & 5.325 & 44 & 35 & 47 & 46 & 21 & 0.588\\
-		CRF01/AE & 624 & 1.635 & 0.818 & 2.285 & 2.037 & 40 & 30& 40 & 41 & 12 &  0.610 \\
-								
-		\hline
-	\end{tabular}
+			B       & 1843  & 2.081                                 & 2.0005                                 & 3.137          & 5.095                 & 115   & 128       & 119 & 144  & 64       &
+			0.723                                                                                                                                                                                   \\ C & 877 & 3.266 & 0.02 & 4.754 & 5.325 & 44 & 35 & 47 & 46 & 21 &
+			0.588                                                                                                                                                                                   \\ CRF01/AE & 624                        & 1.635 & 0.818 & 2.285 & 2.037 & 40 & 30 & 40 & 41 & 12
+			        & 0.610                                                                                                                                                                         \\
+
+			\hline
+		\end{tabular}
 	\end{ssmall}
 \end{table}
 
@@ -781,58 +828,63 @@ Only three subtypes had $500$ or more full-length sequences in the LANL HIV data
 %higher \( C \) value at \(0.01707\) less penalized and thereby contributing to
 %its higher composite score.
 
-
 \subsection{Evaluating Inferred Networks using Homophily}
 
 Non-random mixing and attribute-based homophily are intrinsic characteristics
-of human contact networks and can be expected to be present in transmission networks,
-particularly in the context of HIV transmission. People frequently engage in
-relationships with those who share similar attributes or behaviors, such as
-risk factors (e.g., PWID, MSM). The effect of these nonrandom mixing patterns
-on the genetic diversity of HIV-1 has not only been extensively explored via
-modeling and simulations \citep{goodreau_assessing_2006}, but the structure of
-sexual contact networks has been found to directly influence pathogen
-phylogenies \citep{robinson_how_2013}. Phylogenetic analysis of
-HIV type 1 sequences has revealed distinct grouping patterns based on risk
-behaviors \citep{holmes_molecular_1995}. The expectation of homophily is so strong, that its disruption, e.g. the presence of a self-reported heterosexual risk group individual in a cluster exclusively composed of MSMs has been used as a marker of undisclosed/incomplete risk factor reporting \cite{Ragonnet-Cronin:2018aa}. Therefore, when subject-level attributes are available, homophily is an expected and desired feature of the network. 
+of human contact networks and can be expected to be present in transmission
+networks, particularly in the context of HIV transmission. People frequently
+engage in relationships with those who share similar attributes or behaviors,
+such as risk factors (e.g., PWID, MSM). The effect of these nonrandom mixing
+patterns on the genetic diversity of HIV-1 has not only been extensively
+explored via modeling and simulations \citep{goodreau_assessing_2006}, but the
+structure of sexual contact networks has been found to directly influence
+pathogen phylogenies \citep{robinson_how_2013}. Phylogenetic analysis of HIV
+type 1 sequences has revealed distinct grouping patterns based on risk
+behaviors \citep{holmes_molecular_1995}. The expectation of homophily is so
+strong, that its disruption, e.g. the presence of a self-reported heterosexual
+risk group individual in a cluster exclusively composed of MSMs has been used
+as a marker of undisclosed/incomplete risk factor reporting
+\cite{Ragonnet-Cronin:2018aa}. Therefore, when subject-level attributes are
+available, homophily is an expected and desired feature of the network.
 
 To assess the performance of an AUTO-TUNEd optimized threshold using
-degree-weighted homophily, we first evaluated a CRF07\_BC network with national survey data
-from China \cite{Ge:2021aa} .  Each of the $8178$ 
-pol sequences was annotated with a risk factor detailing whether the patient was
-heterosexual (Hetero), Person With Injected Drug Use (PWID), or Men who have
-Sex with Men (MSM), among other attributes.
+degree-weighted homophily, we first evaluated a CRF07\_BC network with national
+survey data from China \cite{Ge:2021aa} . Each of the $8178$ pol sequences was
+annotated with a risk factor detailing whether the patient was heterosexual
+(Hetero), Person With Injected Drug Use (PWID), or Men who have Sex with Men
+(MSM), among other attributes.
 
-When we analyze the dataset with AUTO-TUNE,  local maxima of AUTO-TUNE scores were achieved
-with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030, respectively.
-Notably, the DWH scores for PWID exhibited a significant surge at these
-thresholds, indicating a robust pattern of increased PWID homophily. The close
-proximity of AUTO-TUNE scores and the consistent rise in PWID homophily at
-0.76\% and 0.19\% thresholds suggest comparable performance at these thresholds
-compared to the default 1.5\% threshold, suggesting that these thresholds might
-be more effective in representing homophilic relationships in this network. At
-each threshold—1.5\%, 0.76\%, and 0.19\%—all DWH scores for the risk groups
-(MSM, Hetero, and PWID) lie outside their respective panmictic ranges. This
-consistently indicates non-random mixing and attribute-based homophily across
-the network. Detailed results are in Table~\ref{table:combined}.
+When we analyze the dataset with AUTO-TUNE, local maxima of AUTO-TUNE scores
+were achieved with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030,
+respectively. Notably, the DWH scores for PWID exhibited a significant surge at
+these thresholds, indicating a robust pattern of increased PWID homophily. The
+close proximity of AUTO-TUNE scores and the consistent rise in PWID homophily
+at 0.76\% and 0.19\% thresholds suggest comparable performance at these
+thresholds compared to the default 1.5\% threshold, suggesting that these
+thresholds might be more effective in representing homophilic relationships in
+this network. At each threshold—1.5\%, 0.76\%, and 0.19\%—all DWH scores for
+the risk groups (MSM, Hetero, and PWID) lie outside their respective panmictic
+ranges. This consistently indicates non-random mixing and attribute-based
+homophily across the network. Detailed results are in
+Table~\ref{table:combined}.
 
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{lllll}
 		\hline
-		Threshold & Risk Group & DWH   (Panmictic Range) \\
+		Threshold & Risk Group & DWH   (Panmictic Range)   \\
 		\hline
-		1.5\%     & MSM        & $0.211  (-0.213, -0.085)$        \\
-		     & Hetero     & $0.133 (-0.190, -0.087)$       \\
-		     & PWID       & $0.168 (-0.091, 0.002)$       \\
+		1.5\%     & MSM        & $0.211  (-0.213, -0.085)$ \\
+		          & Hetero     & $0.133 (-0.190, -0.087)$  \\
+		          & PWID       & $0.168 (-0.091, 0.002)$   \\
 		\hline
-		0.76\%    & MSM        & $0.237 (-0.240, -0.120)$       \\
-		  & Hetero     & $0.185 (-0.211, -0.100)$       \\
-		   & PWID       & $0.401 (-0.081, -0.005)$       \\
+		0.76\%    & MSM        & $0.237 (-0.240, -0.120)$  \\
+		          & Hetero     & $0.185 (-0.211, -0.100)$  \\
+		          & PWID       & $0.401 (-0.081, -0.005)$  \\
 		\hline
-		0.19\%    & MSM        & $0.292 (-0.280, -0.146)$       \\
-		    & Hetero     & $0.250 (-0.256, -0.093)$       \\
-		    & PWID       & $0.445 (-0.129, -0.012)$       \\
+		0.19\%    & MSM        & $0.292 (-0.280, -0.146)$  \\
+		          & Hetero     & $0.250 (-0.256, -0.093)$  \\
+		          & PWID       & $0.445 (-0.129, -0.012)$  \\
 		\hline
 	\end{tabular}
 	\caption{Panmictic Ranges for CRF07\_BC DWH at Different Thresholds}
@@ -853,31 +905,43 @@ the network. Detailed results are in Table~\ref{table:combined}.
 
 \subsection{Comparison with clustuneR}
 
-We benchmarked AUTO-TUNE vs {\tt clustuneR} \cite{chato_public_2020}, which employs the recency of sample
-collection or diagnosis as individual-level weights in a predictive model to
-estimate the growth of HIV clusters. The thresholds deemed optimal by {\tt clustuneR} were found by a grid-search for the minimum GAIC (generalized AIC) across candidate distances between $0$ and $0.04$ in steps of $8 \times 10^{-4}$. GAIC
-is the difference between a null model that is only influenced by cluster size,
-and a weighted model that includes individual-level attributes among known
-cases in the cluster. Using the minimum GAIC metric, it was found that $0.016 (\pm  0.5\times 10^{-4})$
-was the optimal threshold for Tennessee and Seattle, and $0.0104$ for Northern
+We benchmarked AUTO-TUNE vs {\tt clustuneR} \cite{chato_public_2020}, which
+employs the recency of sample collection or diagnosis as individual-level
+weights in a predictive model to estimate the growth of HIV clusters. The
+thresholds deemed optimal by {\tt clustuneR} were found by a grid-search for
+the minimum GAIC (generalized AIC) across candidate distances between $0$ and
+$0.04$ in steps of $8 \times 10^{-4}$. GAIC is the difference between a null
+model that is only influenced by cluster size, and a weighted model that
+includes individual-level attributes among known cases in the cluster. Using
+the minimum GAIC metric, it was found that $0.016 (\pm 0.5\times 10^{-4})$ was
+the optimal threshold for Tennessee and Seattle, and $0.0104$ for Northern
 Alberta.
 
 In contrast, AUTO-TUNE does not incorporate any attribute data in its scoring
 heuristic. Instead, it relies on clustering metrics constructed purely from
-pairwise distances between sequences. Using nearly same datasets analyzed by {\tt
-clustuneR} \citep{chato_public_2020}, AUTO-TUNE found the thresholds with the
-highest scores to be $0.01872$ for Middle Tennessee, $0.01538$ for Seattle, and
-$0.01201$ for Northern Alberta. \autoref{tab:homophily}. We use the adjective "nearly" because we were not able to exactly match the number of sequences analyzed in \citet{chato_public_2020} by obtaining the referenced GenBank accession number and our best-effort intepretation of the filtering steps.
+pairwise distances between sequences. Using nearly same datasets analyzed by
+	{\tt clustuneR} \citep{chato_public_2020}, AUTO-TUNE found the thresholds with
+the highest scores to be $0.01872$ for Middle Tennessee, $0.01538$ for Seattle,
+and $0.01201$ for Northern Alberta. \autoref{tab:homophily}. We use the
+adjective "nearly" because we were not able to exactly match the number of
+sequences analyzed in \citet{chato_public_2020} by obtaining the referenced
+GenBank accession number and our best-effort intepretation of the filtering
+steps.
 
-Both method agree that there is a qualiative relationship of $\text{Northern Alberta} < \text{Seattle} ~\sim \text{Tennessee}$ for distance thresholds.
-AUTO-TUNE thresholds, while not optimal in the GAIC sense all yield improvements over the null model, hence they are qualitatively similar to {\tt clustuneR}  (Figure 4 in \cite{chato_public_2020}).  AUTO-TUNE is notably faster in computation than
-clustuneR due to the fact that AUTO-TUNE only clusters based on pairwise
-distances rather than inferring a maximum-likelihood phylogeny. For example, the
-entire pipeline for the Seattle dataset took less than $16$ seconds on an Apple M1
-Max. Alternatively, the tree inference step alone with {\tt clustuneR} takes several
-hours to complete.
+Both method agree that there is a qualiative relationship of $\text{Northern
+		Alberta} < \text{Seattle} ~\sim \text{Tennessee}$ for distance thresholds.
+AUTO-TUNE thresholds, while not optimal in the GAIC sense all yield
+improvements over the null model, hence they are qualitatively similar to {\tt
+		clustuneR} (Figure 4 in \cite{chato_public_2020}). AUTO-TUNE is notably faster
+in computation than clustuneR due to the fact that AUTO-TUNE only clusters
+based on pairwise distances rather than inferring a maximum-likelihood
+phylogeny. For example, the entire pipeline for the Seattle dataset took less
+than $16$ seconds on an Apple M1 Max. Alternatively, the tree inference step
+alone with {\tt clustuneR} takes several hours to complete.
 
-Because the methods optimize very different objectives and {\tt clustuneR} makes use of additional data, broad agreement between the inferred thresholds is encouraging.
+Because the methods optimize very different objectives and {\tt clustuneR}
+makes use of additional data, broad agreement between the inferred thresholds
+is encouraging.
 
 %As an additional abriter of the quality of the networks, we evaluated temporal DWH, since neither method directly optimizes this objective. We computed
 %DWH scores across 3-year collection date windows
@@ -981,12 +1045,12 @@ threshold compared to $0.874$ at 1.5\%.
 
 After revealing that nodes clustered in the full dataset are better captured by
 AUTO-TUNE thresholds, we evaluated how much of the potentially recoverable
-clusters were, in fact, recovered. While both the default `1.5\%` recovered over
-90\% of recoverable clusters, accounting for those that were disconnected due to
-missing samples, we found that the AUTO-TUNE thresholds recovered a higher
-average proportion of eligible clusters across all three sampling densities. A
-full table of these results can be found in Supplemental Materials. \TODO{Create
-another visualization}.
+clusters were, in fact, recovered. While both the default `1.5\%` recovered
+over 90\% of recoverable clusters, accounting for those that were disconnected
+due to missing samples, we found that the AUTO-TUNE thresholds recovered a
+higher average proportion of eligible clusters across all three sampling
+densities. A full table of these results can be found in Supplemental
+Materials. \TODO{Create another visualization}.
 
 As the sample proportion increased, an upward trend was noted in average
 AUTO-TUNE scores. Additionally, the standard deviation reduced significantly
@@ -996,11 +1060,9 @@ particular dataset.
 
 \section{Discussion}
 
-[NEEDS REVIEW]
+ [NEEDS REVIEW]
 
 %Because sequences of different subtypes, unless they are recent recombinants or misannotated, are not expected to form epidemiologically meaningful linkages, e.g., transmission clusters, network inference based on stratifcation by subtype is advisable. Some previous studies which encompass diverse populations of viruses 
-
-
 
 AUTO-TUNE addresses the challenge of selecting an appropriate genetic distance
 threshold in HIV transmission network analysis by implementing a heuristic
@@ -1258,33 +1320,31 @@ No new data were generated by our studies.
 	\end{tabular}
 \end{table}
 
-
 \begin{table}[h]
-\centering
-\caption{Wilcoxon Test Results for clustuneR vs. AUTO-TUNE Collection Date Homophily}
-\label{table:wilcoxon-test}
-\begin{tabular}{lcccc}
-\hline
-\textbf{Dataset} & \textbf{Sign} & \textbf{Observed} & \textbf{Expected} & \textbf{Two-sided p Value} \\
-\hline
-\multirow{4}{*}{Seattle} & Positive & 13 & 7 & \multirow{4}{*}{0.0018} \\
- & Negative & 1 & 7 &  \\
- & Zero & 2 & 2 & \\
- & Total & 16 & 16 & \\
-\hline
-\multirow{4}{*}{Tennessee} & Positive & 9 & 8.5 & \multirow{4}{*}{0.999} \\
- & Negative & 8 & 8.5 & \\
- & Zero & 0 & 0 & \\
- & Total & 17 & 17 & \\
-\hline
-\multirow{4}{*}{Canada} & Positive & 7 & 4.5 & \multirow{4}{*}{0.1797} \\
- & Negative & 2 & 4.5 & \\
- & Zero & 0 & 0 & \\
- & Total & 9 & 9 & \\
-\hline
-\end{tabular}
+	\centering
+	\caption{Wilcoxon Test Results for clustuneR vs. AUTO-TUNE Collection Date Homophily}
+	\label{table:wilcoxon-test}
+	\begin{tabular}{lcccc}
+		\hline
+		\textbf{Dataset}           & \textbf{Sign} & \textbf{Observed} & \textbf{Expected} & \textbf{Two-sided p Value} \\
+		\hline
+		\multirow{4}{*}{Seattle}   & Positive      & 13                & 7                 & \multirow{4}{*}{0.0018}    \\
+		                           & Negative      & 1                 & 7                 &                            \\
+		                           & Zero          & 2                 & 2                 &                            \\
+		                           & Total         & 16                & 16                &                            \\
+		\hline
+		\multirow{4}{*}{Tennessee} & Positive      & 9                 & 8.5               & \multirow{4}{*}{0.999}     \\
+		                           & Negative      & 8                 & 8.5               &                            \\
+		                           & Zero          & 0                 & 0                 &                            \\
+		                           & Total         & 17                & 17                &                            \\
+		\hline
+		\multirow{4}{*}{Canada}    & Positive      & 7                 & 4.5               & \multirow{4}{*}{0.1797}    \\
+		                           & Negative      & 2                 & 4.5               &                            \\
+		                           & Zero          & 0                 & 0                 &                            \\
+		                           & Total         & 9                 & 9                 &                            \\
+		\hline
+	\end{tabular}
 \end{table}
-
 
 \begin{table}[h!]
 	\centering
@@ -1300,8 +1360,6 @@ No new data were generated by our studies.
 	\caption{CRF07\_BC Nodes Count at Different Thresholds}
 	\label{table:combined}
 \end{table}
-
-
 
 \begin{table}[h!]
 	\centering
