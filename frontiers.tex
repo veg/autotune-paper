@@ -630,9 +630,24 @@ within subtypes.
 
 \subsection{Comparisons with published non-HIV molecular epidemiology studies}
 
-While HIV-1 epidemiology is the predominant niche for distance-based molecular transmission analyses, other rapidly evolving viruses, especially HCV, have also been analyzed with these approaches. Unlike HIV-1, there is considerably less work on how to choose an appropriate distance threshold, further complicated by the use of different genes to build networks (see \citet{Chan:2020aa} for a nice summary). Two commonly seen methods exist: use some measure intra-host variation (obtained by deep sequecing) as a lower bound for the threshold, or tune $D$ to obtain some desired network property, e.g., the maximal number of clusters. Like with HIV-1, we searched the literature for relevant studies, and selected several with publically available sequence data.  
+While HIV-1 epidemiology is the predominant niche for distance-based molecular
+transmission analyses, other rapidly evolving viruses, especially HCV, have also
+been analyzed with these approaches. Unlike HIV-1, there is considerably less
+work on how to choose an appropriate distance threshold, further complicated by
+the use of different genes to build networks (see \citet{Chan:2020aa} for a nice
+summary). Two commonly seen methods exist: use some measure intra-host variation
+(obtained by deep sequecing) as a lower bound for the threshold, or tune $D$ to
+obtain some desired network property, e.g., the maximal number of clusters. Like
+with HIV-1, we searched the literature for relevant studies, and selected
+several with publically available sequence data.  
 
-Most of the datasets are much smaller and less systematically sampled than those for HIV-1, and often combine highly divergent subtypes in the same collection, making a joint analysis challenging. As with HIV-1, AUTOTUNE returns a wide range of scores and $D$ thresholds. For example, effectively maximizing the number of clusters on rhinovirus sequences from \citet{Ng:2022aa} yields a $D$ estimate very similar to that obtained by the authors from intra-host variability -- information not available to AUTOTUNE.
+Most of the datasets are much smaller and less systematically sampled than those
+for HIV-1, and often combine highly divergent subtypes in the same collection,
+making a joint analysis challenging. As with HIV-1, AUTOTUNE returns a wide
+range of scores and $D$ thresholds. For example, effectively maximizing the
+number of clusters on rhinovirus sequences from \citet{Ng:2022aa} yields a $D$
+estimate very similar to that obtained by the authors from intra-host
+variability -- information not available to AUTOTUNE.
 
 
 \begin{table}[h]
