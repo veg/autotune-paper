@@ -473,19 +473,19 @@ connected components (one PWID/HSX, one MSM, see Figure 2 in that paper). A
 minute change to the threshold by AUTO-TUNE to $1.94\%$ splits one large
 cluster into three (some nodes also became disconnected), separating the two
 major risk groups; this is because the "bridging" connections were between
-these two thresholds (see Fig~\ref{Figure:Exampes} panel A). This minor change
+these two thresholds (see Fig~\ref{Figure:Examples} panel A). This minor change
 also reduced $R_{12}$ from $21$ to $2.6$.
 
 \paragraph{Cluster size increase}  Increasing the $1.5\%$ threshold on data
 from \citet{Little:2014aa} combined several small clusters (and singletons)
 into a single larger cluster, while preserving the overall size and properties
-of the network (see Fig~\ref{Figure:Exampes} panel B). This change also reduced
+of the network (see Fig~\ref{Figure:Examples} panel B). This change also reduced
 $R_{12}$ from $2.5$ to $1.5$.
 
 \paragraph{Thinning out the network}  Reducing the $1.5\%$ threshold on data
 from \citet{rhee_national_2019} dramatically reduced the size of the largest
 cluster, and thinned out most clusters with five or more nodes (see
-Fig~\ref{Figure:Exampes} panel C).
+Fig~\ref{Figure:Examples} panel C).
 
 \paragraph{Materially changing the degree distribution of the network}  For the
 sequences from \citet{Li:2022aa}, AUTO-TUNE suggests $D = 1.483\%$ with robust
@@ -494,14 +494,14 @@ maximizing the number of clusters (and likely rounding to the nearest decimal).
 While the total number of the clusters only increases by $1$, the number of
 nodes connected in the network grows from $95$ to $119$, and the scale free
 exponent of the distribution is dramatically affected. The latter is informed
-by the degree distribution of the network, and Fig~\ref{Figure:Exampes} panel D
+by the degree distribution of the network, and Fig~\ref{Figure:Examples} panel D
 shows, the degree distribution is dramatically affected. Many commonly used
 network-derived correlates (e.g. centrality) can be strongly affected by such
 changes.
 
 \paragraph{Expanding the network}  Increasing the $1.5\%$ threshold in
 \citet{Billings:2019aa} to $2.33\%$ more than doubles the number of nodes
-included (Fig~\ref{Figure:Exampes} panel E)
+included (Fig~\ref{Figure:Examples} panel E)
 
 Networks with high AUTOTUNE scores are exemplified by the alignment (in the
 distance space) of the points where the number of clusters is maximized and
@@ -615,7 +615,7 @@ within subtypes.
 \vspace{0.01in}
 \caption{\textbf{Examples of AUTOTUNE scores profiles.} 
 (A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the threshold is lowered. (D). Changes to the node degree distribution (because many nodes have the same degree, the color is used to represent their counts). (E). A significant enlargement of a small network at a higher threhold, with grey edges only present at the larger threshold. }
-\label{Figure:Exampes}
+\label{Figure:Examples}
 \end{figure*}
 
 
