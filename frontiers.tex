@@ -402,10 +402,10 @@ HIV-TRACE to infer genetic networks and had publicly available sequences. Due
 to privacy concerns, HIV-1 sequences are frequently not released in the public
 domain \cite{Inzaule:2023aa}.
 
-First, we attempted to include studies from different countries and regions, enabling
-us to assess the performance of our method across various epidemic contexts,
-risk groups, and network sizes in real-data sets that used variable clustering
-thresholds.
+First, we attempted to include studies from different countries and regions,
+enabling us to assess the performance of our method across various epidemic
+contexts, risk groups, and network sizes in real-data sets that used variable
+clustering thresholds.
 
 Second, we compared AUTO-TUNE with the most direct published alternative: the
 	{\tt clustuneR} method \citep{chato_public_2020}. We procured datasets from
@@ -545,102 +545,6 @@ heterogeneous settings it seems advisable to partition the data by subtype
 (corresponding to major phylogenetic clades), and perform network analyses
 within subtypes.
 
-\begin{table}[h]
-	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using partial HIV-1 polymerase gene sequences. $N$ : the number of sequences; $L$: length of the multiple sequence alignment, bp; $E[D]$ mean pairwise TN93 distance; (the studies are sorted on this column, in ascending order) $\P$: the original study performed threshold tuning (varied methods); $\dagger$ : distance thresholds were specific to subtypes; $\star$ : the corresponding AUTO-TUNE score is $\geq 1.9$; $\bullet$ : only a subset of the complete dataset was made available (privacy, data use restrictions, incomplete GenBank submissions), the number of  sequences analyzed here is shown after the / symbol; N.R: not reported}
-
-	\vspace{10pt}
-	\centering
-	\begin{ssmall}
-		\label{tab:paperComparison}
-		\begin{tabular}{llllllllll}
-			\hline
-			Reference                   & $N$                 & $L$  & $E[D]$ & Scope      & Location/Country         & Timespan  & Common                & \multicolumn{2}{c}{Distance threshold, \%}                  \\
-			                            &                     &      &        &            &                          &           & Subtypes              & Published                                  & AUTO-TUNE      \\
-			\hline
-			\cite{Zai:2020aa}           & 209                 & 1056 & 1.5\%  & Country    & China                    & 2007–2015 & CRF55/01B             & $\P$ 0.2                                   & 0.255          \\
-			\cite{liu_dynamics_2020}    & 2087/1907 $\bullet$ & 1053 & 5.3\%  & City       & Shenyang, China          & 2008-2016 & CRF01, CRF07, B       & $\P$ 0.5/0.7 $\dagger$                     & 0.621          \\
-			\cite{dalai_combining_2018} & 317                 & 1044 & 5.5\%  & City       & San Mateo, CA, USA       & 1997-2008 & $96\%$ B              & 2                                          & 1.944          \\
-			\cite{chato_public_2020}    & 808                 & 1017 & 5.6\%  & Province   & Northern Alberta, Canada & 2007-2013 & B                     & $\P$1.04                                   & 1.201          \\
-			\cite{Little:2014aa}        & 648/646 $\bullet$   & 1212 & 5.9\%  & City       & San Diego, CA, USA       & 1996-2011 & $98.5\%$ B            & 1.5                                        & 2.495          \\
-			\cite{Perez-Losada:2017aa}  & 1879/3411 $\bullet$ & 1027 & 6.0\%  & City       & Washington DC, USA       & 1987–2015 & B                     & 1.0                                        & 1.733          \\
-			\cite{rhee_national_2019}   & 4553                & 897  & 6.1\%  & State      & CA, USA                  & 1998-2016 & 95.5\% B              & 1.5                                        & 1.139$\star$   \\
-			\cite{chato_public_2020}    & 2779/2750 $\bullet$ & 1398 & 6.3\%  & State      & Tennessee, USA           & 2001-2015 & B                     & $\P$1.6                                    & 1.872          \\
-			\cite{Temereanca:2017aa}    & 37                  & 1302 & 6.7\%  & City       & Bucharest, Romania       & 2010-2013 & F1, G, B              & 1.5                                        & 0.194          \\
-			\cite{brenner_role_2021}    & 10945/448 $\bullet$ & 738  & 6.7\%  & Province   & Quebec, Canada           & 2002-2020 & B                     & 1.5/2.5\                                   & 2.741          \\
-			\citet{sivay_hiv-1_2018}    & 201                 & 1302 & 6.9\%  & Province   & Mpumalanga, South Africa & 2011-2015 & C                     & 2.5                                        & 2.506          \\
-			\cite{Li:2022aa}            & 295                 & 1206 & 7.8\%  & Prefecture & Pu'er, China             & 2021      & CRF08, CRF01, CRF07   & $\P$ 1.3                                   & 1.483  $\star$ \\
-			\cite{Yu:2022aa}            & 316                 & 1074 & 7.9\%  & Province   & Guangxi, China           & 2012-2018 & CRF01, CRF08, CRF07   & $\P$1.3                                    & 1.178          \\
-			\cite{Yan:2021aa}           & 1695/1569 $\bullet$ & 1569 & 8.4\%  & City       & Guangzhou, China         & 2008-2012 & CRF01, CRF07, CRF55,G & 1.5                                        & 0.839          \\
-			\cite{Billings:2019aa}      & 150                 & 1597 & 8.5\%  & City       & Lagos, Nigeria           & 2013-2016 & CRF02, URF            & 1.5                                        & 2.33           \\
-			\cite{Chen:2023aa}          & 1975/209  $\bullet$ & 1050 & 8.7\%  & Province   & Guangxi, China           & 2016-2018 & CRF01, CRF07, CRF08   & $\P$0.75                                   & 1.295          \\
-			\cite{Fabeni:2020aa}        & 726/3499 $\bullet$  & 1029 & 9.2\%  & Country    & Italy                    & 1998-2018 & B                     & 1.0                                        & 0.37           \\
-			\cite{Leal:2020aa}          & 630/633 $\bullet$   & 990  & 9.2\%  & State      & Maranhão, Brazil         & 2008-2017 & B                     & 2.0                                        & 4.033          \\
-			\cite{bbosa_short_2020}     & 2018                & 1257 & 9.3\%  & Country    & Uganda                   & 2009-2016 & N.R                   & 1.5                                        & 2.035 $\star$  \\
-			\cite{Stecher:2018aa}       & 2774                & 1028 & 12.1\% & Multi-City & Germany                  & 1999-2016 & B                     & 1.5                                        & 3.056          \\
-			\cite{chato_public_2020}    & 1653/1840 $\bullet$ & 1020 & 5.5\%  & City       & Seattle, ISA             & 2000-2013 & B                     & $\P$1.6                                    & 1.538          \\
-			\\
-
-			\hline
-		\end{tabular}
-	\end{ssmall}
-\end{table}
-
-\begin{table}[h]
-	\caption{Network properties at the published and AUTO-TUNE thresholds. In cases when the original paper used more than one threshold, we selected the largest for comparison. The datasets are ordered by the AUTO-TUNE priority score from highest to lowest. $\rho$ is the fitted characteristic scale-free exponent of the corresponding degree distributions.}
-	\vspace{10pt}
-	\centering
-	\begin{ssmall}
-		\label{tab:paperComparisonProp}
-		\begin{tabular}{llllllllll}
-			\hline
-			Reference                        & AUTO-TUNE & \multicolumn{2}{c}{Nodes in network} & \multicolumn{2}{c}{Clusters in network} & \multicolumn{2}{c}{$R_{12}$} & \multicolumn{2}{c}{Scale parameter $\rho$}                                                 \\
-			                                 & score     & Published                            & AUTO-TUNE                               & Published                    & AUTO-TUNE                                  & Published & AUTO-TUNE & Published & AUTO-TUNE \\
-			\hline
-			\cite{Li:2022aa}                 & 2.00      & 1364                                 & 1224                                    & 277                          & 277                                        & 1.7       & 2.4       & 2.8       & 2.6       \\
-			\cite{chato_public_2020} TN      & 2.00      & 394                                  & 445                                     & 108                          & 109                                        & 1.0       & 1.7       & 2.7       & 2.9       \\
-			\cite{rhee_national_2019}        & 1.95      & 2044                                 & 1636                                    & 524                          & 488                                        & 13.2      & 1.5       & 2.6       & 2.7       \\
-			\cite{bbosa_short_2020}          & 1.93      & 222                                  & 296                                     & 102                          & 119                                        & 2.2       & 1.6       & 3.2       & 2.6       \\
-			\citet{dalai_combining_2018}     & 1.89      & 60                                   & 54                                      & 9                            & 11                                         & 22        & 2.6       & 2.0       & 2.2       \\ % CONFIRMED
-			\cite{Temereanca:2017aa}         & 1.79      & 30                                   & 16                                      & 5                            & 3                                          & 3         & 1.5       & N/A       & 2.8       \\
-			\cite{Yu:2022aa}                 & 1.76      & 55                                   & 51                                      & 19                           & 19                                         & 2.75      & 1.75      & 10.4      & 34.0      \\
-			\citet{sivay_hiv-1_2018}         & 1.42      & 51                                   & 51                                      & 19                           & 19                                         & 1.5       & 1.5       & 3.2       & 3.0       \\
-			\cite{Zai:2020aa}                & 1.40      & 96                                   & 98                                      & 26                           & 27                                         & 1.5       & 1.5       & 24.1      & 17.7      \\ % CONFIRMED
-			\cite{Little:2014aa}             & 1.31      & 301                                  & 394                                     & 98                           & 87                                         & 2.5       & 6.1       & 3.6       & 3.1       \\ % CONFIRMED
-			\cite{brenner_role_2021}         & 1.22      & 363                                  & 379                                     & 71                           & 70                                         & 5.6       & 5.5       & 2.7       & 2.8       \\
-			\cite{Stecher:2018aa}            & 1.20      & 97                                   & 558                                     & 36                           & 155                                        & 2.2       & 4.9       & 3.2       & 3.3       \\
-			\cite{chato_public_2020} Seattle & 1.16      & 505                                  & 484                                     & 148                          & 149                                        & 2.5       & 1.7       & 2.7       & 2.6       \\
-			\cite{Billings:2019aa}           & 1.16      & 38                                   & 78                                      & 13                           & 23                                         & 2         & 2.3       & 2.6       & 11.5      \\
-			\cite{Yan:2021aa}                & 1.14      & 1084                                 & 753                                     & 124                          & 116                                        & 2.0       & 1.8       & 1.2       & 2.0       \\
-			\cite{Chen:2023aa}               & 1.11      & 20                                   & 47                                      & 8                            & 16                                         & 1.3       & 2.0       & $\infty$  & $\infty$  \\
-			\cite{Leal:2020aa}               & 1.11      & 50                                   & 270                                     & 25                           & 57                                         & 1         & 1.6       & 53.6      & 3.1       \\
-			\cite{Perez-Losada:2017aa}       & 1.06      & 172                                  & 431                                     & 76                           & 134                                        & 5.1       & 1.4       & 5.2       & 2.9       \\
-			\cite{liu_dynamics_2020}         & 1.05      & 885                                  & 797                                     & 156                          & 161                                        & 6.0       & 4.5       & 3.1       & 3.0       \\ % CONFIRMED
-			\cite{chato_public_2020} Alberta & 1.03      & 394                                  & 445                                     & 108                          & 109                                        & 1.0       & 1.7       & 2.7       & 2.9       \\
-			\cite{Fabeni:2020aa}             & 1.00      & 626                                  & 221                                     & 197                          & 83                                         & 2.1       & 3.2       & 2.1       & 3.2       \\
-
-			\hline
-		\end{tabular}
-	\end{ssmall}
-\end{table}
-
-\begin{figure*}[h]
-	\centering
-	% \includegraphics[width=1.\textwidth]{figures/examples.pdf} 
-	\vspace{0.01in}
-	\caption{\textbf{Examples of AUTO-TUNE scores profiles.}
-		(A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the threshold is lowered. (D). Changes to the node degree distribution (colors represent the counts of nodes with the same degree). (E). A significant enlargement of a small network at a higher threshold, with grey edges only present at the larger threshold. }
-	\label{Figure:Examples}
-\end{figure*}
-
-\begin{figure*}[h]
-	\centering
-	% \includegraphics[width=1.\textwidth]{figures/cases.pdf}
-	\vspace{0.01in}
-	\caption{\textbf{Examples of how changing thresholds affects inferred networks.}
-		(A). A high-scoring network \cite{bbosa_short_2020} has a distance threshold which achieves the number of clusters near the maximum, while also avoiding the formation of a large (weakly connected) cluster. (B). A low-scoring network \cite{liu_dynamics_2020} has a misalignment between the distance for which the maximum number of clusters is found, and where the big jumps in the cluster size ratio occur. Here, AUTO-TUNE effectively optimizes the number of clusters while preventing excessive growth of the largest cluster.}
-	\label{Figure:Cases}
-\end{figure*}
-
 \subsection{Comparisons with published non-HIV molecular epidemiology studies}
 
 While HIV-1 epidemiology is the predominant niche for distance-based molecular
@@ -662,34 +566,7 @@ returns a wide range of scores and $D$ thresholds. For example, effectively
 maximizing the number of clusters on rhinovirus sequences from
 \citet{Ng:2022aa} yields a $D$ estimate very similar to that obtained by the
 authors from intra-host variability -- information not available to AUTO-TUNE.
-
-\begin{table}[h]
-	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using sequences from viruses other than HIV-1. "N/A": no distance-based clustering analyses were done. Other notation is the same as in Table~\ref{tab:paperComparison}}
-
-	\vspace{10pt}
-	\centering
-	\begin{ssmall}
-		\label{tab:paperComparison}
-		\begin{tabular}{lllllllllll}
-			\hline
-			Reference               & Virus      & Gene          & $N$                & $L$        & $E[D]$                               & Scope    & Location/Country       & Timespan  & \multicolumn{2}{c}{Distance threshold, \%}                     \\
-			                        &            &               &                    &            &                                      &          &                        &           & Published                                  & AUTO-TUNE (score) \\
-			\hline
-			\cite{Jia:2023aa}       & HCV        & {\it NS5B}    & 503                & 315        & 34.9\%                               & Province & Yunnan, China          & 2008–2018 & N/A                                        & 1.933 (1.92)      \\
-			                        &            &               & 97                 & 8.0\%      & \multicolumn{4}{l}{Genotype 1b only} & $\P$ 2.3 & 1.944 (2.0)                                                                                         \\
-			                        &            &               & 53                 & 7.4\%      & \multicolumn{4}{l}{Genotype 2a only} & $\P$ 3.3 & 3.3 (1.3)                                                                                           \\
-			                        &            &               & 110                & 5.4\%      & \multicolumn{4}{l}{Genotype 3a only} & $\P$ 2.0 & 3.6 (1.0)                                                                                           \\
-			                        &            &               & 189                & 5.5\%      & \multicolumn{4}{l}{Genotype 3b only} & $\P$ 1.7 & 1.6 (1.0)                                                                                           \\
-			\cite{Murphy:2019aa}    & HCV        & {\it NS5B}    & 119                & 340-850    & 5.6\%                                & Province & Quebec, Canada         & 2001–2017 & N/A                                        & 0.0251 (1.05)     \\
-			\cite{Paraschiv:2017aa} & HCV        & {\it NS5B}    & 117                & $\sim 300$ & 24.6\%                               & Country  & Romania                & 2011-2014 & N/A                                        & 1.394 (1.11)      \\
-			\cite{Ye:2023aa}        & HCV        & {\it NS5B}    & 1603/399 $\bullet$ & 701        & 27.6\%                               & Country  & China                  & 1999-2017 & $\P$ 1.0                                   & 0.359 (1)         \\
-			                        &            & {\it C/E2}    & 865/396 $\bullet$  & 837        & 37.3\%                               &          &                        &           & $\P$ 3.25                                  & 1.572 (1.98)      \\
-			\cite{Ng:2022aa}        & Rhinovirus & {\it VP2/VP4} & 977                & 388        & 43.2\%                               & City     & Kuala Lumpur, Malaysia & 2012-2014 & $\P$ 0.5                                   & 0.523 (1)         \\
-
-			\hline
-		\end{tabular}
-	\end{ssmall}
-\end{table}
+Table~\ref{tab:paperComparisonNotHIV}
 
 \subsection{Large-scale HIV-1 database analyses}
 
@@ -725,39 +602,6 @@ extreme ambiguity in which threshold to choose (score $<1.1$). We suggest that
 networks where AUTO-TUNE fails to find a single threshold may comprise
 heterogeneous data which require multiple thresholds to resolve.
 
-\begin{table}[h]
-	\caption{An application of AUTO-TUNE to subtype stratified HIV-1 pol sequences from the LANL database. Fraction clustered is the proportion of all sequences that are connected to at least one other sequence. Subtypes are sorted by the inferred threshold, lowest first. Other notation is the same as in Table~\ref{tab:paperComparison}}
-
-	\vspace{10pt}
-	\centering
-	\begin{small}
-		\label{tab:paperLANL}
-		\begin{tabular}{llllllll}
-			\hline
-			Subtype                        & $N$   & $E[D]$ & \multicolumn{2}{c}{AUTO-TUNE} & Fraction & Mean          & $\rho$        \\
-			                               &       &        & Threshold, \%                 & Score    & Clustered, \% & Degree &      \\
-			\hline
-
-			CRF55                          & 2237  & 2.6    & 0.187                         & 1.20     & 29.6          & 1.41   & 2.41 \\ CRF07 & 11682 & 3.3  &
-			0.26                           & 1.00  & 26.9   & 3.42                          & 1.87                                     \\ CRF63 & 1649                     & 3.6 & 0.505 & 1.01 & 22.1 &
-			4.85                           & 1.8                                                                                       \\ 01B & 2237 & 7.8 & 0.518 & 1.08 & 22.2 & 0.97 & 5.05 \\ A6    &
-			11991                          & 4.6   & 0.558  & 1.09                          & 18.6     & 5.55          & 1.6           \\ CRF08 & 2538 & 3.9  & 0.82                      &
-			1.95                           & 25.6  & 1.95   & 2.12                                                                     \\ CRF01 & 25689 & 5.1 & 0.875 & 1.73 & 47.0 & 1.94 &
-			5.54                                                                                                                       \\ B & 106261 & 6.4 & 1.084 & 2.00 & 46.4 & 4.77 & 1.95 \\ D & 3561  & 6.6
-			                               & 1.133 & 1.12   & 20.8                          & 3.65     & 0.79                          \\ C    & 30714                    & 6.7 & 1.438 & 2.00 & 19.3 &
-			1.26                           & 2.22                                                                                      \\ A1 & 7154 & 7.0 & 1.89 & 2.00 & 17.0 & 5 & 1.7 \\ CRF02 & 7821 &
-			6.3                            & 1.97  & 1.01   & 34.3                          & 10.44    & 1.53                          \\ BF1  & 4825 & 8.1                      & 2.046 & 1.03 &
-			25.1                           & 2.27  & 1.95                                                                              \\ G & 2162 & 7.3 & 2.407 & 1.03 & 49.0 & 9.1 & 1.66\\ F1   &
-			3986                           & 7.6   & 2.941  & 1.34                          & 50.4     & 15.03         & 1.40          \\ A1D  & 1284 & 8.9 & 3.23                    &
-			1.70                           & 27.5  & 1      & 4.3                                                                      \\ BC & 2724 & 8.0 & 3.54 & 1.00 & 81.4 & 71.2 & 1.32 \\
-			\hline \citet{Wertheim:2014aa} & 84527 & .      & 1.0                           & N/A      & 15.6          & 3.84   & 1.74 \\
-			\hline
-
-			\hline
-		\end{tabular}
-	\end{small}
-\end{table}
-
 \subsubsection{Congruence of networks inferred from different genes}
 
 Very few published studies of HIV-1 transmission networks use genes other than
@@ -781,29 +625,6 @@ nodes were clustered or not (present / absent from the network), measured by
 Krippendorff's $\alpha$ \cite{doi:10.1080/19312450709336664}, were
 substantially higher than expected by chance ($\alpha = 0$). All four networks
 also had between a quarter and a half of all the clusters in perfect agreement. 
-
-\begin{table}[h]
-	\caption{Distance thresholds and key network properties using four different HIV-1 genomic regions, stratified by subtype (minumum $500$ sequences)}
-
-	\vspace{10pt}
-	\centering
-	\begin{ssmall}
-		\label{tab:LANL:full}
-		\begin{tabular}{lllllllllllll}
-			\hline
-			Subtype  & N    & \multicolumn{4}{c}{AUTO-TUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$                                                     \\
-			         &      & pr+rt                                 & integrase                              & gag            & gp41                  & pr+rt & integrase & gag & gp41 & clusters &       \\
-			\hline
-
-			B        & 1843 & 2.081                                 & 2.0005                                 & 3.137          & 5.095                 & 115   & 128       & 119 & 144  & 64       & 0.723
-			\\ C & 877 & 3.266 & 0.02 & 4.754 & 5.325 & 44 & 35 & 47 & 46 & 21 & 0.588 \\
-			CRF01/AE & 624  & 1.635                                 & 0.818                                  & 2.285          & 2.037                 & 40    & 30        & 40  & 41   & 12       & 0.610
-			\\
-
-			\hline
-		\end{tabular}
-	\end{ssmall}
-\end{table}
 
 \subsection{Evaluating Inferred Networks using Homophily}
 
@@ -844,29 +665,6 @@ the risk groups (MSM, Hetero, and PWID) lie outside their respective panmictic
 ranges. This consistently indicates non-random mixing and attribute-based
 homophily across the network. Detailed results are in
 Table~\ref{table:combined}.
-
-\begin{table}[h!]
-	\centering
-	\begin{tabular}{lllll}
-		\hline
-		Threshold & Risk Group & DWH   (Panmictic Range)   \\
-		\hline
-		1.5\%     & MSM        & $0.211  (-0.213, -0.085)$ \\
-		          & Hetero     & $0.133 (-0.190, -0.087)$  \\
-		          & PWID       & $0.168 (-0.091, 0.002)$   \\
-		\hline
-		0.76\%    & MSM        & $0.237 (-0.240, -0.120)$  \\
-		          & Hetero     & $0.185 (-0.211, -0.100)$  \\
-		          & PWID       & $0.401 (-0.081, -0.005)$  \\
-		\hline
-		0.19\%    & MSM        & $0.292 (-0.280, -0.146)$  \\
-		          & Hetero     & $0.250 (-0.256, -0.093)$  \\
-		          & PWID       & $0.445 (-0.129, -0.012)$  \\
-		\hline
-	\end{tabular}
-	\caption{Panmictic Ranges for CRF07\_BC DWH at Different Thresholds}
-	\label{table:panmictic}
-\end{table}
 
 \subsection{Comparison with clustuneR}
 
@@ -1173,6 +971,191 @@ No new data were generated by our studies.
 \section*{Tables}
 
 \begin{table}[h]
+	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using partial HIV-1 polymerase gene sequences. $N$ : the number of sequences; $L$: length of the multiple sequence alignment, bp; $E[D]$ mean pairwise TN93 distance; (the studies are sorted on this column, in ascending order) $\P$: the original study performed threshold tuning (varied methods); $\dagger$ : distance thresholds were specific to subtypes; $\star$ : the corresponding AUTO-TUNE score is $\geq 1.9$; $\bullet$ : only a subset of the complete dataset was made available (privacy, data use restrictions, incomplete GenBank submissions), the number of  sequences analyzed here is shown after the / symbol; N.R: not reported}
+
+	\vspace{10pt}
+	\centering
+	\begin{ssmall}
+		\label{tab:paperComparison}
+		\begin{tabular}{llllllllll}
+			\hline
+			Reference                   & $N$                 & $L$  & $E[D]$ & Scope      & Location/Country         & Timespan  & Common                & \multicolumn{2}{c}{Distance threshold, \%}                  \\
+			                            &                     &      &        &            &                          &           & Subtypes              & Published                                  & AUTO-TUNE      \\
+			\hline
+			\cite{Zai:2020aa}           & 209                 & 1056 & 1.5\%  & Country    & China                    & 2007–2015 & CRF55/01B             & $\P$ 0.2                                   & 0.255          \\
+			\cite{liu_dynamics_2020}    & 2087/1907 $\bullet$ & 1053 & 5.3\%  & City       & Shenyang, China          & 2008-2016 & CRF01, CRF07, B       & $\P$ 0.5/0.7 $\dagger$                     & 0.621          \\
+			\cite{dalai_combining_2018} & 317                 & 1044 & 5.5\%  & City       & San Mateo, CA, USA       & 1997-2008 & $96\%$ B              & 2                                          & 1.944          \\
+			\cite{chato_public_2020}    & 808                 & 1017 & 5.6\%  & Province   & Northern Alberta, Canada & 2007-2013 & B                     & $\P$1.04                                   & 1.201          \\
+			\cite{Little:2014aa}        & 648/646 $\bullet$   & 1212 & 5.9\%  & City       & San Diego, CA, USA       & 1996-2011 & $98.5\%$ B            & 1.5                                        & 2.495          \\
+			\cite{Perez-Losada:2017aa}  & 1879/3411 $\bullet$ & 1027 & 6.0\%  & City       & Washington DC, USA       & 1987–2015 & B                     & 1.0                                        & 1.733          \\
+			\cite{rhee_national_2019}   & 4553                & 897  & 6.1\%  & State      & CA, USA                  & 1998-2016 & 95.5\% B              & 1.5                                        & 1.139$\star$   \\
+			\cite{chato_public_2020}    & 2779/2750 $\bullet$ & 1398 & 6.3\%  & State      & Tennessee, USA           & 2001-2015 & B                     & $\P$1.6                                    & 1.872          \\
+			\cite{Temereanca:2017aa}    & 37                  & 1302 & 6.7\%  & City       & Bucharest, Romania       & 2010-2013 & F1, G, B              & 1.5                                        & 0.194          \\
+			\cite{brenner_role_2021}    & 10945/448 $\bullet$ & 738  & 6.7\%  & Province   & Quebec, Canada           & 2002-2020 & B                     & 1.5/2.5\                                   & 2.741          \\
+			\citet{sivay_hiv-1_2018}    & 201                 & 1302 & 6.9\%  & Province   & Mpumalanga, South Africa & 2011-2015 & C                     & 2.5                                        & 2.506          \\
+			\cite{Li:2022aa}            & 295                 & 1206 & 7.8\%  & Prefecture & Pu'er, China             & 2021      & CRF08, CRF01, CRF07   & $\P$ 1.3                                   & 1.483  $\star$ \\
+			\cite{Yu:2022aa}            & 316                 & 1074 & 7.9\%  & Province   & Guangxi, China           & 2012-2018 & CRF01, CRF08, CRF07   & $\P$1.3                                    & 1.178          \\
+			\cite{Yan:2021aa}           & 1695/1569 $\bullet$ & 1569 & 8.4\%  & City       & Guangzhou, China         & 2008-2012 & CRF01, CRF07, CRF55,G & 1.5                                        & 0.839          \\
+			\cite{Billings:2019aa}      & 150                 & 1597 & 8.5\%  & City       & Lagos, Nigeria           & 2013-2016 & CRF02, URF            & 1.5                                        & 2.33           \\
+			\cite{Chen:2023aa}          & 1975/209  $\bullet$ & 1050 & 8.7\%  & Province   & Guangxi, China           & 2016-2018 & CRF01, CRF07, CRF08   & $\P$0.75                                   & 1.295          \\
+			\cite{Fabeni:2020aa}        & 726/3499 $\bullet$  & 1029 & 9.2\%  & Country    & Italy                    & 1998-2018 & B                     & 1.0                                        & 0.37           \\
+			\cite{Leal:2020aa}          & 630/633 $\bullet$   & 990  & 9.2\%  & State      & Maranhão, Brazil         & 2008-2017 & B                     & 2.0                                        & 4.033          \\
+			\cite{bbosa_short_2020}     & 2018                & 1257 & 9.3\%  & Country    & Uganda                   & 2009-2016 & N.R                   & 1.5                                        & 2.035 $\star$  \\
+			\cite{Stecher:2018aa}       & 2774                & 1028 & 12.1\% & Multi-City & Germany                  & 1999-2016 & B                     & 1.5                                        & 3.056          \\
+			\cite{chato_public_2020}    & 1653/1840 $\bullet$ & 1020 & 5.5\%  & City       & Seattle, ISA             & 2000-2013 & B                     & $\P$1.6                                    & 1.538          \\
+			\\
+
+			\hline
+		\end{tabular}
+	\end{ssmall}
+\end{table}
+
+\begin{table}[h]
+	\caption{Network properties at the published and AUTO-TUNE thresholds. In cases when the original paper used more than one threshold, we selected the largest for comparison. The datasets are ordered by the AUTO-TUNE priority score from highest to lowest. $\rho$ is the fitted characteristic scale-free exponent of the corresponding degree distributions.}
+	\vspace{10pt}
+	\centering
+	\begin{ssmall}
+		\label{tab:paperComparisonProp}
+		\begin{tabular}{llllllllll}
+			\hline
+			Reference                        & AUTO-TUNE & \multicolumn{2}{c}{Nodes in network} & \multicolumn{2}{c}{Clusters in network} & \multicolumn{2}{c}{$R_{12}$} & \multicolumn{2}{c}{Scale parameter $\rho$}                                                 \\
+			                                 & score     & Published                            & AUTO-TUNE                               & Published                    & AUTO-TUNE                                  & Published & AUTO-TUNE & Published & AUTO-TUNE \\
+			\hline
+			\cite{Li:2022aa}                 & 2.00      & 1364                                 & 1224                                    & 277                          & 277                                        & 1.7       & 2.4       & 2.8       & 2.6       \\
+			\cite{chato_public_2020} TN      & 2.00      & 394                                  & 445                                     & 108                          & 109                                        & 1.0       & 1.7       & 2.7       & 2.9       \\
+			\cite{rhee_national_2019}        & 1.95      & 2044                                 & 1636                                    & 524                          & 488                                        & 13.2      & 1.5       & 2.6       & 2.7       \\
+			\cite{bbosa_short_2020}          & 1.93      & 222                                  & 296                                     & 102                          & 119                                        & 2.2       & 1.6       & 3.2       & 2.6       \\
+			\citet{dalai_combining_2018}     & 1.89      & 60                                   & 54                                      & 9                            & 11                                         & 22        & 2.6       & 2.0       & 2.2       \\ % CONFIRMED
+			\cite{Temereanca:2017aa}         & 1.79      & 30                                   & 16                                      & 5                            & 3                                          & 3         & 1.5       & N/A       & 2.8       \\
+			\cite{Yu:2022aa}                 & 1.76      & 55                                   & 51                                      & 19                           & 19                                         & 2.75      & 1.75      & 10.4      & 34.0      \\
+			\citet{sivay_hiv-1_2018}         & 1.42      & 51                                   & 51                                      & 19                           & 19                                         & 1.5       & 1.5       & 3.2       & 3.0       \\
+			\cite{Zai:2020aa}                & 1.40      & 96                                   & 98                                      & 26                           & 27                                         & 1.5       & 1.5       & 24.1      & 17.7      \\ % CONFIRMED
+			\cite{Little:2014aa}             & 1.31      & 301                                  & 394                                     & 98                           & 87                                         & 2.5       & 6.1       & 3.6       & 3.1       \\ % CONFIRMED
+			\cite{brenner_role_2021}         & 1.22      & 363                                  & 379                                     & 71                           & 70                                         & 5.6       & 5.5       & 2.7       & 2.8       \\
+			\cite{Stecher:2018aa}            & 1.20      & 97                                   & 558                                     & 36                           & 155                                        & 2.2       & 4.9       & 3.2       & 3.3       \\
+			\cite{chato_public_2020} Seattle & 1.16      & 505                                  & 484                                     & 148                          & 149                                        & 2.5       & 1.7       & 2.7       & 2.6       \\
+			\cite{Billings:2019aa}           & 1.16      & 38                                   & 78                                      & 13                           & 23                                         & 2         & 2.3       & 2.6       & 11.5      \\
+			\cite{Yan:2021aa}                & 1.14      & 1084                                 & 753                                     & 124                          & 116                                        & 2.0       & 1.8       & 1.2       & 2.0       \\
+			\cite{Chen:2023aa}               & 1.11      & 20                                   & 47                                      & 8                            & 16                                         & 1.3       & 2.0       & $\infty$  & $\infty$  \\
+			\cite{Leal:2020aa}               & 1.11      & 50                                   & 270                                     & 25                           & 57                                         & 1         & 1.6       & 53.6      & 3.1       \\
+			\cite{Perez-Losada:2017aa}       & 1.06      & 172                                  & 431                                     & 76                           & 134                                        & 5.1       & 1.4       & 5.2       & 2.9       \\
+			\cite{liu_dynamics_2020}         & 1.05      & 885                                  & 797                                     & 156                          & 161                                        & 6.0       & 4.5       & 3.1       & 3.0       \\ % CONFIRMED
+			\cite{chato_public_2020} Alberta & 1.03      & 394                                  & 445                                     & 108                          & 109                                        & 1.0       & 1.7       & 2.7       & 2.9       \\
+			\cite{Fabeni:2020aa}             & 1.00      & 626                                  & 221                                     & 197                          & 83                                         & 2.1       & 3.2       & 2.1       & 3.2       \\
+
+			\hline
+		\end{tabular}
+	\end{ssmall}
+\end{table}
+
+\begin{table}[h]
+	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using sequences from viruses other than HIV-1. "N/A": no distance-based clustering analyses were done. Other notation is the same as in Table~\ref{tab:paperComparison}}
+
+	\vspace{10pt}
+	\centering
+	\begin{ssmall}
+		\label{tab:paperComparisonNotHIV}
+		\begin{tabular}{lllllllllll}
+			\hline
+			Reference               & Virus      & Gene          & $N$                & $L$        & $E[D]$                               & Scope    & Location/Country       & Timespan  & \multicolumn{2}{c}{Distance threshold, \%}                     \\
+			                        &            &               &                    &            &                                      &          &                        &           & Published                                  & AUTO-TUNE (score) \\
+			\hline
+			\cite{Jia:2023aa}       & HCV        & {\it NS5B}    & 503                & 315        & 34.9\%                               & Province & Yunnan, China          & 2008–2018 & N/A                                        & 1.933 (1.92)      \\
+			                        &            &               & 97                 & 8.0\%      & \multicolumn{4}{l}{Genotype 1b only} & $\P$ 2.3 & 1.944 (2.0)                                                                                         \\
+			                        &            &               & 53                 & 7.4\%      & \multicolumn{4}{l}{Genotype 2a only} & $\P$ 3.3 & 3.3 (1.3)                                                                                           \\
+			                        &            &               & 110                & 5.4\%      & \multicolumn{4}{l}{Genotype 3a only} & $\P$ 2.0 & 3.6 (1.0)                                                                                           \\
+			                        &            &               & 189                & 5.5\%      & \multicolumn{4}{l}{Genotype 3b only} & $\P$ 1.7 & 1.6 (1.0)                                                                                           \\
+			\cite{Murphy:2019aa}    & HCV        & {\it NS5B}    & 119                & 340-850    & 5.6\%                                & Province & Quebec, Canada         & 2001–2017 & N/A                                        & 0.0251 (1.05)     \\
+			\cite{Paraschiv:2017aa} & HCV        & {\it NS5B}    & 117                & $\sim 300$ & 24.6\%                               & Country  & Romania                & 2011-2014 & N/A                                        & 1.394 (1.11)      \\
+			\cite{Ye:2023aa}        & HCV        & {\it NS5B}    & 1603/399 $\bullet$ & 701        & 27.6\%                               & Country  & China                  & 1999-2017 & $\P$ 1.0                                   & 0.359 (1)         \\
+			                        &            & {\it C/E2}    & 865/396 $\bullet$  & 837        & 37.3\%                               &          &                        &           & $\P$ 3.25                                  & 1.572 (1.98)      \\
+			\cite{Ng:2022aa}        & Rhinovirus & {\it VP2/VP4} & 977                & 388        & 43.2\%                               & City     & Kuala Lumpur, Malaysia & 2012-2014 & $\P$ 0.5                                   & 0.523 (1)         \\
+
+			\hline
+		\end{tabular}
+	\end{ssmall}
+\end{table}
+
+\begin{table}[h]
+	\caption{An application of AUTO-TUNE to subtype stratified HIV-1 pol sequences from the LANL database. Fraction clustered is the proportion of all sequences that are connected to at least one other sequence. Subtypes are sorted by the inferred threshold, lowest first. Other notation is the same as in Table~\ref{tab:paperComparison}}
+
+	\vspace{10pt}
+	\centering
+	\begin{small}
+		\label{tab:paperLANL}
+		\begin{tabular}{llllllll}
+			\hline
+			Subtype                        & $N$   & $E[D]$ & \multicolumn{2}{c}{AUTO-TUNE} & Fraction & Mean          & $\rho$        \\
+			                               &       &        & Threshold, \%                 & Score    & Clustered, \% & Degree &      \\
+			\hline
+
+			CRF55                          & 2237  & 2.6    & 0.187                         & 1.20     & 29.6          & 1.41   & 2.41 \\ CRF07 & 11682 & 3.3  &
+			0.26                           & 1.00  & 26.9   & 3.42                          & 1.87                                     \\ CRF63 & 1649                    & 3.6 & 0.505 & 1.01 & 22.1 &
+			4.85                           & 1.8                                                                                       \\ 01B & 2237 & 7.8 & 0.518 & 1.08 & 22.2 & 0.97 & 5.05 \\ A6    &
+			11991                          & 4.6   & 0.558  & 1.09                          & 18.6     & 5.55          & 1.6           \\ CRF08 & 2538 & 3.9  & 0.82                     &
+			1.95                           & 25.6  & 1.95   & 2.12                                                                     \\ CRF01 & 25689 & 5.1 & 0.875 & 1.73 & 47.0 & 1.94 &
+			5.54                                                                                                                       \\ B & 106261 & 6.4 & 1.084 & 2.00 & 46.4 & 4.77 & 1.95 \\ D & 3561  & 6.6
+			                               & 1.133 & 1.12   & 20.8                          & 3.65     & 0.79                          \\ C    & 30714                    & 6.7 & 1.438 & 2.00 & 19.3 &
+			1.26                           & 2.22                                                                                      \\ A1 & 7154 & 7.0 & 1.89 & 2.00 & 17.0 & 5 & 1.7 \\ CRF02 & 7821 &
+			6.3                            & 1.97  & 1.01   & 34.3                          & 10.44    & 1.53                          \\ BF1  & 4825 & 8.1                      & 2.046 & 1.03 &
+			25.1                           & 2.27  & 1.95                                                                              \\ G & 2162 & 7.3 & 2.407 & 1.03 & 49.0 & 9.1 & 1.66\\ F1   &
+			3986                           & 7.6   & 2.941  & 1.34                          & 50.4     & 15.03         & 1.40          \\ A1D  & 1284 & 8.9 & 3.23                    &
+			1.70                           & 27.5  & 1      & 4.3                                                                      \\ BC & 2724 & 8.0 & 3.54 & 1.00 & 81.4 & 71.2 & 1.32 \\
+			\hline \citet{Wertheim:2014aa} & 84527 & .      & 1.0                           & N/A      & 15.6          & 3.84   & 1.74 \\
+			\hline
+
+			\hline
+		\end{tabular}
+	\end{small}
+\end{table}
+
+\begin{table}[h]
+	\caption{Distance thresholds and key network properties using four different HIV-1 genomic regions, stratified by subtype (minumum $500$ sequences)}
+
+	\vspace{10pt}
+	\centering
+	\begin{ssmall}
+		\label{tab:LANL:full}
+		\begin{tabular}{lllllllllllll}
+			\hline
+			Subtype  & N    & \multicolumn{4}{c}{AUTO-TUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$                                                     \\
+			         &      & pr+rt                                 & integrase                              & gag            & gp41                  & pr+rt & integrase & gag & gp41 & clusters &       \\
+			\hline
+
+			B        & 1843 & 2.081                                 & 2.0005                                 & 3.137          & 5.095                 & 115   & 128       & 119 & 144  & 64       & 0.723
+			\\ C & 877 & 3.266 & 0.02 & 4.754 & 5.325 & 44 & 35 & 47 & 46 & 21 & 0.588 \\
+			CRF01/AE & 624  & 1.635                                 & 0.818                                  & 2.285          & 2.037                 & 40    & 30        & 40  & 41   & 12       & 0.610
+			\\
+
+			\hline
+		\end{tabular}
+	\end{ssmall}
+\end{table}
+
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{lllll}
+		\hline
+		Threshold & Risk Group & DWH   (Panmictic Range)   \\
+		\hline
+		1.5\%     & MSM        & $0.211  (-0.213, -0.085)$ \\
+		          & Hetero     & $0.133 (-0.190, -0.087)$  \\
+		          & PWID       & $0.168 (-0.091, 0.002)$   \\
+		\hline
+		0.76\%    & MSM        & $0.237 (-0.240, -0.120)$  \\
+		          & Hetero     & $0.185 (-0.211, -0.100)$  \\
+		          & PWID       & $0.401 (-0.081, -0.005)$  \\
+		\hline
+		0.19\%    & MSM        & $0.292 (-0.280, -0.146)$  \\
+		          & Hetero     & $0.250 (-0.256, -0.093)$  \\
+		          & PWID       & $0.445 (-0.129, -0.012)$  \\
+		\hline
+	\end{tabular}
+	\caption{Panmictic Ranges for CRF07\_BC DWH at Different Thresholds}
+	\label{table:panmictic}
+\end{table}
+
+\begin{table}[h]
 	\caption{clustuneR Comparison}
 	\vspace{8pt}
 	\centering
@@ -1302,45 +1285,6 @@ No new data were generated by our studies.
 	\label{table:rhee}
 \end{table}
 
-%% [SLKP] : commenting this because homophily measures are poor for countries
-%\begin{table}[h!]
-%	\centering
-%	\begin{tabularx}{\textwidth}{|l|X|X|X|X|X|X|X|}
-%		\hline
-%		\textbf{Country} & \textbf{DWH (1.5\%)} & \textbf{Panmictic Min (1.5\%)} & \textbf{Panmictic Max (1.5\%)} & \textbf{DWH (1.699\%)} & \textbf{Panmictic Min (1.699\%)} & \textbf{Panmictic Max (1.699\%)} & \textbf{DWH Difference} \\
-%		\hline
-%		China            & -0.166               & 0.015                          & -0.222                         & 0.116                  & 0.004                            & -0.256                           & 0.282                   \\
-%		Thailand         & -0.051               & -0.015                         & -0.129                         & 0.132                  & 0.018                            & -0.157                           & 0.183                   \\
-%		Ukraine          & -0.129               & -0.015                         & -0.129                         & -0.033                 & 0.001                            & -0.095                           & 0.096                   \\
-%		Uzbekistan       & -0.129               & -0.015                         & -0.129                         & -0.033                 & 0.001                            & -0.095                           & 0.096                   \\
-%		Spain            & -0.097               & -0.015                         & -0.129                         & -0.011                 & 0.008                            & -0.202                           & 0.086                   \\
-%		Australia        & -0.097               & -0.015                         & -0.129                         & -0.030                 & 0.001                            & -0.095                           & 0.067                   \\
-%		Angola           & -0.097               & -0.015                         & -0.129                         & -0.045                 & 0.001                            & -0.095                           & 0.052                   \\
-%		India            & -0.097               & -0.015                         & -0.129                         & -0.045                 & 0.001                            & -0.095                           & 0.052                   \\
-%		Belarus          & -0.097               & -0.015                         & -0.129                         & -0.045                 & 0.001                            & -0.095                           & 0.052                   \\
-%		Japan            & -0.031               & -0.015                         & -0.129                         & -0.007                 & 0.001                            & -0.095                           & 0.024                   \\
-%		Indonesia        & -0.015               & -0.015                         & -0.129                         & -0.007                 & 0.001                            & -0.095                           & 0.008                   \\
-%		US               & -0.051               & -0.015                         & -0.129                         & -0.043                 & 0.001                            & -0.095                           & 0.008                   \\
-%		Viet Nam         & -0.015               & -0.015                         & -0.129                         & -0.007                 & 0.001                            & -0.095                           & 0.008                   \\
-%		Russia           & -0.141               & 0.015                          & -0.222                         & -0.134                 & 0.027                            & -0.157                           & 0.007                   \\
-%		Kazakhstan       & -0.038               & -0.015                         & -0.129                         & -0.033                 & 0.001                            & -0.095                           & 0.005                   \\
-%		France           & -0.097               & -0.015                         & -0.129                         & -0.095                 & 0.001                            & -0.095                           & 0.002                   \\
-%		Cyprus           & N/A                  & N/A                            & N/A                            & -0.011                 & 0.001                            & -0.095                           & N/A                     \\
-%		Georgia          & N/A                  & N/A                            & N/A                            & -0.011                 & 0.001                            & -0.095                           & N/A                     \\
-%		South Africa     & N/A                  & N/A                            & N/A                            & -0.030                 & 0.001                            & -0.095                           & N/A                     \\
-%		Canada           & N/A                  & N/A                            & N/A                            & -0.003                 & 0.001                            & -0.095                           & N/A                     \\
-%		Taiwan           & N/A                  & N/A                            & N/A                            & -0.045                 & 0.001                            & -0.095                           & N/A                     \\
-%		Senegal          & N/A                  & N/A                            & N/A                            & 0.499                  & 0.043                            & -0.137                           & N/A                     \\
-%		Estonia          & N/A                  & N/A                            & N/A                            & -0.045                 & 0.001                            & -0.095                           & N/A                     \\
-%		Singapore        & N/A                  & N/A                            & N/A                            & -0.045                 & 0.001                            & -0.095                           & N/A                     \\
-%		Malaysia         & N/A                  & N/A                            & N/A                            & -0.045                 & 0.001                            & -0.095                           & N/A                     \\
-%		Germany          & N/A                  & N/A                            & N/A                            & -0.049                 & 0.043                            & -0.117                           & N/A                     \\
-%		\hline
-%	\end{tabularx}
-%	\caption{Comparison of DWH values for different countries with 1.5\% and AUTO-TUNE inferred threshold of 1.699\% for \cite{rhee_national_2019}.}
-%	\label{tab:DWH_comparison}
-%\end{table}
-
 \end{document}
 
 \section{Figure captions}
@@ -1416,5 +1360,23 @@ No new data were generated by our studies.
 		when multiple thresholds yield similar scores.
 	}\label{fig:webapp}
 \end{figure}
+
+\begin{figure*}[h]
+	\centering
+	% \includegraphics[width=1.\textwidth]{figures/examples.pdf} 
+	\vspace{0.01in}
+	\caption{\textbf{Examples of AUTO-TUNE scores profiles.}
+		(A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the threshold is lowered. (D). Changes to the node degree distribution (colors represent the counts of nodes with the same degree). (E). A significant enlargement of a small network at a higher threshold, with grey edges only present at the larger threshold. }
+	\label{Figure:Examples}
+\end{figure*}
+
+\begin{figure*}[h]
+	\centering
+	% \includegraphics[width=1.\textwidth]{figures/cases.pdf}
+	\vspace{0.01in}
+	\caption{\textbf{Examples of how changing thresholds affects inferred networks.}
+		(A). A high-scoring network \cite{bbosa_short_2020} has a distance threshold which achieves the number of clusters near the maximum, while also avoiding the formation of a large (weakly connected) cluster. (B). A low-scoring network \cite{liu_dynamics_2020} has a misalignment between the distance for which the maximum number of clusters is found, and where the big jumps in the cluster size ratio occur. Here, AUTO-TUNE effectively optimizes the number of clusters while preventing excessive growth of the largest cluster.}
+	\label{Figure:Cases}
+\end{figure*}
 
 \end{document}
