@@ -152,8 +152,10 @@ transmission partners in the network. Using a distance threshold that is too
 large can result in a network with many spurious, i.e. epidemiologically
 uninformative (clusters are too big and too few), links, making it difficult to
 interpret and analyze. On the other hand, using a distance threshold that is
-too small can result in a network with too few links (clusters that are too small and numerous), underestimating connections between individuals and making it
-difficult to accurately track the spread of the disease \citep{gore_hiv_2022}.
+too small can result in a network with too few links (clusters that are too
+small and numerous), underestimating connections between individuals and making
+it difficult to accurately track the spread of the disease
+\citep{gore_hiv_2022}.
 
 To enhance the utility of inferred transmission networks, it is important to
 carefully consider the appropriate distance threshold, $d$. This threshold may
@@ -698,18 +700,18 @@ downloaded partial {\it pol} sequences (between HXB-2 coordinates 2253 and
 by annotated subtype and applied AUTO-TUNE to individual subtypes with $1000$
 or more sequences.
 
-Some (but not all) HIV-1 subtypes often act as strong correlates of regional and
-temporal distributions of sequences, and are expected to represent epidemics
-with different sampling rates and transmission dynamics. These differences are
-reflected in a wide range of mean pairwise distances and inferred AUTO-TUNE
-thresholds shown in Table~\ref{tab:paperLANL}. For example, the relatively
-young subtype A6, which is the most common subtype in the countries of the
-former Soviet Union \cite{Abidi:2021aa}, has a low mean pairwise distance
-($4.6\%$) and a low AUTO-TUNE threshold ($0.56\%$). In contrast A1D recombinant
-sequences have high distance and threshold values ($8.9\%$ and $3.23\%$,
-respectively), because sequences of this "subtype" represent broadly
-circulating strains, with complex histories, and extensive histories of
-recombination \cite{Foster:2014aa,Yebra:2015aa}.
+Some (but not all) HIV-1 subtypes often act as strong correlates of regional
+and temporal distributions of sequences, and are expected to represent
+epidemics with different sampling rates and transmission dynamics. These
+differences are reflected in a wide range of mean pairwise distances and
+inferred AUTO-TUNE thresholds shown in Table~\ref{tab:paperLANL}. For example,
+the relatively young subtype A6, which is the most common subtype in the
+countries of the former Soviet Union \cite{Abidi:2021aa}, has a low mean
+pairwise distance ($4.6\%$) and a low AUTO-TUNE threshold ($0.56\%$). In
+contrast A1D recombinant sequences have high distance and threshold values
+($8.9\%$ and $3.23\%$, respectively), because sequences of this "subtype"
+represent broadly circulating strains, with complex histories, and extensive
+histories of recombination \cite{Foster:2014aa,Yebra:2015aa}.
 
 There was extensive variability among subtypes in all high-level network
 statistics, including the mean degree, fractions of nodes that were in the
@@ -764,7 +766,7 @@ derived for this gene, the utility of other genes and the appropriate $D$
 values for them are unclear. Because of different rates of evolution in HIV-1
 genes and, possibly, subtypes \cite{Penn:2008aa}, one would expect $D$ to be
 different for different subtypes and genes. As a simple exercise, we downloaded
-full-length HIV-1 genomes from the LANL database,  stratified them by subtype,
+full-length HIV-1 genomes from the LANL database, stratified them by subtype,
 and conducted AUTO-TUNE inference using for genomic segments: protease+reverse
 transcriptase, integrase, matrix (gag), and the less variable gp41 segment of
 the envelope gene.
@@ -789,14 +791,14 @@ also had between a quarter and a half of all the clusters in perfect agreement.
 		\label{tab:LANL:full}
 		\begin{tabular}{lllllllllllll}
 			\hline
-			Subtype & N     & \multicolumn{4}{c}{AUTO-TUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$                                               \\
-			        &       & pr+rt                                 & integrase                              & gag            & gp41                  & pr+rt & integrase & gag & gp41 & clusters & \\
+			Subtype  & N    & \multicolumn{4}{c}{AUTO-TUNE $D, \%$} & \multicolumn{4}{c}{Number of clusters} & Full agreement & Krippendorff $\alpha$                                                     \\
+			         &      & pr+rt                                 & integrase                              & gag            & gp41                  & pr+rt & integrase & gag & gp41 & clusters &       \\
 			\hline
 
-			B       & 1843  & 2.081                                 & 2.0005                                 & 3.137          & 5.095                 & 115   & 128       & 119 & 144  & 64       &
-			0.723                                                                                                                                                                                   \\ C & 877 & 3.266 & 0.02 & 4.754 & 5.325 & 44 & 35 & 47 & 46 & 21 &
-			0.588                                                                                                                                                                                   \\ CRF01/AE & 624                        & 1.635 & 0.818 & 2.285 & 2.037 & 40 & 30 & 40 & 41 & 12
-			        & 0.610                                                                                                                                                                         \\
+			B        & 1843 & 2.081                                 & 2.0005                                 & 3.137          & 5.095                 & 115   & 128       & 119 & 144  & 64       & 0.723
+			\\ C & 877 & 3.266 & 0.02 & 4.754 & 5.325 & 44 & 35 & 47 & 46 & 21 & 0.588 \\
+			CRF01/AE & 624  & 1.635                                 & 0.818                                  & 2.285          & 2.037                 & 40    & 30        & 40  & 41   & 12       & 0.610
+			\\
 
 			\hline
 		\end{tabular}
@@ -826,8 +828,8 @@ To assess the performance of an AUTO-TUNEd optimized threshold using
 degree-weighted homophily, we first evaluated a CRF07\_BC network with national
 survey data from China \cite{Ge:2021aa} . Each of the $8178$ pol sequences was
 annotated with a risk factor detailing whether the patient was heterosexual
-(Hetero), People Who Inject Drugs(PWID), or Men who have Sex with Men
-(MSM), among other attributes.
+(Hetero), People Who Inject Drugs(PWID), or Men who have Sex with Men (MSM),
+among other attributes.
 
 When we analyze the dataset with AUTO-TUNE, local maxima of AUTO-TUNE scores
 were achieved with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030,
