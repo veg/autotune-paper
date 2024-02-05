@@ -2,6 +2,9 @@
 $xdvipdfmx = "xdvipdfmx -z 6 -i dvipdfmx-unsafe.cfg -o %D %O %S";
 # Workaround to allow pstricks transparency (https://github.com/overleaf/issues/issues/3449)
 $dvipdf = "dvipdf -dNOSAFER -dALLOWPSTRANSPARENCY %O %S %D";
+
+$pdf_mode = 1;  # Use pdflatex instead of latex
+
 ###############################
 # Post processing of pdf file #
 ###############################
