@@ -419,25 +419,6 @@ by \citep{chato_public_2020}. Note that {\tt clustuneR} requires and uses
 temporal information (dates sequences were collected), while AUTO-TUNE does
 not.
 
-As there is no gold standard for determining what an "optimal" threshold is
-(e.g., \citet{chato_public_2020} use a cluster growth measure), here we
-computed the average degree-weighted homophily score over a set of three-year
-sliding windows. Specifically, the homophily among nodes was calculated for a
-collection of date ranges as follows:
-
-\begin{equation} \bar{H} = \frac{1}{N}\sum_{i=1}^{N} H(w_i) \end{equation}
-
-where $\bar{H}$ represents the average degree-weighted homophily score, $N$ is
-the total number of sliding windows, $H(w_i)$ is the homophily score for the
-$i$-th window, and the windows $w_i$ correspond to the date ranges, e.g.,
-'2012-2015', '2013-2016', '2014-2017', etc. This methodology allowed us to
-compare the "best thresholds" derived from our proposed AUTO-TUNE method
-against those defined as optimal in \citep{chato_public_2020} using an
-alternative approach, which makes use of the expectation of assortativity in
-HIV-1 transmission networks. We can also examine how AUTO-TUNE thresholds
-perform in the predictive growth sense; of course, by definition, they will be
-somewhat suboptimal to {\tt clustuneR}, which optimizes the measure directly.
-
 Lastly, we evaluated the effect of sampling density on the genetic distance
 threshold as determined by AUTO-TUNE, we implemented a strategy of random
 subsampling from the original dataset sourced from \citep{rhee_national_2019}.
