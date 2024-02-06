@@ -737,7 +737,15 @@ that remained clustered after subsampling and the proportion of singletons from
 the original network that clustered in the subsampled networks. Please see
 Figure~\ref{fig:subsampling2}.
 
-We observed a consistent increase in the proportion of nodes that remained clustered from the 1.5\% threshold to the AUTO-TUNE
+We observed a consistent increase in the proportion of nodes that remained
+clustered from the 1.5\% threshold to the AUTO-TUNE threshold for each
+respective subsampling proportion, with 25\% subsampling being the most
+profound difference rising from a roughly 80\%-86\% IQR for 1.5\% threshold to
+a ~90\%~96\% IQR for AUTO-TUNE, which indicates that the AUTO-TUNE thresholds
+retain a higher degree of stability in the network's structure across sampling
+density. Since the thresholds inferred by AUTO-TUNE for the subsampled networks
+were larger than the "fully" sampled network, we also measured the impact of
+thresholding on the network's nodes that were originally singletons.
 
 \ref{fig:subsampling2}
 
