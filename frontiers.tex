@@ -744,11 +744,14 @@ a ~90\%~96\% IQR for AUTO-TUNE, which indicates that the AUTO-TUNE thresholds
 retain a higher degree of stability in the network's structure across sampling
 density (Please see Figure~\ref{fig:subsampling2}, Panel A).
 
-Since the thresholds inferred by AUTO-TUNE for the subsampled networks
-were larger than the "fully" sampled network, we also measured the impact of
-thresholding on the network's nodes that were originally singletons. Across
-the variation in subsampling rates, the proportion of sampled singletons that
+Since the thresholds inferred by AUTO-TUNE for the subsampled networks were
+larger than the "fully" sampled network, we also measured the impact of
+thresholding on the network's nodes that were originally singletons. Across all
+variations in subsampling rates, the proportion of sampled singletons that
 clustered all maintained low IQRs (See Figure~\ref{fig:subsampling2}, Panel B).
+This implies that while AUTO-TUNE is effective in maintaining the core
+structure of the network, it does not significantly alter the clustering of
+nodes that were singletons in the full dataset.
 
 As the sample proportion increased, an upward trend was noted in average
 AUTO-TUNE scores. Additionally, the standard deviation reduced significantly
