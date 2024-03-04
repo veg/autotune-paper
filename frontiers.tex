@@ -650,6 +650,7 @@ homophily across the network. Detailed results are in
 Table~\ref{table:combined} and Table~\ref{table:panmictic}.
 
 \TODO{VDC: it also makes sense epidemiologically that PWID (usually outbreaks) have lower scores (than 1.5\%) due to faster transmission or case identification, while aligning with the homophlilic pattern.}
+\TODO{SW: VDC, do you have a reference for this?.}
 
 \subsection{Comparison with clustuneR}
 
@@ -657,7 +658,7 @@ We benchmarked AUTO-TUNE vs {\tt clustuneR} \cite{chato_public_2020}, which
 employs the recency of sample collection or diagnosis as individual-level
 weights in a predictive model to estimate the growth of HIV clusters. The
 thresholds deemed optimal by {\tt clustuneR} were found by a grid-search for
-the minimum GAIC (generalized AIC) across candidate distances between $0$ and
+the minimum GAIC (generalized Akaike Information Criterion) across candidate distances between $0$ and
 $0.04$ in steps of $8 \times 10^{-4}$. GAIC is the difference between a null
 model that is only influenced by cluster size, and a weighted model that
 includes individual-level attributes among known cases in the cluster. Using
