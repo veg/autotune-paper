@@ -234,7 +234,7 @@ The network threshold selection procedure proceeds as follows (we provide an
 example in the Results section as well).
 
 \begin{enumerate}
-	\item{For each candidate threshold $d_L$, in increasing order, ranging from the smallest genetic distance in the dataset, up to either the largest distance or a predetermined maximal threshold, we compute two network statistics: $R_{12}$, the ratio of the size of the largest cluster to the size of the second largest cluster, and $C$ – the number of clusters in the network at this threshold. A cluster is defined as a connected component in the network with at least two nodes.}
+	\item{For each candidate threshold $d_L$, in increasing order, ranging from the smallest genetic distance in the dataset, up to either the largest distance or a predetermined maximal threshold, we compute two network statistics: $R_{12}$, the ratio of the size of the largest cluster to the size of the second largest cluster, and $C$, the number of clusters in the network at this threshold. A cluster is defined as a connected component in the network with at least two nodes.}
 
 	\item{ A priority score is assigned to each $d_L$. This score measures two properties of the threshold: Does $R_{12}$ jump at $d_L$? How far is the number of clusters $C$ at $d_L$ from the maximal number of clusters computed over all threshold values? Let there be $N$ overall $d_L$ candidate values, and assume we are examining the ith candidate, $d_L^i$ with $W < i \leq N - W$ ($W$ is a positive integer defined below).
 
