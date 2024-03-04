@@ -4,7 +4,7 @@ all : main.pdf view github
 main.pdf : 
 	bibtex frontiers 
 	latexmk
-	dvipdfm frontiers.dvi
+	#dvipdfm frontiers.dvi
 view :
 	open -a Preview frontiers.pdf -g
 github:
