@@ -658,13 +658,13 @@ We benchmarked AUTO-TUNE vs {\tt clustuneR} \cite{chato_public_2020}, which
 employs the recency of sample collection or diagnosis as individual-level
 weights in a predictive model to estimate the growth of HIV clusters. The
 thresholds deemed optimal by {\tt clustuneR} were found by a grid-search for
-the minimum GAIC (generalized Akaike Information Criterion) across candidate distances between $0$ and
-$0.04$ in steps of $8 \times 10^{-4}$. GAIC is the difference between a null
-model that is only influenced by cluster size, and a weighted model that
-includes individual-level attributes among known cases in the cluster. Using
-the minimum GAIC metric, it was found that $0.016 (\pm 0.5\times 10^{-4})$ was
-the optimal threshold for Tennessee and Seattle, and $0.0104$ for Northern
-Alberta.
+the minimum GAIC (generalized Akaike Information Criterion) across candidate
+distances between $0$ and $0.04$ in steps of $8 \times 10^{-4}$. GAIC is the
+difference between a null model that is only influenced by cluster size, and a
+weighted model that includes individual-level attributes among known cases in
+the cluster. Using the minimum GAIC metric, it was found that $0.016 (\pm
+0.5\times 10^{-4})$ was the optimal threshold for Tennessee and Seattle, and
+$0.0104$ for Northern Alberta.
 
 In contrast, AUTO-TUNE does not incorporate any attribute data in its scoring
 heuristic. Instead, it relies on clustering metrics constructed purely from
@@ -744,10 +744,11 @@ the original network that clustered in the subsampled networks.
 We observed a consistent increase in the proportion of nodes that remained
 clustered from the 1.5\% threshold to the AUTO-TUNE threshold for each
 respective subsampling proportion, with 25\% subsampling being the most
-profound difference rising from a roughly 80\%-86\% IQR for 1.5\% threshold to
-a ~90\%~96\% IQR for AUTO-TUNE, which indicates that the AUTO-TUNE thresholds
-retain a higher degree of stability in the network's structure across sampling
-density (Please see Figure~\ref{fig:subsampling2}, Panel A).
+profound difference rising from a roughly 80\%-86\% interquartile range (IQR)
+for 1.5\% threshold to a ~90\%~96\% IQR for AUTO-TUNE, which indicates that the
+AUTO-TUNE thresholds retain a higher degree of stability in the network's
+structure across sampling density (Please see Figure~\ref{fig:subsampling2},
+Panel A).
 
 Since the thresholds inferred by AUTO-TUNE for the subsampled networks were
 larger than the "fully" sampled network, we also measured the impact of
