@@ -790,11 +790,11 @@ solely on clustering metrics from pairwise distances, could be an effective
 alternative to other distance-based methods, such as {\tt clustuneR} while less
 time-consuming and possessing a gentle learning curve, which makes it easy to
 use by personnel not specialized in bioinformatics and computer science.
-Furthermore, the simplicity of the method without compromising results represents an advantage over
-phylogenetic methods where, in addition to the calculation of genetic
-distances, it must also determine a support/distance threshold where a
-rationale for the selection of these thresholds is rarely provided
-\citep{junqueira_factors_2019}.
+Furthermore, the simplicity of the method without compromising results
+represents an advantage over phylogenetic methods where, in addition to the
+calculation of genetic distances, it must also determine a support/distance
+threshold where a rationale for the selection of these thresholds is rarely
+provided \citep{junqueira_factors_2019}.
 
 AUTO-TUNE generated thresholds for all three examined datasets (Middle
 Tennessee, Seattle, and Northern Alberta) that outperformed {\tt clustuneR}
@@ -831,6 +831,10 @@ groups when analyzing a CRF07\_BC network. Additionally, the results from the
 Rhee et al. dataset also demonstrated AUTO-TUNE's ability to improve DWH
 geographically, enhancing the network's ability to accurately reflect
 transmission dynamics.
+
+\TODO{SAR -- This may also be dependent of the epidemiological context. In some
+scenarios, risk factors may overlap, and thus, separating for example PWID and
+MSM networks would not make sense.}
 
 Our analysis of AUTO-TUNE's performance on subsamples of a dataset revealed its
 sensitivity to sample size. The results indicated a correlation between
