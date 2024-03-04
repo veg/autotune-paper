@@ -122,8 +122,8 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 	drug use (IDU) to MSM as the primary risk factor. Alternatively, in communities
 	surrounding Lake Victoria, where there has been sustained transmission for many
 	years, we found that a larger distance threshold is necessary to capture a more
-	risk factor-diverse population with sparse sampling over a longer period of time.
-	Such identification may allow for more informed intervention action by
+	risk factor-diverse population with sparse sampling over a longer period of
+	time. Such identification may allow for more informed intervention action by
 	respective public health officials.
 
 	\tiny
@@ -162,12 +162,12 @@ carefully consider the appropriate distance threshold, $d$. This threshold may
 vary depending on the specific disease and the context in which it is
 spreading. For example, a highly contagious acute respiratory illness (e.g.,
 SARS-CoV-2) may require a smaller $d$ than a less contagious chronic illness
-that is primarily spread through direct contact (e.g., HIV-1)\TODO{SAR -- Reference}. Viruses are more
-amenable to molecular studies compared to bacteria due to their high genetic
-divergence and compact genomes. Given the relatively high evolutionary rate of
-RNA viruses (compared to chromosomal DNA in humans) detectable genetic
-fingerprints can be targeted for epidemiological studies over short time
-periods\citep{paraskevis_application_2016}.
+that is primarily spread through direct contact (e.g., HIV-1)\TODO{SAR --
+	Reference}. Viruses are more amenable to molecular studies compared to bacteria
+due to their high genetic divergence and compact genomes. Given the relatively
+high evolutionary rate of RNA viruses (compared to chromosomal DNA in humans)
+detectable genetic fingerprints can be targeted for epidemiological studies
+over short time periods\citep{paraskevis_application_2016}.
 
 For chronic infections such as HIV, the most appropriate genetic distance
 threshold should be determined according to the characteristics of the epidemic
@@ -346,7 +346,7 @@ hivtrace -i ./INPUT.FASTA -a resolve -r HXB2_prrt -t < autotune_threshold > -m 5
 hivnetworkannotate -n hivtrace.results.json -a node_attributes.json -g schema.json -r
 	\end{lstlisting}
 	                  For more information, users can refer to the {\tt hivnetworkannotate}
-                    documentation.\TODO{SAR -- Reference} }
+	                  documentation.\TODO{SAR -- Reference} }
 
 	      \item{ Analyze the results with DWH: After the results file has been annotated, the user can proceed to the assortativity page, \url{http://autotune.datamonkey.org/assortativity}, for further analysis of the output. }
 
@@ -473,14 +473,14 @@ see Figure 2 in that paper). A minute change to the threshold by AUTO-TUNE to
 $1.94\%$ splits one large cluster into three (some nodes also became
 disconnected), separating the two major risk groups; this is because the
 "bridging" connections were between these two thresholds (see
-Fig~\ref{fig:examples} panel A). This minor change also reduced $R_{12}$
-from $21$ to $2.6$.
+Fig~\ref{fig:examples} panel A). This minor change also reduced $R_{12}$ from
+$21$ to $2.6$.
 
 \paragraph{Cluster size increase}  Increasing the $1.5\%$ threshold on data from \citet{Little:2014aa} combined
 several small clusters (and singletons) into a single larger cluster, while
 preserving the overall size and properties of the network (see
-Fig~\ref{fig:examples} panel B). This change also reduced $R_{12}$ from
-$2.5$ to $1.5$.
+Fig~\ref{fig:examples} panel B). This change also reduced $R_{12}$ from $2.5$
+to $1.5$.
 
 \paragraph{Thinning out the network}  Reducing the $1.5\%$ threshold on data from \citet{rhee_national_2019}
 dramatically reduced the size of the largest cluster, and thinned out most
@@ -491,11 +491,11 @@ robust ($1.76$) confidence, whereas the original $D = 1.3\%$ was selected based
 on maximizing the number of clusters (and likely rounding to the nearest
 decimal). While the total number of the clusters only increases by $1$, the
 number of nodes connected in the network grows from $95$ to $119$, and the
-scale free exponent of the distribution is significantly impacted. The latter is
-informed by the degree distribution of the network, and
-Fig~\ref{fig:examples} panel D shows, the degree distribution is
-dramatically affected. Many commonly used network-derived correlates (e.g.
-centrality) can be strongly affected by such changes.
+scale free exponent of the distribution is significantly impacted. The latter
+is informed by the degree distribution of the network, and
+Fig~\ref{fig:examples} panel D shows, the degree distribution is dramatically
+affected. Many commonly used network-derived correlates (e.g. centrality) can
+be strongly affected by such changes.
 
 \paragraph{Expanding the network}  Increasing the $1.5\%$ threshold in \citet{Billings:2019aa} to $2.33\%$ more
 than doubles the number of nodes included (Fig~\ref{fig:examples} panel E)
@@ -503,10 +503,10 @@ than doubles the number of nodes included (Fig~\ref{fig:examples} panel E)
 Networks with high AUTO-TUNE scores are exemplified by the alignment (in the
 distance space) of the points where the number of clusters is maximized and
 where the network transitions to having an "unusually" large cluster (see
-Fig.~\ref{fig:cases}, panel A). In cases of low scores, AUTO-TUNE
-effectively falls back to maximizing the number of clusters as a function of
-the distance thresholds, which is a common strategy found in empirical studies
-(see Fig.~\ref{fig:cases}, panel B).
+Fig.~\ref{fig:cases}, panel A). In cases of low scores, AUTO-TUNE effectively
+falls back to maximizing the number of clusters as a function of the distance
+thresholds, which is a common strategy found in empirical studies (see
+Fig.~\ref{fig:cases}, panel B).
 
 \TODO{ VDC: is there a cutoff to consider the score to be low or high?  Does it mean that even in low scoring cases, AUTO-TUNE is a good option to tune the threshold?}
 
@@ -535,12 +535,12 @@ transmission analyses, other rapidly evolving viruses, especially HCV, have
 also been analyzed with these approaches. Unlike HIV-1, there is considerably
 less work on how to choose an appropriate distance threshold, further
 complicated by the use of different genes to build networks (see
-\citet{Chan:2020aa} for a comprehensive summary). Two commonly seen methods exist: use
-some measure of intra-host variation (obtained by deep sequencing) as a lower
-bound for the threshold, or tune $D$ to obtain some desired network property,
-e.g., the maximal number of clusters. Like with HIV-1, we searched the
-literature for relevant studies, and selected several with publicly available
-sequence data.
+\citet{Chan:2020aa} for a comprehensive summary). Two commonly seen methods
+exist: use some measure of intra-host variation (obtained by deep sequencing)
+as a lower bound for the threshold, or tune $D$ to obtain some desired network
+property, e.g., the maximal number of clusters. Like with HIV-1, we searched
+the literature for relevant studies, and selected several with publicly
+available sequence data.
 
 Most of the datasets are much smaller and less systematically sampled than
 those for HIV-1, and often combine highly divergent subtypes in the same
@@ -638,16 +638,16 @@ among other attributes.
 When we analyze the dataset with AUTO-TUNE, local maxima of AUTO-TUNE scores
 were achieved with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030,
 respectively. Notably, the DWH scores for PWID exhibited a significant surge at
-these thresholds, indicating a robust pattern of increased PWID homophily even when relatively low scoring. The
-close proximity of AUTO-TUNE scores and the consistent rise in PWID homophily
-at 0.76\% and 0.19\% thresholds suggest comparable performance at these
-thresholds compared to the default 1.5\% threshold, suggesting that these
-thresholds might be more effective in representing homophilic relationships in
-this network. At each threshold—1.5\%, 0.76\%, and 0.19\%—all DWH scores for
-the risk groups (MSM, Hetero, and PWID) lie outside their respective panmictic
-ranges. This consistently indicates non-random mixing and attribute-based
-homophily across the network. Detailed results are in
-Table~\ref{table:combined} and Table~\ref{table:panmictic}.
+these thresholds, indicating a robust pattern of increased PWID homophily even
+when relatively low scoring. The close proximity of AUTO-TUNE scores and the
+consistent rise in PWID homophily at 0.76\% and 0.19\% thresholds suggest
+comparable performance at these thresholds compared to the default 1.5\%
+threshold, suggesting that these thresholds might be more effective in
+representing homophilic relationships in this network. At each threshold—1.5\%,
+0.76\%, and 0.19\%—all DWH scores for the risk groups (MSM, Hetero, and PWID)
+lie outside their respective panmictic ranges. This consistently indicates
+non-random mixing and attribute-based homophily across the network. Detailed
+results are in Table~\ref{table:combined} and Table~\ref{table:panmictic}.
 
 \TODO{VDC: it also makes sense epidemiologically that PWID (usually outbreaks) have lower scores (than 1.5\%) due to faster transmission or case identification, while aligning with the homophlilic pattern.}
 \TODO{SW: VDC, do you have a reference for this?.}
@@ -663,7 +663,7 @@ distances between $0$ and $0.04$ in steps of $8 \times 10^{-4}$. GAIC is the
 difference between a null model that is only influenced by cluster size, and a
 weighted model that includes individual-level attributes among known cases in
 the cluster. Using the minimum GAIC metric, it was found that $0.016 (\pm
-0.5\times 10^{-4})$ was the optimal threshold for Tennessee and Seattle, and
+	0.5\times 10^{-4})$ was the optimal threshold for Tennessee and Seattle, and
 $0.0104$ for Northern Alberta.
 
 In contrast, AUTO-TUNE does not incorporate any attribute data in its scoring
@@ -709,11 +709,11 @@ dataset at $25\%$, $50\%$, and $75\%$ each. The original full dataset
 confidently determined $0.01699$ (AUTO-TUNE score $1.9998$).
 
 Sampling at $25\%$ yielded a mean top threshold of $0.021509$, median at
-$0.019765$, and standard deviation of $0.004388$ \ref{fig:subsampling}.
-$50\%$ yielded $0.018581$ and $0.01871$ mean and median, respectively with a
-standard deviation of $0.001629$. Finally, $75\%$ calculated mean is
-approximately $0.017403$, with a median of approximately $0.01699$. The
-standard deviation was $0.000924$.
+$0.019765$, and standard deviation of $0.004388$ \ref{fig:subsampling}. $50\%$
+yielded $0.018581$ and $0.01871$ mean and median, respectively with a standard
+deviation of $0.001629$. Finally, $75\%$ calculated mean is approximately
+$0.017403$, with a median of approximately $0.01699$. The standard deviation
+was $0.000924$.
 
 As the dataset becomes sparser due to subsampling, the algorithm tends to
 select higher distance thresholds. This phenomenon can be understood by
@@ -739,7 +739,7 @@ indicating higher consistency in scores.
 Next to determine how well subsampled datasets aligned with the full dataset,
 we used two primary outcomes to gauge this concordance: the proportion of nodes
 that remained clustered after subsampling and the proportion of singletons from
-the original network that clustered in the subsampled networks. 
+the original network that clustered in the subsampled networks.
 
 We observed a consistent increase in the proportion of nodes that remained
 clustered from the 1.5\% threshold to the AUTO-TUNE threshold for each
@@ -833,8 +833,8 @@ geographically, enhancing the network's ability to accurately reflect
 transmission dynamics.
 
 \TODO{SAR -- This may also be dependent of the epidemiological context. In some
-scenarios, risk factors may overlap, and thus, separating for example PWID and
-MSM networks would not make sense.}
+	scenarios, risk factors may overlap, and thus, separating for example PWID and
+	MSM networks would not make sense.}
 
 Our analysis of AUTO-TUNE's performance on subsamples of a dataset revealed its
 sensitivity to sample size. The results indicated a correlation between
@@ -861,24 +861,23 @@ selection, may not always provide a single, decisive score that unambiguously
 determines the optimal threshold. In certain situations, several candidate
 thresholds may yield similar AUTO-TUNE scores, making it difficult to single
 out one as the clear-cut 'optimal' threshold. \TODO{VDC -- when would it be
-more likely to have those scenarios? Is it with lower sampling densities,
-heterogeneous epidemics (e.g. multiple HIV subtypes or risk groups within the
-network)?} In these scenarios, the process
-of threshold selection becomes more nuanced and requires a deeper analysis. The
-plot of AUTO-TUNE scores across candidate thresholds can serve as a valuable
-tool in these cases. For instance, researchers could identify a range of
-thresholds that all produce similar scores, suggesting that the specific choice
-of threshold within this range may not significantly impact the resulting
-network. Moreover, combining AUTO-TUNE with the DWH measure can enhance the
-interpretation of such plots. By considering how assortativity changes across
-the range of candidates, researchers can make more informed decisions about the
-appropriate choice. If there is a certain threshold at which the DWH measure
-noticeably changes for an attribute of interest, this could suggest a
-meaningful shift in the network structure that would be worth considering when
-selecting a threshold. The symbiotic approach of combining AUTO-TUNE scores,
-DWH measure, and visual analysis of score plots provides a more nuanced method
-for threshold selection when no clear optimal threshold emerges from the
-AUTO-TUNE scores alone.
+	more likely to have those scenarios? Is it with lower sampling densities,
+	heterogeneous epidemics (e.g. multiple HIV subtypes or risk groups within the
+	network)?} In these scenarios, the process of threshold selection becomes more
+nuanced and requires a deeper analysis. The plot of AUTO-TUNE scores across
+candidate thresholds can serve as a valuable tool in these cases. For instance,
+researchers could identify a range of thresholds that all produce similar
+scores, suggesting that the specific choice of threshold within this range may
+not significantly impact the resulting network. Moreover, combining AUTO-TUNE
+with the DWH measure can enhance the interpretation of such plots. By
+considering how assortativity changes across the range of candidates,
+researchers can make more informed decisions about the appropriate choice. If
+there is a certain threshold at which the DWH measure noticeably changes for an
+attribute of interest, this could suggest a meaningful shift in the network
+structure that would be worth considering when selecting a threshold. The
+symbiotic approach of combining AUTO-TUNE scores, DWH measure, and visual
+analysis of score plots provides a more nuanced method for threshold selection
+when no clear optimal threshold emerges from the AUTO-TUNE scores alone.
 
 The AUTO-TUNE methodology has several limitations. First, even though it
 provides the advantage of operating without the need for metadata, the size and
@@ -920,8 +919,8 @@ cluster detection and response protocols. This versatility underscores the
 strong methodological foundation of AUTO-TUNE and its potential utility.
 
 \TODO{SAR -- Can we provide proof that Auto-Tune is useful for other viruses as
-well as HIV? There should be at least some databases of HCV, influenza and
-SARS-CoV-2 available to test this.}
+	well as HIV? There should be at least some databases of HCV, influenza and
+	SARS-CoV-2 available to test this.}
 
 \section*{Conflict of Interest Statement}
 %All financial, commercial or other relationships that might be perceived by the academic community as representing a potential conflict of interest must be disclosed. If no such relationship exists, authors will be asked to confirm the following statement: 
@@ -962,14 +961,13 @@ No new data were generated by our studies.
 %%% Make sure to upload the bib file along with the tex file and PDF
 %%% Please see the test.bib file for some examples of references
 
-
 \clearpage
 
 \section*{Tables}
 
 \begin{table}[h!]
 	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using partial HIV-1 polymerase gene sequences. $N$ : the number of sequences; $L$: length of the multiple sequence alignment, bp; $E[D]$ mean pairwise TN93 distance; (the studies are sorted on this column, in ascending order) $\P$: the original study performed threshold tuning (varied methods); $\dagger$ : distance thresholds were specific to subtypes; $\star$ : the corresponding AUTO-TUNE score is $\geq 1.9$; $\bullet$ : only a subset of the complete dataset was made available (privacy, data use restrictions, incomplete GenBank submissions), the number of  sequences analyzed here is shown after the / symbol; N.R: not reported}
-  \label{tab:paperComparison}
+	\label{tab:paperComparison}
 
 	\vspace{10pt}
 	\centering
@@ -1009,7 +1007,7 @@ No new data were generated by our studies.
 
 \begin{table}[h!]
 	\caption{Network properties at the published and AUTO-TUNE thresholds. In cases when the original paper used more than one threshold, we selected the largest for comparison. The datasets are ordered by the AUTO-TUNE priority score from highest to lowest. $\rho$ is the fitted characteristic scale-free exponent of the corresponding degree distributions.}
-  \label{tab:paperComparisonProp}
+	\label{tab:paperComparisonProp}
 	\vspace{10pt}
 	\centering
 	\begin{ssmall}
@@ -1047,7 +1045,7 @@ No new data were generated by our studies.
 
 \begin{table}[h!]
 	\caption{Comparison of AUTO-TUNE and published thresholds from prior studies using sequences from viruses other than HIV-1. "N/A": no distance-based clustering analyses were done. Other notation is the same as in Table~\ref{tab:paperComparison}}
-  \label{tab:paperComparisonNotHIV}
+	\label{tab:paperComparisonNotHIV}
 
 	\vspace{10pt}
 	\centering
@@ -1075,7 +1073,7 @@ No new data were generated by our studies.
 
 \begin{table}[h!]
 	\caption{An application of AUTO-TUNE to subtype stratified HIV-1 pol sequences from the LANL database. Fraction clustered is the proportion of all sequences that are connected to at least one other sequence. Subtypes are sorted by the inferred threshold, lowest first. Other notation is the same as in Table~\ref{tab:paperComparison}}
-  \label{tab:paperLANL}
+	\label{tab:paperLANL}
 
 	\vspace{10pt}
 	\centering
@@ -1108,7 +1106,7 @@ No new data were generated by our studies.
 
 \begin{table}[h!]
 	\caption{Distance thresholds and key network properties using four different HIV-1 genomic regions, stratified by subtype (minumum $500$ sequences)}
-  \label{tab:LANL:full}
+	\label{tab:LANL:full}
 
 	\vspace{10pt}
 	\centering
@@ -1185,14 +1183,13 @@ No new data were generated by our studies.
 	\end{tabular}
 \end{table}
 
-
 \clearpage
 
 \section{Figure captions}
 
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/subsampling.png}
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figures/subsampling.png}
 	\caption{ (A) Box plot representing the AUTO-TUNE scores across ten random
 		samples at 25\%, 50\%, and 75\% of the \citep{rhee_national_2019} dataset,
 		showing a trend of increasing confidence in score estimates with denser
@@ -1205,16 +1202,16 @@ No new data were generated by our studies.
 \end{figure}
 
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/subsampling2.png}
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figures/subsampling2.png}
 	\caption{
 		Figure A and B present the effects of subsampling on network structure using different thresholds. Figure A illustrates the proportion of nodes subsampled that remained clustered in both the original and the subsampled networks, with an observable increase in nodes captured as the threshold transitions from 1.5% to the optimized AUTO-TUNE threshold across subsampling levels (25%, 50%, and 75%). This pattern underscores the AUTO-TUNE scoring method's efficacy in preserving the network's structural integrity in subsampled datasets. Conversely, Figure B shows the proportion of nodes that were singletons in the original network and clustered in the subsampled networks. Despite varying subsampling rates and iterations, the impact of AUTO-TUNE's adaptive thresholding on clustering these singletons appears minimal, suggesting a negligible influence on the overall network structure.
 	}\label{fig:subsampling2}
 \end{figure}
 
 \begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./figures/webapp.png}
+	\centering
+	\includegraphics[width=0.5\textwidth]{./figures/webapp.png}
 	\caption{ The user interface of the AUTO-TUNE web application
 		(\url{http://autotune.datamonkey.org/analyze}). The platform provides a
 		multi-faceted view of AUTO-TUNE's analysis, including a score plot that
@@ -1228,7 +1225,7 @@ No new data were generated by our studies.
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=1.\textwidth]{figures/examples.pdf} 
+	\includegraphics[width=1.\textwidth]{figures/examples.pdf}
 	\vspace{0.01in}
 	\caption{\textbf{Examples of AUTO-TUNE scores profiles.}
 		(A). Lowering the genetic distance threshold removes some of the edges from the network (shown in grey) and disconnects a large cluster into color-coded smaller clusters; here "None" means that the node is not connected to anything at the lower threshold. (B). Raising the genetic distance threshold adds edges to the network (shown in grey) and connectes previously separte clusters into a larger component. (C). Each circle is a cluster in the larger threshold network, and with a proportion of nodes removed when the threshold is lowered. (D). Changes to the node degree distribution (colors represent the counts of nodes with the same degree). (E). A significant enlargement of a small network at a higher threshold, with grey edges only present at the larger threshold. }
