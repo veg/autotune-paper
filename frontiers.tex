@@ -297,11 +297,11 @@ $-1$ is achieved for perfectly disassortative networks (the only links are
 between $G$ and $\bar G$).
 
 DWH has been used in social network analysis and in the study of how different
-attributes are related to the formation of connections between individuals\TODO{SAR -- Reference}. To
-assess whether or not DWH is significantly different from $0$ (and from random
-expectation), we generate the null distribution of DWH obtained by randomly
-reshuffling node attributes used to define group $G$ and recomputing DWH for
-each such replicate.
+attributes are related to the formation of connections between
+individuals\TODO{SAR -- Reference}. To assess whether or not DWH is
+significantly different from $0$ (and from random expectation), we generate the
+null distribution of DWH obtained by randomly reshuffling node attributes used
+to define group $G$ and recomputing DWH for each such replicate.
 
 \subsection{Implementation}
 
@@ -346,7 +346,7 @@ hivtrace -i ./INPUT.FASTA -a resolve -r HXB2_prrt -t < autotune_threshold > -m 5
 hivnetworkannotate -n hivtrace.results.json -a node_attributes.json -g schema.json -r
 	\end{lstlisting}
 	                  For more information, users can refer to the {\tt hivnetworkannotate}
-	                  documentation. }
+                    documentation.\TODO{SAR -- Reference} }
 
 	      \item{ Analyze the results with DWH: After the results file has been annotated, the user can proceed to the assortativity page, \url{http://autotune.datamonkey.org/assortativity}, for further analysis of the output. }
 
