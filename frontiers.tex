@@ -502,8 +502,6 @@ falls back to maximizing the number of clusters as a function of the distance
 thresholds, which is a common strategy found in empirical studies (see
 Fig.~\ref{fig:cases}, panel B).
 
-\TODO{ VDC: is there a cutoff to consider the score to be low or high?  Does it mean that even in low scoring cases, AUTO-TUNE is a good option to tune the threshold?}
-
 As expected, AUTO-TUNE inferred smaller thresholds for younger (e.g., studies
 based in China) epidemics. While AUTO-TUNE will always return a score, in the
 majority of cases there is no clear "winner" threshold, with priority scores
@@ -605,26 +603,24 @@ also had between a quarter and a half of all the clusters in perfect agreement.
 
 \subsection{Evaluating Inferred Networks using Homophily}
 
-\TODO{JOW : The strongest predictor of homophily in HIV networks is actually race/ethnicity, not transmission risk: https://pubmed.ncbi.nlm.nih.gov/33349132/}
-
 Non-random mixing and attribute-based homophily are intrinsic characteristics
 of human contact networks and can be expected to be present in transmission
 networks, particularly in the context of HIV transmission. People frequently
 engage in relationships with those who share similar attributes or behaviors,
 such as risk factors (e.g., PWID, MSM). Recent evidence suggests that
-race/ethnicity is also a strong predictor of homophily in HIV networks\citep{ragonnet2021sorting}. The
-effect of these nonrandom mixing patterns on the genetic diversity of HIV-1 has
-not only been extensively explored via modeling and simulations
-\citep{goodreau_assessing_2006}, but the structure of sexual contact networks
-has been found to directly influence pathogen phylogenies
-\citep{robinson_how_2013}. Phylogenetic analysis of HIV type 1 sequences has
-revealed distinct grouping patterns based on risk behaviors
-\citep{holmes_molecular_1995}. The expectation of homophily is so strong, that
-its disruption, e.g. the presence of a self-reported heterosexual risk group
-individual in a cluster exclusively composed of MSMs has been used as a marker
-of undisclosed/incomplete risk factor reporting \cite{Ragonnet-Cronin:2018aa}.
-Therefore, when subject-level attributes are available, homophily is an
-expected and desired feature of the network.
+race/ethnicity is also a strong predictor of homophily in HIV
+networks\citep{ragonnet2021sorting}. The effect of these nonrandom mixing
+patterns on the genetic diversity of HIV-1 has not only been extensively
+explored via modeling and simulations \citep{goodreau_assessing_2006}, but the
+structure of sexual contact networks has been found to directly influence
+pathogen phylogenies \citep{robinson_how_2013}. Phylogenetic analysis of HIV
+type 1 sequences has revealed distinct grouping patterns based on risk
+behaviors \citep{holmes_molecular_1995}. The expectation of homophily is so
+strong, that its disruption, e.g. the presence of a self-reported heterosexual
+risk group individual in a cluster exclusively composed of MSMs has been used
+as a marker of undisclosed/incomplete risk factor reporting
+\cite{Ragonnet-Cronin:2018aa}. Therefore, when subject-level attributes are
+available, homophily is an expected and desired feature of the network.
 
 To assess the performance of an AUTO-TUNEd optimized threshold using
 degree-weighted homophily, we first evaluated a CRF07\_BC network with national
