@@ -90,41 +90,39 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 	\section{}
 
 	\noindent Molecular surveillance of viral pathogens and inference of
-	transmission networks and clusters from genomic data play an increasingly
-	important role in public health applications and transmission mitigation
+	transmission networks from genomic data play an increasingly
+	important role in public health 
 	efforts, especially for HIV-1. For many methods, the genetic distance
 	threshold used to connect sequences in the transmission network is a key
 	parameter informing the properties of inferred networks. Using a distance
 	threshold that is too high can result in a network with many spurious links,
-	making it difficult to interpret and analyze. On the other hand, using a
+	making it difficult to interpret. Conversely, a
 	distance threshold that is too low can result in a network with too few links,
-	which may not capture key insights into rapidly growing clusters among
-	patients with shared attributes that could benefit from public health
-	intervention measures. Published research using the HIV-TRACE software package
-	frequently uses the default threshold of $1.5\%$ for HIV pol gene sequences,
+	which may not capture key insights into clusters of public health concern. Published research using the HIV-TRACE software package
+	frequently uses the default threshold of $0.015$ substitutions/site for HIV pol gene sequences,
 	but in many cases, investigators heuristically select other threshold parameters
 	to better capture the underlying dynamics of the epidemic they are studying.
 
-	Here, we present a general heuristic scoring approach for tuning a distance
-	threshold adaptively, which seeks to prevent the formation of giant clusters
-	(measured as the ratio $R_{12}$ of the sizes of the largest and the second
-	largest cluster), while maximizing the number of clusters present in the
-	network.
+  Here, we present a general heuristic scoring approach for tuning a distance
+  threshold adaptively, which seeks to prevent the formation of giant clusters.
+  We prioritize the ratio of the sizes of the largest and the second largest
+  cluster, maximizing the number of clusters present in the network.
 
-	We apply our scoring heuristic to outbreaks with different characteristics,
-	such as regional or temporal variability, and demonstrate the utility of using
-	the scoring mechanism's suggested distance threshold to identify clusters
-	exhibiting risk factors that would have otherwise been more difficult to
-	identify. For example, while we found that a $1.5\%$ distance threshold is
-	typical for US-like epidemics, recent outbreaks like the CRF07\_BC subtype
-	among men who have sex with men (MSM) in China have been found to have a lower
-	optimal threshold of $0.5\%$ to better capture the transition from injected
-	drug use (IDU) to MSM as the primary risk factor. Alternatively, in communities
-	surrounding Lake Victoria, where there has been sustained transmission for many
-	years, we found that a larger distance threshold is necessary to capture a more
-	risk factor-diverse population with sparse sampling over a longer period of
-	time. Such identification may allow for more informed intervention action by
-	respective public health officials.
+  We apply our scoring heuristic to outbreaks with different characteristics,
+  such as regional or temporal variability, and demonstrate the utility of
+  using the scoring mechanism's suggested distance threshold to identify
+  clusters exhibiting risk factors that would have otherwise been more
+  difficult to identify. For example, while we found that a $1.5\%$ distance
+  threshold is typical for US-like epidemics, recent outbreaks like the
+  CRF07\_BC subtype among men who have sex with men (MSM) in China have been
+  found to have a lower optimal threshold of $0.5\%$ to better capture the
+  transition from injected drug use (IDU) to MSM as the primary risk factor.
+  Alternatively, in communities surrounding Lake Victoria in Uganda, where
+  there has been sustained heterosexual transmission for many years, we found
+  that a larger distance threshold is necessary to capture a more risk
+  factor-diverse population with sparse sampling over a longer period of time.
+  Such identification may allow for more informed intervention action by
+  respective public health officials.
 
 	\tiny
 	\keyFont{ \section{Keywords:} molecular epidemiology, HIV, network, transmission cluster, surveillance} %All article types: you may provide up to 8 keywords; at least 5 are mandatory.
@@ -135,27 +133,25 @@ $^{3}$ Department of Medicine, University of California San Diego, La Jolla, CA,
 
 The use of genomic data to infer and characterize transmission networks of
 various pathogens has grown in prominence in the past two decades, with
-applications to a growing list of microorganisms, including viruses such as HIV
-\citep{paraskevis_application_2016}, HCV \citep{murphy_molecular_2019} or
-influenza virus \citep{jombart_reconstructing_2011}, and bacteria such as $M.
-	tuberculosis$ \citep{mai_mycobacterium_2018} or $A. baumanii$
-\citep{thoma_challenge_2022}. Notably, genomic surveillance had a prominent
-role during the COVID-19 pandemic, including the use of sequencing for the
-study of transmission clusters
-\citep{von_rotz_systematic_2023,campigotto_utility_2023}. Choosing an
+applications to a growing list of pathogens, including viruses such as HIV
+\citep{paraskevis_application_2016}, hepatitis C virus (HCV)
+\citep{murphy_molecular_2019}, or influenza A virus
+\citep{jombart_reconstructing_2011}, and bacteria such as $M. tuberculosis$
+\citep{mai_mycobacterium_2018} or $A. baumanii$ \citep{thoma_challenge_2022}.
+Notably, genomic surveillance had a prominent role during the COVID-19
+pandemic, including the use of sequencing for the study of transmission
+clusters \citep{von_rotz_systematic_2023,campigotto_utility_2023}. Choosing an
 appropriate genetic distance threshold is an important part of using a
 molecular transmission network to track the spread of rapidly evolving
 pathogens \citep{liu_dynamics_2020,rose_persistence_2020}. This distance
 threshold defines the degree of genetic closeness between pathogen sequences,
 isolated from two individuals, required to suggest them as potential
 transmission partners in the network. Using a distance threshold that is too
-large can result in a network with many spurious, i.e. epidemiologically
-uninformative (clusters are too big and too few), links, making it difficult to
+large can result in a network with many spurious, making it difficult to
 interpret and analyze. On the other hand, using a distance threshold that is
-too small can result in a network with too few links (clusters that are too
-small and numerous), underestimating connections between individuals and making
-it difficult to accurately track the spread of the disease
-\citep{gore_hiv_2022}.
+too small can result in a network with too few links, underestimating
+connections between individuals and making it difficult to accurately track the
+spread of the disease \citep{gore_hiv_2022}.
 
 To enhance the utility of inferred transmission networks, it is important to
 carefully consider the appropriate distance threshold, $d$. This threshold may
@@ -165,13 +161,13 @@ SARS-CoV-2) may require a smaller $d$ than a less contagious chronic illness
 that is primarily spread through direct contact (e.g., HIV-1)\TODO{SAR --
 	Reference}. Viruses are more amenable to molecular studies compared to bacteria
 due to their high genetic divergence and compact genomes. Given the relatively
-high evolutionary rate of RNA viruses (compared to chromosomal DNA in humans)
-detectable genetic fingerprints can be targeted for epidemiological studies
+high evolutionary rate of RNA viruses 
+detectable genetic fingerprints can be prioritized for epidemiological studies
 over short time periods\citep{paraskevis_application_2016}.
 
 For chronic infections such as HIV, the most appropriate genetic distance
 threshold should be determined according to the characteristics of the epidemic
-such as the speed of transmission, and the evolutionary rate of the gene region
+such as the speed of transmission, and the evolutionary rate of the genomic region
 analyzed \citep{liu_dynamics_2020}. Sampling density and possible delays
 between infection and diagnosis should be considered, since samples close to
 the time of seroconversion are more likely to cluster than samples from well
@@ -183,15 +179,12 @@ Cluster analysis, i.e., identification and analysis of connected network
 components, in public health has been used for early identification of
 increased transmission \citep{oster_hiv_2021, oster_identifying_2018},
 monitoring response to an HIV outbreak \citep{tumpney_human_2020,
-	sizemore_using_2020, tookes_rapid_2020}, evaluating the effectiveness of
+sizemore_using_2020, tookes_rapid_2020}, evaluating the effectiveness of
 interventions \citep{peters_hiv_2016,wang_targeting_2015,liu_dynamics_2020} or
 predicting clusters that are most likely to grow in the near future
-\citep{erly_predictive_2021,ragonnet-cronin_forecasting_2022}. In general, the
-goal of informative network inference is to strike a balance between having
-enough links to accurately track the spread of the disease, while not having so
-many links that spurious connections are made and hinder the public health
-response. This can be achieved through careful analysis and consideration of
-the specific disease and context.
+\citep{erly_predictive_2021,ragonnet-cronin_forecasting_2022}. This balance can
+be achieved through careful analysis and consideration of the specific disease
+and context.
 
 This study introduces AUTO-TUNE, a method that offers a systematic approach to
 select genetic distance thresholds for molecular HIV transmission network
@@ -206,7 +199,7 @@ including potentially other viral diseases.
 \section{Methods}
 
 Assume that there are $S$ aligned genomic sequences (full or partial, e.g. the
-HIV-1 pol gene) for a pathogen of interest, each representing the "consensus"
+HIV-1 \textit{pol} gene) for a pathogen of interest, each representing the "consensus"
 circulating viral diversity at the time of sampling in a single infected
 individual. We shall infer a putative transmission network comprising $S$
 nodes, and $E$ links (edges), where an edge is drawn between a pair of
@@ -257,7 +250,7 @@ example in the Results section as well).
 
 Degree-weighted homophily (DWH) is a measure of similarity between nodes in a
 network based on their attributes (such as demographic characteristics or
-behaviors) and their degree (i.e., the number of connections they have to other
+behaviors) and their degree centrality (i.e., the number of connections they have to other
 nodes in the network). It is used to quantify the extent to which nodes with
 similar attributes tend to be connected to each other more frequently than
 would be expected by chance\cite{RePEc:adr:anecst:y:2012:i:107-108:p:33-48}.
@@ -316,7 +309,7 @@ implementation is as follows
 
 	\item{ Calculate pairwise distances: The user first calculates the pairwise distances using the {\tt tn93} fast pairwise distance calculator, providing the maximum threshold value to consider ($0.03$ in this case, which may be revised upwards for sufficiently divergent sequences, as this provides an upper bound of thresholds to consider) and the input FASTA file. The command for this step is
 	            \begin{lstlisting}[style=BashInputStyle]
- tn93 -t 0.030 -a RYMSBK -g 0.05 pol.fasta > pairwise_distances.15.tn93.csv
+ tn93 -t 0.030 -a resolve -g 0.05 pol.fasta > pairwise_distances.15.tn93.csv
 \end{lstlisting}
 
 	            Please note that the threshold should include the maximal range one is
@@ -416,7 +409,7 @@ described in Section 2.3. This enabled us to determine an optimal threshold for
 each dataset using AUTO-TUNE. We further executed the command as detailed in
 step 4 of Section 2.3, deploying thresholds previously established as optimal
 by \citep{chato_public_2020}. Note that {\tt clustuneR} requires and uses
-temporal information (dates sequences were collected), while AUTO-TUNE does
+temporal information (dates sequences were collected), whereas AUTO-TUNE does
 not.
 
 Lastly, we evaluated the effect of sampling density on the genetic distance
@@ -424,7 +417,7 @@ threshold as determined by AUTO-TUNE, we implemented a strategy of random
 subsampling from the original dataset sourced from \citep{rhee_national_2019}.
 This study was selected due to its satisfactory AUTO-TUNE score when utilized
 in its entirety, as well as its inherent design as a Geographically-Stratified
-set of 716 Pol Subtype/CRF (GSPS) reference sequence dataset. The dataset,
+set of 716 \textit{pol} Subtype/CRF (GSPS) reference sequence dataset. The dataset,
 which comprises 6034 samples gathered between 1989 and 2016, was subjected to
 random subsampling ten times at proportions of $25\%$, $50\%$, and $75\%$ of
 the original sample size. For each subsample, the optimal threshold and
@@ -433,6 +426,8 @@ associated scores were determined via AUTO-TUNE.
 \section{Results}
 
 \subsection{Comparisons with published HIV-1 molecular epidemiology studies}
+
+\TODO {JOW : Explain why you selected them first. }
 
 We selected several publications citing HIV-TRACE, which also made some, or all
 of the sequence data publicly available (Table~\ref{tab:paperComparison},
@@ -448,13 +443,12 @@ subjective procedures. Some studies stratified their analyses by viral subtype
 
 A direct comparison with published networks is not feasible because only the
 underlying sequence data (and often only some of the sequences) are made
-available, not the networks themselves. None of the papers include all the
-details of the bioinformatics workflows necessary to recreate the networks. To
-facilitate comparison here, we used distance thresholds and all available
-sequences from primary publications to infer transmission networks anew (the
-scripts for doing so and the corresponding settings are available in
-\url{github.com/veg/auto-tune}) and compare them with the networks obtained
-using the highest scoring AUTO-TUNE threshold.
+available, not the networks themselves. To facilitate comparison here, we used
+distance thresholds and all available sequences from primary publications to
+infer transmission networks anew (the scripts for doing so and the
+corresponding settings are available in \url{github.com/veg/auto-tune}) and
+compare them with the networks obtained using the highest scoring AUTO-TUNE
+threshold.
 
 With a few exceptions (e.g \cite{dalai_combining_2018,sivay_hiv-1_2018}), both
 the distance thresholds and the inferred networks were quite different, in
@@ -467,27 +461,27 @@ and smaller in $8/21$ datasets.
 
 \subsubsection{Examples of how changing thresholds affects inferred networks}
 
-\paragraph{Cluster size reduction} The $2\%$ threshold used by \citet{dalai_combining_2018} yielded one large
-cluster composed of two loosely connected components (one PWID/HSX, one MSM,
-see Figure 2 in that paper). A minute change to the threshold by AUTO-TUNE to
-$1.94\%$ splits one large cluster into three (some nodes also became
-disconnected), separating the two major risk groups; this is because the
-"bridging" connections were between these two thresholds (see
-Fig~\ref{fig:examples} panel A). This minor change also reduced $R_{12}$ from
-$21$ to $2.6$.
+\paragraph{Cluster size reduction} The $0.02$ subs/site (substitutions/site)
+threshold used by \citet{dalai_combining_2018} yielded one large cluster
+composed of two loosely connected components (one PWID/HSX, one MSM, see Figure
+2 in that paper). A minute change to the threshold by AUTO-TUNE to $0.0194\%$
+splits one large cluster into three (some nodes also became disconnected),
+separating the two major risk groups; this is because the "bridging"
+connections were between these two thresholds (see Fig~\ref{fig:examples} panel
+A). This minor change also reduced $R_{12}$ from $21$ to $2.6$.
 
-\paragraph{Cluster size increase}  Increasing the $1.5\%$ threshold on data from \citet{Little:2014aa} combined
+\paragraph{Cluster size increase}  Increasing the $0.015\%$ subs/site threshold on data from \citet{Little:2014aa} combined
 several small clusters (and singletons) into a single larger cluster, while
 preserving the overall size and properties of the network (see
 Fig~\ref{fig:examples} panel B). This change also reduced $R_{12}$ from $2.5$
 to $1.5$.
 
-\paragraph{Thinning out the network}  Reducing the $1.5\%$ threshold on data from \citet{rhee_national_2019}
+\paragraph{Thinning out the network}  Reducing the $0.015\%$ subs/site threshold on data from \citet{rhee_national_2019}
 dramatically reduced the size of the largest cluster, and thinned out most
 clusters with five or more nodes (see Fig~\ref{fig:examples} panel C).
 
 \paragraph{Materially changing the degree distribution of the network}  For the sequences from \citet{Li:2022aa}, AUTO-TUNE suggests $D = 1.483\%$ with
-robust ($1.76$) confidence, whereas the original $D = 1.3\%$ was selected based
+robust ($1.76$) confidence, whereas the original $D = 0.013$ subs/site was selected based
 on maximizing the number of clusters (and likely rounding to the nearest
 decimal). While the total number of the clusters only increases by $1$, the
 number of nodes connected in the network grows from $95$ to $119$, and the
@@ -497,7 +491,7 @@ Fig~\ref{fig:examples} panel D shows, the degree distribution is dramatically
 affected. Many commonly used network-derived correlates (e.g. centrality) can
 be strongly affected by such changes.
 
-\paragraph{Expanding the network}  Increasing the $1.5\%$ threshold in \citet{Billings:2019aa} to $2.33\%$ more
+\paragraph{Expanding the network}  Increasing the $.015$ subs/site threshold in \citet{Billings:2019aa} to $2.33\%$ more
 than doubles the number of nodes included (Fig~\ref{fig:examples} panel E)
 
 Networks with high AUTO-TUNE scores are exemplified by the alignment (in the
@@ -520,9 +514,9 @@ which cannot be well-represented by any single value. For instance, when
 analyzing the data from \citet{Yan:2021aa}, AUTO-TUNE returned a low score of
 $1.14$ for $D=0.839\%$. However, when we split the data into major constituent
 subtypes and ran AUTO-TUNE on each one separately, starkly discrepant
-thresholds were found for different subtypes: $D=1.02\%$ (score = $1.59$) for
-CRF01, $D=0.193\%$ (score = $2$) for CRF05, $D=2.615\%$ (score = $1.65$) for B,
-and $D=1.11\%$ (score = $1.04$) for CRF07. While many networks from the
+thresholds were found for different subtypes: $D=0.0102$ subs/site (score = $1.59$) for
+CRF01, $D=0.00193$ subs/site (score = $2$) for CRF05, $D=0.02615$ subs/site (score = $1.65$) for B,
+and $D=0.0111$ subs/site (score = $1.04$) for CRF07. While many networks from the
 literature tend to be dominated by sequences from the same subtype, in more
 heterogeneous settings it seems advisable to partition the data by subtype
 (corresponding to major phylogenetic clades), and perform network analyses
@@ -567,9 +561,9 @@ differences are reflected in a wide range of mean pairwise distances and
 inferred AUTO-TUNE thresholds shown in Table~\ref{tab:paperLANL}. For example,
 the relatively young subtype A6, which is the most common subtype in the
 countries of the former Soviet Union \cite{Abidi:2021aa}, has a low mean
-pairwise distance ($4.6\%$) and a low AUTO-TUNE threshold ($0.56\%$). In
+pairwise distance ($0.046$) and a low AUTO-TUNE threshold ($0.0056$). In
 contrast A1D recombinant sequences have high distance and threshold values
-($8.9\%$ and $3.23\%$, respectively), because sequences of this "subtype"
+($0.089$ and $0.0323$, respectively), because sequences of this "subtype"
 represent broadly circulating strains with complex backgrounds, and extensive
 histories of recombination \cite{Foster:2014aa,Yebra:2015aa}.
 
@@ -636,15 +630,15 @@ annotated with a risk factor detailing whether the patient was heterosexual
 among other attributes.
 
 When we analyze the dataset with AUTO-TUNE, local maxima of AUTO-TUNE scores
-were achieved with 0.76\% and 0.19\% thresholds, at scores 1.137 and 1.030,
+were achieved with $0.0076$ sub/site and $0.0019$ sub/site thresholds, at scores $1.137$ and $1.030$,
 respectively. Notably, the DWH scores for PWID exhibited a significant surge at
 these thresholds, indicating a robust pattern of increased PWID homophily even
 when relatively low scoring. The close proximity of AUTO-TUNE scores and the
-consistent rise in PWID homophily at 0.76\% and 0.19\% thresholds suggest
-comparable performance at these thresholds compared to the default 1.5\%
+consistent rise in PWID homophily at $0.0076$ and $0.0019$ thresholds suggest
+comparable performance at these thresholds compared to the default $0.015$
 threshold, suggesting that these thresholds might be more effective in
-representing homophilic relationships in this network. At each threshold—1.5\%,
-0.76\%, and 0.19\%—all DWH scores for the risk groups (MSM, Hetero, and PWID)
+representing homophilic relationships in this network. At each threshold—0.015,
+0.0076, and 0.0019—all DWH scores for the risk groups (MSM, Hetero, and PWID)
 lie outside their respective panmictic ranges. This consistently indicates
 non-random mixing and attribute-based homophily across the network. Detailed
 results are in Table~\ref{table:combined} and Table~\ref{table:panmictic}.
